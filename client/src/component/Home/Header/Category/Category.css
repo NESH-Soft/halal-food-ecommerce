@@ -1,0 +1,13 @@
+ .hero-categories{
+    border: 1px solid lightgrey;
+}
+ .hero-categories ul{
+    list-style: none;
+}
+ .hero-categories ul li a{
+    text-decoration: none;
+    color: black;
+}
+ .hero-categories ul li{
+    padding-top: 10px;
+}
