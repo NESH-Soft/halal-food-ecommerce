@@ -1,0 +1,33 @@
+{
+  "name": "halal-food",
+  "version": "1.0.0",
+  "description": "A E-commerce app",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "nodemon -r esm ./src/server.js",
+    "test": "jest --force-exit"
+  },
+  "author": "NESH-Soft",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "babel-jest": "^26.6.2",
+    "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "jest": "^26.6.2",
+    "mongoose": "^5.10.11",
+    "superagent": "^6.1.0",
+    "supertest": "^6.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.12.1",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "nodemon": "^2.0.6"
+  }
+}
