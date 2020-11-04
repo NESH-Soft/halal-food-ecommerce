@@ -1,7 +1,8 @@
 import React from 'react';
 import Footer from '../Footer/Footer/Footer';
-
 import Navbar from '../Navbar/Navbar';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
 
 const Cart = () => {
     return (
@@ -16,7 +17,6 @@ const Cart = () => {
                             <th scope="col">PRICE</th>
                             <th scope="col">QUANTITY</th>
                             <th scope="col">TOTAL</th>
-                            <th scope="col">REMOVE</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -25,20 +25,13 @@ const Cart = () => {
                             <td>Mark</td>
                             <td>Otto</td>
                             <td>Otto</td>
-                            <td>Otto</td>
                             <td>
-                                <div class="input-group">
-                                    <span class="input-group-btn">
-                                        <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
-                                            <span class="glyphicon glyphicon-minus"></span>
-                                        </button>
-                                    </span>
-                                    <input type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10" />
-                                    <span class="input-group-btn">
-                                        <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]">
-                                            <span class="glyphicon glyphicon-plus"></span>
-                                        </button>
-                                    </span>
+                                <div class="input-group number-spinner">
+                                    <button class="btn btn-danger" ><FontAwesomeIcon icon={faMinus} /> </button>
+                                    <div className="text-center pt-2" style={{ width: '50px', height: '50px', border: '1px solid lightgrey' }}>
+                                        <p>1</p>
+                                    </div>
+                                    <button class="btn btn-primary"  ><FontAwesomeIcon icon={faPlus} /></button>
                                 </div>
                             </td>
                         </tr>
