@@ -38,7 +38,6 @@ const Register = () => {
                     </div>
                 </div>
             </div>
-
         </div>
     );
 };

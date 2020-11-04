@@ -4,9 +4,9 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 import './Category.css';
 const Category = () => {
     return (
-        <div >
+        <div className="col-md-12">
             <div className="hero-categories">
-                <div className="hero-categories-all py-3" style={{ backgroundColor: '#76a333',color:'#fff' }}>
+                <div className="hero-categories-all py-3" style={{ backgroundColor: '#76a333', color: '#fff' }}>
                     <div className="pl-5">
                         <FontAwesomeIcon icon={faBars} /><span className="ml-4">All Categories</span>
                     </div>
