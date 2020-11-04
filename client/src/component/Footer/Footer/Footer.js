@@ -7,9 +7,8 @@ import FooterForm from './FooterForm';
 const Footer = () => {
     return (
 
-        <div className="" style={{backgroundColor: '#F3F6FA'}}>
+        <div className="" style={{ backgroundColor: '#F3F6FA' }}>
             <div className="row p-5">
-                
                 <div className="col-md-4">
                     <div className="">
                         <img src="https://preview.colorlib.com/theme/ogani/img/logo.png" alt="" srcset="" />
@@ -48,20 +47,20 @@ const Footer = () => {
                     <br />
                     <p>Get E-mail updates about our latest shop and special offers.</p>
                     <br />
-                   <FooterForm/>
+                    <FooterForm />
                     <br />
 
-                   <div className="row col-sm-6">
-                   <div className=" col-md-4 footer-icon">
-                        <a href="" className="text-decoration-none "><FontAwesomeIcon icon={faFacebookF} style={{ color: '#76a333', fontSize: '20px' }}  /></a>
+                    <div className="row col-md-6">
+                        <div className=" col-md-4 footer-icon">
+                            <a href="" className="text-decoration-none "><FontAwesomeIcon icon={faFacebookF} style={{ color: '#76a333', fontSize: '20px' }} /></a>
+                        </div>
+                        <div className="col-md-4 ">
+                            <a href="" className="text-decoration-none text-dark"><FontAwesomeIcon icon={faLinkedin} /></a>
+                        </div>
+                        <div className="col-md-4 ">
+                            <a href="" className="text-decoration-none text-dark"><FontAwesomeIcon icon={faTwitter} /></a>
+                        </div>
                     </div>
-                    <div className="col-md-4 ">
-                    <a href="" className="text-decoration-none text-dark"><FontAwesomeIcon icon={faLinkedin} /></a>
-                    </div>
-                    <div className="col-md-4 ">
-                    <a href="" className="text-decoration-none text-dark"><FontAwesomeIcon icon={faTwitter} /></a>
-                    </div>
-                   </div>
 
                 </div>
 

@@ -1,0 +1,10 @@
+.btn-footer {
+    background: #76a333;
+    color: #fff
+}
+
+.btn-footer:hover {
+    color: #fff;
+    background-color: #286090;
+    border-color: #204d74
+}
