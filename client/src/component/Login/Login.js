@@ -7,10 +7,9 @@ const Login = () => {
                 <div className="col-md-3">
                     <div class="card mb-4 shadow-lg p-3 bg-white" style={{ width: '100%' }}>
                         <div class="card-body">
-                            <h3 class="card-title">ACCOUNT LOGIN</h3>
-                            <div className="">
+                            <h3 class="card-title text-center">LOGIN</h3>
+                            <div className="mt-5">
                                 <form>
-                                    
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Email address</label>
                                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
