@@ -8,9 +8,7 @@ import {
 import asyncHandler from '../utils/async';
 
 export const getProducts = asyncHandler(async (req, res) => {
-  console.log('start')
   const products = await getProductsServices();
-  console.log(products)
   return res.status(200).send(products);
 });
 
