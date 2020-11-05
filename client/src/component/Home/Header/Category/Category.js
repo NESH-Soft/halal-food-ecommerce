@@ -7,8 +7,8 @@ const Category = () => {
         <div className="col-md-12">
             <div className="hero-categories">
                 <div className="hero-categories-all py-3" style={{ backgroundColor: '#76a333', color: '#fff' }}>
-                    <div className="pl-5">
-                        <FontAwesomeIcon icon={faBars} /><span className="ml-4">All Categories</span>
+                    <div className="pl-4">
+                        <FontAwesomeIcon icon={faBars} /><span className="ml-5">All Categories</span>
                     </div>
                 </div>
                 <ul>

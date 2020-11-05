@@ -12,7 +12,7 @@ const Header = () => {
             <Navbar />
             <section className="col-md-12 position-relative">
                 <div className="row">
-                    <div className="col-md-2 pl-4 sticky-top" >
+                    <div className="col-md-2 pl-4" >
                         <Category />
                     </div>
                     <div className="col-md-10" >

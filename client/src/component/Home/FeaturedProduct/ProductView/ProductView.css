@@ -1,0 +1,7 @@
+/* .btn-Addtocart {
+    transition: 1s;
+} */
+.btn-Addtocart:hover {
+    background-color: #76A333;
+    color: #fff;
+}
