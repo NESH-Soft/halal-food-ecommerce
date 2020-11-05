@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Columns from 'react-columns';
 import fakedata from './fakedata';
+import './ProductView.css';
 
 const ProductView = () => {
     const [products, setProduct] = useState(fakedata);
@@ -11,7 +12,7 @@ const ProductView = () => {
         <div className="text-center">
             <p>{pd.name}</p>
             <h6>${pd.price}</h6>
-            <button className="btn btn-light">Add to card</button>
+            <button className="btn btn-light btn-Addtocart w-100">Add to card</button>
         </div>
     </div>);
     var queries = [
@@ -22,10 +23,6 @@ const ProductView = () => {
     {
         columns: 4,
         query: 'min-width: 1000px'
-    },
-    {
-        columns: 4,
-        query: 'min-width: 1400px'
     },
     {
         columns: 5,
