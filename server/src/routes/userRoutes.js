@@ -1,17 +1,19 @@
 import express from 'express';
 import {
-  getController,
-  postController,
-  getSingleUserController,
-  putUserController,
-  deleteUserController,
+  signupUser,
+  signInUser,
+  updateUser,
+  deleteUser,
+  changePassword,
 } from '../controllers/userController';
 
 const router = express.Router();
 
-router.route('/').get(getController).post(postController).put(putUserController);
+router.route('/').get(signInUser).post(signupUser);
 
-router.route('/:id').get(getSingleUserController).delete(deleteUserController);
+router.route('/:id').put(updateUser).delete(deleteUser);
+
+router.route('/change-password').put(changePassword);
 
 const configure = (app) => {
   app.use('/api/user', router);
