@@ -41,7 +41,7 @@ const Cart = () => {
                                             <div className="col-md-4 col-sm-6 col-6">
                                                 <div className="btn-group btn-group-toggle w-100">
                                                     <button className="btn btn-danger rounded-0"><FontAwesomeIcon icon={faMinus} /></button>
-                                                    <input className="rounded-0" style={{ width: '50%' }} defaultValue="1" type="number" />
+                                                    <button className="btn rounded-0"><span>1</span></button>
                                                     <button className="btn btn-primary rounded-0"><FontAwesomeIcon icon={faPlus} /></button>
                                                 </div>
                                             </div>
