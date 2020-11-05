@@ -2,6 +2,11 @@ import models from '../models/index';
 
 const { Product } = models;
 
+export const findProductById = async (id) => {
+  const product = await Product.findById(id).select('cloudinaryId');
+  return product;
+};
+
 export const getProductsServices = async () => {
   const products = await Product.find();
   return products;
@@ -13,9 +18,8 @@ export const getProductServices = async (id) => {
 };
 
 export const addProductServices = async (product) => {
-  const newProduct = new Product(product);
-  const savedProduct = await newProduct.save();
-  return savedProduct;
+  const newProduct = await Product.create(product);
+  return newProduct;
 };
 
 export const updateProductServices = async (id, data) => {

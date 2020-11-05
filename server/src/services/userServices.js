@@ -4,44 +4,19 @@ import models from '../models/index';
 
 const { User } = models;
 
-// Get token from model, create cookie and send response
-const sendTokenResponse = (user) => {
-  // Create token
-  //  eslint-disable-next-line
-  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRE,
-  });
-  return token;
-};
+export const findUserByEmail = async (email) => {
+  const user = await User.findOne({ email });
+  return user;
+}
 
 // signIn services
 export const signInUserServices = async (data) => {
-  const { email, password } = data;
 
-  // Check for manager
-  const user = await User.findOne({ email }).select('+password');
-  if (!user) {
-    // throw new NotFound(`User not found by the :${email}`);
-  }
-  const isMatch = await bcrypt.compare(password, user.password);
-  if (!isMatch) {
-    // throw new BadRequest('Invalid credentials');
-  }
-  const token = sendTokenResponse(user);
   return token;
 };
 
 //  signUp services
-export const signUpUserServices = async (user) => {
-  const { name, email } = user;
-  let { password } = user;
-  const isUser = await User.findOne({ email });
-  if (isUser) {
-    // throw new BadRequest('Email already Exits');
-  }
-  //  hash password
-  const salt = await bcrypt.genSalt(10);
-  password = await bcrypt.hash(password, salt);
+export const createUserServices = async (user) => {
   const savedUser = await User.create({ name, email, password });
   return savedUser;
 };
@@ -62,19 +37,11 @@ export const deleteUserServices = async (id) => {
   return user;
 };
 
-export const changePasswordServices = async (data, logUser) => {
-  const { oldPassword, newPassword } = data;
-  const match = await bcrypt.compare(oldPassword, logUser.password);
-
-  if (!match) {
-    // return res.status(400).json({ success: false, msg: 'Old password does not match' });
-  }
-  const hash = await bcrypt.hash(newPassword, 11);
+export const changePasswordServices = async (id, newPassword) => {
   const user = await User.findOneAndUpdate(
-    { _id: logUser._id },
-    { $set: { password: hash } },
+    { _id: id },
+    { $set: { password: newPassword } },
   );
-
   return user;
 };
 
