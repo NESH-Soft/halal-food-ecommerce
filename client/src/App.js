@@ -9,7 +9,7 @@ import Login from './component/Login/Login';
 function App() {
   return (
     <div className="">
-      <Login></Login>
+      <Cart></Cart>
     </div>
   );
 }
