@@ -1,32 +1,30 @@
 import jwt from 'jsonwebtoken';
-import bcrypt from 'bcryptjs'
-import sendTokenResponse from '../utils/sendTokenResponse'
-import sendEmail from '../utils/sendEmail'
+import bcrypt from 'bcryptjs';
+import sendTokenResponse from '../utils/sendTokenResponse';
+import sendEmail from '../utils/sendEmail';
 import {
   createUserServices,
-  signInUserServices,
   UpdateUserServices,
   deleteUserServices,
   changePasswordServices,
-  findUserByEmail
+  findUserByEmail,
 } from '../services/userServices';
 import asyncHandler from '../utils/async';
-import { BadRequest, NotFound } from '../utils/error'
-
+import { BadRequest, NotFound } from '../utils/error';
 
 export const signupUser = asyncHandler(async (req, res) => {
-  const { name, email, password } = req.body;
+  const user = req.body;
 
-  const user = await findUserByEmail(email);
-  if (user) {
+  const isUser = await findUserByEmail(user.email);
+  if (isUser) {
     throw new BadRequest('Email already Exits');
   }
   //  Register token
   const registerToken = jwt.sign({ user }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRE_VERIFICATION
-  })
+    expiresIn: process.env.JWT_EXPIRE_VERIFICATION,
+  });
 
-   // Create reset URL
+  // Create reset URL
   const verificationURL = `${req.protocol}://${req.headers.host}/verify/${registerToken}`;
 
   const message = `Please click the link below to complete your signup process on Halal Food: \n\n ${verificationURL} `;
@@ -64,18 +62,18 @@ export const signInUser = asyncHandler(async (req, res) => {
     throw new BadRequest('Invalid credentials');
   }
 
-  sendTokenResponse(user, 200, res)
+  sendTokenResponse(user, 200, res);
 });
 
 export const updateUser = asyncHandler(async (req, res) => {
-  const user = await UpdateUserServices(req.params.id, req.body);
-  if (!user) throw new BadRequest('User not found with the id provided')
-  return res.status(200).send(user);
+  const updatedUser = await UpdateUserServices(req.params.id, req.body);
+  if (!updatedUser) throw new BadRequest('User not found with the id provided');
+  return res.status(200).json({ success: true, updatedUser, msg: 'User updated successfully' });
 });
 
 export const deleteUser = asyncHandler(async (req, res) => {
   const deletedUser = await deleteUserServices(req.user._id);
-  return res.status(200).json({ success: true, deleteUser, msg: 'User deleted successfully' });
+  return res.status(200).json({ success: true, deletedUser, msg: 'User deleted successfully' });
 });
 
 export const changePassword = asyncHandler(async (req, res) => {
@@ -83,11 +81,11 @@ export const changePassword = asyncHandler(async (req, res) => {
   const match = await bcrypt.compare(oldPassword, req.user.password);
 
   if (!match) {
-    throw new BadRequest('Old password doesn\'t match')
+    throw new BadRequest('Old password doesn\'t match');
   }
 
   const hash = await bcrypt.hash(newPassword, 11);
   req.body.newPassword = hash;
-  const user = await changePasswordServices(req.user.id, req.body);
+  await changePasswordServices(req.user.id, req.body);
   return res.status(200).json({ success: true, msg: 'Password successfully changed, please log back in to take effect' });
 });

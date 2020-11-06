@@ -1,7 +1,7 @@
 import handleError from './handleError';
+import auth from './auth';
 
-const middleware = {
+export {
+  auth,
   handleError,
 };
-
-export default middleware;
