@@ -15,7 +15,7 @@ import { BadRequest, NotFound } from '../utils/error';
 export const signupAdmin = asyncHandler(async (req, res) => {
   const admin = req.body;
 
-  const isAdmin = await findAdminByEmail({ email: admin.email });
+  const isAdmin = await findAdminByEmail(admin.email);
   if (isAdmin) {
     throw new BadRequest('Email already Exits');
   }

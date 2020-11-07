@@ -51,7 +51,7 @@ export const updateProduct = asyncHandler(async (req, res) => {
 });
 
 export const deleteProduct = asyncHandler(async (req, res) => {
-  const productImage = findProductById(req.params.id);
+  const productImage = await findProductById(req.params.id);
   if (!productImage) {
     throw new NotFound(`Product not found by the is:${req.params.id}`);
   }

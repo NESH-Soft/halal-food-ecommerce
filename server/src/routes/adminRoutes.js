@@ -5,11 +5,14 @@ import {
   updateAdmin,
   deleteAdmin,
   changePassword,
+  verifyAdmin,
 } from '../controllers/adminController';
 
 const router = express.Router();
 
-router.route('/').get(signInAdmin).post(signupAdmin);
+router.route('/login').post(signInAdmin);
+router.route('/register').post(signupAdmin);
+router.route('/verify/:registerToken').get(verifyAdmin);
 
 router.route('/:id').put(updateAdmin).delete(deleteAdmin);
 

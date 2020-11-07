@@ -1,4 +1,6 @@
 import express from 'express';
+import multerUpload from '../middlewares/multer_cloudinary';
+import auth from '../middlewares/auth';
 import {
   getProducts,
   addProduct,
@@ -9,9 +11,9 @@ import {
 
 const router = express.Router();
 
-router.route('/').get(getProducts).post(addProduct);
+router.route('/').get(getProducts).post(auth.protect, auth.authorize('admin'), multerUpload.single('image'), addProduct);
 
-router.route('/:id').get(getProduct).delete(deleteProduct).put(updateProduct);
+router.route('/:id').get(getProduct).delete(auth.protect, auth.authorize('admin'), deleteProduct).put(auth.protect, auth.authorize('admin'), updateProduct);
 
 const configure = (app) => {
   app.use('/api/product', router);
