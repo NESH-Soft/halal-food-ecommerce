@@ -1,6 +1,15 @@
-import models from '../models/index';
+import models from '../../models/index';
 
 const { User } = models;
+
+const users = [
+  {
+    _id: '1', name: 'Naser', email: 'nase@gmail.com',
+  },
+  {
+    _id: '2', name: 'Abdullah', email: 'abdullah@gmail.com',
+  },
+];
 
 export const findUserByEmail = async (email) => {
   const user = await User.findOne({ email });
@@ -25,8 +34,11 @@ export const getUserServices = async (id) => {
 
 export const UpdateUserServices = async (id, user) => {
   // eslint-disable-next-line
-  const updateUser = User.findByIdAndUpdate( id, user, { new: true });
-  return updateUser;
+  let updatedUser = user.find((u) => u._id === id);
+  if (updatedUser) {
+    updatedUser = user;
+  }
+  return updatedUser;
 };
 
 export const deleteUserServices = async (id) => {

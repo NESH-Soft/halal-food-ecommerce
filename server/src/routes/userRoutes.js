@@ -5,11 +5,14 @@ import {
   updateUser,
   deleteUser,
   changePassword,
+  verifyUser,
 } from '../controllers/userController';
 
 const router = express.Router();
 
 router.route('/').get(signInUser).post(signupUser);
+
+router.route('/verify/:registerToken').get(verifyUser);
 
 router.route('/:id').put(updateUser).delete(deleteUser);
 
