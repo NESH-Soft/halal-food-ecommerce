@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Columns from 'react-columns';
-import fakedata from './fakedata';
+// import fakedata from './fakedata';
 import './ProductView.css';
 
 const ProductView = (props) => {

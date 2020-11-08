@@ -10,10 +10,11 @@ const FeaturedProduct = () => {
 
   useEffect(() => {
     dispatch(getProducts());
+    //eslint-disable-next-line
   },[]);
 
   const products = useSelector((state) => state.productState.products);
-  console.log(products);
+ 
 
     return (
         <div className="col-md-12 m-auto featuredProduct">
