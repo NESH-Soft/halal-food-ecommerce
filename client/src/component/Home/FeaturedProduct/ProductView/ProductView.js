@@ -3,11 +3,12 @@ import Columns from 'react-columns';
 import fakedata from './fakedata';
 import './ProductView.css';
 
-const ProductView = () => {
-    const [products, setProduct] = useState(fakedata);
+const ProductView = (props) => {
+    const [products, setProduct] = useState(props.products);
+    console.log(props);
     const product = products.map(pd => <div className="p-4">
-        <div class="card">
-            <img class="card-img-top" src={pd.img} alt="Card image cap" />
+        <div className="card">
+            <img className="card-img-top" src={pd.image} alt={pd.name} />
         </div>
         <div className="text-center">
             <p>{pd.name}</p>
