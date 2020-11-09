@@ -4,11 +4,13 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
 } from "react-router-dom";
 import Cart from '../Cart/Cart';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
+import ProductDetails from '../ProductDetails/ProductDetails';
+import Details from '../ProductDetails/Details';
+import Review from '../ProductDetails/Review';
 
 const OurRouter = () => {
     return (
@@ -23,6 +25,15 @@ const OurRouter = () => {
                     </Route>
                     <Route path="/register">
                        <Register/>
+                    </Route>
+                    <Route path="/productDetails">
+                       <ProductDetails />
+                    </Route>
+                    <Route path="/details">
+                       <Details/>
+                    </Route>
+                    <Route path="/review">
+                       <Review/>
                     </Route>
                     <Route path="/">
                         <Home />

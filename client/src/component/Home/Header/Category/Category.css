@@ -1,5 +1,6 @@
  .hero-categories{
     border: 1px solid lightgrey;
+    line-height: 33px;
 }
  .hero-categories ul{
     list-style: none;

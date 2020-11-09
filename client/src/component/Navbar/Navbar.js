@@ -16,9 +16,9 @@ const Navbar = () => {
                         <div className="col-md-3 col-sm-12 col-12">
                             <div className="row float-right">
                                 <div>
-                                    <a href="" className="text-decoration-none text-dark mx-2"><FontAwesomeIcon icon={faFacebookF} /></a>
-                                    <a href="" className="text-decoration-none text-dark mx-2"><FontAwesomeIcon icon={faLinkedin} /></a>
-                                    <a href="" className="text-decoration-none text-dark mx-2"><FontAwesomeIcon icon={faTwitter} /></a>
+                                    <Link to="" className="text-decoration-none text-dark mx-2"><FontAwesomeIcon icon={faFacebookF} /></Link>
+                                    <Link to="" className="text-decoration-none text-dark mx-2"><FontAwesomeIcon icon={faLinkedin} /></Link>
+                                    <Link to="" className="text-decoration-none text-dark mx-2"><FontAwesomeIcon icon={faTwitter} /></Link>
                                 </div>
                                 <div style={{ borderLeft: '1px solid gray' }}></div>
                                 <div>
@@ -44,26 +44,26 @@ const Navbar = () => {
                                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                                         <ul className="navbar-nav">
                                             <li className="nav-item active ml-4">
-                                                <a className="nav-link nav-top nav-font" href="#">HOME</a>
+                                                <Link to=""className="nav-link nav-top nav-font">HOME</Link>
                                             </li>
                                             <li className="nav-item ml-4">
-                                                <a className="nav-link other-link nav-font" href="#">SHOP</a>
+                                                <Link to=""className="nav-link other-link nav-font">SHOP</Link>
                                             </li>
                                             <li className="nav-item ml-4">
-                                                <a className="nav-link other-link nav-font" href="#">PAGES</a>
+                                                <Link to=""className="nav-link other-link nav-font">PAGES</Link>
                                             </li>
                                             <li className="nav-item ml-4">
-                                                <a className="nav-link other-link nav-font" href="#">BLOGS</a>
+                                                <Link to=""className="nav-link other-link nav-font">BLOGS</Link>
                                             </li>
                                             <li className="nav-item ml-4">
-                                                <a className="nav-link other-link nav-font" href="#">CONTACT</a>
+                                                <Link to=""className="nav-link other-link nav-font">CONTACT</Link>
                                             </li>
                                         </ul>
                                     </div>
                                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                                         <ul className="navbar-nav ml-auto">
                                             <li className="nav-item">
-                                                <a href="" className="text-decoration-none text-dark mr-3"><FontAwesomeIcon icon={faHeart} /></a>
+                                                <Link to="" className="text-decoration-none text-dark mr-3"><FontAwesomeIcon icon={faHeart} /></Link>
                                             </li>
                                             <li className="nav-item">
                                                 <Link to="/shoppingCart" className="text-decoration-none text-dark mr-2"> <FontAwesomeIcon icon={faCartPlus} /></Link>
