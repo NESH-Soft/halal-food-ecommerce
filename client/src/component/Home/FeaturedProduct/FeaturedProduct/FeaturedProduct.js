@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getProducts } from '../../../../actions/product'
+import { getProducts } from '../../../../redux/actions/product'
 import ProductView from '../ProductView/ProductView';
 import './FeaturedProduct.css';
 

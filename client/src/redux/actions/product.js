@@ -1,10 +1,13 @@
-import * as api from '../api';
+import {
+  GET_PRODUCTS
+} from '../type'
+import * as api from '../../api';
 
 // Action creator
 export const getProducts = () => async(dispatch) => {
   try {
     const { products } = await api.getProducts();
-    dispatch({ type: 'GET_PRODUCTS', payload: products })
+    dispatch({ type: GET_PRODUCTS, payload: products })
   } catch (error) {
     console.log(error);
   }
