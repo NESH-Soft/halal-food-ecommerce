@@ -7,7 +7,7 @@ const Review = () => {
     return (
         <>
             <ProductDetails />
-
+            
             <div className="col-md-12 row">
                 <div className="col-md-3">
                 </div>
