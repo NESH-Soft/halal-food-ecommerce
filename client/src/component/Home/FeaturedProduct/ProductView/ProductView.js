@@ -5,7 +5,7 @@ import './ProductView.css';
 
 const ProductView = (props) => {
     const [products, setProduct] = useState(props.products);
-    console.log(props);
+    console.log(products);
     const product = products.map(pd => <div className="p-4">
         <div className="card">
             <img className="card-img-top" src={pd.image} alt={pd.name} />

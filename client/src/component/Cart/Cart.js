@@ -25,35 +25,35 @@ const Cart = () => {
                         <hr />
                         <div className="mt-5">
                             {
-                                products.map(pd => <div>
+                               products.length === 0 ? <div>
+                                   Cart is empty
+                               </div> : products.map(pd => <div>
                                     <div className="row">
-                                        <div className="col-md-3">
-                                            <div className="card cart">
-                                                <img src={pd.img} width="100%" alt="" />
-                                            </div>
+                                        <div className="col-lg-2 col-md-2 col-sm-6 col-12">
+                                            <img src={pd.img} width="100%" height="auto" alt="" />
                                         </div>
-                                        <div className="col-md-9 row">
-                                            <div className="col-md-8 col-sm-6 col-6">
-                                                <h4>{pd.name}</h4>
-                                                <p></p>
-                                                <p></p>
+                                        <div className="col-lg-10 col-md-10 col-sm-6 col-12 row">
+                                            <div className="col-lg-10 col-md-10 col-sm-6 col-6">
+                                                <h5>{pd.name}</h5>
+                                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus, nostrum?</p>
                                             </div>
-                                            <div className="col-md-4 col-sm-6 col-6">
-                                                <div className="btn-group btn-group-toggle w-100">
-                                                    <button className="btn btn-danger rounded-0"><FontAwesomeIcon icon={faMinus} /></button>
-                                                    <button className="btn rounded-0"><span>1</span></button>
-                                                    <button className="btn btn-primary rounded-0"><FontAwesomeIcon icon={faPlus} /></button>
+                                            <div className="col-lg-2 col-md-2 col-sm-6 col-6 text-left">
+                                                <div className="btn-group btn-group-toggle float-right">
+                                                    <button className="btn btn-danger  rounded-0"><FontAwesomeIcon icon={faMinus} /></button>
+                                                    <button className="btn rounded-0 "><span>1</span></button>
+                                                    <button className="btn btn-primary  rounded-0"><FontAwesomeIcon icon={faPlus} /></button>
                                                 </div>
                                             </div>
-                                            <div className="col-md-12 d-flex justify-content-between">
+                                            <div className="col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-between">
                                                 <div className="">
-                                                    <FontAwesomeIcon icon={faTrashAlt} /> <span>REMOVE ITEM</span>
+                                                    <FontAwesomeIcon className="text-danger ml-3" icon={faTrashAlt} />
+                                                    <FontAwesomeIcon className="text-danger ml-3" icon={faHeart} />
+                                                </div>
+                                                <div>
+                                                    <h6>Per kg : ${pd.price}</h6>
                                                 </div>
                                                 <div className="">
-                                                    <FontAwesomeIcon icon={faHeart} /> <span>MOVE TO WISH LIST</span>
-                                                </div>
-                                                <div className="">
-                                                    <h4>${pd.price}</h4>
+                                                    <h6>Total price : ${pd.price*2}</h6>
                                                 </div>
                                             </div>
                                         </div>

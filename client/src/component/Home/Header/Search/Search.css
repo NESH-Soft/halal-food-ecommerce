@@ -12,6 +12,7 @@
 }
 
 .domain-search .input-group {
+    border: 2px solid #76a333;
     -webkit-box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.1);
     box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.1)
 }
