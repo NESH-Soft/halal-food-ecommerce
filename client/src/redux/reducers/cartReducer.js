@@ -20,11 +20,27 @@ const cartReducer = (state = initialState, action) => {
         ...state,
         cart: state.cart.filter(cart=>cart._id !== action.payload)
       }
-      case CART_ITEM_INCREMENT: 
-   
-      state.cart[action.payload].quantity ++
+    case CART_ITEM_INCREMENT: 
+    const cartSate = state.cart
+    // state.cart = []
+      const tempCartInc = cartSate;
+      const selectedProductInc = tempCartInc.find(item =>  item._id === action.payload);
+      const indexInc = tempCartInc.indexOf(selectedProductInc);
+      const productInc = tempCartInc[indexInc];
+      productInc.quantity = productInc.quantity + 1
+      const final = tempCartInc
+      return {
+        ...state,
+        cart: final
+       
      
-     
+      }
+
+
+  
+    
+    // case CART_ITEM_DECREMENT: 
+    //        return   state.cart[action.payload].quantity --
     // case CART_ITEM_DECREMENT: 
 
     //   return {

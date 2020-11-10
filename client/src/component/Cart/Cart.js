@@ -57,7 +57,7 @@ const Cart = () => {
                                                 <div className="btn-group btn-group-toggle float-right">
                                                     <button className="btn btn-danger  rounded-0" onClick={()=>dispatch(cartItemDecrement(index))}><FontAwesomeIcon icon={faMinus} /></button>
                                                     <button className="btn rounded-0 "><span>{pd.quantity}</span></button>
-                                                    <button className="btn btn-primary  rounded-0" onClick={()=>dispatch(cartItemIncrement(index))}><FontAwesomeIcon icon={faPlus} /></button>
+                                                    <button className="btn btn-primary  rounded-0" onClick={()=>dispatch(cartItemIncrement(pd._id))}><FontAwesomeIcon icon={faPlus} /></button>
                                                 </div>
                                             </div>
                                             <div className="col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-between">
