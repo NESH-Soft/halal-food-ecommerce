@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getProducts } from '../../../../actions/product'
+import { getProducts } from '../../../../redux/actions/product'
 import ProductView from '../ProductView/ProductView';
 import './FeaturedProduct.css';
 
@@ -14,7 +14,6 @@ const FeaturedProduct = () => {
   },[]);
 
   const products = useSelector((state) => state.productState.products);
- 
 
     return (
         <div className="col-md-12 m-auto featuredProduct">

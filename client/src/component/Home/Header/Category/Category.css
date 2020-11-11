@@ -1,5 +1,9 @@
  .hero-categories{
     border: 1px solid lightgrey;
+    line-height: 33px;
+}
+.hero-categories-all{
+    line-height: 8px; 
 }
  .hero-categories ul{
     list-style: none;
