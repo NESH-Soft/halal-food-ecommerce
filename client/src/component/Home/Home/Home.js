@@ -10,11 +10,11 @@ const Home = () => {
         <div className="col-md-12">
             <Header />
             <div className="row">
-                <div className="col-md-3">
-                </div>
-                <div className="col-md-9">
+            
+                <div className="col-md-12">
                     <ProductCarosel />
                     <FeaturedProduct />
+             
                 </div>
             </div>
             <div >

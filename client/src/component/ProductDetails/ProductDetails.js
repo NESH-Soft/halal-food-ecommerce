@@ -1,4 +1,6 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import Category from '../Home/Header/Category/Category';
 import Search from '../Home/Header/Search/Search';
 import Navbar from '../Navbar/Navbar';
@@ -17,6 +19,7 @@ import RiviewRatting from './RiviewRatting';
 import UserComment from './UserComment/UserComment';
 
 const ProductDetails = () => {
+    const product = useSelector((state) => state.productState.product);
     return (
         <div className="col-md-12">
             <Navbar />
@@ -30,16 +33,16 @@ const ProductDetails = () => {
                     </div>
                     <div className="col-md-11 productDetails">
                         <div className="col-md-12 mt-4">
-                            <h4>this is a product name </h4>
+                            <h4>{product.name}</h4>
                         </div>
                         <hr />
                         <div className="row">
                             <div className="col-md-5">
-                                <img src="https://shavershop.com.bd/pub/media/catalog/product/cache/e3f1eaaaa6eec7283ec95c148e1eab85/s/s/ssb_sb-w19_100_genuine_short_leather_wallet_agun_cd.jpg" width="100%" alt="" />
+                                <img src={product.image} width="100%" alt="" />
                             </div>
                             <div className="col-md-7 pt-5">
-                                <h3>৳799.00 </h3>
-                                <p className="text-primary">In Stock</p>
+                                <h3>৳{product.price}</h3>
+                      <p className="text-primary">{product.stock>0 ? "In stock" : "Out of stock"}</p>
                                 <hr />
                                 <div className="col-md-12 row py-4">
                                     <div className="btn-group btn-group-toggle float-right">
@@ -47,13 +50,13 @@ const ProductDetails = () => {
                                         <button className="btn rounded-0 "><span>1</span></button>
                                         <button className="btn btn-primary  rounded-0"><FontAwesomeIcon icon={faPlus} /></button>
                                     </div>
-                                    <div className="ml-3">
-                                        <button className="btn addToCart px-5 rounded-0 ">Add to Cart</button>
+                                    <div className="ml-2">
+                                        <button className="btn addToCart px-4 rounded-0 ">Add to Cart</button>
                                     </div>
-                                    <div className="ml-3">
-                                        <button className="btn Buynow px-5 rounded-0">Buy now</button>
+                                    <div className="ml-2">
+                                        <button className="btn Buynow px-4 rounded-0">Buy now</button>
                                     </div>
-                                    <div className="ml-3">
+                                    <div className="ml-2">
                                         <FontAwesomeIcon icon={faHeart} className="loveIcon" />
                                     </div>
                                 </div>
@@ -64,7 +67,7 @@ const ProductDetails = () => {
                                 </div>
                                 <hr/>
                                 <div>
-                                    Categories : <Link to="">Money bag</Link>
+                                    Categories : <Link to="">{product.category}</Link>
                                 </div>
                             </div>
                         </div>
