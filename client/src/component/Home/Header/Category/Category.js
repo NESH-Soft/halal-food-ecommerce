@@ -1,18 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { faBars ,faSortAmountDown } from '@fortawesome/free-solid-svg-icons'
 import './Category.css';
 import { Link } from 'react-router-dom';
 const Category = () => {
+    const [categoryClass, setCategoryClass] = useState('categoryShow');
+    //category dropdown system
+    const hangleCategory = () => {
+        if(categoryClass === 'categoryShow'){
+            setCategoryClass('categoryHide');
+        }
+        if(categoryClass === 'categoryHide'){
+            setCategoryClass('categoryShow');
+        }
+    }
     return (
         <div className="col-md-12">
             <div className="hero-categories">
                 <div className="hero-categories-all py-3" style={{ backgroundColor: '#76a333', color: '#fff' }}>
-                    <div className="pl-4">
-                        <FontAwesomeIcon icon={faBars} /><span className="ml-1">All Categories</span>
+                    <div className="px-4" onClick={hangleCategory}>
+                        <FontAwesomeIcon icon={faBars} />
+                        <span className="ml-3">All Categories</span>
+                        <FontAwesomeIcon className="float-right" icon={faSortAmountDown} />
                     </div>
                 </div>
-                <ul>
+                <ul className={categoryClass}>
                     <li><Link to="">Fresh Meat</Link></li>
                     <li><Link to="">Vegetables</Link></li>
                     <li><Link to="">Fruit & Nut Gifts</Link></li>

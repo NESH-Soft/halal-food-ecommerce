@@ -15,3 +15,11 @@
  .hero-categories ul li{
     padding-top: 10px;
 }
+/* category dropdown */
+.categoryHide{
+    display: none;
+}
+.categoryShow{
+    display: block;
+    position: absolute;
+}
