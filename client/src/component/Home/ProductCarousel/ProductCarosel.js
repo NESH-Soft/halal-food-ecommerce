@@ -2,7 +2,7 @@ import React from 'react';
 import './ProductCarousel.css'
 const ProductCarosel = () => {
     return (
-        <div className="col-md-12 m-auto">
+        <div className="col-md-12">
             <div className="top-content mt-4">
                 <div className="container-fluid">
                     <div id="carousel-example" className="carousel slide" data-ride="carousel">
