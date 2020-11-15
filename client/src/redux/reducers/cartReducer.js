@@ -20,7 +20,6 @@ const cartReducer = (state = initialState, action) => {
         ...state,
         cart: state.cart.filter(cart=>cart._id !== action.payload)
       }
-
     case CART_ITEM_INCREMENT: 
       return {
         ...state,
