@@ -67,7 +67,7 @@ const Footer = () => {
                 <span><hr /></span>
             </div>
             <div className="col-md-8 ">
-                <p>Copyright ©2020 All rights reserved | This template is made with  by <Link to="" href="" className="text-decoration-none text-dark mx-2" > Colorlib</Link></p>
+                <p>Copyright ©2020 All rights reserved | This software is made with by <a  href="https://sheikhhasib.github.io/portfolio/" className="text-decoration-none text-dark mx-2" >NESH SOFT</a></p>
             </div>
 
             <div className="col-md-4">

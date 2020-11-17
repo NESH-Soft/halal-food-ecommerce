@@ -6,6 +6,7 @@ import { faMinus, faPlus, faTrashAlt, faHeart } from '@fortawesome/free-solid-sv
 import './Cart.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeCart, cartItemIncrement, cartItemDecrement } from '../../redux/actions/cartAction'
+import { Link } from 'react-router-dom';
 
 
 
@@ -104,7 +105,9 @@ const Cart = () => {
                                     <p>The total Amount of <br /> ( included VAT)</p>
                                     <p>¥{totalPrice}</p>
                                 </div>
-                                <button className="btn btn-primary w-100">Go to Checkout</button>
+                                <Link to="/checkout">
+                                    <button className="btn btn-primary w-100">Go to Checkout</button>
+                                </Link>
                             </div>
                         </div>
                         <div>
