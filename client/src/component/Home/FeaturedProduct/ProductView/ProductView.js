@@ -21,11 +21,11 @@ const ProductView = (props) => {
     var queries = [
     {
         columns: 3,
-        query: 'min-width: 500px'
+        query: 'min-width: 800px'
     },
     {
-        columns: 5,
-        query: 'min-width: 1000px'
+        columns: 4,
+        query: 'min-width: 1200px'
     },
     {
         columns: 5,

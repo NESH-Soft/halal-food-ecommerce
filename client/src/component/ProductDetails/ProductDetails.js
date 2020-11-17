@@ -17,20 +17,17 @@ import Details from './Details';
 import Review from './Review';
 import RiviewRatting from './RiviewRatting';
 import UserComment from './UserComment/UserComment';
+import Footer from '../Footer/Footer/Footer';
 
 const ProductDetails = () => {
     const product = useSelector((state) => state.productState.product);
     return (
-        <div className="col-md-12">
+        <div className="container-fluid" style={{marginTop:'195px'}}>
             <Navbar />
             <div className="row">
                 <div className="col-md-3">
-                    <Category />
                 </div>
                 <div className="col-md-9">
-                    <div className="col-md-9">
-                        <Search />
-                    </div>
                     <div className="col-md-11 productDetails">
                         <div className="col-md-12 mt-4">
                             <h4>{product.name}</h4>
@@ -85,6 +82,7 @@ const ProductDetails = () => {
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 };

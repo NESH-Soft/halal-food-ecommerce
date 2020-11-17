@@ -7,14 +7,13 @@ import Footer from '../../Footer/Footer/Footer'
 
 const Home = () => {
     return (
-        <div className="col-md-12">
+        <div className="container-fluid">
             <Header />
             <div className="row">
-            
-                <div className="col-md-12">
+                <div className="col-md-3"></div>
+                <div className="col-md-9">
                     <ProductCarosel />
                     <FeaturedProduct />
-             
                 </div>
             </div>
             <div >
