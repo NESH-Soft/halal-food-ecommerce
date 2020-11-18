@@ -13,7 +13,7 @@ const Navbar = () => {
             <div className="col-md-12 m-auto">
                 <div className="row pt-2">
                     <div className="col-md-9 col-ms-12 col-12">
-                        <p><FontAwesomeIcon icon={faEnvelope} /> hasib2130@gmail.com</p>
+                        <p><FontAwesomeIcon icon={faEnvelope} />hasib2130@gmail.com</p>
                     </div>
                     <div className="col-md-3 col-sm-12 col-12">
                         <div className="row float-right">
@@ -48,7 +48,7 @@ const Navbar = () => {
                                                 <Link to="" className="nav-link nav-top nav-font">HOME</Link>
                                             </li>
                                             <li className="nav-item ml-4">
-                                                <Link to="" className="nav-link other-link nav-font">SHOP</Link>
+                                                <Link to="/shop" className="nav-link other-link nav-font">SHOP</Link>
                                             </li>
                                             <li className="nav-item ml-4">
                                                 <Link to="" className="nav-link other-link nav-font">PAGES</Link>

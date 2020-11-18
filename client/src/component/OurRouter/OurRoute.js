@@ -12,6 +12,7 @@ import ProductDetails from '../ProductDetails/ProductDetails';
 import Details from '../ProductDetails/Details';
 import Review from '../ProductDetails/Review';
 import Checkout from '../Checkout/Checkout';
+import Shop from '../Shop/Shop/Shop';
 
 const OurRouter = () => {
     return (
@@ -20,6 +21,9 @@ const OurRouter = () => {
                 <Switch>
                     <Route path="/shoppingCart">
                        <Cart/>
+                    </Route>
+                    <Route path="/shop">
+                       <Shop/>
                     </Route>
                     <Route path="/checkout">
                        <Checkout/>
