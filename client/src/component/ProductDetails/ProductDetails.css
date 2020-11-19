@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+.productDetails .addToCart{
+    background-color: #fcb800;
+    font-family: 'Fjalla One', sans-serif;
+}
+.productDetails .Buynow{
+    background-color: #f3903a;
+    font-family: 'Fjalla One', sans-serif;
+}
+.productDetails .loveIcon{
+    color:#63615f;
+    font-size: 35px;
+}
+.productDetails .loveIcon:hover{
+    color:#f3903a;
+    font-size: 35px;
+}
+.productDetails .addToCart:hover{
+    border: 1px solid  #fcb800;
+    background-color: #fff;
+    color: black;
+}
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@500&display=swap');
+.productDetails .text-link{
+    text-decoration: none;
+    margin-left: 20px;
+    color: #181717;
+    font-family: 'Heebo', sans-serif;
+}
+.productDetails .text-link:hover{
+    border-bottom: 2px solid #fcb800;
+}
+
+.glyphicon { margin-right:5px;}
+.rating .glyphicon {font-size: 22px;}
+.rating-num { margin-top:0px;font-size: 54px; }
+.progress { margin-bottom: 5px;}
+.progress-bar { text-align: left; }
+.rating-desc .col-md-3 {padding-right: 0px;}
+.sr-only { margin-left: 5px;overflow: visible;clip: auto; }
+

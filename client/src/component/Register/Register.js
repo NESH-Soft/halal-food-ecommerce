@@ -1,11 +1,12 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 const Register = () => {
     return (
-        <div>
-            <div className="row d-flex justify-content-center">
+        <div className="col-md-12">
+            <div className="row d-flex justify-content-center" style={{ marginTop: '100px'}}>
                 <div className="col-md-4">
-                    <div class="card mb-4 shadow-lg p-3 bg-white" style={{ width: '28rem' }}>
+                    <div class="card mb-4 shadow-lg p-3 bg-white" style={{ width: '100%' }}>
                         <div class="card-body">
                             <h3 class="card-title">CREATE ACCOUNT</h3>
                             <div className="">
@@ -27,13 +28,12 @@ const Register = () => {
                                         <input type="password" class="form-control" id="exampleIConfirmnputPassword" placeholder="Password" />
                                     </div>
                                     <div className="form-froup">
-                                        <button style={{ width: '371px' }} type="submit" class="btn btn-primary">Submit</button>
+                                        <button style={{ width: '100%' }} type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>
                             <br />
-                            <p className="text-center">Have already an account ?<a href="#" class="card-link">Login here</a> </p>
-
+                            <p className="text-center">Have already an account ?<Link to="/login" className="card-link">Login here</Link></p>
                         </div>
                     </div>
                 </div>

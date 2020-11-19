@@ -2,29 +2,51 @@ import models from '../models/index';
 
 const { User } = models;
 
-export const getAllUsers = async () => {
-  const users = await User.find();
-  return users;
-};
-
-export const getSingleUser = async (id) => {
-  const user = await User.findById(id);
+export const findUserByEmail = async (email) => {
+  const user = await User.findOne({ email });
   return user;
 };
 
-export const postUser = async (user) => {
-  const newUser = new User(user);
-  const savedUser = await newUser.save();
+// signIn services
+// export const signInUserServices = async (data) => {
+//   return token;
+// };
+
+//  signUp services
+export const createUserServices = async (user) => {
+  const savedUser = await User.create(user);
   return savedUser;
 };
 
-export const putUser = async (user) => {
+export const getUserServices = async (id) => {
+  const user = User.findById(id).select('-password -resetPasswordExpires -resetPasswordToken');
+  return user;
+};
+
+export const UpdateUserServices = async (id, user) => {
   // eslint-disable-next-line
-  const updateUser = User.findByIdAndUpdate( user._id, user, { new: true });
+  const updateUser = User.findByIdAndUpdate( id, user, { new: true });
   return updateUser;
 };
 
-export const deleteUser = async (id) => {
+export const deleteUserServices = async (id) => {
   const user = User.findByIdAndRemove(id);
   return user;
 };
+
+export const changePasswordServices = async (id, newPassword) => {
+  const user = await User.findOneAndUpdate(
+    { _id: id },
+    { $set: { password: newPassword } },
+  );
+  return user;
+};
+
+//  forgot password
+// export const forgotPasswordUserServices = async (data) => {
+
+// };
+//  reset password
+// export const resetPasswordUserServices = async (data) => {
+
+// };

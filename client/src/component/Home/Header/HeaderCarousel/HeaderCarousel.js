@@ -5,7 +5,7 @@ import vagetables from '../../../images/headerSlider/vagetables.png'
 const HeaderCarousel = () => {
     return (
         <div className="headerBanner">
-            <div className="p-5">
+            <div className="p-4">
                 <div className="row d-flex align-items-center">
                     <div className="col-md-5 banner-text">
                         <h4>FRUIT FRESH</h4>

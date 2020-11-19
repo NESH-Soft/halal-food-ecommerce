@@ -2,28 +2,19 @@ import React from 'react';
 import FeaturedProduct from '../FeaturedProduct/FeaturedProduct/FeaturedProduct';
 import Header from '../Header/Header/Header';
 import ProductCarosel from '../ProductCarousel/ProductCarosel';
-
-import Register from '../../Register/Register';
-import Login from '../../Login/Login';
-
 import Footer from '../../Footer/Footer/Footer'
 
 
 const Home = () => {
     return (
-        <div className="col-md-12">
+        <div className="container-fluid">
             <Header />
             <div className="row">
-                <div className="col-md-2">
-                </div>
-                <div className="col-md-10">
+                <div className="col-md-3"></div>
+                <div className="col-md-9">
                     <ProductCarosel />
                     <FeaturedProduct />
                 </div>
-            </div>
-            <div className="">
-                {/* <Register/> */}
-                {/* <Login/> */}
             </div>
             <div >
                 <Footer />

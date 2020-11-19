@@ -1,5 +1,10 @@
  .hero-categories{
-    border: 1px solid lightgrey;
+    line-height: 20px;
+}
+.hero-categories-title{
+    background-color: #76a333;
+    line-height:26px;
+    color: #fff;
 }
  .hero-categories ul{
     list-style: none;
@@ -10,4 +15,82 @@
 }
  .hero-categories ul li{
     padding-top: 10px;
+}
+/* category dropdown */
+.categoryHide{
+    display: none;
+}
+.categoryShow{
+    display: block;
+    background-color: rgb(190, 186, 186);
+    position: absolute;
+    width : 100%;
+    padding-bottom: 20px;
+}
+
+@media only screen and (max-width: 700px) and (min-width: 100px)  {
+    .categoryShow{
+        display: none;
+    }
+    .categoryHide{
+        display: block;
+        position: relative;
+        padding-bottom: 20px;
+    }
+}
+@media only screen and (max-width: 900px) and (min-width: 701px)  {
+    .categoryShow{
+        display: block;
+        position: absolute;
+        background-color:#e2e2e2;
+        width :85%;
+        padding-bottom: 20px;
+        padding-left: 10px;
+    }
+    .categoryHide{
+        display: none;
+        
+    }
+}
+@media only screen and (max-width: 1300px) and (min-width: 901px)  {
+    .categoryShow{
+        display: block;
+        position: absolute;
+        background-color:#e2e2e2;
+        width :90%;
+        padding-bottom: 20px;
+        padding-left: 10px;
+    }
+    .categoryHide{
+        display: none;
+        
+    }
+}
+@media only screen and (max-width: 1700px) and (min-width: 1301px)  {
+    .categoryShow{
+        display: block;
+        position: absolute;
+        background-color:#e2e2e2;
+        width :91%;
+        padding-bottom: 20px;
+        padding-left: 10px;
+    }
+    .categoryHide{
+        display: none;
+        
+    }
+}
+@media only screen and (max-width: 2500px) and (min-width: 1701px)  {
+    .categoryShow{
+        display: block;
+        position: absolute;
+        background-color:#e2e2e2;
+        width :94%;
+        padding-bottom: 20px;
+        padding-left: 10px;
+    }
+    .categoryHide{
+        display: none;
+        
+    }
 }
