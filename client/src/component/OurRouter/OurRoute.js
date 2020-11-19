@@ -14,6 +14,7 @@ import Review from '../ProductDetails/Review';
 import Checkout from '../Checkout/Checkout';
 import Shop from '../Shop/Shop/Shop';
 import Contact from '../Contact/Contact';
+import WishList from '../WishList/WishList';
 
 
 const OurRouter = () => {
@@ -21,6 +22,9 @@ const OurRouter = () => {
         <div>
             <Router>
                 <Switch>
+                <Route path="/wish-list">
+                      <WishList/>
+                    </Route>
                 <Route path="/contact">
                       <Contact/>
                     </Route>
