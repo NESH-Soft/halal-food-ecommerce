@@ -8,13 +8,21 @@ import ShopCarousel from '../ShopCarousel/ShopCarousel';
 
 const Shop = () => {
     return (
-        <div>
+        <div className="container-fluid">
             <Navbar />
-            <div className="row mb-5" style={{marginTop:'200px'}}>
+            <div className="row mb-5" style={{ marginTop: '200px' }}>
                 <div className="col-md-3"></div>
                 <div className="col-md-9">
-                    <ShopCarousel />
-                    <AllProducts/>
+                    <div>
+                        <h3>Shop</h3>
+                        <hr className="my-4" />
+                    </div>
+                    <AllProducts />
+                    <div className="my-5">
+                        <h3>Especial Products</h3>
+                        <hr className="my-4" />
+                        <ShopCarousel />
+                    </div>
                 </div>
             </div>
             <Footer />
