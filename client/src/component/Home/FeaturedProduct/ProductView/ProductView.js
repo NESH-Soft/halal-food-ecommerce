@@ -10,7 +10,7 @@ const ProductView = (props) => {
     const product = props.products.map(pd =>
      <div className="p-3">
         <div className="card image-box">
-          <Link to="/productDetails">  <img className="card-img-top" onClick={()=>dispatch(getProduct(pd._id)) } src={pd.image} alt={pd.name} /></Link>
+          <Link to="/productDetails">  <img className="card-img-top home-products" onClick={()=>dispatch(getProduct(pd._id)) } src={pd.image} alt={pd.name} /></Link>
         </div>
         <div className="text-center box-button">
             <p>{pd.name}</p>
