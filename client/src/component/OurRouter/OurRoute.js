@@ -12,12 +12,16 @@ import ProductDetails from '../ProductDetails/ProductDetails';
 import Details from '../ProductDetails/Details';
 import Review from '../ProductDetails/Review';
 import Checkout from '../Checkout/Checkout';
+import Contact from '../Contact/Contact';
 
 const OurRouter = () => {
     return (
         <div>
             <Router>
                 <Switch>
+                <Route path="/contact">
+                      <Contact/>
+                    </Route>
                     <Route path="/shoppingCart">
                        <Cart/>
                     </Route>
