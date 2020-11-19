@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faUserCog, faCartPlus, faHeart, faPhoneAlt } from '@fortawesome/free-solid-svg-icons'
 import { faFacebookF, faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons"
@@ -7,13 +8,18 @@ import './Navbar.css'
 import { Link } from "react-router-dom";
 import Category from '../Home/Header/Category/Category';
 import Search from '../Home/Header/Search/Search';
+import {logout} from '../../redux/actions/authAction'
 const Navbar = () => {
+    const dispatch = useDispatch()
+   const isAuthenticated = useSelector((state) => state.authState.isAuthenticated);
+   const cartItem = useSelector((state) => state.cartState.cart);
+   
     return (
         <div className="container-fluid back fixed-top" >
             <div className="col-md-12 m-auto">
                 <div className="row pt-2">
                     <div className="col-md-9 col-ms-12 col-12">
-                        <p><FontAwesomeIcon icon={faEnvelope} /> hasib2130@gmail.com</p>
+                        <p><FontAwesomeIcon icon={faEnvelope} />hasib2130@gmail.com</p>
                     </div>
                     <div className="col-md-3 col-sm-12 col-12">
                         <div className="row float-right">
@@ -24,7 +30,8 @@ const Navbar = () => {
                             </div>
                             <div style={{ borderLeft: '1px solid gray' }}></div>
                             <div>
-                                <Link to="/login" className="text-decoration-none text-dark mx-4"> <FontAwesomeIcon icon={faUserCog} /> Login</Link>
+                                {isAuthenticated? (<span style={{cursor:"pointer"}} className="text-decoration-none text-dark mx-4" onClick={()=>dispatch(logout())}> <FontAwesomeIcon icon={faUserCog} />Logout</span>) : ( <Link to="/login" className="text-decoration-none text-dark mx-4"> <FontAwesomeIcon icon={faUserCog} /> Login</Link>) }
+                               
                             </div>
                         </div>
                     </div>
@@ -48,7 +55,7 @@ const Navbar = () => {
                                                 <Link to="" className="nav-link nav-top nav-font">HOME</Link>
                                             </li>
                                             <li className="nav-item ml-4">
-                                                <Link to="" className="nav-link other-link nav-font">SHOP</Link>
+                                                <Link to="/shop" className="nav-link other-link nav-font">SHOP</Link>
                                             </li>
                                             <li className="nav-item ml-4">
                                                 <Link to="" className="nav-link other-link nav-font">PAGES</Link>
@@ -57,7 +64,7 @@ const Navbar = () => {
                                                 <Link to="" className="nav-link other-link nav-font">BLOGS</Link>
                                             </li>
                                             <li className="nav-item ml-4">
-                                                <Link to="" className="nav-link other-link nav-font">CONTACT</Link>
+                                                <Link to="/contact" className="nav-link other-link nav-font">CONTACT</Link>
                                             </li>
                                         </ul>
                                     </div>
@@ -67,7 +74,7 @@ const Navbar = () => {
                                                 <Link to="" className="text-decoration-none text-dark mr-3"><FontAwesomeIcon icon={faHeart} /></Link>
                                             </li>
                                             <li className="nav-item">
-                                                <Link to="/shoppingCart" className="text-decoration-none text-dark mr-2"> <FontAwesomeIcon icon={faCartPlus} /></Link>
+                                                <Link to="/shoppingCart" className="text-decoration-none text-dark mr-2"> <FontAwesomeIcon icon={faCartPlus} /> {cartItem.length? (<span class="badge">{cartItem.length}</span>): null }</Link>
                                             </li>
                                         </ul>
                                     </div>

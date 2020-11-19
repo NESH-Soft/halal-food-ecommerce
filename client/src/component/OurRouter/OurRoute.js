@@ -12,14 +12,24 @@ import ProductDetails from '../ProductDetails/ProductDetails';
 import Details from '../ProductDetails/Details';
 import Review from '../ProductDetails/Review';
 import Checkout from '../Checkout/Checkout';
+import Shop from '../Shop/Shop/Shop';
+import Contact from '../Contact/Contact';
+import MyAccount from '../MyAccount/index';
+import PrivetRoute from '../../PrivetRoute/PrivetRoute'
 
 const OurRouter = () => {
     return (
         <div>
             <Router>
                 <Switch>
+                <Route path="/contact">
+                      <Contact/>
+                    </Route>
                     <Route path="/shoppingCart">
                        <Cart/>
+                    </Route>
+                    <Route path="/shop">
+                       <Shop/>
                     </Route>
                     <Route path="/checkout">
                        <Checkout/>
@@ -27,6 +37,8 @@ const OurRouter = () => {
                     <Route path="/login">
                        <Login/>
                     </Route>
+                    <PrivetRoute exact  path="/my-account" component={MyAccount}/>
+                   
                     <Route path="/register">
                        <Register/>
                     </Route>
