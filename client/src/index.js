@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import "react-multi-carousel/lib/styles.css";
 
 import store from '../src/redux/store'
 
