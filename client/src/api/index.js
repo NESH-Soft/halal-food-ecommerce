@@ -1,6 +1,7 @@
 import axios from 'axios'
 import allProducts from '../fakedata/detailsProduct'
 import users from '../fakedata/fakeUser'
+import fakecategory from '../fakedata/fakecategory'
 export const getProducts = async () => {
   // const response = await axios.get('/api/product');
   const products = allProducts;
@@ -35,3 +36,22 @@ export const loadUser = async () => {
   return demouser
   // const response = await axios.get(`/api/product/${id}`);
 }
+
+
+export const getCategory = async () => {
+  return fakecategory;
+  // const response = await axios.get(`/api/product/${id}`);
+}
+
+
+
+export const getProductsByCategory = async (category) => {
+  if(!category){
+    return allProducts;
+  }
+  const products = allProducts.filter(product=> product.category === category.category)
+
+  return products;
+  // const response = await axios.get(`/api/product/${id}`);
+}
+

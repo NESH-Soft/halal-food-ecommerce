@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import {getProductsByCategory} from '../../redux/actions/product'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faUserCog, faCartPlus, faHeart, faPhoneAlt } from '@fortawesome/free-solid-svg-icons'
 import { faFacebookF, faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons"
@@ -10,7 +11,8 @@ import Category from '../Home/Header/Category/Category';
 import Search from '../Home/Header/Search/Search';
 import {logout} from '../../redux/actions/authAction'
 const Navbar = () => {
-    const dispatch = useDispatch()
+
+   const dispatch = useDispatch()
    const isAuthenticated = useSelector((state) => state.authState.isAuthenticated);
    const cartItem = useSelector((state) => state.cartState.cart);
    
@@ -55,7 +57,7 @@ const Navbar = () => {
                                                 <Link to="" className="nav-link nav-top nav-font">HOME</Link>
                                             </li>
                                             <li className="nav-item ml-4">
-                                                <Link to="/shop" className="nav-link other-link nav-font">SHOP</Link>
+                                                <Link to="/shop" className="nav-link other-link nav-font" onClick={()=>dispatch(getProductsByCategory())}>SHOP</Link>
                                             </li>
                                             <li className="nav-item ml-4">
                                                 <Link to="" className="nav-link other-link nav-font">PAGES</Link>

@@ -1,9 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getCategory } from '../../../../redux/actions/categoryAction';
+import {getProductsByCategory} from '../../../../redux/actions/product'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faSortAmountDown } from '@fortawesome/free-solid-svg-icons'
 import './Category.css';
 import { Link } from 'react-router-dom';
 const Category = () => {
+    const dispatch = useDispatch()
+    useEffect(()=>{
+        dispatch(getCategory())
+        // eslint-disable-next-line
+    },[])
+  
+    const category = useSelector((state) => state.categoryState.category);
+  
     const [categoryClass, setCategoryClass] = useState('categoryShow');
     //category dropdown system
     const hangleCategory = () => {
@@ -14,6 +25,7 @@ const Category = () => {
             setCategoryClass('categoryShow');
         }
     }
+
     return (
         <div className="hero-categories">
             <div className="hero-categories-title">
@@ -28,17 +40,14 @@ const Category = () => {
                 </div>
             </div>
             <ul className={categoryClass}>
-                <li><Link to="">Fresh Meat</Link></li>
-                <li><Link to="">Vegetables</Link></li>
-                <li><Link to="">Fruit & Nut Gifts</Link></li>
-                <li><Link to="">Fresh Berries</Link></li>
-                <li><Link to="">Ocean Foods</Link></li>
-                <li><Link to="">Butter & Eggs</Link></li>
-                <li><Link to="">Fastfood</Link></li>
-                <li><Link to="">Fresh Onion</Link></li>
-                <li><Link to="">Papayaya & Crisps</Link></li>
-                <li><Link to="">Oatmeal</Link></li>
-                <li><Link to="">Fresh Bananas</Link></li>
+                {
+                   category && category.map((c)=>(
+                   <li onClick={()=>dispatch(getProductsByCategory(c))}><Link to="/shop"> <spam>{ c.category}</spam></Link></li> 
+                   
+                ))
+                }
+               
+              
             </ul>
         </div>
     );

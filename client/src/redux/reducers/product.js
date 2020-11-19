@@ -1,10 +1,12 @@
 import {
   GET_PRODUCTS,
   GET_PRODUCT,
+  GET_PRODUCTS_BY_CATEGORY
 } from '../type'
 const initialState = {
   products: [],
   product: {},
+  productFilterByCategory:[],
   success: false,
   loading: false
 };
@@ -20,6 +22,10 @@ const productReducer = (state = initialState, action) => {
           ...state,
           product: action.payload
         }
+        case GET_PRODUCTS_BY_CATEGORY:
+          return {
+            productFilterByCategory: action.payload
+          }
     default:
       return state;
   }

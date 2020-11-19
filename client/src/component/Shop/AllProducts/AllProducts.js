@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProducts } from '../../../redux/actions/product'
+// import { getProductsByCategory } from '../../../redux/actions/product'
 import { Link } from 'react-router-dom'
 import Columns from 'react-columns';
 import { addToCart } from '../../../redux/actions/cartAction'
@@ -8,13 +8,13 @@ import {getProduct} from '../../../redux/actions/product'
 
 const AllProducts = () => {
     const dispatch = useDispatch();
+ 
+    // useEffect(() => {
+    //     dispatch(getProductsByCategory());
+    //     //eslint-disable-next-line
+    // }, []);
 
-    useEffect(() => {
-        dispatch(getProducts());
-        //eslint-disable-next-line
-    }, []);
-
-    const products = useSelector((state) => state.productState.products);
+    const products = useSelector((state) => state.productState.productFilterByCategory);
     const product = products.map(pd =>
         <div className="p-3">
             <div className="card image-box">
