@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faUserCog, faCartPlus, faHeart, faPhoneAlt } from '@fortawesome/free-solid-svg-icons'
 import { faFacebookF, faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons"
@@ -7,7 +8,12 @@ import './Navbar.css'
 import { Link } from "react-router-dom";
 import Category from '../Home/Header/Category/Category';
 import Search from '../Home/Header/Search/Search';
+import {logout} from '../../redux/actions/authAction'
 const Navbar = () => {
+    const dispatch = useDispatch()
+   const isAuthenticated = useSelector((state) => state.authState.isAuthenticated);
+   const cartItem = useSelector((state) => state.cartState.cart);
+   
     return (
         <div className="container-fluid back fixed-top" >
             <div className="col-md-12 m-auto">
@@ -24,7 +30,8 @@ const Navbar = () => {
                             </div>
                             <div style={{ borderLeft: '1px solid gray' }}></div>
                             <div>
-                                <Link to="/login" className="text-decoration-none text-dark mx-4"> <FontAwesomeIcon icon={faUserCog} /> Login</Link>
+                                {isAuthenticated? (<span style={{cursor:"pointer"}} className="text-decoration-none text-dark mx-4" onClick={()=>dispatch(logout())}> <FontAwesomeIcon icon={faUserCog} />Logout</span>) : ( <Link to="/login" className="text-decoration-none text-dark mx-4"> <FontAwesomeIcon icon={faUserCog} /> Login</Link>) }
+                               
                             </div>
                         </div>
                     </div>
@@ -67,7 +74,7 @@ const Navbar = () => {
                                                 <Link to="" className="text-decoration-none text-dark mr-3"><FontAwesomeIcon icon={faHeart} /></Link>
                                             </li>
                                             <li className="nav-item">
-                                                <Link to="/shoppingCart" className="text-decoration-none text-dark mr-2"> <FontAwesomeIcon icon={faCartPlus} /></Link>
+                                                <Link to="/shoppingCart" className="text-decoration-none text-dark mr-2"> <FontAwesomeIcon icon={faCartPlus} /> {cartItem.length? (<span class="badge">{cartItem.length}</span>): null }</Link>
                                             </li>
                                         </ul>
                                     </div>
