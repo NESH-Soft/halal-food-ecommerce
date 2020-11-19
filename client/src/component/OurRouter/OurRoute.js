@@ -15,6 +15,8 @@ import Checkout from '../Checkout/Checkout';
 import Shop from '../Shop/Shop/Shop';
 import Contact from '../Contact/Contact';
 import WishList from '../WishList/WishList';
+import MyAccount from '../MyAccount/index';
+import PrivetRoute from '../../PrivetRoute/PrivetRoute'
 
 
 const OurRouter = () => {
@@ -40,6 +42,8 @@ const OurRouter = () => {
                     <Route path="/login">
                        <Login/>
                     </Route>
+                    <PrivetRoute exact  path="/my-account" component={MyAccount}/>
+                   
                     <Route path="/register">
                        <Register/>
                     </Route>

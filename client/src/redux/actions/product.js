@@ -1,6 +1,7 @@
 import {
   GET_PRODUCTS,
   GET_PRODUCT,
+  GET_PRODUCTS_BY_CATEGORY
 } from '../type'
 import * as api from '../../api';
 
@@ -22,3 +23,12 @@ export const getProduct = (id) => async(dispatch) => {
     console.log(error);
   }
 } 
+export const getProductsByCategory = (category) => async(dispatch) => {
+  try {
+    const  products = await api.getProductsByCategory(category);
+   
+    dispatch({ type: GET_PRODUCTS_BY_CATEGORY, payload: products })
+  } catch (error) {
+    console.log(error);
+  }
+}
