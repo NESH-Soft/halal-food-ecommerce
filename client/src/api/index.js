@@ -2,6 +2,7 @@ import axios from 'axios'
 import allProducts from '../fakedata/detailsProduct'
 import users from '../fakedata/fakeUser'
 import fakecategory from '../fakedata/fakecategory'
+import fakeWishlist from '../fakedata/fakeWishList'
 export const getProducts = async () => {
   // const response = await axios.get('/api/product');
   const products = allProducts;
@@ -54,4 +55,25 @@ export const getProductsByCategory = async (category) => {
   return products;
   // const response = await axios.get(`/api/product/${id}`);
 }
+
+
+export const addToWishList = async (wishItem) => {
+  fakeWishlist.push(wishItem)
+return wishItem
+
+}
+
+export const getWishList = async () => {
+  return fakeWishlist
+
+}
+
+export const removeWishList = async (id) => {
+  // const removedWishItem = fakeWishlist.filter(w=>w._id !== id)
+  return id
+
+}
+
+
+
 

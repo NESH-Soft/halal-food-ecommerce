@@ -1,12 +1,23 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import Navbar from '../Navbar/Navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faPlusCircle, faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import { faTrash,  faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import './WishList.css'
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {getWishList,removeWishList} from '.././../redux/actions/wishlistAction';
 import Footer from '../Footer/Footer/Footer';
 
 const WishList = () => {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+      dispatch(getWishList());
+      //eslint-disable-next-line
+    },[]);
+  
+    const wishList = useSelector((state) => state.wishListState.wishList);
+
     return (
         <div className="col-md-12 Wish-list">
             <Navbar />
@@ -19,29 +30,36 @@ const WishList = () => {
                                 <th scope="col" style={{width:'20%'}}>Images</th>
                                 <th scope="col" style={{width:'20%'}}>Product Name</th>
                                 <th scope="col" style={{width:'20%'}}>Unit Price</th>
-                                <th scope="col" style={{width:'20%'}}>Stack</th>
+                                <th scope="col" style={{width:'20%'}}>Stock</th>
                                 <th scope="col" style={{width:'20%'}}>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row" className="">
-                                    <img className="" style={{height:'50px', width: '50px'}} src="https://freepngimg.com/thumb/apple/9-apple-png-image-thumb.png" alt="" />
-                                </th>
-                                <td className="py-3">Apple</td>
-                                <td className="py-3">$350</td>
-                                <td className="py-3">In Stack</td>
-                                <td className="py-3">
-                                    <div className="row">    
-                                        <div className="col-md-6">
-                                            <Link><FontAwesomeIcon className="text-dark" icon={faCartPlus} /></Link>
+                        
+                                {
+                                   wishList &&  wishList.map((item,index)=>(
+                                    <tr>
+                                        <th scope="row"  className="">
+                                        <img className="" style={{height:'50px', width: '50px'}} src={item.image} alt="" />
+                                        </th>
+                                    <td className="py-3">{item.name}</td>
+                                   <td className="py-3">{item.specialPrice}</td>
+                                    <td className="py-3">{item.stock}</td>
+                                    <td className="py-3">
+                                        <div className="row">    
+                                            <div className="col-md-6">
+                                                <span><FontAwesomeIcon className="text-dark" icon={faCartPlus} /></span>
+                                            </div>
+                                            <div className="col-md-6">
+                                                <span style={{cursor:"pointer"}} onClick={()=>dispatch(removeWishList(item._id))}><FontAwesomeIcon className="text-danger" icon={faTrash} /></span>
+                                            </div>
                                         </div>
-                                        <div className="col-md-6">
-                                            <Link><FontAwesomeIcon className="text-danger" icon={faTrash} /></Link>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                     </tr>
+                                    ))
+                                }
+                              
+                         
                         </tbody>
                     </table>
                 </div>

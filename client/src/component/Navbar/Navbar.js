@@ -15,6 +15,8 @@ const Navbar = () => {
    const dispatch = useDispatch()
    const isAuthenticated = useSelector((state) => state.authState.isAuthenticated);
    const cartItem = useSelector((state) => state.cartState.cart);
+   const wishList = useSelector((state) => state.wishListState.wishList);
+   console.log(wishList)
    
     return (
         <div className="container-fluid back fixed-top" >
@@ -72,11 +74,17 @@ const Navbar = () => {
                                     </div>
                                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                                         <ul className="navbar-nav ml-auto">
-                                            <li className="nav-item">
-                                                <Link to="/wish-list" className="text-decoration-none text-dark mr-3"><FontAwesomeIcon icon={faHeart} /></Link>
+                                            <li className="nav-item mr-2">
+                                                {isAuthenticated ? (
+                                                     <Link to="/wish-list" className="text-decoration-none text-danger mr-3"><FontAwesomeIcon icon={faHeart} />{wishList.length? (<span className="wishListCountStyle">{wishList.length}</span>): null }</Link>
+                                                ) : (
+                                                    <Link to="/login" className="text-decoration-none text-danger mr-3"><FontAwesomeIcon icon={faHeart} /></Link>
+                                                )}
+                                               
                                             </li>
+
                                             <li className="nav-item">
-                                                <Link to="/shoppingCart" className="text-decoration-none text-dark mr-2"> <FontAwesomeIcon icon={faCartPlus} /> {cartItem.length? (<span class="badge">{cartItem.length}</span>): null }</Link>
+                                                <Link to="/shoppingCart" className="text-decoration-none text-dark mr-2"> <FontAwesomeIcon icon={faCartPlus} /> {cartItem.length? (<span className="cartCountStyle">{cartItem.length}</span>): null }</Link>
                                             </li>
                                         </ul>
                                     </div>

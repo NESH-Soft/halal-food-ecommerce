@@ -9,7 +9,7 @@ import Cart from './component/Cart/Cart';
 import Shop from './component/Shop/Shop/Shop';
 import Checkout from './component/Checkout/Checkout';
 import Login from './component/Login/Login';
-import MyAccount from './component/MyAccount/MyAccount';
+import MyAccount from './component/MyAccount/index';
 import Register from './component/Register/Register';
 import ProductDetails from './component/ProductDetails/ProductDetails';
 import Review from './component/ProductDetails/Review';
