@@ -1,11 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import Columns from 'react-columns';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux';
 import './ProductView.css';
 import { addToCart } from '../../../../redux/actions/cartAction'
 import { getProduct } from '../../../../redux/actions/product'
+import {addToWishList} from '../../../../redux/actions/wishlistAction'
 const ProductView = (props) => {
+    const isAuthenticated = useSelector((state) => state.authState.isAuthenticated);
     const products = props.products || [];
     const dispatch = useDispatch();
     const product = products.map(pd =>
@@ -16,7 +20,17 @@ const ProductView = (props) => {
             <div className="box-button">
                 <div className="px-2" style={{borderTop: '1px solid lightgray'}}>
                     <p>{pd.name}</p>
+                    <div className="d-flex justify-content-between">
                     <h6 style={{backgroundColor:'#7FFF00', width:'30%',padding:'0px 10px'}} >¥{pd.specialPrice}</h6>
+                    {
+                        isAuthenticated ? (
+                            <span style={{cursor:"pointer"}} onClick={()=>dispatch(addToWishList(pd))}><FontAwesomeIcon className="text-danger" icon={faHeart} /></span>
+                        ) : (
+<Link to="/login"  ><FontAwesomeIcon className="text-danger" icon={faHeart} /></Link>
+                        )
+                    }
+                   
+                    </div>
                     <span><del className="text-secondary">¥{pd.price}</del></span>
                 </div>
                 <button className="btn btn-Addtocart rounded-0 w-100" onClick={() => dispatch(addToCart(pd))}>Add to card</button>
