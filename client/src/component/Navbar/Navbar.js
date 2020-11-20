@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {getProductsByCategory} from '../../redux/actions/product'
+import { getProductsByCategory } from '../../redux/actions/product'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faUserCog, faCartPlus, faHeart, faPhoneAlt } from '@fortawesome/free-solid-svg-icons'
 import { faFacebookF, faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons"
@@ -9,15 +9,15 @@ import './Navbar.css'
 import { Link } from "react-router-dom";
 import Category from '../Home/Header/Category/Category';
 import Search from '../Home/Header/Search/Search';
-import {logout} from '../../redux/actions/authAction'
+import { logout } from '../../redux/actions/authAction'
 const Navbar = () => {
 
-   const dispatch = useDispatch()
-   const isAuthenticated = useSelector((state) => state.authState.isAuthenticated);
-   const cartItem = useSelector((state) => state.cartState.cart);
-   const wishList = useSelector((state) => state.wishListState.wishList);
-   console.log(wishList)
-   
+    const dispatch = useDispatch()
+    const isAuthenticated = useSelector((state) => state.authState.isAuthenticated);
+    const cartItem = useSelector((state) => state.cartState.cart);
+    const wishList = useSelector((state) => state.wishListState.wishList);
+    console.log(wishList)
+
     return (
         <div className="container-fluid back fixed-top" >
             <div className="col-md-12 m-auto">
@@ -34,8 +34,8 @@ const Navbar = () => {
                             </div>
                             <div style={{ borderLeft: '1px solid gray' }}></div>
                             <div>
-                                {isAuthenticated? (<span style={{cursor:"pointer"}} className="text-decoration-none text-dark mx-4" onClick={()=>dispatch(logout())}> <FontAwesomeIcon icon={faUserCog} />Logout</span>) : ( <Link to="/login" className="text-decoration-none text-dark mx-4"> <FontAwesomeIcon icon={faUserCog} /> Login</Link>) }
-                               
+                                {isAuthenticated ? (<span style={{ cursor: "pointer" }} className="text-decoration-none text-dark mx-4" onClick={() => dispatch(logout())}> <FontAwesomeIcon icon={faUserCog} />Logout</span>) : (<Link to="/login" className="text-decoration-none text-dark mx-4"> <FontAwesomeIcon icon={faUserCog} /> Login</Link>)}
+
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,7 @@ const Navbar = () => {
                                                 <Link to="" className="nav-link nav-top nav-font">HOME</Link>
                                             </li>
                                             <li className="nav-item ml-4">
-                                                <Link to="/shop" className="nav-link other-link nav-font" onClick={()=>dispatch(getProductsByCategory())}>SHOP</Link>
+                                                <Link to="/shop" className="nav-link other-link nav-font" onClick={() => dispatch(getProductsByCategory())}>SHOP</Link>
                                             </li>
                                             <li className="nav-item ml-4">
                                                 <Link to="" className="nav-link other-link nav-font">PAGES</Link>
@@ -68,7 +68,11 @@ const Navbar = () => {
                                                 <Link to="" className="nav-link other-link nav-font">BLOGS</Link>
                                             </li>
                                             <li className="nav-item ml-4">
+
                                                 <Link to="/about-us" className="nav-link other-link nav-font">About Us</Link>
+
+                                                <Link to="/my-account" className="nav-link other-link nav-font">MY ACCOUNT</Link>
+
                                             </li>
                                             <li className="nav-item ml-4">
                                                 <Link to="/contact" className="nav-link other-link nav-font">CONTACT</Link>
@@ -79,15 +83,14 @@ const Navbar = () => {
                                         <ul className="navbar-nav ml-auto">
                                             <li className="nav-item mr-2">
                                                 {isAuthenticated ? (
-                                                     <Link to="/wish-list" className="text-decoration-none text-danger mr-3"><FontAwesomeIcon icon={faHeart} />{wishList.length? (<span className="wishListCountStyle">{wishList.length}</span>): null }</Link>
+                                                    <Link to="/wish-list" className="text-decoration-none text-danger mr-3"><FontAwesomeIcon icon={faHeart} />{wishList.length ? (<span className="wishListCountStyle">{wishList.length}</span>) : null}</Link>
                                                 ) : (
-                                                    <Link to="/login" className="text-decoration-none text-danger mr-3"><FontAwesomeIcon icon={faHeart} /></Link>
-                                                )}
-                                               
-                                            </li>
+                                                        <Link to="/login" className="text-decoration-none text-danger mr-3"><FontAwesomeIcon icon={faHeart} /></Link>
+                                                    )}
 
+                                            </li>
                                             <li className="nav-item">
-                                                <Link to="/shoppingCart" className="text-decoration-none text-dark mr-2"> <FontAwesomeIcon icon={faCartPlus} /> {cartItem.length? (<span className="cartCountStyle">{cartItem.length}</span>): null }</Link>
+                                                <Link to="/shoppingCart" className="text-decoration-none text-dark mr-2"> <FontAwesomeIcon icon={faCartPlus} /> {cartItem.length ? (<span className="cartCountStyle">{cartItem.length}</span>) : null}</Link>
                                             </li>
                                         </ul>
                                     </div>
