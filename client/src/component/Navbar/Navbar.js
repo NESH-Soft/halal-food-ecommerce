@@ -20,7 +20,7 @@ const Navbar = () => {
         <div className="container-fluid back fixed-top" >
             <div className="col-md-12 m-auto">
                 <div className="row pt-2">
-                    <div className="col-md-9 col-ms-12 col-12">
+                    <div className="col-md-9 col-sm-12 col-12">
                         <p><FontAwesomeIcon icon={faEnvelope} />hasib2130@gmail.com</p>
                     </div>
                     <div className="col-md-3 col-sm-12 col-12">
