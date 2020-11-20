@@ -17,12 +17,14 @@ import Home from './component/Home/Home/Home';
 import Details from './component/ProductDetails/Details';
 import PrivetRoute from './PrivetRoute/PrivetRoute'
 import WishList from './component/WishList/WishList';
+import AboutUs from './component/AboutUs/AboutUs';
 
 function App() {
   return (
     <div className="">
       <Router>
         <Switch>
+          <Route exact path="/about-us" component={AboutUs} />
           <Route exact path="/wish-list" component={WishList} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/shoppingCart" component={Cart} />
