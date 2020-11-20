@@ -16,14 +16,17 @@ const AllProducts = () => {
 
     const products = useSelector((state) => state.productState.productFilterByCategory);
     const product = products.map(pd =>
-        <div className="p-3">
-            <div className="card image-box">
+        <div className="card rounded-0 m-2 products-card">
+            <div className="image-box">
                 <Link to="/productDetails">  <img className="card-img-top" onClick={() => dispatch(getProduct(pd._id))} src={pd.image} alt={pd.name} /></Link>
             </div>
-            <div className="text-center box-button">
-                <p>{pd.name}</p>
-                <h6>${pd.price}</h6>
-                <button className="btn btn-Addtocart w-100" onClick={() => dispatch(addToCart(pd))}>Add to card</button>
+            <div className="box-button">
+            <div className="px-2" style={{borderTop: '1px solid lightgray'}}>
+                    <p>{pd.name}</p>
+                    <h6 style={{backgroundColor:'#7FFF00', width:'30%',padding:'0px 10px'}} >¥{pd.specialPrice}</h6>
+                    <span><del className="text-secondary">¥{pd.price}</del></span>
+                </div>
+                <button className="btn btn-Addtocart rounded-0 w-100" onClick={() => dispatch(addToCart(pd))}>Add to card</button>
             </div>
         </div>);
     var queries = [

@@ -12,15 +12,15 @@ const WishList = () => {
             <Navbar />
             <div className="row">
                 <div className="col-md-3"></div>
-                <div className="col-md-9">
-                    <table class="table">
-                        <thead class="" className="bg-info">
+                <div className="col-md-8">
+                    <table className="table">
+                        <thead>
                             <tr>
-                                <th scope="col">Images</th>
-                                <th scope="col">Product Name</th>
-                                <th scope="col">Unit Price</th>
-                                <th scope="col">Stack</th>
-                                <th scope="col">Action</th>
+                                <th scope="col" style={{width:'20%'}}>Images</th>
+                                <th scope="col" style={{width:'20%'}}>Product Name</th>
+                                <th scope="col" style={{width:'20%'}}>Unit Price</th>
+                                <th scope="col" style={{width:'20%'}}>Stack</th>
+                                <th scope="col" style={{width:'20%'}}>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,7 +39,6 @@ const WishList = () => {
                                         <div className="col-md-6">
                                             <Link><FontAwesomeIcon className="text-danger" icon={faTrash} /></Link>
                                         </div>
-                                        {/* <div className="col-md-4"></div>  */}
                                     </div>
                                 </td>
                             </tr>
