@@ -23,7 +23,7 @@ const Footer = () => {
                 <br />
                 <div className="row">
                     <div className="col-md-6">
-                        <p><Link to="" className="text-decoration-none text-dark mx-2">About Us</Link></p>
+                        <p><Link to="/about-us" className="text-decoration-none text-dark mx-2">About Us</Link></p>
                         <p><Link to="" className="text-decoration-none text-dark mx-2">About Our Shop</Link></p>
                         <p><Link to="" className="text-decoration-none text-dark mx-2">Secure Shopping</Link></p>
                         <p><Link to="" className="text-decoration-none text-dark mx-2">Delivery infomation</Link></p>
