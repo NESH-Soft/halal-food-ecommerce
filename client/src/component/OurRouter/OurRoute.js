@@ -16,12 +16,14 @@ import Shop from '../Shop/Shop/Shop';
 import Contact from '../Contact/Contact';
 import MyAccount from '../MyAccount/index';
 import PrivetRoute from '../../PrivetRoute/PrivetRoute'
+import WishList from '../WishList/WishList';
 
 const OurRouter = () => {
     return (
         <div>
             <Router>
                 <Switch>
+                <Route exact  path="/wish-list" component={WishList}/>
                 <Route path="/contact">
                       <Contact/>
                     </Route>
