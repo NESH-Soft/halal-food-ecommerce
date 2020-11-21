@@ -17,23 +17,23 @@ nav .nav-item .other-link:hover{
 
 
   .wishListCountStyle{
-    background-color: green;
-    top: -10px;
+    background-color: red;
+    top: -14px;
     position: relative;
-    right: -7px;
-    padding: 3px 5px;
+    right: 1px;
+    padding: 4px 6px;
     border-radius: 50%;
-   
+   font-size: 11px;
     color: white;
   }
   .cartCountStyle{
-    background-color: red;
-    top: -10px;
+    background-color: green;
+    top: -14px;
     position: relative;
-    right: -7px;
-    padding: 3px 5px;
+    right: 1px;
+    padding: 4px 6px;
     border-radius: 50%;
-   
+   font-size: 11px;
     color: white;
 
   }
