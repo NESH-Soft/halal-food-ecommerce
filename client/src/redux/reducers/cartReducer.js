@@ -11,9 +11,16 @@ const initialState = {
 const cartReducer = (state = initialState, action) => {
   switch(action.type){
     case ADD_TO_CART:
+  //     console.log(action.payload._id)
+  //     const data =state.cart.length ? state.cart.map(item => { if(item._id === action.payload._id) {return null}else{
+  //       return action.payload
+  //     }}) : action.payload
+  
+
+  // console.log(data)
       return {
         ...state,
-        cart: [...state.cart, action.payload]
+        cart: [...state.cart, action.payload ]
       }
     case REMOVE_CART:
       return {
