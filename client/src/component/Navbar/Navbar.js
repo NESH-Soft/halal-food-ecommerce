@@ -62,17 +62,13 @@ const Navbar = () => {
                                                 <Link to="/shop" className="nav-link other-link nav-font" onClick={() => dispatch(getProductsByCategory())}>SHOP</Link>
                                             </li>
                                             <li className="nav-item ml-4">
-                                                <Link to="" className="nav-link other-link nav-font">PAGES</Link>
-                                            </li>
-                                            <li className="nav-item ml-4">
                                                 <Link to="" className="nav-link other-link nav-font">BLOGS</Link>
                                             </li>
                                             <li className="nav-item ml-4">
-
-                                                <Link to="/about-us" className="nav-link other-link nav-font">About Us</Link>
-
                                                 <Link to="/my-account" className="nav-link other-link nav-font">MY ACCOUNT</Link>
-
+                                            </li>
+                                            <li className="nav-item ml-4">
+                                                <Link to="/about-us" className="nav-link other-link nav-font">ABOUT US</Link>
                                             </li>
                                             <li className="nav-item ml-4">
                                                 <Link to="/contact" className="nav-link other-link nav-font">CONTACT</Link>
@@ -87,7 +83,6 @@ const Navbar = () => {
                                                 ) : (
                                                         <Link to="/login" className="text-decoration-none text-danger mr-3"><FontAwesomeIcon icon={faHeart} /></Link>
                                                     )}
-
                                             </li>
                                             <li className="nav-item">
                                                 <Link to="/shoppingCart" className="text-decoration-none text-dark mr-2"> <FontAwesomeIcon icon={faCartPlus} /> {cartItem.length ? (<span className="cartCountStyle">{cartItem.length}</span>) : null}</Link>

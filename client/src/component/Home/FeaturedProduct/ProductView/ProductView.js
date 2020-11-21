@@ -7,29 +7,29 @@ import { useDispatch, useSelector } from 'react-redux';
 import './ProductView.css';
 import { addToCart } from '../../../../redux/actions/cartAction'
 import { getProduct } from '../../../../redux/actions/product'
-import {addToWishList} from '../../../../redux/actions/wishlistAction'
+import { addToWishList } from '../../../../redux/actions/wishlistAction'
 const ProductView = (props) => {
     const isAuthenticated = useSelector((state) => state.authState.isAuthenticated);
     const products = props.products || [];
     const dispatch = useDispatch();
     const product = products.map(pd =>
-        <div className="card rounded-0 m-2 products-card">
+        <div className="card rounded-0 mx-2 mt-2 mb-4 products-card">
             <div className="image-box">
                 <Link to="/productDetails">  <img className="card-img-top home-products-img" onClick={() => dispatch(getProduct(pd._id))} src={pd.image} alt={pd.name} /></Link>
             </div>
             <div className="box-button">
-                <div className="px-2" style={{borderTop: '1px solid lightgray'}}>
+                <div className="px-2" style={{ borderTop: '1px solid lightgray' }}>
                     <p>{pd.name}</p>
                     <div className="d-flex justify-content-between">
-                    <h6 style={{backgroundColor:'#7FFF00', width:'30%',padding:'0px 10px'}} >¥{pd.specialPrice}</h6>
-                    {
-                        isAuthenticated ? (
-                            <span style={{cursor:"pointer"}} onClick={()=>dispatch(addToWishList(pd))}><FontAwesomeIcon className="text-danger" icon={faHeart} /></span>
-                        ) : (
-<Link to="/login"  ><FontAwesomeIcon className="text-danger" icon={faHeart} /></Link>
-                        )
-                    }
-                   
+                        <h6 style={{ backgroundColor: '#7FFF00', width: '40%', padding: '0px 10px' }} >¥{pd.specialPrice}</h6>
+                        {
+                            isAuthenticated ? (
+                                <span style={{ cursor: "pointer" }} onClick={() => dispatch(addToWishList(pd))}><FontAwesomeIcon className="text-danger" icon={faHeart} /></span>
+                            ) : (
+                                    <Link to="/login"  ><FontAwesomeIcon className="text-danger" icon={faHeart} /></Link>
+                                )
+                        }
+
                     </div>
                     <span><del className="text-secondary">¥{pd.price}</del></span>
                 </div>
