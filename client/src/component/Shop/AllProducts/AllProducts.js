@@ -18,7 +18,8 @@ const AllProducts = () => {
     // }, []);
     const isAuthenticated = useSelector((state) => state.authState.isAuthenticated);
     const products = useSelector((state) => state.productState.productFilterByCategory);
-    const product = products.map(pd =>
+    const data = products || []
+    const product = data.map(pd =>
         <div className="card rounded-0 mx-2 mt-2 mb-4 products-card">
             <div className="image-box">
                 <Link to="/productDetails">  <img className="card-img-top" onClick={() => dispatch(getProduct(pd._id))} src={pd.image} alt={pd.name} /></Link>

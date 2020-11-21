@@ -1,7 +1,8 @@
 import {
   GET_PRODUCTS,
   GET_PRODUCT,
-  GET_PRODUCTS_BY_CATEGORY
+  GET_PRODUCTS_BY_CATEGORY,
+  CHANGE_ADD_TO_CART_OPTION
 } from '../type'
 const initialState = {
   products: [],
@@ -26,6 +27,21 @@ const productReducer = (state = initialState, action) => {
           return {
             productFilterByCategory: action.payload
           }
+        case CHANGE_ADD_TO_CART_OPTION:
+            const getItem = id => {
+              const product = state.products.find(item => item._id === id);
+              return product;
+            }
+        
+              let tempProduct = [...state.products]
+              const index = tempProduct.indexOf(getItem(action.payload));
+              const product = tempProduct[index];
+              product.inCart = true;
+           
+            return{
+                products: tempProduct
+          }
+
     default:
       return state;
   }

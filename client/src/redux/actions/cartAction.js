@@ -5,8 +5,10 @@ import {
   CART_ITEM_DECREMENT,
   CART_ITEM_INCREMENT,
 } from '../type'
+import {changeAddToCartOption} from './product'
 // Action creator
 export const addToCart = (data) => async(dispatch) => {
+  dispatch(changeAddToCartOption(data._id))
   try {
     dispatch({ type: ADD_TO_CART, payload: data })
   } catch (error) {

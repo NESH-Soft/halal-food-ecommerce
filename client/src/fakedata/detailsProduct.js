@@ -11,6 +11,7 @@ const detailsProductFakeData = [
         "available": true,
         "rating": 5,
         "unit": "kg",
+        "inCart": false,
         "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   
     },
@@ -26,6 +27,7 @@ const detailsProductFakeData = [
         "available": true,
         "rating": 5,
         "unit": "kg",
+        "inCart": false,
         "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
     },
     {
@@ -40,6 +42,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
   {
@@ -54,6 +57,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
   {
@@ -68,6 +72,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
   {
@@ -82,6 +87,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
   {
@@ -96,6 +102,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
   {
@@ -110,6 +117,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
   
@@ -125,6 +133,7 @@ const detailsProductFakeData = [
         "available": true,
         "rating": 5,
         "unit": "kg",
+        "inCart": false,
         "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
     },
     {
@@ -139,6 +148,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
   {
@@ -153,6 +163,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
   {
@@ -167,6 +178,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
   {
@@ -181,6 +193,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
   {
@@ -195,6 +208,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
   {
@@ -209,6 +223,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
   {
@@ -223,6 +238,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
     {
@@ -237,6 +253,7 @@ const detailsProductFakeData = [
         "available": true,
         "rating": 5,
         "unit": "kg",
+        "inCart": false,
         "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
     },
     {
@@ -251,6 +268,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
   {
@@ -265,6 +283,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
   {
@@ -279,6 +298,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
   {
@@ -293,6 +313,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
   {
@@ -307,6 +328,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
   {
@@ -321,6 +343,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
   {
@@ -335,6 +358,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
     {
@@ -349,6 +373,7 @@ const detailsProductFakeData = [
         "available": true,
         "rating": 5,
         "unit": "kg",
+        "inCart": false,
         "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
     },
     {
@@ -363,6 +388,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
   {
@@ -377,6 +403,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
   {
@@ -391,6 +418,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
   {
@@ -405,6 +433,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
   {
@@ -419,6 +448,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
   {
@@ -433,6 +463,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
   {
@@ -447,6 +478,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
   {
@@ -461,6 +493,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
   {
@@ -475,6 +508,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
   {
@@ -489,6 +523,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
   {
@@ -503,6 +538,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
   {
@@ -517,6 +553,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
   {
@@ -531,6 +568,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48",
   },
     {
@@ -545,6 +583,7 @@ const detailsProductFakeData = [
         "available": true,
         "rating": 5,
         "unit": "kg",
+        "inCart": false,
         "description": "Brand : SSB Model No : SB-B42 Made In Bangladesh Marketed By Shaver Shop Bangladesh Order by phone get product :09610957957 Or Please send your full name, address and phone number along with the product code through message to place your order by phone / inbox Us. Product description: Leather Color : Black Buckles Color : Black Main Material: Buffalo Leather One part Leather Gender: Men 1 year Quality guarantee!!!Nice Look and Durable Belt, Great gift for men !! 100% Brand New & Top Quality Leather: Bangladeshi Buffalo Leather Measures: 120cm x 3.5cm Measures: 48 ",
     },
     
@@ -560,6 +599,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "slkdjastyegfaksjdfhbaywtefas dsduiyfgsudyftaks sjdhfgiasieuruytbfcsajhgf",
   },
   {
@@ -574,6 +614,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "slkdjastyegfaksjdfhbaywtefas dsduiyfgsudyftaks sjdhfgiasieuruytbfcsajhgf",
   },
   {
@@ -588,6 +629,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "slkdjastyegfaksjdfhbaywtefas dsduiyfgsudyftaks sjdhfgiasieuruytbfcsajhgf",
   },
   {
@@ -602,6 +644,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "slkdjastyegfaksjdfhbaywtefas dsduiyfgsudyftaks sjdhfgiasieuruytbfcsajhgf",
   },
   {
@@ -616,6 +659,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "slkdjastyegfaksjdfhbaywtefas dsduiyfgsudyftaks sjdhfgiasieuruytbfcsajhgf",
   },
   {
@@ -630,6 +674,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "slkdjastyegfaksjdfhbaywtefas dsduiyfgsudyftaks sjdhfgiasieuruytbfcsajhgf",
   },
   {
@@ -644,6 +689,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "slkdjastyegfaksjdfhbaywtefas dsduiyfgsudyftaks sjdhfgiasieuruytbfcsajhgf",
   },
   {
@@ -658,6 +704,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "slkdjastyegfaksjdfhbaywtefas dsduiyfgsudyftaks sjdhfgiasieuruytbfcsajhgf",
   },
   {
@@ -672,6 +719,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "slkdjastyegfaksjdfhbaywtefas dsduiyfgsudyftaks sjdhfgiasieuruytbfcsajhgf",
   },
   {
@@ -686,6 +734,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "slkdjastyegfaksjdfhbaywtefas dsduiyfgsudyftaks sjdhfgiasieuruytbfcsajhgf",
   },
   {
@@ -700,6 +749,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "slkdjastyegfaksjdfhbaywtefas dsduiyfgsudyftaks sjdhfgiasieuruytbfcsajhgf",
   },
   {
@@ -714,6 +764,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "slkdjastyegfaksjdfhbaywtefas dsduiyfgsudyftaks sjdhfgiasieuruytbfcsajhgf",
   },
   {
@@ -728,6 +779,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "slkdjastyegfaksjdfhbaywtefas dsduiyfgsudyftaks sjdhfgiasieuruytbfcsajhgf",
   },
   {
@@ -742,6 +794,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "slkdjastyegfaksjdfhbaywtefas dsduiyfgsudyftaks sjdhfgiasieuruytbfcsajhgf",
   },
   {
@@ -756,6 +809,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "slkdjastyegfaksjdfhbaywtefas dsduiyfgsudyftaks sjdhfgiasieuruytbfcsajhgf",
   },
   {
@@ -770,6 +824,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "slkdjastyegfaksjdfhbaywtefas dsduiyfgsudyftaks sjdhfgiasieuruytbfcsajhgf",
   },
   {
@@ -784,6 +839,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "slkdjastyegfaksjdfhbaywtefas dsduiyfgsudyftaks sjdhfgiasieuruytbfcsajhgf",
   },
   {
@@ -798,6 +854,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "slkdjastyegfaksjdfhbaywtefas dsduiyfgsudyftaks sjdhfgiasieuruytbfcsajhgf",
   },
   {
@@ -812,6 +869,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "slkdjastyegfaksjdfhbaywtefas dsduiyfgsudyftaks sjdhfgiasieuruytbfcsajhgf",
   },
   {
@@ -826,10 +884,11 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "slkdjastyegfaksjdfhbaywtefas dsduiyfgsudyftaks sjdhfgiasieuruytbfcsajhgf",
   },
   {
-      "id": 59,
+      "id": 60,
       "name": "Fresh Green Banana",
       "category": "Fresh Bananas",
       "image": "https://img1.exportersindia.com/product_images/bc-full/2019/6/6398800/fresh-green-banana-1560776380-4956988.jpeg",
@@ -840,6 +899,7 @@ const detailsProductFakeData = [
       "available": true,
       "rating": 5,
       "unit": "kg",
+      "inCart": false,
       "description": "slkdjastyegfaksjdfhbaywtefas dsduiyfgsudyftaks sjdhfgiasieuruytbfcsajhgf",
   },
   

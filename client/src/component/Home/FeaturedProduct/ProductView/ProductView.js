@@ -6,7 +6,7 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux';
 import './ProductView.css';
 import { addToCart } from '../../../../redux/actions/cartAction';
-import { getProduct } from '../../../../redux/actions/product';
+import { getProduct , changeAddToCartOption} from '../../../../redux/actions/product';
 import { addToWishList } from '../../../../redux/actions/wishlistAction';
 const ProductView = (props) => {
     const isAuthenticated = useSelector((state) => state.authState.isAuthenticated);
@@ -33,7 +33,14 @@ const ProductView = (props) => {
                     </div>
                     <span><del className="text-secondary">¥{pd.price}</del></span>
                 </div>
-                <button className="btn btn-Addtocart rounded-0 w-100" onClick={() => dispatch(addToCart(pd))}>Add to card</button>
+                {
+                    pd.inCart ? (
+<button className="btn btn-Addtocart rounded-0 w-100" >In Card</button>
+                    ) : (
+<button className="btn btn-Addtocart rounded-0 w-100" onClick={() =>dispatch(addToCart(pd))}>Add to card</button>
+                    )
+                }
+                
             </div>
         </div>);
     var queries = [
