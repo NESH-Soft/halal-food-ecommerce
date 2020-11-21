@@ -14,7 +14,7 @@ const Contact = () => {
 
                 </div>
                 <div className="col-md-9 my-3">
-                    <div className="col-md-9" style={{borderBottom: '3px solid #76a333'}}>
+                    <div style={{borderBottom: '3px solid #76a333'}}>
                         <h2>Contact Us</h2>
                     </div>
                     <div className="row mt-5">
