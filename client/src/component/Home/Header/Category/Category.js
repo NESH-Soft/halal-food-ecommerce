@@ -42,12 +42,9 @@ const Category = () => {
             <ul className={categoryClass}>
                 {
                    category && category.map((c)=>(
-                   <li onClick={()=>dispatch(getProductsByCategory(c))}><Link to="/shop"> <spam>{ c.category}</spam></Link></li> 
-                   
+                   <li style={{width:'100%',backgroundColor:'red'}} onClick={()=>dispatch(getProductsByCategory(c))}><Link to="/shop"> <spam>{ c.category}</spam></Link></li>   
                 ))
                 }
-               
-              
             </ul>
         </div>
     );
