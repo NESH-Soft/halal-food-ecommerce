@@ -3,7 +3,9 @@ import {
   GET_PRODUCT,
   GET_PRODUCTS_BY_CATEGORY,
   CHANGE_ADD_TO_CART_OPTION,
-  CHANGE_ADD_TO_WISHLIST_OPTION
+  CHANGE_ADD_TO_WISHLIST_OPTION,
+  GET_SPECIAL_PRODUCT,
+  SEARCH_PRODUCT
 } from '../type'
 import * as api from '../../api';
 
@@ -17,6 +19,24 @@ export const getProducts = () => async(dispatch) => {
   }
 } 
 
+export const getSpecialProducts = () => async(dispatch) => {
+  try {
+    const  products  = await api.getSpecialProducts();
+    dispatch({ type: GET_SPECIAL_PRODUCT, payload: products })
+  } catch (error) {
+    console.log(error);
+  }
+} 
+export const searchProducts = (data) => async(dispatch) => {
+  try {
+    const  products  = await api.searchProducts(data);
+    dispatch({ type: SEARCH_PRODUCT, payload: products })
+  } catch (error) {
+    console.log(error);
+  }
+} 
+
+
 export const getProduct = (id) => async(dispatch) => {
   try {
     const  product  = await api.getProduct(id);
@@ -25,6 +45,10 @@ export const getProduct = (id) => async(dispatch) => {
     console.log(error);
   }
 } 
+
+
+
+
 export const getProductsByCategory = (category) => async(dispatch) => {
   try {
     const  products = await api.getProductsByCategory(category);

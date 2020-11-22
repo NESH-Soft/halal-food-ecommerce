@@ -4,7 +4,7 @@ import cartReducer from "./cartReducer";
 import authReducer from './authReducer';
 import categoryReducer from './categoryReducer';
 import wishlistReducer from './wishlistReducer'
-
+import orderReducer from './orderReducer'
 
 
 export default combineReducers({
@@ -12,5 +12,6 @@ export default combineReducers({
   cartState: cartReducer,
   authState: authReducer,
   categoryState: categoryReducer,
-  wishListState: wishlistReducer
+  wishListState: wishlistReducer,
+  orderState: orderReducer
 });

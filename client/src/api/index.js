@@ -2,7 +2,8 @@ import axios from 'axios'
 import allProducts from '../fakedata/detailsProduct'
 import users from '../fakedata/fakeUser'
 import fakecategory from '../fakedata/fakecategory'
-import fakeWishlist from '../fakedata/fakeWishList'
+import fakeWishlist from '../fakedata/fakeWishList';
+import fakespecialproduct from '../fakedata/fakespecialProducts'
 export const getProducts = async () => {
   // const response = await axios.get('/api/product');
   const products = allProducts;
@@ -73,6 +74,48 @@ export const removeWishList = async (id) => {
   return id
 
 }
+
+
+export const createOrderCashOnDelivery = async (order) => {
+  
+  const orderReceived = {}
+  return orderReceived
+
+}
+
+export const createOrder = async (order) => {
+
+  const orderReceived = {}
+  return orderReceived
+}
+
+export const cancelOrder = async (order) => {
+  
+  const orderReceived = {}
+  return orderReceived
+}
+
+export const getOrder = async () => {
+
+  const order = {}
+  return order
+}
+
+
+
+export const getSpecialProducts = async () => {
+ 
+  return fakespecialproduct
+}
+
+
+export const searchProducts = async (data) => {
+ 
+  return fakespecialproduct
+}
+
+
+
 
 
 
