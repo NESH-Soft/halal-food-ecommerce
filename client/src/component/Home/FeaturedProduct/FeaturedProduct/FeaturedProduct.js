@@ -18,7 +18,7 @@ const FeaturedProduct = () => {
     return (
         <div className="col-md-12 m-auto featuredProduct">
             <div className="text-center mt-5 feturedText">
-                <h1>Featured Product</h1>
+                <h1>Trending Product</h1>
                 <hr style={{ borderBottom: '4px solid #7fad39', width: '10%' }} />
             </div>
             <div className="mb-5">

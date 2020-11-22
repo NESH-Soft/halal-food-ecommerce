@@ -43,8 +43,13 @@ const Cart = () => {
 
                         <div className="row my-5">
                             <div className="col-md-8">
-                                <h4>Cart( <span>{cart.length}</span> items )</h4>
-                                <hr />
+                                <div style={{ borderBottom: '3px solid #76a333' }}>
+                                    <h4>Cart ( <span>
+                                        {
+                                            cart.length > 1 ? (`${cart.length} Items`) : (`${cart.length} Item`)
+                                        }
+                                        </span> )</h4>
+                                </div>
                                 <div className="mt-5">
                                     {
                                         cart.length === 0 ? <div>
@@ -59,13 +64,13 @@ const Cart = () => {
                                                         <h5>{pd.name}</h5>
 
                                                     </div>
-                                                    
+
                                                     <div className="col-lg-2 col-md-2 col-sm-6 col-6 text-left">
                                                         <div className="btn-group btn-group-toggle float-right">
-                                                        {pd.quantity  > 1 ? ( <button className="btn btn-danger  rounded-0" onClick={() => dispatch(cartItemDecrement(pd._id))}><FontAwesomeIcon icon={faMinus} /></button>) : ( <button className="btn btn-danger  rounded-0" disable><FontAwesomeIcon icon={faMinus} /></button>) }
-                                                        <button className="btn rounded-0 "><span>{pd.quantity}</span></button>
-                                                        {pd.quantity  < pd.stock ? ( <button className="btn btn-primary  rounded-0" onClick={() => dispatch(cartItemIncrement(pd._id))}><FontAwesomeIcon icon={faPlus} /></button>) : ( <button className="btn btn-primary  rounded-0" disable><FontAwesomeIcon icon={faPlus} /></button>) }
-                                                 
+                                                            {pd.quantity > 1 ? (<button className="btn btn-danger  rounded-0" onClick={() => dispatch(cartItemDecrement(pd._id))}><FontAwesomeIcon icon={faMinus} /></button>) : (<button className="btn btn-danger  rounded-0" disable><FontAwesomeIcon icon={faMinus} /></button>)}
+                                                            <button className="btn rounded-0 "><span>{pd.quantity}</span></button>
+                                                            {pd.quantity < pd.stock ? (<button className="btn btn-primary  rounded-0" onClick={() => dispatch(cartItemIncrement(pd._id))}><FontAwesomeIcon icon={faPlus} /></button>) : (<button className="btn btn-primary  rounded-0" disable><FontAwesomeIcon icon={faPlus} /></button>)}
+
                                                         </div>
                                                     </div>
                                                     <div className="col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-between">
@@ -88,8 +93,10 @@ const Cart = () => {
                                 </div>
                             </div>
                             <div className="col-md-4">
-                                <h4>The Total Amount of </h4>
-                                <hr />
+                                <div style={{ borderBottom: '3px solid #76a333' }}>
+                                    <h4>The Total Amount of </h4>
+                                </div>
+
                                 <div className="mt-4 d-flex justify-content-between">
                                     <p>Total Price</p>
                                     <p>¥{totalPrice}</p>
