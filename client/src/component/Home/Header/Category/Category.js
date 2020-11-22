@@ -3,10 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getCategory } from '../../../../redux/actions/categoryAction';
 import {getProductsByCategory} from '../../../../redux/actions/product'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faSortAmountDown } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faSortAmountDown ,faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 import './Category.css';
 import { Link } from 'react-router-dom';
 const Category = () => {
+    const [categoryColor,setCategoryColor] = useState('');
     const dispatch = useDispatch()
     useEffect(()=>{
         dispatch(getCategory())
@@ -29,7 +30,7 @@ const Category = () => {
     return (
         <div className="hero-categories">
             <div className="hero-categories-title">
-                <div className="px-4 d-flex justify-content-between py-2" onClick={hangleCategory}>
+                <div className="d-flex justify-content-between py-2" onClick={hangleCategory}>
                     <div>
                         <FontAwesomeIcon icon={faBars} />
                         <span className="ml-3">All Categories</span>
@@ -39,15 +40,12 @@ const Category = () => {
                     </div>
                 </div>
             </div>
-            <ul className={categoryClass}>
+            <ul className={`${categoryClass}`}>
                 {
                    category && category.map((c)=>(
-                   <li onClick={()=>dispatch(getProductsByCategory(c))}><Link to="/shop"> <spam>{ c.category}</spam></Link></li> 
-                   
+                    <li className="px-2" onClick={()=>dispatch(getProductsByCategory(c))}><Link to="/shop"> <span className="pr-2"><FontAwesomeIcon icon={faCheckCircle}/></span> <spam>{ c.category}</spam></Link></li>   
                 ))
                 }
-               
-              
             </ul>
         </div>
     );
