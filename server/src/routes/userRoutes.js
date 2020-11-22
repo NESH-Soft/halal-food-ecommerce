@@ -1,4 +1,5 @@
 import express from 'express';
+import auth from '../middlewares/auth';
 import {
   signupUser,
   signInUser,
@@ -6,11 +7,13 @@ import {
   deleteUser,
   changePassword,
   verifyUser,
+  getUser,
 } from '../controllers/userController';
 
 const router = express.Router();
 
-router.route('/').get(signInUser).post(signupUser);
+router.route('/').post(signInUser).post(signupUser);
+router.route('/me').get(auth.protectUser, getUser);
 
 router.route('/verify/:registerToken').get(verifyUser);
 
