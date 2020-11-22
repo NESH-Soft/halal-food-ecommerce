@@ -7,8 +7,8 @@ import { faFacebookF, faLinkedin, faTwitter } from "@fortawesome/free-brands-svg
 import logo from '../images/logo/logo.png';
 import './Navbar.css'
 import { Link } from "react-router-dom";
-import Category from '../Home/Header/Category/Category';
-import Search from '../Home/Header/Search/Search';
+import Category from '../Category/Category';
+import Search from '../Search/Search/Search';
 import { logout } from '../../redux/actions/authAction'
 const Navbar = () => {
 
@@ -41,59 +41,61 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
-            <div className="container-fluid">
-                <nav className="navbar navbar-expand-lg  navbar-light ">
-                    <div className="col-md-12 m-auto">
-                        <div className="row">
-                            <div className="col-md-3" style={{ paddingLeft: '0px' }}>
-                                <Link to="/" className="navbar-brand" href="#"><img src={logo} width="200px" height="50px" alt="" /></Link>
-                                <button className="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                    <span className="navbar-toggler-icon"></span>
-                                </button>
-                            </div>
-                            <div className="col-md-9">
-                                <div className="row">
-                                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                                        <ul className="navbar-nav">
-                                            <li className="nav-item active ml-4">
-                                                <Link to="" className="nav-link nav-top nav-font">HOME</Link>
-                                            </li>
-                                            <li className="nav-item ml-4">
-                                                <Link to="/shop" className="nav-link other-link nav-font" onClick={() => dispatch(getProductsByCategory())}>SHOP</Link>
-                                            </li>
-                                            <li className="nav-item ml-4">
-                                                <Link to="" className="nav-link other-link nav-font">BLOGS</Link>
-                                            </li>
-                                            <li className="nav-item ml-4">
-                                                <Link to="/my-account" className="nav-link other-link nav-font">MY ACCOUNT</Link>
-                                            </li>
-                                            <li className="nav-item ml-4">
-                                                <Link to="/about-us" className="nav-link other-link nav-font">ABOUT US</Link>
-                                            </li>
-                                            <li className="nav-item ml-4">
-                                                <Link to="/contact" className="nav-link other-link nav-font">CONTACT</Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                                        <ul className="navbar-nav ml-auto">
-                                            <li className="nav-item mr-2">
-                                                {isAuthenticated ? (
-                                                    <Link to="/wish-list" className="text-decoration-none text-danger mr-3"><FontAwesomeIcon icon={faHeart} />{wishList.length ? (<span className="wishListCountStyle">{wishList.length}</span>) : null}</Link>
-                                                ) : (
-                                                        <Link to="/login" className="text-decoration-none text-danger mr-3"><FontAwesomeIcon icon={faHeart} /></Link>
-                                                    )}
-                                            </li>
-                                            <li className="nav-item">
-                                                <Link to="/shoppingCart" className="text-decoration-none text-dark mr-2"> <FontAwesomeIcon icon={faCartPlus} /> {cartItem.length ? (<span className="cartCountStyle">{cartItem.length}</span>) : null}</Link>
-                                            </li>
-                                        </ul>
+            <div className="row">
+                <div className="col-md-11">
+                    <nav className="navbar navbar-expand-lg  navbar-light ">
+                        <div className="col-md-12">
+                            <div className="row">
+                                <div className="col-md-3" style={{ paddingLeft: '0px' }}>
+                                    <Link to="/" className="navbar-brand" href="#"><img src={logo} width="200px" height="50px" alt="" /></Link>
+                                    <button className="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                        <span className="navbar-toggler-icon"></span>
+                                    </button>
+                                </div>
+                                <div className="col-md-9">
+                                    <div className="row">
+                                        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                                            <ul className="navbar-nav">
+                                                <li className="nav-item active ml-4">
+                                                    <Link to="" className="nav-link nav-top nav-font">HOME</Link>
+                                                </li>
+                                                <li className="nav-item ml-4">
+                                                    <Link to="/shop" className="nav-link other-link nav-font" onClick={() => dispatch(getProductsByCategory())}>SHOP</Link>
+                                                </li>
+                                                <li className="nav-item ml-4">
+                                                    <Link to="" className="nav-link other-link nav-font">BLOGS</Link>
+                                                </li>
+                                                <li className="nav-item ml-4">
+                                                    <Link to="/my-account" className="nav-link other-link nav-font">MY ACCOUNT</Link>
+                                                </li>
+                                                <li className="nav-item ml-4">
+                                                    <Link to="/about-us" className="nav-link other-link nav-font">ABOUT US</Link>
+                                                </li>
+                                                <li className="nav-item ml-4">
+                                                    <Link to="/contact" className="nav-link other-link nav-font">CONTACT</Link>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </nav>
+                    </nav>
+                </div>
+                <div className="col-md-1">
+                    <ul className="row list-unstyled">
+                        <li className="">
+                            {isAuthenticated ? (
+                                <Link to="/wish-list" className="text-decoration-none text-danger "><FontAwesomeIcon icon={faHeart} style={{ fontSize: '25px' }} />{wishList.length ? (<span className="wishListCountStyle">{wishList.length}</span>) : null}</Link>
+                            ) : (
+                                    <Link to="/login" className="text-decoration-none text-danger"><FontAwesomeIcon icon={faHeart} style={{ fontSize: '25px' }} /></Link>
+                                )}
+                        </li>
+                        <li className="nav-item ml-3">
+                            <Link to="/shoppingCart" className="text-decoration-none text-dark mr-2"> <FontAwesomeIcon icon={faCartPlus} style={{ fontSize: '25px' }} /> {cartItem.length ? (<span className="cartCountStyle">{cartItem.length}</span>) : null}</Link>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div className="row">
                 <div className="col-md-3">
