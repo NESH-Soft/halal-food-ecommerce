@@ -24,9 +24,15 @@ const ProductView = (props) => {
                         <h6 style={{ backgroundColor: '#7FFF00', width: '40%', padding: '0px 10px',borderRadius:"10px"}} >¥{pd.specialPrice}</h6>
                         {
                             isAuthenticated ? (
-                                <span style={{ cursor: "pointer" }} onClick={() => dispatch(addToWishList(pd))}><FontAwesomeIcon className="text-danger" icon={faHeart} /></span>
+                                 pd.inWishlist ? (
+                                    <span style={{ cursor: "pointer" }} ><FontAwesomeIcon className="text-danger" icon={faHeart} /></span>
+                                 ) : (
+                                    <span style={{ cursor: "pointer" }} onClick={() => dispatch(addToWishList(pd))}><FontAwesomeIcon className="text-secondary" icon={faHeart} /></span>
+                                 )
+                               
+
                             ) : (
-                                    <Link to="/login"  ><FontAwesomeIcon className="text-danger" icon={faHeart} /></Link>
+                                    <Link to="/login"  ><FontAwesomeIcon className="text-secondary" icon={faHeart} /></Link>
                                 )
                         }
 
