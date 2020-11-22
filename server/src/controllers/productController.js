@@ -6,6 +6,7 @@ import {
   updateProductServices,
   deleteProductServices,
   findProductById,
+  getProductsByCategoryServices,
 } from '../services/productServices';
 import asyncHandler from '../utils/async';
 import { NotFound } from '../utils/error';
@@ -16,6 +17,14 @@ export const getProducts = asyncHandler(async (req, res) => {
   if (!products.length) return res.status(200).json({ success: true, msg: 'No product created yet' });
 
   return res.status(200).json({ success: true, products, msg: 'All products fetched' });
+});
+
+export const getProductsByCategory = asyncHandler(async (req, res) => {
+  const products = await getProductsByCategoryServices(req.params.category);
+
+  if (!products.length) return res.status(200).json({ success: true, msg: 'No product found in this category' });
+
+  return res.status(200).json({ success: true, products, msg: 'All specific categories products fetched' });
 });
 
 export const addProduct = asyncHandler(async (req, res) => {
