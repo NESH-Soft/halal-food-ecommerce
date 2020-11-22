@@ -4,9 +4,10 @@ import {
   GET_WISHLIST
 } from '../type'
 import * as api from '../../api';
-
+import {changeAddToWishlistOption} from '../actions/product'
 // Action creator
 export const addToWishList = (wishItem) => async(dispatch) => {
+  dispatch(changeAddToWishlistOption(wishItem._id))
   try {
     const  wishList  = await api.addToWishList(wishItem);
     dispatch({ type: ADD_TO_WISHLIST, payload: wishList })

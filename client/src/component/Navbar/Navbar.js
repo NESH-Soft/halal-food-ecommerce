@@ -42,7 +42,7 @@ const Navbar = () => {
                 </div>
             </div>
             <div className="row">
-                <div className="col-md-11">
+                <div className="col-md-10">
                     <nav className="navbar navbar-expand-lg  navbar-light ">
                         <div className="col-md-12">
                             <div className="row">
@@ -82,17 +82,17 @@ const Navbar = () => {
                         </div>
                     </nav>
                 </div>
-                <div className="col-md-1">
+                <div className="col-md-2">
                     <ul className="row list-unstyled">
                         <li className="">
                             {isAuthenticated ? (
-                                <Link to="/wish-list" className="text-decoration-none text-danger "><FontAwesomeIcon icon={faHeart} style={{ fontSize: '25px' }} />{wishList.length ? (<span className="wishListCountStyle">{wishList.length}</span>) : null}</Link>
+                                <Link to="/wish-list" className="text-decoration-none text-danger "><FontAwesomeIcon icon={faHeart} style={{ fontSize: '22px' }} />{wishList.length ? (<span className="wishListCountStyle">{wishList.length}</span>) : null}</Link>
                             ) : (
-                                    <Link to="/login" className="text-decoration-none text-danger"><FontAwesomeIcon icon={faHeart} style={{ fontSize: '25px' }} /></Link>
+                                    <Link to="/login" className="text-decoration-none text-danger"><FontAwesomeIcon icon={faHeart} style={{ fontSize: '22px' }} /></Link>
                                 )}
                         </li>
                         <li className="nav-item ml-3">
-                            <Link to="/shoppingCart" className="text-decoration-none text-dark mr-2"> <FontAwesomeIcon icon={faCartPlus} style={{ fontSize: '25px' }} /> {cartItem.length ? (<span className="cartCountStyle">{cartItem.length}</span>) : null}</Link>
+                            <Link to="/shoppingCart" className="text-decoration-none text-dark mr-2"> <FontAwesomeIcon icon={faCartPlus} style={{ fontSize: '22px' }} /> {cartItem.length ? (<span className="cartCountStyle">{cartItem.length}</span>) : null}</Link>
                         </li>
                     </ul>
                 </div>

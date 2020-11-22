@@ -2,7 +2,8 @@ import {
   GET_PRODUCTS,
   GET_PRODUCT,
   GET_PRODUCTS_BY_CATEGORY,
-  CHANGE_ADD_TO_CART_OPTION
+  CHANGE_ADD_TO_CART_OPTION,
+  CHANGE_ADD_TO_WISHLIST_OPTION
 } from '../type'
 const initialState = {
   products: [],
@@ -12,6 +13,11 @@ const initialState = {
   loading: false
 };
 const productReducer = (state = initialState, action) => {
+  const getItem = id => {
+    const product = state.products.find(item => item._id === id);
+    return product;
+  }
+
   switch(action.type){
     case GET_PRODUCTS:
       return {
@@ -28,10 +34,7 @@ const productReducer = (state = initialState, action) => {
             productFilterByCategory: action.payload
           }
         case CHANGE_ADD_TO_CART_OPTION:
-            const getItem = id => {
-              const product = state.products.find(item => item._id === id);
-              return product;
-            }
+          
         
               let tempProduct = [...state.products]
               const index = tempProduct.indexOf(getItem(action.payload));
@@ -40,6 +43,17 @@ const productReducer = (state = initialState, action) => {
            
             return{
                 products: tempProduct
+          }
+
+          case CHANGE_ADD_TO_WISHLIST_OPTION:
+           
+              let tempwishProduct = [...state.products]
+              const indexx = tempwishProduct.indexOf(getItem(action.payload));
+              const p = tempwishProduct[indexx];
+              p.inWishlist = true;
+           
+            return{
+                products: tempwishProduct
           }
 
     default:
