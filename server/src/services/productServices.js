@@ -12,6 +12,11 @@ export const getProductsServices = async () => {
   return products;
 };
 
+export const getProductsByCategoryServices = async (category) => {
+  const products = await Product.find({ category });
+  return products;
+};
+
 export const getProductServices = async (id) => {
   const product = await Product.findById(id);
   return product;
