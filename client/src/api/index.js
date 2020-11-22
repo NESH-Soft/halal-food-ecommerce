@@ -75,5 +75,36 @@ export const removeWishList = async (id) => {
 }
 
 
+export const createOrderCashOnDelivery = async (order) => {
+  // const removedWishItem = fakeWishlist.filter(w=>w._id !== id)
+  const orderReceived = {}
+  return orderReceived
+
+}
+
+export const createOrder = async (order) => {
+  // const removedWishItem = fakeWishlist.filter(w=>w._id !== id)
+  const orderReceived = {}
+  return orderReceived
+}
+
+export const cancelOrder = async (order) => {
+  // const removedWishItem = fakeWishlist.filter(w=>w._id !== id)
+  const orderReceived = {}
+  return orderReceived
+}
+
+export const getOrder = async () => {
+  // const removedWishItem = fakeWishlist.filter(w=>w._id !== id)
+  const order = {}
+  return order
+}
+
+
+
+
+
+
+
 
 
