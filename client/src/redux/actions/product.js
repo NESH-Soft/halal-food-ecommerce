@@ -2,7 +2,8 @@ import {
   GET_PRODUCTS,
   GET_PRODUCT,
   GET_PRODUCTS_BY_CATEGORY,
-  CHANGE_ADD_TO_CART_OPTION
+  CHANGE_ADD_TO_CART_OPTION,
+  CHANGE_ADD_TO_WISHLIST_OPTION
 } from '../type'
 import * as api from '../../api';
 
@@ -43,5 +44,17 @@ export const changeAddToCartOption = (id) => async(dispatch) => {
     console.log(error);
   }
 }
+
+
+export const changeAddToWishlistOption = (id) => async(dispatch) => {
+  
+  try {
+    
+     dispatch({ type: CHANGE_ADD_TO_WISHLIST_OPTION, payload: id })
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 
 

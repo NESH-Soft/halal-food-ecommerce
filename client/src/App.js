@@ -18,6 +18,7 @@ import Details from './component/ProductDetails/Details';
 import PrivetRoute from './PrivetRoute/PrivetRoute'
 import WishList from './component/WishList/WishList';
 import AboutUs from './component/AboutUs/AboutUs';
+import SearchProduct from './component/Search/SearchProduct/SearchProduct';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Switch>
           <Route exact path="/about-us" component={AboutUs} />
           <Route exact path="/wish-list" component={WishList} />
+          <Route exact path="/searchProducts" component={SearchProduct} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/shoppingCart" component={Cart} />
           <Route exact path="/shop" component={Shop} />

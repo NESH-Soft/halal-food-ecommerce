@@ -1,17 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import Footer from '../../Footer/Footer/Footer';
+import Navbar from '../../Navbar/Navbar';
 import { Link } from 'react-router-dom'
 import Columns from 'react-columns';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux';
-import './ProductView.css';
-import { addToCart } from '../../../../redux/actions/cartAction';
-import { getProduct, changeAddToCartOption } from '../../../../redux/actions/product';
-import { addToWishList } from '../../../../redux/actions/wishlistAction';
-const ProductView = (props) => {
+import { addToCart } from '../../../redux/actions/cartAction';
+import { getProduct, changeAddToCartOption } from '../../../redux/actions/product';
+import { addToWishList } from '../../../redux/actions/wishlistAction';
+import { getProducts } from '../../../redux/actions/product'
+import './SearchProduct.css'
+
+const SearchProduct = () => {
     const isAuthenticated = useSelector((state) => state.authState.isAuthenticated);
-    const products = props.products || [];
     const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getProducts());
+        //eslint-disable-next-line
+    }, []);
+
+    const products = useSelector((state) => state.productState.products);
     const product = products.map(pd =>
         <div className="card rounded-0 mx-2 mt-2 mb-4 products-card">
             <div className="image-box">
@@ -76,10 +85,20 @@ const ProductView = (props) => {
         }
     ];
     return (
-        <div className="col-md-12">
-            <Columns queries={queries}>{product}</Columns>
+        <div className="container-fluid">
+            <Navbar />
+            <div className="row searchProduct">
+                <div className="col-md-3"></div>
+                <div className="col-md-9">
+                    <div style={{ borderBottom: '3px solid #76a333' }} className="my-4">
+                        <h2>Your Search Products</h2>
+                    </div>
+                    <Columns queries={queries}>{product}</Columns>
+                </div>
+            </div>
+            <Footer />
         </div>
     );
 };
 
-export default ProductView;
+export default SearchProduct;
