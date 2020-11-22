@@ -1,8 +1,5 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
-import Category from '../Home/Header/Category/Category';
-import Search from '../Home/Header/Search/Search';
 import Navbar from '../Navbar/Navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMinus, faPlus, faHeart } from '@fortawesome/free-solid-svg-icons'

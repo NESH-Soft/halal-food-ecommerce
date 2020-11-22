@@ -1,10 +1,8 @@
 import React from 'react';
 import Navbar from '../../../Navbar/Navbar';
-import Category from '../Category/Category';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPhoneAlt } from '@fortawesome/free-solid-svg-icons'
 import HeaderCarousel from '../HeaderCarousel/HeaderCarousel';
-import Search from '../Search/Search';
 import './Header.css';
 const Header = () => {
     return (

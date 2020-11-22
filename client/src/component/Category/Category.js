@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getCategory } from '../../../../redux/actions/categoryAction';
-import {getProductsByCategory} from '../../../../redux/actions/product'
+import { getCategory } from '../../redux/actions/categoryAction';
+import {getProductsByCategory} from '../../redux/actions/product'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faSortAmountDown ,faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 import './Category.css';
