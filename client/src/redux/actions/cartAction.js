@@ -6,11 +6,15 @@ import {
   CART_ITEM_INCREMENT,
   AMOUNT_COUNT
 } from '../type'
-import {changeAddToCartOption} from './product'
+// import {changeAddToCartOption,changeShopAddToCartOption} from './product'
+
+
 // Action creator
 export const addToCart = (data) => async(dispatch) => {
 
-  dispatch(changeAddToCartOption(data._id))
+  // dispatch(changeAddToCartOption(data._id))
+  // dispatch(changeShopAddToCartOption(data._id))
+
   // dispatch(amountCount())
   try {
     dispatch({ type: ADD_TO_CART, payload: data })

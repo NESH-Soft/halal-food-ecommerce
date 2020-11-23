@@ -5,7 +5,9 @@ import {
   GET_PRODUCTS_BY_CATEGORY,
   CHANGE_ADD_TO_CART_OPTION,
   CHANGE_ADD_TO_WISHLIST_OPTION,
-  SEARCH_PRODUCT
+  SEARCH_PRODUCT,
+  CHANGE_SHOP_ADD_TO_CART_OPTION,
+  CHANGE_SHOP_ADD_TO_WISHLIST_OPTION
 } from '../type'
 const initialState = {
   products: [],
@@ -17,20 +19,19 @@ const initialState = {
   loading: false,
 };
 const productReducer = (state = initialState, action) => {
-  const getItem = id => {
-    const product = state.products.find(item => item._id === id);
-    return product;
-  }
+
   const  changeCart = (...data)=>{
     let tempProduct = [...data]
-    const index = tempProduct.indexOf(getItem(action.payload));
+    const item = tempProduct.find(item=> item._id === action.payload)
+    const index = tempProduct.indexOf(item);
     const product = tempProduct[index];
     product.inCart = true;
     return tempProduct 
   }
   const  changeWishlist = (...data)=>{
     let tempProduct = [...data]
-    const index = tempProduct.indexOf(getItem(action.payload));
+    const item = tempProduct.find(item=> item._id === action.payload)
+    const index = tempProduct.indexOf(item);
     const product = tempProduct[index];
     product.inWishlist = true;
     return tempProduct 
@@ -69,13 +70,21 @@ const productReducer = (state = initialState, action) => {
             products:changeCart(...state.products)
           }
         
-          case CHANGE_ADD_TO_WISHLIST_OPTION:
+        case CHANGE_ADD_TO_WISHLIST_OPTION:
             return {
               ...state,
               products:changeWishlist(...state.products)
             }
-       
-
+        case CHANGE_SHOP_ADD_TO_CART_OPTION:
+              return {
+                ...state,
+                productFilterByCategory:changeCart(...state.productFilterByCategory)
+              }
+          case CHANGE_SHOP_ADD_TO_WISHLIST_OPTION:
+                return {
+                  ...state,
+                  productFilterByCategory:changeWishlist(...state.productFilterByCategory)
+                }
     default:
       return state;
   }

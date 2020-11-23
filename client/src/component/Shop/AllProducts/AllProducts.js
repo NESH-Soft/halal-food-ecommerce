@@ -6,12 +6,20 @@ import Columns from 'react-columns';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { addToCart } from '../../../redux/actions/cartAction';
-import {getProduct} from '../../../redux/actions/product';
+import {getProduct,changeShopAddToCartOption,changeShopAddToWishlistOption} from '../../../redux/actions/product';
 import { addToWishList } from '../../../redux/actions/wishlistAction';
 
 const AllProducts = () => {
     const dispatch = useDispatch();
- 
+    const dispatcher =(data)=>{
+        dispatch(addToCart(data))
+        dispatch(changeShopAddToCartOption(data._id))
+      }
+
+    const wishListDispatcher =(data)=>{
+        dispatch(addToWishList(data))
+        dispatch(changeShopAddToWishlistOption(data._id))
+      }
     // useEffect(() => {
     //     dispatch(getProductsByCategory());
     //     //eslint-disable-next-line
@@ -34,7 +42,7 @@ const AllProducts = () => {
                                 pd.inWishlist ? (
                                     <span style={{ cursor: "pointer" }} ><FontAwesomeIcon className="text-danger" icon={faHeart} /></span>
                                 ) : (
-                                        <span style={{ cursor: "pointer" }} onClick={() => dispatch(addToWishList(pd))}><FontAwesomeIcon className="text-secondary" icon={faHeart} /></span>
+                                        <span style={{ cursor: "pointer" }} onClick={() => wishListDispatcher(pd)}><FontAwesomeIcon className="text-secondary" icon={faHeart} /></span>
                                     )
 
 
@@ -49,7 +57,7 @@ const AllProducts = () => {
                     pd.inCart ? (
                         <button className="btn btn-Addtocart rounded-0 w-100" >In Card</button>
                     ) : (
-                            <button className="btn btn-Addtocart rounded-0 w-100" onClick={() => dispatch(addToCart(pd))}>Add to card</button>
+                            <button className="btn btn-Addtocart rounded-0 w-100" onClick={() =>dispatcher(pd)}>Add to card</button>
                         )
                 }
             </div>
