@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from 'react-redux';
+import {amountCount} from '../../redux/actions/cartAction'
 import Footer from '../Footer/Footer/Footer';
 import Navbar from '../Navbar/Navbar';
 
 import './Checkout.css';
 
 const Checkout = () => {
+    const dispatch = useDispatch()
 
-    const cartItem = useSelector((state) => state.cartState.cart);
-    
+useEffect(()=>{
+  dispatch(amountCount());
+  // eslint-disable-next-line
+},[]);
+    const cartState = useSelector((state) => state.cartState);
+    const cartItem  = cartState.cart;
+
+
     const [cashState, setCashState] = useState('');
     const handleCashonDelivery = () => {
         setCashState('CashOnDelivery');
@@ -120,12 +128,12 @@ const Checkout = () => {
 
                                         <div className="d-flex justify-content-between">
                                             <h6>Subtotal</h6>
-                                            <p>¥ <span>1,990</span></p>
+                                    <p>¥ <span>{cartState.cartSubTotal}</span></p>
                                         </div>
                                         <hr className="mt-0" />
                                         <div className="d-flex justify-content-between">
                                             <h6>Total</h6>
-                                            <h6>¥ <span>1,990</span></h6>
+                                    <h6>¥ <span>{cartState.cartSubTotal}</span></h6>
                                         </div>
                                         <hr />
                                         <div className="d-flex justify-content-between text-primary" style={{ borderBottom: '3px solid #397bff' }}>

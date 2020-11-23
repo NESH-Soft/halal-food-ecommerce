@@ -2,7 +2,8 @@ import {
   ADD_TO_CART,
   REMOVE_CART,
   CART_ITEM_INCREMENT,
-  CART_ITEM_DECREMENT
+  CART_ITEM_DECREMENT,
+  AMOUNT_COUNT
 } from '../type'
 const initialState = {
   cart: [],
@@ -59,6 +60,19 @@ const cartReducer = (state = initialState, action) => {
         }
     })
     }
+    case AMOUNT_COUNT :
+      const productPriceArray = state.cart.map(function (product) {
+        return product.price * product.quantity;
+    });
+
+    const totalPrice = productPriceArray.reduce(function (accumulator, currentValue) {
+        return accumulator + currentValue;;
+    }, 0);
+      return {
+        ...state,
+        cartSubTotal: totalPrice,
+        cartTotal: totalPrice
+      }
     default:
       return state;
   }

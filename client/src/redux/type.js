@@ -32,6 +32,8 @@ export const CREATE_ORDER = 'CREATE_ORDER';
 export const GET_ORDERER = 'GET_ORDERER';
 export const CANCEL_ORDERER = 'CANCEL_ORDERER';
 
+export const AMOUNT_COUNT = 'AMOUNT_COUNT';
+
 
 
 
