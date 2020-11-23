@@ -6,6 +6,7 @@ import './AboutUs.css'
 const AboutUs = () => {
     return (
         <div className="col-md-12 about-list">
+            
             <Navbar />
             <div className="row">
                 <div className="col-md-3"></div>

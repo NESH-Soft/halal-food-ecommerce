@@ -6,12 +6,26 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux';
 import './ProductView.css';
 import { addToCart } from '../../../../redux/actions/cartAction';
-import { getProduct, changeAddToCartOption } from '../../../../redux/actions/product';
-import { addToWishList } from '../../../../redux/actions/wishlistAction';
+import { getProduct, changeAddToCartOption,changeAddToWishlistOption } from '../../../../redux/actions/product';
+import { addToWishList,cha } from '../../../../redux/actions/wishlistAction';
 const ProductView = (props) => {
     const isAuthenticated = useSelector((state) => state.authState.isAuthenticated);
     const products = props.products || [];
     const dispatch = useDispatch();
+   
+const dispatcher =(data)=>{
+  dispatch(addToCart(data))
+  dispatch(changeAddToCartOption(data._id))
+
+}
+
+const wishListDispatcher =(data)=>{
+    dispatch(addToWishList(data))
+    dispatch(changeAddToWishlistOption(data._id))
+  }
+  
+
+
     const product = products.map(pd =>
         <div className="card rounded-0 mx-2 mt-2 mb-4 products-card">
             <div className="image-box">
@@ -27,7 +41,7 @@ const ProductView = (props) => {
                                 pd.inWishlist ? (
                                     <span style={{ cursor: "pointer" }} ><FontAwesomeIcon className="text-danger" icon={faHeart} /></span>
                                 ) : (
-                                        <span style={{ cursor: "pointer" }} onClick={() => dispatch(addToWishList(pd))}><FontAwesomeIcon className="text-secondary" icon={faHeart} /></span>
+                                        <span style={{ cursor: "pointer" }} onClick={() =>wishListDispatcher(pd)}><FontAwesomeIcon className="text-secondary" icon={faHeart} /></span>
                                     )
 
 
@@ -43,7 +57,7 @@ const ProductView = (props) => {
                     pd.inCart ? (
                         <button className="btn btn-Addtocart rounded-0 w-100" >In Card</button>
                     ) : (
-                            <button className="btn btn-Addtocart rounded-0 w-100" onClick={() => dispatch(addToCart(pd))}>Add to card</button>
+                            <button className="btn btn-Addtocart rounded-0 w-100" onClick={() =>dispatcher(pd) }>Add to card</button>
                         )
                 }
 

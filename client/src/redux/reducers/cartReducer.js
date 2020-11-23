@@ -40,6 +40,7 @@ const cartReducer = (state = initialState, action) => {
             _id: c._id,
             name: c.name,
             unit: c.unit,
+            stock: c.stock,
             price: c.price,
             image: c.image,
             quantity: c._id === action.payload ? c.quantity +1 : c.quantity
@@ -54,6 +55,7 @@ const cartReducer = (state = initialState, action) => {
           _id: c._id,
           name: c.name,
           unit: c.unit,
+          stock: c.stock,
           price: c.price,
           image: c.image,
           quantity: c._id === action.payload ? c.quantity - 1 : c.quantity

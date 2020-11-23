@@ -62,7 +62,7 @@ export const getProductsByCategory = (category) => async(dispatch) => {
 }
 
 export const changeAddToCartOption = (id) => async(dispatch) => {
-  
+
   try {
     
      dispatch({ type: CHANGE_ADD_TO_CART_OPTION, payload: id })
@@ -85,4 +85,24 @@ export const changeAddToWishlistOption = (id) => async(dispatch) => {
 }
 
 
+
+export const changeShopAddToCartOption = (id) => async(dispatch) => {
+  try {
+    
+     dispatch({ type: CHANGE_SHOP_ADD_TO_CART_OPTION, payload: id })
+    
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const changeShopAddToWishlistOption = (id) => async(dispatch) => {
+  try {
+    
+     dispatch({ type: CHANGE_SHOP_ADD_TO_WISHLIST_OPTION, payload: id })
+    
+  } catch (error) {
+    console.log(error);
+  }
+}
 
