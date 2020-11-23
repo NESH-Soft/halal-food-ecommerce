@@ -9,18 +9,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../../../redux/actions/cartAction';
 import { getProduct, changeAddToCartOption } from '../../../redux/actions/product';
 import { addToWishList } from '../../../redux/actions/wishlistAction';
-import { getProducts } from '../../../redux/actions/product'
+import { searchProducts } from '../../../redux/actions/product'
 import './SearchProduct.css'
 
 const SearchProduct = () => {
     const isAuthenticated = useSelector((state) => state.authState.isAuthenticated);
     const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(getProducts());
-        //eslint-disable-next-line
-    }, []);
+ 
 
-    const products = useSelector((state) => state.productState.products);
+    const data = useSelector((state) => state.productState.searchProducts);
+    const products = data || []
     const product = products.map(pd =>
         <div className="card rounded-0 mx-2 mt-2 mb-4 products-card">
             <div className="image-box">

@@ -14,13 +14,28 @@ const initialState = {
   searchProducts: [],
   productFilterByCategory:[],
   success: false,
-  loading: false
+  loading: false,
 };
 const productReducer = (state = initialState, action) => {
   const getItem = id => {
     const product = state.products.find(item => item._id === id);
     return product;
   }
+  const  changeCart = (...data)=>{
+    let tempProduct = [...data]
+    const index = tempProduct.indexOf(getItem(action.payload));
+    const product = tempProduct[index];
+    product.inCart = true;
+    return tempProduct 
+  }
+  const  changeWishlist = (...data)=>{
+    let tempProduct = [...data]
+    const index = tempProduct.indexOf(getItem(action.payload));
+    const product = tempProduct[index];
+    product.inWishlist = true;
+    return tempProduct 
+  }
+  
 
   switch(action.type){
     case GET_PRODUCTS:
@@ -48,27 +63,18 @@ const productReducer = (state = initialState, action) => {
             productFilterByCategory: action.payload
           }
         case CHANGE_ADD_TO_CART_OPTION:
-          
+         
+          return {
+            ...state,
+            products:changeCart(...state.products)
+          }
         
-              let tempProduct = [...state.products]
-              const index = tempProduct.indexOf(getItem(action.payload));
-              const product = tempProduct[index];
-              product.inCart = true;
-           
-            return{
-                products: tempProduct
-          }
-
           case CHANGE_ADD_TO_WISHLIST_OPTION:
-           
-              let tempwishProduct = [...state.products]
-              const indexx = tempwishProduct.indexOf(getItem(action.payload));
-              const p = tempwishProduct[indexx];
-              p.inWishlist = true;
-           
-            return{
-                products: tempwishProduct
-          }
+            return {
+              ...state,
+              products:changeWishlist(...state.products)
+            }
+       
 
     default:
       return state;

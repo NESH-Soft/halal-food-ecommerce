@@ -1,10 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
+import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from 'react-redux';
+import {amountCount} from '../../redux/actions/cartAction'
 import Footer from '../Footer/Footer/Footer';
 import Navbar from '../Navbar/Navbar';
-import { useForm } from "react-hook-form";
+
 import './Checkout.css';
 
 const Checkout = () => {
+    const dispatch = useDispatch()
+
+useEffect(()=>{
+  dispatch(amountCount());
+  // eslint-disable-next-line
+},[]);
+    const cartState = useSelector((state) => state.cartState);
+    const cartItem  = cartState.cart;
+
+
     const [cashState, setCashState] = useState('');
     const handleCashonDelivery = () => {
         setCashState('CashOnDelivery');
@@ -96,26 +109,31 @@ const Checkout = () => {
                                     <div className="mt-4">
                                         <div className="d-flex justify-content-between">
                                             <h5>Product</h5>
-                                            <h5>Subtitle</h5>
+                                            <h5>Subtotal</h5>
                                         </div>
                                         <hr />
-                                        {/* ata thke dynamic hobe */}
-                                        <div className="d-flex justify-content-between">
-                                            <p>alu potol  </p>
-                                            <p><span>X</span> <span>1</span></p>
-                                            <p>¥ <span>1,990</span> </p>
-                                        </div>
+
+                                        {
+                                            cartItem && cartItem.map((item,index)=>(
+                                                <div className="d-flex justify-content-between">
+                                                <p>{item.name} </p>
+                                                <p><span>X</span> <span>{item.quantity}</span></p>
+                                                <p>¥ <span>{item.price*item.quantity}</span> </p>
+                                            </div> 
+                                            ))
+                                        }
+                                     
                                         <hr className="mt-0 mb-2" />
-                                        {/* ata thke dynamic shes */}
+                                       
 
                                         <div className="d-flex justify-content-between">
-                                            <h6>Subtitle</h6>
-                                            <p>¥ <span>1,990</span></p>
+                                            <h6>Subtotal</h6>
+                                    <p>¥ <span>{cartState.cartSubTotal}</span></p>
                                         </div>
                                         <hr className="mt-0" />
                                         <div className="d-flex justify-content-between">
                                             <h6>Total</h6>
-                                            <h6>¥ <span>1,990</span></h6>
+                                    <h6>¥ <span>{cartState.cartSubTotal}</span></h6>
                                         </div>
                                         <hr />
                                         <div className="d-flex justify-content-between text-primary" style={{ borderBottom: '3px solid #397bff' }}>
