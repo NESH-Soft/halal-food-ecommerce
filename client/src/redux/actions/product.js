@@ -27,7 +27,7 @@ export const getSpecialProducts = () => async(dispatch) => {
     console.log(error);
   }
 } 
-export const searchProducts = (data) => async(dispatch) => {
+export const getSearchProduct = (data) => async(dispatch) => {
   try {
     const  products  = await api.searchProducts(data);
     dispatch({ type: SEARCH_PRODUCT, payload: products })

@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
+import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from 'react-redux';
 import Footer from '../Footer/Footer/Footer';
 import Navbar from '../Navbar/Navbar';
-import { useForm } from "react-hook-form";
+
 import './Checkout.css';
 
 const Checkout = () => {
+
+    const cartItem = useSelector((state) => state.cartState.cart);
+    
     const [cashState, setCashState] = useState('');
     const handleCashonDelivery = () => {
         setCashState('CashOnDelivery');
@@ -96,20 +101,25 @@ const Checkout = () => {
                                     <div className="mt-4">
                                         <div className="d-flex justify-content-between">
                                             <h5>Product</h5>
-                                            <h5>Subtitle</h5>
+                                            <h5>Subtotal</h5>
                                         </div>
                                         <hr />
-                                        {/* ata thke dynamic hobe */}
-                                        <div className="d-flex justify-content-between">
-                                            <p>alu potol  </p>
-                                            <p><span>X</span> <span>1</span></p>
-                                            <p>¥ <span>1,990</span> </p>
-                                        </div>
+
+                                        {
+                                            cartItem && cartItem.map((item,index)=>(
+                                                <div className="d-flex justify-content-between">
+                                                <p>{item.name} </p>
+                                                <p><span>X</span> <span>{item.quantity}</span></p>
+                                                <p>¥ <span>{item.price*item.quantity}</span> </p>
+                                            </div> 
+                                            ))
+                                        }
+                                     
                                         <hr className="mt-0 mb-2" />
-                                        {/* ata thke dynamic shes */}
+                                       
 
                                         <div className="d-flex justify-content-between">
-                                            <h6>Subtitle</h6>
+                                            <h6>Subtotal</h6>
                                             <p>¥ <span>1,990</span></p>
                                         </div>
                                         <hr className="mt-0" />

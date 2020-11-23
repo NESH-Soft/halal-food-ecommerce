@@ -6,6 +6,10 @@ import {
 } from '../type'
 const initialState = {
   cart: [],
+  cartSubTotal:0,
+  cartTax:0,
+  cartTotal:0,
+  cartShipping:0
 
 };
 const cartReducer = (state = initialState, action) => {

@@ -16,7 +16,7 @@ const Navbar = () => {
     const isAuthenticated = useSelector((state) => state.authState.isAuthenticated);
     const cartItem = useSelector((state) => state.cartState.cart);
     const wishList = useSelector((state) => state.wishListState.wishList);
-    console.log(wishList)
+    
 
     return (
         <div className="container-fluid back fixed-top" >

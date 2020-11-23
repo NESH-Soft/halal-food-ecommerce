@@ -14,7 +14,7 @@ const initialState = {
   searchProducts: [],
   productFilterByCategory:[],
   success: false,
-  loading: false
+  loading: false,
 };
 const productReducer = (state = initialState, action) => {
   const getItem = id => {
