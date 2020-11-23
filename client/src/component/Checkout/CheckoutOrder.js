@@ -58,25 +58,26 @@ const CheckoutOrder = () => {
                 </div>
                 {
                     cashState == 'CreditCard' ? (<div className="creditCard">
-                    <p>Pay With Creadit Card</p>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Card Number<span>*</span> </label>
-                        <input type="number" class="form-control" id="exampleInputEmail1" placeholder="1234 1234 1234 1234" aria-describedby="emailHelp" />
-                    </div>
-                    <div className="row">
-                        <div class="col-md-6 form-group">
-                            <label for="exampleInputPassword1">Expired Date<span>*</span> </label>
-                            <input type="number" class="form-control" placeholder="MM/YY" id="exampleInputPassword1" />
+                        <p>Pay With Creadit Card</p>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Card Number<span>*</span> </label>
+                            <input type="number" class="form-control" id="exampleInputEmail1" placeholder="1234 1234 1234 1234" aria-describedby="emailHelp" />
                         </div>
-                        <div class="col-md-6 form-group">
-                            <label for="exampleInputPassword1">Card Code(CVC)<span>*</span> </label>
-                            <input type="number" class="form-control" placeholder="CVC" id="exampleInputPassword1" />
+                        <div className="row">
+                            <div class="col-md-6 form-group">
+                                <label for="exampleInputPassword1">Expired Date<span>*</span> </label>
+                                <input type="number" class="form-control" placeholder="MM/YY" id="exampleInputPassword1" />
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label for="exampleInputPassword1">Card Code(CVC)<span>*</span> </label>
+                                <input type="number" class="form-control" placeholder="CVC" id="exampleInputPassword1" />
+                            </div>
                         </div>
-                    </div>
-                </div>) : ''
+                    </div>) : ''
                 }
-                
+
             </div>
+
 
         </div>
     );

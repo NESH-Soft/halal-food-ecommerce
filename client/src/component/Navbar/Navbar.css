@@ -36,8 +36,6 @@ nav .nav-item .other-link:hover{
     padding: 4px 8px;
     border-radius: 50%;
     font-size: 11px;
-
-
   }
 @media only screen and (max-width: 700px) and (min-width: 100px)  {
     .back{

@@ -83,7 +83,7 @@ const Navbar = () => {
                     </nav>
                 </div>
                 <div className="col-md-2">
-                    <ul className="row list-unstyled">
+                    <ul className="row list-unstyled float-right mr-2">
                         <li className="">
                             {isAuthenticated ? (
                                 <Link to="/wish-list" className="text-decoration-none text-danger "><FontAwesomeIcon icon={faHeart} style={{ fontSize: '22px' }} />{wishList.length ? (<span className="wishListCountStyle">{wishList.length}</span>) : null}</Link>
