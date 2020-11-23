@@ -31,18 +31,30 @@ const AllProducts = () => {
                         <h6 style={{ backgroundColor: '#7FFF00', width: '40%', padding: '0px 10px',borderRadius:"10px" }} >¥{pd.specialPrice}</h6>
                         {
                             isAuthenticated ? (
-                                <span style={{ cursor: "pointer" }} onClick={() => dispatch(addToWishList(pd))}><FontAwesomeIcon className="text-danger" icon={faHeart} /></span>
+                                pd.inWishlist ? (
+                                    <span style={{ cursor: "pointer" }} ><FontAwesomeIcon className="text-danger" icon={faHeart} /></span>
+                                ) : (
+                                        <span style={{ cursor: "pointer" }} onClick={() => dispatch(addToWishList(pd))}><FontAwesomeIcon className="text-secondary" icon={faHeart} /></span>
+                                    )
+
+
                             ) : (
-                                    <Link to="/login"  ><FontAwesomeIcon className="text-danger" icon={faHeart} /></Link>
+                                    <Link to="/login"  ><FontAwesomeIcon className="text-secondary" icon={faHeart} /></Link>
                                 )
                         }
-
                     </div>
                     <span><del className="text-secondary">¥{pd.price}</del></span>
                 </div>
-                <button className="btn btn-Addtocart rounded-0 w-100" onClick={() => dispatch(addToCart(pd))}>Add to card</button>
+                {
+                    pd.inCart ? (
+                        <button className="btn btn-Addtocart rounded-0 w-100" >In Card</button>
+                    ) : (
+                            <button className="btn btn-Addtocart rounded-0 w-100" onClick={() => dispatch(addToCart(pd))}>Add to card</button>
+                        )
+                }
             </div>
         </div>);
+
     var queries = [
         {
             columns: 3,
