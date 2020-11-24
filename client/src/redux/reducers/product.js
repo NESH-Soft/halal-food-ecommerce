@@ -35,6 +35,7 @@ const productReducer = (state = initialState, action) => {
     const index = tempProduct.indexOf(item);
     const product = tempProduct[index];
     product.inWishlist = true;
+    console.log(product)
     return tempProduct 
   }
   
