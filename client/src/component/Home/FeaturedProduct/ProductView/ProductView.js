@@ -55,9 +55,9 @@ const wishListDispatcher =(data)=>{
                 </div>
                 {
                     pd.inCart ? (
-                        <button className="btn btn-Addtocart rounded-0 w-100" >In Card</button>
+                        <button className="btn btn-Addtocart rounded-0 w-100" >In Cart</button>
                     ) : (
-                            <button className="btn btn-Addtocart rounded-0 w-100" onClick={() =>dispatcher(pd) }>Add to card</button>
+                            <button className="btn btn-Addtocart rounded-0 w-100" onClick={() =>dispatcher(pd) }>Add to cart</button>
                         )
                 }
 

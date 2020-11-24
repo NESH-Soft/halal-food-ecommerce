@@ -4,7 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import './WishList.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { getWishList, removeWishList } from '.././../redux/actions/wishlistAction';
+import { getWishList, removeWishList,changeAddToCartOptionInWishlist} from '.././../redux/actions/wishlistAction';
+import {addToCart} from '../../redux/actions/cartAction'
 import Footer from '../Footer/Footer/Footer';
 
 const WishList = () => {
@@ -15,6 +16,12 @@ const WishList = () => {
         dispatch(getWishList());
         //eslint-disable-next-line
     }, []);
+
+    const dispatcher =(data)=>{
+        dispatch(addToCart(data))
+        dispatch(changeAddToCartOptionInWishlist(data._id))
+      
+      }
 
     const wishList = useSelector((state) => state.wishListState.wishList);
 
@@ -56,7 +63,15 @@ const WishList = () => {
                                             <td className="py-3">
                                                 <div className="row">
                                                     <div className="col-md-6">
-                                                        <span><FontAwesomeIcon className="text-dark" icon={faCartPlus} /></span>
+                                                    {
+                    item.inCart ? (
+                        <button className="btn btn-Addtocart rounded-0" >In Card</button>
+                    ) : (
+                        <span onClick={() =>dispatcher(item) }><FontAwesomeIcon className="text-dark" icon={faCartPlus} /></span>
+                          
+                        )
+                }
+                                                        
                                                     </div>
                                                     <div className="col-md-6">
                                                         <span style={{ cursor: "pointer" }} onClick={() => dispatch(removeWishList(item._id))}><FontAwesomeIcon className="text-danger" icon={faTrash} /></span>
