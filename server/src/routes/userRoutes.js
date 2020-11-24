@@ -12,7 +12,8 @@ import {
 
 const router = express.Router();
 
-router.route('/').post(signInUser).post(signupUser);
+router.route('/login').post(signInUser);
+router.route('/register').post(signupUser);
 router.route('/me').get(auth.protectUser, getUser);
 
 router.route('/verify/:registerToken').get(verifyUser);

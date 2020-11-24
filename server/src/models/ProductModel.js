@@ -11,17 +11,26 @@ const productSchema = mongoose.Schema({
     type: Number,
     default: 0,
   },
+  specialPrice: {
+    type: Number,
+    default: 0,
+  },
   stock: {
     type: Number,
     default: 0,
   },
+  inWishlist: {
+    type: Boolean,
+    default: false,
+  },
+  unit: String,
+  inCart: {
+    type: Boolean,
+    default: false,
+  },
   quantity: {
     type: Number,
     default: 1,
-  },
-  available: {
-    type: Boolean,
-    default: false,
   },
   description: {
     type: String,
