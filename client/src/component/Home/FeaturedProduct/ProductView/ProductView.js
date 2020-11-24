@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './ProductView.css';
 import { addToCart } from '../../../../redux/actions/cartAction';
 import { getProduct, changeAddToCartOption,changeAddToWishlistOption } from '../../../../redux/actions/product';
-import { addToWishList,cha } from '../../../../redux/actions/wishlistAction';
+import { addToWishList } from '../../../../redux/actions/wishlistAction';
 const ProductView = (props) => {
     const isAuthenticated = useSelector((state) => state.authState.isAuthenticated);
     const products = props.products || [];

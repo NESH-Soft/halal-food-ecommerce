@@ -7,7 +7,8 @@ import {
   CHANGE_ADD_TO_WISHLIST_OPTION,
   SEARCH_PRODUCT,
   CHANGE_SHOP_ADD_TO_CART_OPTION,
-  CHANGE_SHOP_ADD_TO_WISHLIST_OPTION
+  CHANGE_SHOP_ADD_TO_WISHLIST_OPTION,
+  CHANGE_SPACIALPRODUCTS_ADD_TO_CART
 } from '../type'
 const initialState = {
   products: [],
@@ -85,6 +86,11 @@ const productReducer = (state = initialState, action) => {
                   ...state,
                   productFilterByCategory:changeWishlist(...state.productFilterByCategory)
                 }
+          case CHANGE_SPACIALPRODUCTS_ADD_TO_CART:
+                  return {
+                    ...state,
+                    specialProducts:changeCart(...state.specialProducts)
+                  }
     default:
       return state;
   }
