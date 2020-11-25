@@ -14,12 +14,12 @@ export const getWishList = asyncHandler(async (req, res) => {
 });
 
 export const addWishList = asyncHandler(async (req, res) => {
-  const wishlistObj = { user: req.user._id, product: req.body };
+  const wishlistObj = { user: req.user._id, productId: req.body._id };
   const newWishList = await addWishListServices(wishlistObj);
   if (newWishList) {
-    return res.status(201).json({ success: true, newWishList, msg: 'Wishlist added successfully' });
+    return res.status(201).json({ success: true, wishList: newWishList.wishList, msg: 'Wishlist added successfully' });
   }
-  throw NotFound('WishList not found');
+  throw new NotFound('WishList not found');
 });
 
 export const deleteWishList = asyncHandler(async (req, res) => {
