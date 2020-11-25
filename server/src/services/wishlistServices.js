@@ -14,8 +14,8 @@ export const addWishListServices = async (wishList) => {
     { $push: { wishList: wishList.productId } },
     { new: true },
   );
-  const addedProduct = await Product.findById(wishList.productId);
-  return addedProduct;
+  // const addedProduct = await Product.findById(wishList.productId);
+  return wishList.productId;
 };
 
 export const deleteWishListServices = async (id) => {
