@@ -7,9 +7,9 @@ import asyncHandler from '../utils/async';
 import { NotFound } from '../utils/error';
 
 export const getWishList = asyncHandler(async (req, res) => {
-  const _id = req.user.Id;
+  const _id = req.user.id;
   const wishList = await getWishListServices(_id);
-  if (!wishList.length) return res.status(200).json({ success: true, msg: 'No wishlist created yet' });
+  if (!wishList) return res.status(200).json({ success: true, msg: 'No wishlist created yet' });
   return res.status(200).json({ success: true, wishList, msg: 'wishList fetch' });
 });
 

@@ -3,7 +3,7 @@ import models from '../models/index';
 const { WishList } = models;
 
 export const getWishListServices = async (id) => {
-  const wishList = await WishList.findById(id);
+  const wishList = await WishList.findOne({ user: id });
   return wishList;
 };
 
