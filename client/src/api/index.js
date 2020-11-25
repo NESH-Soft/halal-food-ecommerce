@@ -61,10 +61,10 @@ export const getProductsByCategory = async (category) => {
 }
 
 
-export const addToWishList = async (wishItem) => {
+export const addToWishList = async (_id) => {
   
   
-  const response = await axios.post(`/api/wishlist`, wishItem, config);
+  const response = await axios.post(`/api/wishlist`, _id, config);
   //fakeWishlist.push(wishItem)
   return response.data;
   
