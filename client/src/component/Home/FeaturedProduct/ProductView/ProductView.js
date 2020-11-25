@@ -6,29 +6,28 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux';
 import './ProductView.css';
 import { addToCart,removeCart } from '../../../../redux/actions/cartAction';
-import { getProduct, changeAddToCartOption,changeAddToWishlistOption } from '../../../../redux/actions/product';
-import { addToWishList } from '../../../../redux/actions/wishlistAction';
+import { getProduct } from '../../../../redux/actions/product';
+import { addToWishList,removeWishList} from '../../../../redux/actions/wishlistAction';
 const ProductView = (props) => {
+    const dispatch = useDispatch()
+    const products = props.products || [];
     const isAuthenticated = useSelector((state) => state.authState.isAuthenticated);
-
     const cartItem =  useSelector((state) => state.cartState.cart);
-
+    const wishList = useSelector((state) => state.wishListState.wishList);
+   
+    // include all productId from cart state
     const cartItemArray = cartItem.map(function (product) {
         return product._id
     });
 
-    const wishList = useSelector((state) => state.wishListState.wishList);
+     // include all productId from wishlist state
     const wishListItemArray = wishList.map(function (item) {
         return item._id
     });
-    console.log(wishListItemArray)
 
-    const products = props.products || [];
-    const dispatch = useDispatch();
-   
 
   
-
+   
 
     const product = products.map(pd =>
         <div className="card rounded-0 mx-2 mt-2 mb-4 products-card">
@@ -43,7 +42,7 @@ const ProductView = (props) => {
                         {
                             isAuthenticated ? (
                                 wishListItemArray.includes(pd._id)? (
-                                    <span style={{ cursor: "pointer" }} ><FontAwesomeIcon className="text-danger" icon={faHeart} /></span>
+                                    <span style={{ cursor: "pointer" }} onClick={() =>dispatch(removeWishList(pd._id))}><FontAwesomeIcon className="text-danger" icon={faHeart} /></span>
                                 ) : (
                                         <span style={{ cursor: "pointer" }} onClick={() =>dispatch(addToWishList(pd._id))}><FontAwesomeIcon className="text-secondary" icon={faHeart} /></span>
                                     )
@@ -82,14 +81,10 @@ const ProductView = (props) => {
                          
                           onClick={() =>dispatch(addToCart(pd)) }
                         >
-                            add to cart
+                            Add to cart
                             </button>
                       )
-                    // pd.inCart ? (
-                    //     <button className="btn btn-Addtocart rounded-0 w-100" >In Cart</button>
-                    // ) : (
-                    //         <button className="btn btn-Addtocart rounded-0 w-100" onClick={() =>dispatcher(pd) }>Add to cart</button>
-                    //     )
+                  
                 }
 
             </div>

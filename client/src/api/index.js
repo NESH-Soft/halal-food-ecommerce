@@ -51,12 +51,12 @@ export const getCategory = async () => {
 
 
 export const getProductsByCategory = async (category) => {
+  console.log(category)
   if(!category){
-    return allProducts;
+    const response = await axios.get('/api/product');
+    return response.data.products;
   }
   const response = await axios.get(`/api/product/filter/${category}`);
-  // const products = allProducts.filter(product=> product.category === category.category)
-
   return response.data.products;
 }
 
@@ -66,6 +66,7 @@ export const addToWishList = async (_id) => {
   
   const response = await axios.post(`/api/wishlist`, _id, config);
   //fakeWishlist.push(wishItem)
+
   return response.data;
   
 }
@@ -77,9 +78,9 @@ export const getWishList = async () => {
 }
 
 export const removeWishList = async (id) => {
-  const response = await axios.delete(`/api/wishlist${id}`);
+  const response = await axios.delete(`/api/wishlist/${id}`);
   // const removedWishItem = fakeWishlist.filter(w=>w._id !== id)
-  return response.data.deletedWishList._id;
+  return response.data;
 
 }
 

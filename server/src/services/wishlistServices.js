@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
 import models from '../models/index';
 
 const { User, Product } = models;
@@ -14,11 +13,16 @@ export const addWishListServices = async (wishList) => {
     { $push: { wishList: wishList.productId } },
     { new: true },
   );
-  // const addedProduct = await Product.findById(wishList.productId);
-  return wishList.productId;
+  const addedProduct = await Product.findById(wishList.productId);
+  return addedProduct;
 };
 
-export const deleteWishListServices = async (id) => {
-  const deletedWishList = User.findByIdAndRemove(id);
-  return deletedWishList;
+export const deleteWishListServices = async (userId, productId) => {
+  await User.findByIdAndUpdate(
+    { _id: userId },
+    { $pull: { wishList: productId } },
+    { new: true },
+  );
+  // const addedProduct = await Product.findById(wishList.productId);
+  return productId;
 };

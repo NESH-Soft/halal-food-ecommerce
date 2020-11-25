@@ -3,12 +3,8 @@ import {
   GET_PRODUCT,
   GET_SPECIAL_PRODUCT,
   GET_PRODUCTS_BY_CATEGORY,
-  CHANGE_ADD_TO_CART_OPTION,
-  CHANGE_ADD_TO_WISHLIST_OPTION,
   SEARCH_PRODUCT,
-  CHANGE_SHOP_ADD_TO_CART_OPTION,
-  CHANGE_SHOP_ADD_TO_WISHLIST_OPTION,
-  CHANGE_SPACIALPRODUCTS_ADD_TO_CART
+
 } from '../type'
 const initialState = {
   products: [],
@@ -21,24 +17,6 @@ const initialState = {
 };
 const productReducer = (state = initialState, action) => {
 
-  const  changeCart = (...data)=>{
-    let tempProduct = [...data]
-    const item = tempProduct.find(item=> item._id === action.payload)
-    const index = tempProduct.indexOf(item);
-    const product = tempProduct[index];
-    product.inCart = true;
-    return tempProduct 
-  }
-  const  changeWishlist = (...data)=>{
-    let tempProduct = [...data]
-    const item = tempProduct.find(item=> item._id === action.payload)
-    const index = tempProduct.indexOf(item);
-    const product = tempProduct[index];
-    product.inWishlist = true;
-    console.log(product)
-    return tempProduct 
-  }
-  
 
   switch(action.type){
     case GET_PRODUCTS:
@@ -65,33 +43,7 @@ const productReducer = (state = initialState, action) => {
           return {
             productFilterByCategory: action.payload
           }
-        case CHANGE_ADD_TO_CART_OPTION:
-         
-          return {
-            ...state,
-            products:changeCart(...state.products)
-          }
-        
-        case CHANGE_ADD_TO_WISHLIST_OPTION:
-            return {
-              ...state,
-              products:changeWishlist(...state.products)
-            }
-        case CHANGE_SHOP_ADD_TO_CART_OPTION:
-              return {
-                ...state,
-                productFilterByCategory:changeCart(...state.productFilterByCategory)
-              }
-          case CHANGE_SHOP_ADD_TO_WISHLIST_OPTION:
-                return {
-                  ...state,
-                  productFilterByCategory:changeWishlist(...state.productFilterByCategory)
-                }
-          case CHANGE_SPACIALPRODUCTS_ADD_TO_CART:
-                  return {
-                    ...state,
-                    specialProducts:changeCart(...state.specialProducts)
-                  }
+
     default:
       return state;
   }

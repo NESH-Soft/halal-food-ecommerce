@@ -4,8 +4,8 @@ import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useDispatch, useSelector } from 'react-redux';
-import {getSpecialProducts,changeSpecialProductsAddToCartOption} from '../../../redux/actions/product';
-import {addToCart} from '../../../redux/actions/cartAction'
+import {getSpecialProducts} from '../../../redux/actions/product';
+import {addToCart,removeCart} from '../../../redux/actions/cartAction'
 const responsive = {
     superLargeDesktop: {
         // the naming can be any, depends on you.
@@ -33,38 +33,55 @@ const ShopCarousel = () => {
         //eslint-disable-next-line
       },[]);
   
-    const dispatcher =(data)=>{
-        dispatch(addToCart(data))
-        dispatch(changeSpecialProductsAddToCartOption(data._id))
-      }
-
-  
     const data = useSelector((state) => state.productState.specialProducts);
-const specialProducts = data || []
-    
+    const specialProducts = data || []
+
+    const cartItem =  useSelector((state) => state.cartState.cart)
+       // include all productId from cart state
+       const cartItemArray = cartItem.map(function (product) {
+        return product._id
+    });
+
     return (
         <Carousel responsive={responsive}>
 
             {
-                specialProducts.map((product,index)=>(
+                specialProducts.map((pd,index)=>(
                     <div class="card mx-2">
-                    <img class="card-img-top" style={{ height: '120px' }} src={product.image} alt="" />
+                    <img class="card-img-top" style={{ height: '120px' }} src={pd.image} alt="" />
                     <div class="card-body">
-                        <p class="card-title">{product.name}</p>
+                        <p class="card-title">{pd.name}</p>
                         <div className="d-flex justify-content-between">
-                            <p className="text-muted"><del>$<span>{product.price}</span> </del> </p>
-                            <h6>$<span>{product.specialPrice}</span> </h6>
+                            <p className="text-muted"><del>$<span>{pd.price}</span> </del> </p>
+                            <h6>$<span>{pd.specialPrice}</span> </h6>
     
                         </div>
                         {
-                    product.inCart ? (
-                        <button className="btn btn-Addtocart rounded-0 w-100" >In Card</button>
-                    ) : (
-                            <button className="btn btn-Addtocart rounded-0 w-100" onClick={() =>dispatcher(product)}>Add to card</button>
-                        )
-                }
-                    </div>
-                </div>
+
+cartItemArray.includes(pd._id)? (
+           <button
+             disabled={
+               pd.stock <= 0 
+             }
+             className="btn btn-Addtocart rounded-0 w-100"
+             onClick={() => dispatch(removeCart(pd._id))}
+           >
+               Remove from cart
+               </button>
+         ) : (
+           <button 
+             disabled={
+               pd.stock <= 0 
+             }
+             className="btn btn-Addtocart rounded-0 w-100"
+             onClick={() =>dispatch(addToCart(pd)) }
+           >
+               Add to cart
+               </button>
+         )
+   }
+            </div>
+            </div>
                 ))
             }
        

@@ -9,7 +9,8 @@ import './Navbar.css'
 import { Link } from "react-router-dom";
 import Category from '../Category/Category';
 import Search from '../Search/Search/Search';
-import { logout, loadUser } from '../../redux/actions/authAction'
+import { logout, loadUser } from '../../redux/actions/authAction';
+import {getWishList} from '../../redux/actions/wishlistAction'
 const Navbar = () => {
 
 
@@ -18,7 +19,8 @@ const Navbar = () => {
         if(localStorage.token){
             dispatch(loadUser())
         }
-
+        dispatch(getWishList());
+// eslint-disable-next-line
     },[])
     const isAuthenticated = useSelector((state) => state.authState.isAuthenticated);
     const cartItem = useSelector((state) => state.cartState.cart);
