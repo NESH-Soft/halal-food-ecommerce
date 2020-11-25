@@ -1,19 +1,21 @@
+import mongoose from 'mongoose';
 import models from '../models/index';
 
-const { User } = models;
+const { User, Product } = models;
 
 export const getWishListServices = async (id) => {
-  const wishList = await User.findById(id).selected('wishList').populate();
-  return wishList;
+  const wishList = await User.findById(id).populate('wishList');
+  return wishList.wishList;
 };
 
 export const addWishListServices = async (wishList) => {
-  const userWishList = User.findByIdAndUpdate(
+  await User.findByIdAndUpdate(
     { _id: wishList.user },
-    { $push: { wishList: wishList.product } },
+    { $push: { wishList: wishList.productId } },
+    { new: true },
   );
-  const newWishList = await User.findById(wishList.user).populate().select('wishList');
-  return newWishList;
+  const addedProduct = await Product.findById(wishList.productId);
+  return addedProduct;
 };
 
 export const deleteWishListServices = async (id) => {
