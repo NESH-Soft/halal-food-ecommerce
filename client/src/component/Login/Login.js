@@ -2,12 +2,12 @@ import React,{useEffect} from 'react';
 import { withRouter,Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from 'react-redux';
-import {signIn,loadUser} from '../../redux/actions/authAction'
+import {signIn} from '../../redux/actions/authAction'
 const Login = (props) => {
     const dispatch = useDispatch();
     const isAuthenticated = useSelector((state) => state.authState.isAuthenticated);
     useEffect(() => {
-        dispatch(loadUser());
+       
         if(isAuthenticated){
           props.history.push('/my-account');
         }

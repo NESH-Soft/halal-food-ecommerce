@@ -11,6 +11,7 @@ export const addToWishList = (wishItem) => async(dispatch) => {
  
   try {
     const  wishList  = await api.addToWishList(wishItem);
+    console.log(wishList)
     dispatch({ type: ADD_TO_WISHLIST, payload: wishList })
   } catch (error) {
     console.log(error);

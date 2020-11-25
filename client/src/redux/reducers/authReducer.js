@@ -34,6 +34,7 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         user: action.payload.user,
+        isAuthenticated: action.payload.success,
       }
       case REGISTRATION_SUCCESS:
         return {

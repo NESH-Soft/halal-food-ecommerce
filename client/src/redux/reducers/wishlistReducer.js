@@ -22,12 +22,12 @@ const wishListReducer = (state = initialState, action) => {
     case GET_WISHLIST:
       return {
       
-        wishList:  action.payload
+        wishList:  action.payload.wishList
       }
     case ADD_TO_WISHLIST:
       return {
     
-        wishList: [...state.wishList, action.payload]
+        wishList: action.payload.newWishList
       }
     case REMOVE_WISHLIST:
       return {
@@ -36,7 +36,7 @@ const wishListReducer = (state = initialState, action) => {
       }
       case CHANGE_ADD_TO_CART_IN_WISHLIST:
         return {
-          ...state,
+
           wishList:changeCart(...state.wishList)
         }
   

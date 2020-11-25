@@ -66,13 +66,13 @@ export const addToWishList = async (wishItem) => {
   
   const response = await axios.post(`/api/wishlist`, wishItem, config);
   //fakeWishlist.push(wishItem)
-  return response.data.newWishList;
+  return response.data;
   
 }
 
 export const getWishList = async () => {
   const response = await axios.get(`/api/wishlist`);
-  return response.data.wishList;
+  return response.data;
   
 }
 
