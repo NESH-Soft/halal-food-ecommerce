@@ -7,10 +7,10 @@ import {
 import * as api from '../../api';
 
 // Action creator
-export const addToWishList = (wishItem) => async(dispatch) => {
+export const addToWishList = (_id) => async(dispatch) => {
  
   try {
-    const  wishList  = await api.addToWishList(wishItem);
+    const  wishList  = await api.addToWishList({_id});
     console.log(wishList)
     dispatch({ type: ADD_TO_WISHLIST, payload: wishList })
   } catch (error) {
