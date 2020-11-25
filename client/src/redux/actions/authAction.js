@@ -8,13 +8,14 @@ import {
   REGISTRATION_VERIFY,
 } from '../type'
 import * as api from '../../api';
+import setAuthToken from '../../utils/setAuthToken'
 
 // Action creator
 export const signIn = (data) => async(dispatch) => {
-  console.log(data)
   try {
-    const  token  = await api.signIn(data);
-    dispatch({ type: SIGN_IN_SUCCESS, payload: token })
+    const  res  = await api.signIn(data);
+    console.log(res.token)
+    dispatch({ type: SIGN_IN_SUCCESS, payload: res })
   } catch (error) {
     console.log(error);
   }
@@ -38,9 +39,12 @@ export const registration = (data) => async(dispatch) => {
 //   }
 // } 
 export const loadUser = () => async(dispatch) => {
+  if(localStorage.token){
+    setAuthToken(localStorage.token);
+  }
   try {
-    const  user  = await api.loadUser();
-    dispatch({ type: LOAD_USER, payload: user })
+    const  res  = await api.loadUser();
+    dispatch({ type: LOAD_USER, payload: res })
   } catch (error) {
     console.log(error);
   }

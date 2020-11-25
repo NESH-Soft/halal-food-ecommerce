@@ -22,12 +22,9 @@ export const getProduct = async (id) => {
 
 export const signIn = async (data) => {
   // const response = users.find((user)=> user.email === data.email)
-  const response = await axios.get(`/api/user/login`, data, config);
-  if(response){
-    // const token = "sdauisr78357634whebfiweurfkcsjhfe7r476e4dgdfg";
-    // const success= true
-    return response.data;
-  }
+  const response = await axios.post(`/api/user/login`, data, config);
+  return response.data;
+
   // const response = await axios.get(`/api/product/${id}`);
 }
 
@@ -40,9 +37,8 @@ export const registration = async (data) => {
 }
 
 export const loadUser = async () => {
-  // const demouser = {name:"demouser",email:"emo@gmail.com",password:"123456"}
   const response = await axios.get(`/api/user/me`);
-  return response.data.user;
+  return response.data;
 }
 
 

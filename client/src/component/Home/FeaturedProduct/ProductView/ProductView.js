@@ -5,24 +5,28 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux';
 import './ProductView.css';
-import { addToCart } from '../../../../redux/actions/cartAction';
+import { addToCart,removeCart } from '../../../../redux/actions/cartAction';
 import { getProduct, changeAddToCartOption,changeAddToWishlistOption } from '../../../../redux/actions/product';
 import { addToWishList } from '../../../../redux/actions/wishlistAction';
 const ProductView = (props) => {
     const isAuthenticated = useSelector((state) => state.authState.isAuthenticated);
+
+    const cartItem =  useSelector((state) => state.cartState.cart);
+
+    const cartItemArray = cartItem.map(function (product) {
+        return product._id
+    });
+
+    const wishList = useSelector((state) => state.wishListState.wishList);
+    const wishListItemArray = wishList.map(function (item) {
+        return item._id
+    });
+    console.log(wishListItemArray)
+
     const products = props.products || [];
     const dispatch = useDispatch();
    
-const dispatcher =(data)=>{
-  dispatch(addToCart(data))
-  dispatch(changeAddToCartOption(data._id))
 
-}
-
-const wishListDispatcher =(data)=>{
-    dispatch(addToWishList(data))
-    dispatch(changeAddToWishlistOption(data._id))
-  }
   
 
 
@@ -38,10 +42,10 @@ const wishListDispatcher =(data)=>{
                         <h6 style={{ backgroundColor: '#7FFF00', width: '40%', padding: '0px 10px', borderRadius: "10px" }} >¥{pd.specialPrice}</h6>
                         {
                             isAuthenticated ? (
-                                pd.inWishlist ? (
+                                wishListItemArray.includes(pd._id)? (
                                     <span style={{ cursor: "pointer" }} ><FontAwesomeIcon className="text-danger" icon={faHeart} /></span>
                                 ) : (
-                                        <span style={{ cursor: "pointer" }} onClick={() =>wishListDispatcher(pd)}><FontAwesomeIcon className="text-secondary" icon={faHeart} /></span>
+                                        <span style={{ cursor: "pointer" }} onClick={() =>dispatch(addToWishList(pd._id))}><FontAwesomeIcon className="text-secondary" icon={faHeart} /></span>
                                     )
 
 
@@ -54,11 +58,38 @@ const wishListDispatcher =(data)=>{
                     <span><del className="text-secondary">¥{pd.price}</del></span>
                 </div>
                 {
-                    pd.inCart ? (
-                        <button className="btn btn-Addtocart rounded-0 w-100" >In Cart</button>
-                    ) : (
-                            <button className="btn btn-Addtocart rounded-0 w-100" onClick={() =>dispatcher(pd) }>Add to cart</button>
-                        )
+
+             cartItemArray.includes(pd._id)? (
+                        <button
+                         
+                          disabled={
+                            pd.stock <= 0 
+                          }
+                         
+                          className="btn btn-Addtocart rounded-0 w-100"
+                          onClick={() => dispatch(removeCart(pd._id))}
+                        >
+                            Remove from cart
+                            </button>
+                      ) : (
+                        <button
+                          
+                          disabled={
+                            pd.stock <= 0 
+                          }
+                        
+                          className="btn btn-Addtocart rounded-0 w-100"
+                         
+                          onClick={() =>dispatch(addToCart(pd)) }
+                        >
+                            add to cart
+                            </button>
+                      )
+                    // pd.inCart ? (
+                    //     <button className="btn btn-Addtocart rounded-0 w-100" >In Cart</button>
+                    // ) : (
+                    //         <button className="btn btn-Addtocart rounded-0 w-100" onClick={() =>dispatcher(pd) }>Add to cart</button>
+                    //     )
                 }
 
             </div>
