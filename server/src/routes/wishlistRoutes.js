@@ -1,4 +1,5 @@
 import express from 'express';
+import auth from '../middlewares/auth';
 import {
   addWishList,
   getWishList,
@@ -7,9 +8,9 @@ import {
 
 const router = express.Router();
 
-router.route('/').get(getWishList).post(addWishList);
+router.route('/').get(auth.protectUser, getWishList).post(auth.protectUser, addWishList);
 
-router.route('/:id').delete(deleteWishList);
+router.route('/:id').delete(auth.protectUser, deleteWishList);
 
 const configure = (app) => {
   app.use('/api/wishlist', router);

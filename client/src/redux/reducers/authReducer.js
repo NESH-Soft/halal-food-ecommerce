@@ -16,10 +16,14 @@ const initialState = {
 
 };
 const authReducer = (state = initialState, action) => {
+
   switch(action.type){
+  
+
     case SIGN_IN_SUCCESS:
     case REGISTRATION_VERIFY:
-
+      localStorage.setItem('token',action.payload.token)
+      console.log( action.payload.token);
       return {
         ...state,
         isAuthenticated: true,
@@ -30,6 +34,7 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         user: action.payload.user,
+        isAuthenticated: action.payload.success,
       }
       case REGISTRATION_SUCCESS:
         return {
@@ -38,6 +43,7 @@ const authReducer = (state = initialState, action) => {
         }
 
     case LOGOUT:
+      localStorage.removeItem('token')
       return{
         isAuthenticated: false,
         user: {},

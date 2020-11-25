@@ -22,12 +22,9 @@ export const getProduct = async (id) => {
 
 export const signIn = async (data) => {
   // const response = users.find((user)=> user.email === data.email)
-  const response = await axios.get(`/api/user/login`, data, config);
-  if(response){
-    // const token = "sdauisr78357634whebfiweurfkcsjhfe7r476e4dgdfg";
-    // const success= true
-    return response.data;
-  }
+  const response = await axios.post(`/api/user/login`, data, config);
+  return response.data;
+
   // const response = await axios.get(`/api/product/${id}`);
 }
 
@@ -40,9 +37,8 @@ export const registration = async (data) => {
 }
 
 export const loadUser = async () => {
-  // const demouser = {name:"demouser",email:"emo@gmail.com",password:"123456"}
   const response = await axios.get(`/api/user/me`);
-  return response.data.user;
+  return response.data;
 }
 
 
@@ -55,35 +51,36 @@ export const getCategory = async () => {
 
 
 export const getProductsByCategory = async (category) => {
+  console.log(category)
   if(!category){
-    return allProducts;
+    const response = await axios.get('/api/product');
+    return response.data.products;
   }
   const response = await axios.get(`/api/product/filter/${category}`);
-  // const products = allProducts.filter(product=> product.category === category.category)
-
   return response.data.products;
 }
 
 
-export const addToWishList = async (wishItem) => {
+export const addToWishList = async (_id) => {
   
   
-  const response = await axios.post(`/api/wishlist`, wishItem, config);
+  const response = await axios.post(`/api/wishlist`, _id, config);
   //fakeWishlist.push(wishItem)
-  return response.data.newWishList;
+
+  return response.data;
   
 }
 
 export const getWishList = async () => {
   const response = await axios.get(`/api/wishlist`);
-  return response.data.wishList;
+  return response.data;
   
 }
 
 export const removeWishList = async (id) => {
-  const response = await axios.delete(`/api/wishlist${id}`);
+  const response = await axios.delete(`/api/wishlist/${id}`);
   // const removedWishItem = fakeWishlist.filter(w=>w._id !== id)
-  return response.data.deletedWishList._id;
+  return response.data;
 
 }
 
