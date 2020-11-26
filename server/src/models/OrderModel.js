@@ -5,10 +5,17 @@ const orderSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user',
   },
+  customer: {
+    email: String,
+  },
+  paymentId: {
+    type: String,
+  },
   cart: [
     {
       productId: String,
       quantity: Number,
+      price: Number,
     },
   ],
   shipping: {
@@ -19,6 +26,7 @@ const orderSchema = mongoose.Schema({
     type: String,
     enum: ['pending', 'active', 'delivered', 'canceled'],
   },
+  totalPrice: Number,
 },
 {
   timestamps: true,

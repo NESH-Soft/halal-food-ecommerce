@@ -1,3 +1,5 @@
+import { v4 } from 'uuid';
+import stripes from 'stripe';
 import {
   getAllOrderServices,
   findOrderById,
@@ -15,8 +17,41 @@ export const getOrders = asyncHandler(async (req, res) => {
 });
 
 export const addOrder = asyncHandler(async (req, res) => {
-  const newOrder = await addOrderServices(req.body);
-  return res.status(201).json({ success: true, newOrder, msg: 'Order added successfully' });
+  const stripe = stripes('sk_test_51HnPyBFkx0vu20iT33sYaiwBQAtCOFJADWs4x4gPJfST1NmPjkJeoeoPvENf1ISEOdobB124k0OSlYkCfLh8ohPK001Ch5ZyCz');
+  const {
+    cart,
+    totalPrice,
+    shipping,
+    token,
+  } = req.body;
+
+  const idempontencyKey = v4();
+
+  const customer = await stripe.customers.create({
+    email: token.email,
+    source: 'tok_visa',
+  });
+
+  const payment = await stripe.charges.create({
+    amount: totalPrice * 100,
+    currency: 'usd',
+    source: 'tok_visa',
+    receipt_email: token.email,
+  });
+
+  const newOrder = await addOrderServices({
+    paymentId: payment.id,
+    cart,
+    status: 'pending',
+    totalPrice,
+  });
+  return res.status(201).json({
+    success: true,
+    newOrder,
+    customer,
+    payment,
+    msg: 'Order added successfully',
+  });
 });
 
 export const deleteOrder = asyncHandler(async (req, res) => {
