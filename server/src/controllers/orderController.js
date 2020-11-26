@@ -8,7 +8,7 @@ import {
   updateOrderServices,
 } from '../services/orderService';
 import asyncHandler from '../utils/async';
-import { NotFound } from '../utils/error';
+import { BadRequest, NotFound } from '../utils/error';
 
 export const getOrders = asyncHandler(async (req, res) => {
   const order = await getAllOrderServices();
@@ -20,35 +20,60 @@ export const addOrder = asyncHandler(async (req, res) => {
   const stripe = stripes('sk_test_51HnPyBFkx0vu20iT33sYaiwBQAtCOFJADWs4x4gPJfST1NmPjkJeoeoPvENf1ISEOdobB124k0OSlYkCfLh8ohPK001Ch5ZyCz');
   const {
     cart,
-    totalPrice,
+    customer,
     shipping,
-    token,
+    card,
+    totalPrice,
   } = req.body;
+
 
   const idempontencyKey = v4();
 
-  const customer = await stripe.customers.create({
-    email: token.email,
-    source: 'tok_visa',
+  const token = await stripe.tokens.create({
+    card: {
+      number: card.cardNumber,
+      exp_month: card.expireMonth,
+      exp_year: card.expireYear,
+      cvc: card.cvc,
+    },
   });
+
+  if (!token) {
+    throw new BadRequest('Something went wrong!!');
+  }
+
+  console.log(token);
+
+  // const newCustomer = await stripe.customers.create({
+  //   email: customer.email,
+  //   source: token.id,
+  // });
 
   const payment = await stripe.charges.create({
     amount: totalPrice * 100,
     currency: 'usd',
-    source: 'tok_visa',
-    receipt_email: token.email,
+    source: token.id,
+    shipping: {
+      name: customer.firstName,
+      address: {
+        country: 'japan',
+        line1: shipping.address,
+        city: shipping.city,
+        postal_code: shipping.postalCode,
+      },
+    },
+    receipt_email: customer.email,
   });
 
-  const newOrder = await addOrderServices({
-    paymentId: payment.id,
-    cart,
-    status: 'pending',
-    totalPrice,
-  });
+  // const newOrder = await addOrderServices({
+  //   paymentId: payment.id,
+  //   cart,
+  //   status: 'pending',
+  //   totalPrice,
+  // });
   return res.status(201).json({
     success: true,
-    newOrder,
-    customer,
+    token,
     payment,
     msg: 'Order added successfully',
   });

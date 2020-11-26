@@ -16,9 +16,9 @@ export const createOrderCashOnDelivery = (order) => async(dispatch) => {
   }
 } 
 
-export const  createOrder= () => async(dispatch) => {
+export const  createOrder= (order) => async(dispatch) => {
   try {
-    const  res = await api.createOrder();
+    const  res = await api.createOrder(order);
    
     dispatch({ type: CREATE_ORDER, payload: res })
   } catch (error) {

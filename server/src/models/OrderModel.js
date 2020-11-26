@@ -11,16 +11,9 @@ const orderSchema = mongoose.Schema({
   paymentId: {
     type: String,
   },
-  cart: [
-    {
-      productId: String,
-      quantity: Number,
-      price: Number,
-    },
-  ],
+  cart: [],
   shipping: {
     type: mongoose.Schema.ObjectId,
-    ref: 'shipping',
   },
   status: {
     type: String,

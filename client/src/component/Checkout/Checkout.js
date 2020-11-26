@@ -2,8 +2,10 @@ import React, { useState,useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from 'react-redux';
 import {amountCount} from '../../redux/actions/cartAction'
+import { createOrder } from '../../redux/actions/orderAction'
 import Footer from '../Footer/Footer/Footer';
 import Navbar from '../Navbar/Navbar';
+import Payment from '../payment/Payment';
 
 import './Checkout.css';
 
@@ -14,19 +16,57 @@ useEffect(()=>{
   dispatch(amountCount());
   // eslint-disable-next-line
 },[]);
-    const cartState = useSelector((state) => state.cartState);
-    const cartItem  = cartState.cart;
+  const cartState = useSelector((state) => state.cartState);
+  const cartItem  = cartState.cart.map(pd => {
+    return {
+      name: pd.name,
+      price: pd.price,
+      quantity: pd.quantity,
+      image: pd.image,
+      specialPrice: pd.specialPrice,
+      description: pd.description,
+      category: pd.category
+    }
+  });
 
 
-    const [cashState, setCashState] = useState('');
-    const handleCashonDelivery = () => {
-        setCashState('CashOnDelivery');
-    }
-    const handleCreditCard = () => {
-        setCashState('CreditCard');
-    }
-    const { register, handleSubmit, watch, errors } = useForm();
-    const onSubmit = data => console.log(data);
+  const [cashState, setCashState] = useState('');
+  const handleCashonDelivery = () => {
+      setCashState('CashOnDelivery');
+  }
+  const handleCreditCard = () => {
+      setCashState('CreditCard');
+  }
+  const { register, handleSubmit, watch, errors } = useForm();
+
+
+
+  const onSubmit = data => {
+    const orderData = {
+    cart: cartItem,
+      shipping: {
+        address: data.address,
+        city: data.city,
+        postalCode: data.postCode,
+        region: data.region
+      },
+    customer: {
+        firstName: data.fname,
+        lastName: data.lname,
+        phone: data.phone,
+        email: data.email,
+      },
+      card: {
+        cardNumber: data.cardNumber,
+        expireMonth: data.expireMonth,
+        expireYear:data.expireYear,
+        cvc: data.cvc
+      },
+      totalPrice: cartState.cartTotal
+  };
+
+  dispatch(createOrder(orderData));
+}
 
     return (
         <div className="container-fluid">
@@ -63,6 +103,11 @@ useEffect(()=>{
                                             <label for="exampleInputEmail1">Email <span className="text-danger">*</span></label>
                                             <input name="email" ref={register({ required: true })} type="email" className="form-control " />
                                             {errors.email && <span>This field is required</span>}
+                                        </div>
+                                        <div className="form-group">
+                                            <label for="exampleInputEmail1">Phone <span className="text-danger">*</span></label>
+                                            <input name="phone" ref={register({ required: true })} type="number" className="form-control " />
+                                            {errors.phone && <span>This field is required</span>}
                                         </div>
                                         <div className="form-group">
                                             <label for="exampleInputEmail1">Country <span className="text-danger">*</span></label>
@@ -161,17 +206,21 @@ useEffect(()=>{
                                                 cashState == 'CreditCard' ? (<div className="creditCard">
                                                     <p>Pay With Creadit Card</p>
                                                     <div class="form-group">
-                                                        <label for="exampleInputEmail1">Card Number<span>*</span> </label>
-                                                        <input type="number" class="form-control" id="exampleInputEmail1" placeholder="1234 1234 1234 1234" aria-describedby="emailHelp" />
+                                                        <label htmlFor="exampleInputEmail1">Card Number<span>*</span> </label>
+                                                        <input type="number" class="form-control" ref={register({ required: true })} name='cardNumber' id="exampleInputEmail1" placeholder="1234 1234 1234 1234" aria-describedby="emailHelp" />
                                                     </div>
                                                     <div className="row">
                                                         <div class="col-md-6 form-group">
                                                             <label for="exampleInputPassword1">Expired Date<span>*</span> </label>
-                                                            <input type="number" class="form-control" placeholder="MM/YY" id="exampleInputPassword1" />
+
+                                                            <input type="number" class="form-control" name='expireMonth' ref={register({ required: true })} placeholder="Expire Month" id="exampleInputPassword1" />
+
+                                                            <input type="number" class="form-control" name='expireYear' ref={register({ required: true })} placeholder="Expire Year" id="exampleInputPassword1" />
+
                                                         </div>
                                                         <div class="col-md-6 form-group">
                                                             <label for="exampleInputPassword1">Card Code(CVC)<span>*</span> </label>
-                                                            <input type="number" class="form-control" placeholder="CVC" id="exampleInputPassword1" />
+                                                            <input type="number" class="form-control" name='cvc' ref={register({ required: true })} placeholder="CVC" id="exampleInputPassword1" />
                                                         </div>
                                                     </div>
                                                 </div>) : ''

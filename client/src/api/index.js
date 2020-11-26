@@ -93,6 +93,8 @@ export const createOrderCashOnDelivery = async (order) => {
 }
 
 export const createOrder = async (order) => {
+  const response = await axios.post('/api/order', order, config);
+  console.log(response.data);
 
   const orderReceived = {}
   return orderReceived
