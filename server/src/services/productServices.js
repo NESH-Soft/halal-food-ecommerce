@@ -3,7 +3,7 @@ import models from '../models/index';
 const { Product } = models;
 
 export const findProductById = async (id) => {
-  const product = await Product.findById(id).select('cloudinaryId');
+  const product = await Product.findById(id);
   return product;
 };
 

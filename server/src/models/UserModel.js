@@ -7,6 +7,9 @@ const userSchema = mongoose.Schema({
   email: {
     type: String,
   },
+  phone: {
+    type: Number,
+  },
   password: {
     type: String,
   },
@@ -18,6 +21,10 @@ const userSchema = mongoose.Schema({
       ref: 'product',
     },
   ],
+  order: [{
+    type: mongoose.Schema.ObjectId,
+    ref: 'order',
+  }],
 },
 
 {
