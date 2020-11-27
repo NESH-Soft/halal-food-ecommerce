@@ -29,6 +29,16 @@ export const UpdateUserServices = async (id, user) => {
   return updateUser;
 };
 
+export const addOrderService = async (id, orderId) => {
+  // eslint-disable-next-line
+  const newOrder = await User.findByIdAndUpdate(
+    { _id: id },
+    { $push: { order: orderId } },
+    { new: true },
+  );
+  return newOrder;
+};
+
 export const deleteUserServices = async (id) => {
   const user = User.findByIdAndRemove(id);
   return user;

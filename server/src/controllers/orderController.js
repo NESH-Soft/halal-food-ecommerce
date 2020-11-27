@@ -7,6 +7,10 @@ import {
   deleteOrderServices,
   updateOrderServices,
 } from '../services/orderService';
+
+import { addOrderService, createUserServices } from '../services/userServices';
+import { findProductById } from '../services/productServices';
+
 import asyncHandler from '../utils/async';
 import { BadRequest, NotFound } from '../utils/error';
 
@@ -24,8 +28,8 @@ export const addOrder = asyncHandler(async (req, res) => {
     shipping,
     card,
     totalPrice,
+    userId,
   } = req.body;
-
 
   const idempontencyKey = v4();
 
@@ -42,22 +46,20 @@ export const addOrder = asyncHandler(async (req, res) => {
     throw new BadRequest('Something went wrong!!');
   }
 
-  console.log(token);
-
   // const newCustomer = await stripe.customers.create({
   //   email: customer.email,
   //   source: token.id,
   // });
 
   const payment = await stripe.charges.create({
-    amount: totalPrice * 100,
-    currency: 'usd',
+    amount: totalPrice,
+    currency: 'jpy',
     source: token.id,
     shipping: {
-      name: customer.firstName,
+      name: customer.name,
       address: {
         country: 'japan',
-        line1: shipping.address,
+        line1: shipping.line1,
         city: shipping.city,
         postal_code: shipping.postalCode,
       },
@@ -65,15 +67,47 @@ export const addOrder = asyncHandler(async (req, res) => {
     receipt_email: customer.email,
   });
 
-  // const newOrder = await addOrderServices({
-  //   paymentId: payment.id,
-  //   cart,
-  //   status: 'pending',
-  //   totalPrice,
-  // });
+  if (payment instanceof Error) throw new BadRequest('Payment failed');
+
+  await Promise.all(cart.map(async (product) => {
+    const result = await findProductById(product._id);
+    // const updatedStock = result.stock - product.quantity;
+    result.stock -= product.quantity;
+    await result.save();
+  }));
+
+  if (userId) {
+    const newOrder = await addOrderServices({
+      paymentId: payment.id,
+      shipping,
+      user: userId,
+      cart,
+      totalPrice,
+    });
+    const orderAddedToUser = await addOrderService(userId, newOrder._id);
+    if (!orderAddedToUser) {
+      throw new BadRequest('Something went wrong!!');
+    }
+    return res.status(201).json({
+      success: true,
+      newOrder,
+      payment,
+      msg: 'Order added successfully',
+    });
+  }
+
+  const newUser = await createUserServices(customer);
+  const newOrder = await addOrderServices({
+    paymentId: payment.id,
+    shipping,
+    user: newUser._id,
+    cart,
+    totalPrice,
+  });
+
   return res.status(201).json({
     success: true,
-    token,
+    newOrder,
     payment,
     msg: 'Order added successfully',
   });

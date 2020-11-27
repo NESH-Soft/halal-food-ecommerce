@@ -19,6 +19,7 @@ useEffect(()=>{
   const cartState = useSelector((state) => state.cartState);
   const cartItem  = cartState.cart.map(pd => {
     return {
+        _id: pd._id,
       name: pd.name,
       price: pd.price,
       quantity: pd.quantity,
@@ -45,14 +46,13 @@ useEffect(()=>{
     const orderData = {
     cart: cartItem,
       shipping: {
-        address: data.address,
+        line1: data.address,
         city: data.city,
         postalCode: data.postCode,
         region: data.region
       },
     customer: {
-        firstName: data.fname,
-        lastName: data.lname,
+        name: `${data.fname} ${data.lname}`,
         phone: data.phone,
         email: data.email,
       },
@@ -62,7 +62,8 @@ useEffect(()=>{
         expireYear:data.expireYear,
         cvc: data.cvc
       },
-      totalPrice: cartState.cartTotal
+      totalPrice: cartState.cartTotal,
+      userId: '5fa54ed97b9d7025a0c7771e',
   };
 
   dispatch(createOrder(orderData));

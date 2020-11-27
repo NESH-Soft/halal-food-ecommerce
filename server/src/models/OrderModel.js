@@ -5,18 +5,19 @@ const orderSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user',
   },
-  customer: {
-    email: String,
-  },
   paymentId: {
     type: String,
   },
   cart: [],
   shipping: {
-    type: mongoose.Schema.ObjectId,
+    line1: { type: String },
+    city: { type: String },
+    postalCode: { type: String },
+    region: { type: String },
   },
   status: {
     type: String,
+    default: 'pending',
     enum: ['pending', 'active', 'delivered', 'canceled'],
   },
   totalPrice: Number,
