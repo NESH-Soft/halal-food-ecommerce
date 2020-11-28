@@ -21,6 +21,10 @@ import AboutUs from './component/AboutUs/AboutUs';
 import SearchProduct from './component/Search/SearchProduct/SearchProduct';
 import YourOrder from './component/MyAccount/YourOrder/YourOrder';
 import LoginSecurity from './component/LoginSecurity/LoginSecurity';
+import YourDetails from './component/MyAccount/YourDetails/YourDetails';
+import YourOrderItem from './component/MyAccount/YourOrder/YourOrderItem'
+
+
 
 function App() {
   return (
@@ -39,6 +43,8 @@ function App() {
           <Route exact path="/register" component={Register} />
           <Route exact path="/my-account" component={MyAccount} />
           <Route exact path="/your-orders" component={YourOrder} />
+          <Route exact path="/your-details" component={YourDetails} />
+          <Route exact path="/your-orders-items/:id" component={YourOrderItem} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/productDetails" component={ProductDetails} />
           <Route exact path="/details" component={Details} />

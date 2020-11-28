@@ -1,13 +1,16 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import {Link} from 'react-router-dom'
 import Footer from '../../Footer/Footer/Footer';
 import Navbar from '../../Navbar/Navbar';
 import './YourOrder.css'
 
 const YourOrder = () => {
+  
     const user = useSelector((state) => state.authState.user);
     const order = user.order || []
-    console.log(order)
+  
+
     return (
         <div className="col-md-12">
             <Navbar />
@@ -26,11 +29,13 @@ const YourOrder = () => {
                                 <th scope="col">Payment</th>
                                 <th scope="col">Total</th>
                                 <th scope="col">Status</th>
+                                <th scope="col">details</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
-
                             {
+
                               order && order.map((item,index)=>(
                                 <tr>
                                 <th scope="col">{index+1}</th>
@@ -39,11 +44,11 @@ const YourOrder = () => {
                               <th scope="col">{item.paymentId? 'completed' : 'uncompleted'}</th>
                               <th scope="col">{item.totalPrice}</th>
                               <th scope="col">{item.status}</th>
+                              <th scope="col"> <Link to={`/your-orders-items/${item._id}`}>click</Link></th>
+                            
                             </tr>
                               ))  
                             }
-                          
-                        
                         </tbody>
                     </table>
                 </div>
