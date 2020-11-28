@@ -120,9 +120,10 @@ export const getSpecialProducts = async () => {
 }
 
 
-export const searchProducts = async (data) => {
- 
-  return fakespecialproduct
+export const searchProducts = async (term) => {
+
+  const response = await axios.get(`/api/product/search?term=${term.searchInput}`);
+  return response.data
 }
 
 
