@@ -2,7 +2,8 @@ import {
   CREATE_ORDER_CASH_ON_DELIVERY,
   CREATE_ORDER,
   GET_ORDERER,
-  CANCEL_ORDERER
+  CANCEL_ORDERER,
+  GET_SINGLE_ORDERER
 } from '../type'
 import * as api from '../../api';
 
@@ -43,5 +44,17 @@ export const getOrder = () => async(dispatch) => {
     console.log(error);
   }
 }
+
+export const getSingleOrder = (id) => async(dispatch) => {
+  try {
+    dispatch({ type: GET_SINGLE_ORDERER, payload: id })
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
+
+
 
 
