@@ -1,16 +1,16 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import {Link} from 'react-router-dom'
 import Footer from '../../Footer/Footer/Footer';
 import Navbar from '../../Navbar/Navbar';
 import './YourOrder.css'
 
-const YourOrder = () => {
-  
-    const user = useSelector((state) => state.authState.user);
-    const order = user.order || []
-  
+const YourOrder = (props) => {
 
+  const user = useSelector((state) => state.authState.user);
+   const id = props.match.params.id
+   const allCart = user.order || []
+   const data = allCart.filter(item=> item._id === id ) || []
+   const cart = data[0].cart || []
     return (
         <div className="col-md-12">
             <Navbar />
@@ -18,34 +18,33 @@ const YourOrder = () => {
                 <div className="col-md-3"></div>
                 <div className="col-md-9 mb-5">
                     <div className="my-4" style={{ borderBottom: '3px solid #76a333' }}>
-                        <h2>Your Orders</h2>
+                        <h2>Your Orders Item</h2>
                     </div>
                     <table class="table">
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Date</th>
-                                <th scope="col">Address</th>
-                                <th scope="col">Payment</th>
-                                <th scope="col">Total</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">details</th>
-                                
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Total Price</th>
                             </tr>
                         </thead>
                         <tbody>
 
                             {
-                              order && order.map((item,index)=>(
+                              cart && cart.map((item,index)=>(
                                 <tr>
                                 <th scope="col">{index+1}</th>
-                                <th scope="col">{item.createdAt}</th>
-                              <th scope="col">{item.shipping && `${item.shipping.line1} ${item.shipping.city} - ${item.shipping.postalCode}`}</th>
-                              <th scope="col">{item.paymentId? 'completed' : 'uncompleted'}</th>
-                              <th scope="col">{item.totalPrice}</th>
-                              <th scope="col">{item.status}</th>
-                              <th scope="col"> <Link to={`/your-orders-items/${item._id}`}>click</Link></th>
-                            
+                                <th scope="col">{item.name}</th>
+                                <th scope="col"><img style={{height:"40px",width:"40px"}} src={item.image} alt={item.name}/></th>
+                                <th scope="col">{item.category}</th>
+                                <th scope="col">{item.price}</th>
+                                <th scope="col">{item.quantity}</th>
+                                <th scope="col">{item.price*item.quantity}</th>
+                               
                             </tr>
                               ))  
                             }
