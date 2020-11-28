@@ -29,21 +29,18 @@ const YourOrder = () => {
                             </tr>
                         </thead>
                         <tbody>
-
                             {
-                              order && order.map((item,index)=>(
-                                <tr>
-                                <th scope="col">{index+1}</th>
-                                <th scope="col">{item.createdAt}</th>
-                              <th scope="col">{item.shipping && `${item.shipping.line1} ${item.shipping.city} - ${item.shipping.postalCode}`}</th>
-                              <th scope="col">{item.paymentId? 'completed' : 'uncompleted'}</th>
-                              <th scope="col">{item.totalPrice}</th>
-                              <th scope="col">{item.status}</th>
-                            </tr>
-                              ))  
+                                order && order.map((item, index) => (
+                                    <tr>
+                                        <th scope="col">{index + 1}</th>
+                                        <th scope="col">{item.createdAt}</th>
+                                        <th scope="col">{item.shipping && `${item.shipping.line1} ${item.shipping.city} - ${item.shipping.postalCode}`}</th>
+                                        <th scope="col">{item.paymentId ? 'completed' : 'uncompleted'}</th>
+                                        <th scope="col">{item.totalPrice}</th>
+                                        <th scope="col">{item.status}</th>
+                                    </tr>
+                                ))
                             }
-                          
-                        
                         </tbody>
                     </table>
                 </div>
