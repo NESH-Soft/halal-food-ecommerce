@@ -1,9 +1,13 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Footer from '../../Footer/Footer/Footer';
 import Navbar from '../../Navbar/Navbar';
 import './YourOrder.css'
 
 const YourOrder = () => {
+    const user = useSelector((state) => state.authState.user);
+    const order = user.order || []
+    console.log(order)
     return (
         <div className="col-md-12">
             <Navbar />
@@ -17,30 +21,29 @@ const YourOrder = () => {
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Payment</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
+
+                            {
+                              order && order.map((item,index)=>(
+                                <tr>
+                                <th scope="col">{index+1}</th>
+                                <th scope="col">{item.createdAt}</th>
+                              <th scope="col">{item.shipping && `${item.shipping.line1} ${item.shipping.city} - ${item.shipping.postalCode}`}</th>
+                              <th scope="col">{item.paymentId? 'completed' : 'uncompleted'}</th>
+                              <th scope="col">{item.totalPrice}</th>
+                              <th scope="col">{item.status}</th>
                             </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
+                              ))  
+                            }
+                          
+                        
                         </tbody>
                     </table>
                 </div>
