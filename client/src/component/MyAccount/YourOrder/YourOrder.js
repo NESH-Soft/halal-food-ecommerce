@@ -34,8 +34,8 @@ const YourOrder = () => {
                             </tr>
                         </thead>
                         <tbody>
-
                             {
+
                               order && order.map((item,index)=>(
                                 <tr>
                                 <th scope="col">{index+1}</th>
@@ -49,8 +49,6 @@ const YourOrder = () => {
                             </tr>
                               ))  
                             }
-                          
-                        
                         </tbody>
                     </table>
                 </div>
