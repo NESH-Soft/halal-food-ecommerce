@@ -4,6 +4,7 @@ import {
   GET_PRODUCTS_BY_CATEGORY,
   GET_SPECIAL_PRODUCT,
   SEARCH_PRODUCT,
+  CLEAR_SEARCH_STATE
 } from '../type'
 import * as api from '../../api';
 
@@ -25,14 +26,24 @@ export const getSpecialProducts = () => async(dispatch) => {
     console.log(error);
   }
 } 
-export const getSearchProduct = (data) => async(dispatch) => {
+export const getSearchProduct = (term) => async(dispatch) => {
   try {
-    const  products  = await api.searchProducts(data);
-    dispatch({ type: SEARCH_PRODUCT, payload: products })
+    const  res  = await api.searchProducts(term);
+    dispatch({ type: SEARCH_PRODUCT, payload: res })
   } catch (error) {
     console.log(error);
   }
 } 
+export const clearSearchState = () => async(dispatch) => {
+  try {
+    dispatch({ type: CLEAR_SEARCH_STATE})
+  } catch (error) {
+    console.log(error);
+  }
+} 
+
+
+
 
 
 export const getProduct = (id) => async(dispatch) => {

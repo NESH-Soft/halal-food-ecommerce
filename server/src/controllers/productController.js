@@ -7,6 +7,7 @@ import {
   deleteProductServices,
   findProductById,
   getProductsByCategoryServices,
+  searchProductServices,
 } from '../services/productServices';
 import asyncHandler from '../utils/async';
 import { NotFound } from '../utils/error';
@@ -77,4 +78,9 @@ export const deleteProduct = asyncHandler(async (req, res) => {
 
   const deletedProduct = await deleteProductServices(req.params.id);
   return res.status(200).json({ success: true, deletedProduct, msg: 'Product deleted successfully' });
+});
+
+export const searchProduct = asyncHandler(async (req, res) => {
+  const products = await searchProductServices(req.query.term);
+  return res.status(200).json({ success: true, products, msg: 'Product fetch' });
 });

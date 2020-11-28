@@ -4,6 +4,7 @@ import {
   GET_SPECIAL_PRODUCT,
   GET_PRODUCTS_BY_CATEGORY,
   SEARCH_PRODUCT,
+  CLEAR_SEARCH_STATE,
 
 } from '../type'
 const initialState = {
@@ -37,10 +38,17 @@ const productReducer = (state = initialState, action) => {
         case SEARCH_PRODUCT:
           return {
             ...state,
-            searchProducts: action.payload
+            searchProducts: action.payload.products
           }
+
+      case CLEAR_SEARCH_STATE:
+            return {
+              ...state,
+              searchProducts: []
+            } 
         case GET_PRODUCTS_BY_CATEGORY:
           return {
+            ...state,
             productFilterByCategory: action.payload
           }
 

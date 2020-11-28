@@ -37,3 +37,12 @@ export const deleteProductServices = async (id) => {
   const product = Product.findByIdAndRemove(id);
   return product;
 };
+
+export const searchProductServices = async (term) => {
+  const product = Product.find(
+    {
+      $text: { $search: term },
+    },
+  );
+  return product;
+};
