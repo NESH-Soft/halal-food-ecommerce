@@ -19,7 +19,7 @@ const MyAccount = () => {
                                 <div className="service-icon">
                                     <FontAwesomeIcon icon={faGift} style={{ fontSize: '50px', color: '#fff' }} />
                                 </div>
-                                <div className="service-desc text-dark">
+                                <div className="service-desc">
                                     <h4>Your Orders</h4>
                                     <p>Track, return, or buy things again</p>
                                 </div>
@@ -29,28 +29,30 @@ const MyAccount = () => {
                 </div>
 
                 <div className="col-lg-4 col-md-12">
-                    <div className="account-box">
-                        <div className="service-box">
-                            <div className="service-icon">
-                                <a href="#"> <FontAwesomeIcon icon={faLock} style={{ fontSize: '50px', color: '#fff' }} /> </a>
-                            </div>
-                            <div className="service-desc">
-                                <h4>Login &amp; security</h4>
-                                <p>Edit login, name, and mobile number</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-lg-4 col-md-12">
                 <Link to="/login-security">
                     <div className="account-box">
                         <div className="service-box">
                             <div className="service-icon">
-                                <a href="#"> <FontAwesomeIcon icon={faLocationArrow} style={{ fontSize: '50px', color: '#fff' }} /> </a>
+                              <FontAwesomeIcon icon={faLock} style={{ fontSize: '50px', color: '#fff' }} /> 
                             </div>
-                            <div className="service-desc text-dark">
-                                <h4>Your Addresses</h4>
-                                <p>Edit addresses for orders and gifts</p>
+                            <div className="service-desc">
+                                <h4>Login &amp; security</h4>
+                                <p>change password</p>
+                            </div>
+                        </div>
+                    </div>
+                    </Link>
+                </div>
+                <div className="col-lg-4 col-md-12">
+                <Link to="/your-details">
+                    <div className="account-box">
+                        <div className="service-box">
+                            <div className="service-icon">
+                           <FontAwesomeIcon icon={faLocationArrow} style={{ fontSize: '50px', color: '#fff' }} />
+                            </div>
+                            <div className="service-desc">
+                                <h4>Your information</h4>
+                                <p>Edit your information</p>
                             </div>
                         </div>
                     </div>
