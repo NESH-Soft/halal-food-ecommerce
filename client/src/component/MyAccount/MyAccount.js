@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 import './style.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGift, faLock, faLocationArrow } from '@fortawesome/free-solid-svg-icons'
@@ -10,19 +11,23 @@ const MyAccount = () => {
                 <h2>My Account</h2>
             </div>
             <div className="row pb-5">
+
                 <div className="col-lg-4 col-md-12">
-                    <div className="account-box">
-                        <div className="service-box">
-                            <div className="service-icon">
-                                <a href="#"> <FontAwesomeIcon icon={faGift} style={{ fontSize: '50px', color: '#fff' }} /> </a>
-                            </div>
-                            <div className="service-desc">
-                                <h4>Your Orders</h4>
-                                <p>Track, return, or buy things again</p>
+                    <Link to="/your-orders">
+                        <div className="account-box">
+                            <div className="service-box">
+                                <div className="service-icon">
+                                    <FontAwesomeIcon icon={faGift} style={{ fontSize: '50px', color: '#fff' }} />
+                                </div>
+                                <div className="service-desc text-dark">
+                                    <h4>Your Orders</h4>
+                                    <p>Track, return, or buy things again</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </Link>
                 </div>
+
                 <div className="col-lg-4 col-md-12">
                     <div className="account-box">
                         <div className="service-box">
