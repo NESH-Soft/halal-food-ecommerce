@@ -19,6 +19,7 @@ import PrivetRoute from './PrivetRoute/PrivetRoute'
 import WishList from './component/WishList/WishList';
 import AboutUs from './component/AboutUs/AboutUs';
 import SearchProduct from './component/Search/SearchProduct/SearchProduct';
+import YourOrder from './component/MyAccount/YourOrder/YourOrder';
 
 function App() {
   return (
@@ -34,7 +35,8 @@ function App() {
           <Route exact path="/checkout" component={Checkout} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
-          <PrivetRoute exact path="/my-account" component={MyAccount} />
+          <Route exact path="/my-account" component={MyAccount} />
+          <Route exact path="/your-orders" component={YourOrder} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/productDetails" component={ProductDetails} />
           <Route exact path="/details" component={Details} />
