@@ -42,19 +42,20 @@ const MyAccount = () => {
                     </div>
                 </div>
                 <div className="col-lg-4 col-md-12">
-                    <Link to="/your-details">
-                        <div className="account-box">
-                            <div className="service-box">
-                                <div className="service-icon">
-                                    <a href="#"> <FontAwesomeIcon icon={faLocationArrow} style={{ fontSize: '50px', color: '#fff' }} /> </a>
-                                </div>
-                                <div className="service-desc text-dark">
-                                    <h4>Your Addresses</h4>
-                                    <p>Edit addresses for orders and gifts</p>
-                                </div>
+                <Link to="/login-security">
+                    <div className="account-box">
+                        <div className="service-box">
+                            <div className="service-icon">
+                                <a href="#"> <FontAwesomeIcon icon={faLocationArrow} style={{ fontSize: '50px', color: '#fff' }} /> </a>
+                            </div>
+                            <div className="service-desc text-dark">
+                                <h4>Your Addresses</h4>
+                                <p>Edit addresses for orders and gifts</p>
                             </div>
                         </div>
-                    </Link>
+                    </div>
+                </Link>
+
                 </div>
             </div>
         </div>

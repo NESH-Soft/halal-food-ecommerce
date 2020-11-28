@@ -20,8 +20,10 @@ import WishList from './component/WishList/WishList';
 import AboutUs from './component/AboutUs/AboutUs';
 import SearchProduct from './component/Search/SearchProduct/SearchProduct';
 import YourOrder from './component/MyAccount/YourOrder/YourOrder';
+import LoginSecurity from './component/LoginSecurity/LoginSecurity';
 import YourDetails from './component/MyAccount/YourDetails/YourDetails';
 import YourOrderItem from './component/MyAccount/YourOrder/YourOrderItem'
+
 
 
 function App() {
@@ -30,6 +32,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/about-us" component={AboutUs} />
+          <Route exact path="/login-security" component={LoginSecurity} />
           <Route exact path="/wish-list" component={WishList} />
           <Route exact path="/searchProducts" component={SearchProduct} />
           <Route exact path="/contact" component={Contact} />
