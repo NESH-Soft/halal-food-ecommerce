@@ -1,41 +1,28 @@
 import React, { useEffect } from 'react';
 import Navbar from '../Navbar/Navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faCartPlus, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
 import './WishList.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { removeWishList } from '.././../redux/actions/wishlistAction';
-import {addToCart,removeCart} from '../../redux/actions/cartAction'
+import { addToCart, removeCart } from '../../redux/actions/cartAction'
 import Footer from '../Footer/Footer/Footer';
 
 const WishList = () => {
 
     const dispatch = useDispatch();
     const wishList = useSelector((state) => state.wishListState.wishList);
-    const cartItem =  useSelector((state) => state.cartState.cart);
+    const cartItem = useSelector((state) => state.cartState.cart);
 
-      // include all productId from cart state
-      const cartItemArray = cartItem.map(function (product) {
+    // include all productId from cart state
+    const cartItemArray = cartItem.map(function (product) {
         return product._id
     });
-
-    // useEffect(() => {
-    //     dispatch(getWishList());
-    //     //eslint-disable-next-line
-    // }, []);
-
-    // const dispatcher =(data)=>{
-    //     dispatch(addToCart(data))
-    //     dispatch(changeAddToCartOptionInWishlist(data._id))
-      
-    //   }
-
-  
 
     return (
         <div className="col-md-12 Wish-list">
             <Navbar />
-            <div className="row">
+            <div className="row mb-5">
                 <div className="col-md-3"></div>
                 <div className="col-md-8 mb-5">
                     <div style={{ borderBottom: '3px solid #76a333' }} className="my-4">
@@ -43,7 +30,7 @@ const WishList = () => {
                             WishList ( {
                                 wishList.length > 1 ? (`${wishList.length} Items`) : (`${wishList.length} Item`)
                             } )
-                        
+
                         </h4>
                     </div>
                     {
@@ -70,37 +57,34 @@ const WishList = () => {
                                             <td className="py-3">
                                                 <div className="row">
                                                     <div className="col-md-6">
-                                               
-                {  cartItemArray.includes(pd._id)? (
-                        <button
-                         
-                          disabled={
-                            pd.stock <= 0 
-                          }
-                         
-                          className="btn btn-Addtocart rounded-0"
-                          onClick={() => dispatch(removeCart(pd._id))}
-                        >
-                            Remove from cart
-                            </button>
-                      ) : (
-                        <button
-                          
-                          disabled={
-                            pd.stock <= 0 
-                          }
-                        
-                          className="btn btn-Addtocart rounded-0 w-100"
-                         
-                          onClick={() =>dispatch(addToCart(pd)) }
-                        >
-                           <FontAwesomeIcon className="text-dark" icon={faCartPlus} />
-                            </button>
-                      )
-                  
-                }
-                                         
-                                                        
+
+                                                        {cartItemArray.includes(pd._id) ? (
+                                                            <button
+
+                                                                disabled={
+                                                                    pd.stock <= 0
+                                                                }
+
+                                                                className="btn btn-warning rounded-0"
+                                                                onClick={() => dispatch(removeCart(pd._id))}
+                                                            >
+                                                                <FontAwesomeIcon icon={faMinusCircle} />
+                                                            </button>
+                                                        ) : (
+                                                                <button
+
+                                                                    disabled={
+                                                                        pd.stock <= 0
+                                                                    }
+
+                                                                    className="btn btn-Addtocart rounded-0"
+
+                                                                    onClick={() => dispatch(addToCart(pd))}
+                                                                >
+                                                                    <FontAwesomeIcon className="text-dark" icon={faCartPlus} />
+                                                                </button>
+                                                            )
+                                                        }
                                                     </div>
                                                     <div className="col-md-6">
                                                         <span style={{ cursor: "pointer" }} onClick={() => dispatch(removeWishList(pd._id))}><FontAwesomeIcon className="text-danger" icon={faTrash} /></span>
