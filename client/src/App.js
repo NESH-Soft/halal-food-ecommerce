@@ -23,13 +23,16 @@ import YourOrder from './component/MyAccount/YourOrder/YourOrder';
 import LoginSecurity from './component/LoginSecurity/LoginSecurity';
 import YourDetails from './component/MyAccount/YourDetails/YourDetails';
 import YourOrderItem from './component/MyAccount/YourOrder/YourOrderItem'
+import Navbar from './component/Navbar/Navbar';
+import Footer from './component/Footer/Footer/Footer';
 
 
 
 function App() {
   return (
-    <div className="">
+    <div className="container-fluid">
       <Router>
+        <Navbar />
         <Switch>
           <Route exact path="/about-us" component={AboutUs} />
           <Route exact path="/login-security" component={LoginSecurity} />
@@ -51,6 +54,7 @@ function App() {
           <Route exact path="/review" component={Review} />
           <Route exact path="/" component={Home} />
         </Switch>
+        <Footer />
       </Router>
     </div>
   );

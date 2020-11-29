@@ -1,77 +1,73 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from 'react-redux';
-import {amountCount} from '../../redux/actions/cartAction'
+import { amountCount } from '../../redux/actions/cartAction'
 import { createOrder } from '../../redux/actions/orderAction'
-import Footer from '../Footer/Footer/Footer';
-import Navbar from '../Navbar/Navbar';
-import Payment from '../payment/Payment';
 
 import './Checkout.css';
 
 const Checkout = () => {
     const dispatch = useDispatch()
 
-useEffect(()=>{
-  dispatch(amountCount());
-  // eslint-disable-next-line
-},[]);
-  const cartState = useSelector((state) => state.cartState);
-  const cartItem  = cartState.cart.map(pd => {
-    return {
-        _id: pd._id,
-      name: pd.name,
-      price: pd.price,
-      quantity: pd.quantity,
-      image: pd.image,
-      specialPrice: pd.specialPrice,
-      description: pd.description,
-      category: pd.category
+    useEffect(() => {
+        dispatch(amountCount());
+        // eslint-disable-next-line
+    }, []);
+    const cartState = useSelector((state) => state.cartState);
+    const cartItem = cartState.cart.map(pd => {
+        return {
+            _id: pd._id,
+            name: pd.name,
+            price: pd.price,
+            quantity: pd.quantity,
+            image: pd.image,
+            specialPrice: pd.specialPrice,
+            description: pd.description,
+            category: pd.category
+        }
+    });
+
+
+    const [cashState, setCashState] = useState('');
+    const handleCashonDelivery = () => {
+        setCashState('CashOnDelivery');
     }
-  });
-
-
-  const [cashState, setCashState] = useState('');
-  const handleCashonDelivery = () => {
-      setCashState('CashOnDelivery');
-  }
-  const handleCreditCard = () => {
-      setCashState('CreditCard');
-  }
-  const { register, handleSubmit, watch, errors } = useForm();
+    const handleCreditCard = () => {
+        setCashState('CreditCard');
+    }
+    const { register, handleSubmit, watch, errors } = useForm();
 
 
 
-  const onSubmit = data => {
-    const orderData = {
-    cart: cartItem,
-      shipping: {
-        line1: data.address,
-        city: data.city,
-        postalCode: data.postCode,
-        region: data.region
-      },
-    customer: {
-        name: `${data.fname} ${data.lname}`,
-        phone: data.phone,
-        email: data.email,
-      },
-      card: {
-        cardNumber: data.cardNumber,
-        expireMonth: data.expireMonth,
-        expireYear:data.expireYear,
-        cvc: data.cvc
-      },
-      totalPrice: cartState.cartTotal,
-      userId: '5fa54ed97b9d7025a0c7771e',
-  };
+    const onSubmit = data => {
+        const orderData = {
+            cart: cartItem,
+            shipping: {
+                line1: data.address,
+                city: data.city,
+                postalCode: data.postCode,
+                region: data.region
+            },
+            customer: {
+                name: `${data.fname} ${data.lname}`,
+                phone: data.phone,
+                email: data.email,
+            },
+            card: {
+                cardNumber: data.cardNumber,
+                expireMonth: data.expireMonth,
+                expireYear: data.expireYear,
+                cvc: data.cvc
+            },
+            totalPrice: cartState.cartTotal,
+            userId: '5fa54ed97b9d7025a0c7771e',
+        };
 
-  dispatch(createOrder(orderData));
-}
+        dispatch(createOrder(orderData));
+    }
 
     return (
         <div className="container-fluid">
-            <Navbar />
             <div className="row checkout pb-5" >
                 <div className="col-md-3">
                 </div>
@@ -160,26 +156,26 @@ useEffect(()=>{
                                         <hr />
 
                                         {
-                                            cartItem && cartItem.map((item,index)=>(
+                                            cartItem && cartItem.map((item, index) => (
                                                 <div className="d-flex justify-content-between">
-                                                <p>{item.name} </p>
-                                                <p><span>X</span> <span>{item.quantity}</span></p>
-                                                <p>¥ <span>{item.price*item.quantity}</span> </p>
-                                            </div> 
+                                                    <p>{item.name} </p>
+                                                    <p><span>X</span> <span>{item.quantity}</span></p>
+                                                    <p>¥ <span>{item.price * item.quantity}</span> </p>
+                                                </div>
                                             ))
                                         }
-                                     
+
                                         <hr className="mt-0 mb-2" />
-                                       
+
 
                                         <div className="d-flex justify-content-between">
                                             <h6>Subtotal</h6>
-                                    <p>¥ <span>{cartState.cartSubTotal}</span></p>
+                                            <p>¥ <span>{cartState.cartSubTotal}</span></p>
                                         </div>
                                         <hr className="mt-0" />
                                         <div className="d-flex justify-content-between">
                                             <h6>Total</h6>
-                                    <h6>¥ <span>{cartState.cartSubTotal}</span></h6>
+                                            <h6>¥ <span>{cartState.cartSubTotal}</span></h6>
                                         </div>
                                         <hr />
                                         <div className="d-flex justify-content-between text-primary" style={{ borderBottom: '3px solid #397bff' }}>
@@ -235,7 +231,6 @@ useEffect(()=>{
                     </form>
                 </div>
             </div>
-            <Footer />
         </div>
     );
 };

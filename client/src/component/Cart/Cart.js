@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import Footer from '../Footer/Footer/Footer';
 import Navbar from '../Navbar/Navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMinus, faPlus, faTrashAlt,  } from '@fortawesome/free-solid-svg-icons'
+import { faMinus, faPlus, faTrashAlt, } from '@fortawesome/free-solid-svg-icons'
 import './Cart.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeCart, cartItemIncrement, cartItemDecrement,amountCount } from '../../redux/actions/cartAction'
+import { removeCart, cartItemIncrement, cartItemDecrement, amountCount } from '../../redux/actions/cartAction'
 import { Link } from 'react-router-dom';
 
 
@@ -18,7 +18,7 @@ const Cart = () => {
     //     // eslint-disable-next-line
     //   },[])
     const cartState = useSelector((state) => state.cartState);
-    const cart  = cartState.cart;
+    const cart = cartState.cart;
     const productPriceArray = cart.map(function (product) {
         return product.price * product.quantity;
     });
@@ -28,12 +28,9 @@ const Cart = () => {
     }, 0);
 
     return (
-        <div className="col-md-12">
-            <Navbar />
+        <div>
             <div className="row">
-                <div className="col-md-3">
-
-                </div>
+                <div className="col-md-3"></div>
                 <div className="col-md-9" >
                     <div style={{ marginTop: '195px' }}>
                         <div className="mt-5">
@@ -48,7 +45,7 @@ const Cart = () => {
                                         {
                                             cart.length > 1 ? (`${cart.length} Items`) : (`${cart.length} Item`)
                                         }
-                                        </span> )</h4>
+                                    </span> )</h4>
                                 </div>
                                 <div className="mt-5">
                                     {
@@ -116,10 +113,10 @@ const Cart = () => {
                                     <p>The total Amount of <br /> ( included VAT)</p>
                                     <p>¥{cartState.cartSubTotal}</p>
                                 </div> */}
-                                <div style={{marginTop:"100px"}}>
-                                <Link to="/checkout">
-                                    <button className="btn btn-primary w-100">Go to Checkout</button>
-                                </Link>
+                                <div style={{ marginTop: "100px" }}>
+                                    <Link to="/checkout">
+                                        <button className="btn btn-primary w-100">Go to Checkout</button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -136,7 +133,6 @@ const Cart = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
         </div>
     );
 };

@@ -117,8 +117,7 @@ const SearchProduct = () => {
     ];
 
     return (
-        <div className="container-fluid">
-            <Navbar />
+        <div>
             <div className="row searchProduct">
                 <div className="col-md-3"></div>
                 <div className="col-md-9">
@@ -132,7 +131,6 @@ const SearchProduct = () => {
                     <Columns queries={queries}>{product}</Columns>
                 </div>
             </div>
-            <Footer />
         </div>
     );
 };

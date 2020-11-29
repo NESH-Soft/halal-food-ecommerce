@@ -1,7 +1,5 @@
 import React from 'react';
 import logo from '../../images/logo/logo.png'
-import Navbar from '../../Navbar/Navbar';
-import Footer from '../../Footer/Footer/Footer';
 import './YourDetails.css'
 import { useForm } from "react-hook-form";
 
@@ -9,8 +7,7 @@ const YourDetails = () => {
     const { register, handleSubmit, watch, errors } = useForm();
     const onSubmit = data => console.log(data);
     return (
-        <div className="col-md-12">
-            <Navbar />
+        <div>
             <div className="row yourDetails mb-5">
                 <div className="col-md-3"></div>
                 <div className="col-md-9">
@@ -53,7 +50,6 @@ const YourDetails = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
         </div>
     );
 };

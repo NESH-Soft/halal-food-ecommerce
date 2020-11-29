@@ -1,7 +1,6 @@
 import React from 'react';
 import FeaturedProduct from '../FeaturedProduct/FeaturedProduct/FeaturedProduct';
 import Header from '../Header/Header/Header';
-import Footer from '../../Footer/Footer/Footer'
 import ShopCarousel from '../../Shop/ShopCarousel/ShopCarousel';
 
 
@@ -20,11 +19,6 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div>
-                
-                <Footer />
-            </div>
-
         </div>
     );
 };

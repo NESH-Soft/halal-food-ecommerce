@@ -1,19 +1,15 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import {Link} from 'react-router-dom'
-import Footer from '../../Footer/Footer/Footer';
-import Navbar from '../../Navbar/Navbar';
+import { Link } from 'react-router-dom'
 import './YourOrder.css'
 
 const YourOrder = () => {
-  
+
     const user = useSelector((state) => state.authState.user);
     const order = user.order || []
-  
 
     return (
-        <div className="col-md-12">
-            <Navbar />
+        <div >
             <div className="row your-order mb-5">
                 <div className="col-md-3"></div>
                 <div className="col-md-9 mb-5">
@@ -30,31 +26,28 @@ const YourOrder = () => {
                                 <th scope="col">Total</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">details</th>
-                                
+
                             </tr>
                         </thead>
                         <tbody>
                             {
+                                order && order.map((item, index) => (
+                                    <tr>
+                                        <th scope="col">{index + 1}</th>
+                                        <th scope="col">{item.createdAt}</th>
+                                        <th scope="col">{item.shipping && `${item.shipping.line1} ${item.shipping.city} - ${item.shipping.postalCode}`}</th>
+                                        <th scope="col">{item.paymentId ? 'completed' : 'uncompleted'}</th>
+                                        <th scope="col">{item.totalPrice}</th>
+                                        <th scope="col">{item.status}</th>
+                                        <th scope="col"> <Link to={`/your-orders-items/${item._id}`}>click</Link></th>
 
-                              order && order.map((item,index)=>(
-                                <tr>
-                                <th scope="col">{index+1}</th>
-                                <th scope="col">{item.createdAt}</th>
-                              <th scope="col">{item.shipping && `${item.shipping.line1} ${item.shipping.city} - ${item.shipping.postalCode}`}</th>
-                              <th scope="col">{item.paymentId? 'completed' : 'uncompleted'}</th>
-                              <th scope="col">{item.totalPrice}</th>
-                              <th scope="col">{item.status}</th>
-                              <th scope="col"> <Link to={`/your-orders-items/${item._id}`}>click</Link></th>
-                            
-                            </tr>
-                              ))  
+                                    </tr>
+                                ))
                             }
                         </tbody>
                     </table>
                 </div>
             </div>
-            <Footer />
-
         </div>
     );
 };
