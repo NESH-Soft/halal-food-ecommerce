@@ -65,7 +65,7 @@ const ProductView = (props) => {
                             pd.stock <= 0 
                           }
                          
-                          className="btn btn-Addtocart rounded-0 w-100"
+                          className="btn btn-warning rounded-0 w-100"
                           onClick={() => dispatch(removeCart(pd._id))}
                         >
                             Remove from cart
