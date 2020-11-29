@@ -2,8 +2,12 @@
     transition: 1s;
 } */
 .btn-Addtocart{
-    background-color: #76A333;
+
     color: #fff!important;
+    border-radius: 20px;
+}
+.btn-color{
+    background-color: #76A333;
 }
 .box-button{
     overflow: hidden;

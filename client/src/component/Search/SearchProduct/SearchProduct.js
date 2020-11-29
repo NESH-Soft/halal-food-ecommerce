@@ -1,10 +1,8 @@
-import React, { useEffect } from 'react';
-import Footer from '../../Footer/Footer/Footer';
-import Navbar from '../../Navbar/Navbar';
+import React from 'react';
 import { Link } from 'react-router-dom'
 import Columns from 'react-columns';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faCartPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux';
 import { getProduct } from '../../../redux/actions/product';
 import { addToCart, removeCart } from '../../../redux/actions/cartAction';
@@ -30,7 +28,7 @@ const SearchProduct = () => {
 
     const products = data || []
     const product = products.map(pd =>
-        <div className="card rounded-0 mx-2 mt-2 mb-4 products-card">
+        <div className="card rounded-0 m-2 p-2 products-card">
             <div className="image-box">
                 <Link to="/productDetails">  <img className="card-img-top home-products-img" onClick={() => dispatch(getProduct(pd._id))} src={pd.image} alt={pd.name} /></Link>
             </div>
@@ -46,8 +44,6 @@ const SearchProduct = () => {
                                 ) : (
                                         <span style={{ cursor: "pointer" }} onClick={() => dispatch(addToWishList(pd._id))}><FontAwesomeIcon className="text-secondary" icon={faHeart} /></span>
                                     )
-
-
                             ) : (
                                     <Link to="/login"  ><FontAwesomeIcon className="text-secondary" icon={faHeart} /></Link>
                                 )
@@ -56,36 +52,37 @@ const SearchProduct = () => {
                     </div>
                     <span><del className="text-secondary">¥{pd.price}</del></span>
                 </div>
-                {
+                <div className="text-center">
+                    {
 
-                    cartItemArray.includes(pd._id) ? (
-                        <button
-
-                            disabled={
-                                pd.stock <= 0
-                            }
-
-                            className="btn btn-warning rounded-0 w-100"
-                            onClick={() => dispatch(removeCart(pd._id))}
-                        >
-                            Remove from cart
-                        </button>
-                    ) : (
+                        cartItemArray.includes(pd._id) ? (
                             <button
 
                                 disabled={
                                     pd.stock <= 0
                                 }
 
-                                className="btn btn-Addtocart rounded-0 w-100"
-
-                                onClick={() => dispatch(addToCart(pd))}
+                                className="btn btn-sm btn-Addtocart btn-danger px-4"
+                                onClick={() => dispatch(removeCart(pd._id))}
                             >
-                                Add to cart
+                                <FontAwesomeIcon icon={faMinus} /> Remove from cart
                             </button>
-                        )
+                        ) : (
+                                <button
 
-                }
+                                    disabled={
+                                        pd.stock <= 0
+                                    }
+
+                                    className="btn btn-sm btn-Addtocart btn-color px-5"
+
+                                    onClick={() => dispatch(addToCart(pd))}
+                                >
+                                    <FontAwesomeIcon icon={faCartPlus} /> Add to cart
+                                </button>
+                            )
+                    }
+                </div>
 
             </div>
         </div>);
@@ -120,7 +117,7 @@ const SearchProduct = () => {
         <div>
             <div className="row searchProduct">
                 <div className="col-md-3"></div>
-                <div className="col-md-9">
+                <div className="col-md-9 mb-5">
                     <div style={{ borderBottom: '3px solid #76a333' }} className="my-4">
                         <h2>Your Search Products</h2>
                     </div>

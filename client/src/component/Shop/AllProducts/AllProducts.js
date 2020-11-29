@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Columns from 'react-columns';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faCartPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { addToCart, removeCart } from '../../../redux/actions/cartAction';
 import { getProduct } from '../../../redux/actions/product';
 import { addToWishList, removeWishList } from '../../../redux/actions/wishlistAction';
@@ -28,7 +28,7 @@ const AllProducts = () => {
     });
 
     const product = data.map(pd =>
-        <div className="card rounded-0 mx-2 mt-2 mb-4 products-card">
+        <div className="card m-2 p-2 products-card">
             <div className="image-box">
                 <Link to="/productDetails">  <img className="card-img-top" onClick={() => dispatch(getProduct(pd._id))} src={pd.image} alt={pd.name} /></Link>
             </div>
@@ -53,35 +53,37 @@ const AllProducts = () => {
                     </div>
                     <span><del className="text-secondary">¥{pd.price}</del></span>
                 </div>
-                {
+                <div className="text-center">
+                    {
 
-                    cartItemArray.includes(pd._id) ? (
-                        <button
-
-                            disabled={
-                                pd.stock <= 0
-                            }
-
-                            className="btn btn-warning rounded-0 w-100"
-                            onClick={() => dispatch(removeCart(pd._id))}
-                        >
-                            Remove from cart
-                        </button>
-                    ) : (
+                        cartItemArray.includes(pd._id) ? (
                             <button
 
                                 disabled={
                                     pd.stock <= 0
                                 }
 
-                                className="btn btn-Addtocart rounded-0 w-100"
-
-                                onClick={() => dispatch(addToCart(pd))}
+                                className="btn btn-sm btn-Addtocart btn-danger px-4"
+                                onClick={() => dispatch(removeCart(pd._id))}
                             >
-                                Add to cart
+                                <FontAwesomeIcon icon={faMinus} /> Remove from cart
                             </button>
-                        )
-                }
+                        ) : (
+                                <button
+
+                                    disabled={
+                                        pd.stock <= 0
+                                    }
+
+                                    className="btn btn-sm btn-Addtocart btn-color px-5"
+
+                                    onClick={() => dispatch(addToCart(pd))}
+                                >
+                                    <FontAwesomeIcon icon={faCartPlus} /> Add to cart
+                                </button>
+                            )
+                    }
+                </div>
             </div>
         </div>);
 
