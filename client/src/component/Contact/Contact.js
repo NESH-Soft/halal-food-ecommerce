@@ -7,14 +7,11 @@ import './Contact.css'
 
 const Contact = () => {
     return (
-        <div className="col-md-12">
-            <Navbar />
+        <div>
             <div className="row py-5 contact">
-                <div className="col-md-3">
-
-                </div>
+                <div className="col-md-3"></div>
                 <div className="col-md-9 my-3">
-                    <div style={{borderBottom: '3px solid #76a333'}}>
+                    <div style={{ borderBottom: '3px solid #76a333' }}>
                         <h2>Contact Us</h2>
                     </div>
                     <div className="row mt-5">
@@ -48,7 +45,7 @@ const Contact = () => {
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                             <div class="submit-button">
-                                                <button class="btn" id="submit" style={{backgroundColor:'#76a333', color:'#fff'}} type="submit">Send Message</button>
+                                                <button class="btn" id="submit" style={{ backgroundColor: '#76a333', color: '#fff' }} type="submit">Send Message</button>
                                                 <div id="msgSubmit" class="h3 text-center hidden"></div>
                                                 <div class="clearfix"></div>
                                             </div>
@@ -75,7 +72,6 @@ const Contact = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
         </div>
     );
 };

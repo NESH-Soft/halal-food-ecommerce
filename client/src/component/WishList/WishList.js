@@ -1,12 +1,10 @@
-import React, { useEffect } from 'react';
-import Navbar from '../Navbar/Navbar';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faCartPlus, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
 import './WishList.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { removeWishList } from '.././../redux/actions/wishlistAction';
 import { addToCart, removeCart } from '../../redux/actions/cartAction'
-import Footer from '../Footer/Footer/Footer';
 
 const WishList = () => {
 
@@ -20,8 +18,7 @@ const WishList = () => {
     });
 
     return (
-        <div className="col-md-12 Wish-list">
-            <Navbar />
+        <div className="Wish-list">
             <div className="row mb-5">
                 <div className="col-md-3"></div>
                 <div className="col-md-8 mb-5">
@@ -99,7 +96,6 @@ const WishList = () => {
                     }
                 </div>
             </div>
-            <Footer />
         </div>
     );
 };

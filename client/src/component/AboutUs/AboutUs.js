@@ -1,13 +1,9 @@
 import React from 'react';
-import Footer from '../Footer/Footer/Footer';
-import Navbar from '../Navbar/Navbar';
 import './AboutUs.css'
 
 const AboutUs = () => {
     return (
-        <div className="col-md-12 about-list">
-            
-            <Navbar />
+        <div className="about-list">
             <div className="row">
                 <div className="col-md-3"></div>
                 <div className="col-md-8">
@@ -55,7 +51,6 @@ const AboutUs = () => {
                 </div>
                 <div className="col-md-1"></div>
             </div>
-            <Footer />
         </div>
     );
 };
