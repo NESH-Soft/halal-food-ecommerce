@@ -1,21 +1,21 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCategory } from '../../redux/actions/categoryAction';
-import {getProductsByCategory} from '../../redux/actions/product'
+import { getProductsByCategory } from '../../redux/actions/product'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faSortAmountDown ,faCheckCircle } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faSortAmountDown, faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 import './Category.css';
 import { Link } from 'react-router-dom';
 const Category = () => {
-    const [categoryColor,setCategoryColor] = useState('');
+    const [categoryColor, setCategoryColor] = useState('');
     const dispatch = useDispatch()
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(getCategory())
         // eslint-disable-next-line
-    },[])
-  
+    }, [])
+
     const category = useSelector((state) => state.categoryState.category);
-  
+
     const [categoryClass, setCategoryClass] = useState('categoryShow');
     //category dropdown system
     const hangleCategory = () => {
@@ -26,7 +26,6 @@ const Category = () => {
             setCategoryClass('categoryShow');
         }
     }
-
     return (
         <div className="hero-categories">
             <div className="hero-categories-title">
@@ -42,9 +41,9 @@ const Category = () => {
             </div>
             <ul className={`${categoryClass}`}>
                 {
-                   category && category.map((c)=>(
-                    <li className="px-2" onClick={()=>dispatch(getProductsByCategory(c.name))}><Link to="/shop"> <span className="pr-2"><FontAwesomeIcon icon={faCheckCircle}/></span> <spam>{ c.name}</spam></Link></li>   
-                ))
+                    category && category.map((c) => (
+                        <li className="px-2" onClick={() => dispatch(getProductsByCategory(c.name))}><Link to="/shop"> <span className="pr-2"><FontAwesomeIcon icon={faCheckCircle} /></span> <spam>{c.name}</spam></Link></li>
+                    ))
                 }
             </ul>
         </div>
