@@ -125,3 +125,52 @@ export const updateOrder = asyncHandler(async (req, res) => {
   if (!updatedOrder) throw NotFound('Order not found');
   return res.status(200).json({ success: true, updatedOrder, msg: 'Order updated successfully' });
 });
+
+export const addOrderCashOnDelivery = asyncHandler(async (req, res) => {
+  const {
+    cart,
+    customer,
+    shipping,
+    totalPrice,
+    userId,
+  } = req.body;
+
+  await Promise.all(cart.map(async (product) => {
+    const result = await findProductById(product._id);
+    // const updatedStock = result.stock - product.quantity;
+    result.stock -= product.quantity;
+    await result.save();
+  }));
+
+  if (userId) {
+    const newOrder = await addOrderServices({
+      shipping,
+      user: userId,
+      cart,
+      totalPrice,
+    });
+    const orderAddedToUser = await addOrderService(userId, newOrder._id);
+    if (!orderAddedToUser) {
+      throw new BadRequest('Something went wrong!!');
+    }
+    return res.status(201).json({
+      success: true,
+      newOrder,
+      msg: 'Order added successfully',
+    });
+  }
+
+  const newUser = await createUserServices(customer);
+  const newOrder = await addOrderServices({
+    shipping,
+    user: newUser._id,
+    cart,
+    totalPrice,
+  });
+
+  return res.status(201).json({
+    success: true,
+    newOrder,
+    msg: 'Order added successfully',
+  });
+});
