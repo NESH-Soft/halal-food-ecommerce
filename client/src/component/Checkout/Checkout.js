@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from 'react-redux';
 import { amountCount } from '../../redux/actions/cartAction'
-import { createOrder } from '../../redux/actions/orderAction'
+import { createOrder,createOrderCashOnDelivery } from '../../redux/actions/orderAction'
 
 import './Checkout.css';
 
@@ -14,6 +14,8 @@ const Checkout = () => {
         // eslint-disable-next-line
     }, []);
     const cartState = useSelector((state) => state.cartState);
+    const authState = useSelector((state) => state.authState);
+    const userId = authState.isAuthenticated ? authState.user._id : null
     const cartItem = cartState.cart.map(pd => {
         return {
             _id: pd._id,
@@ -28,42 +30,69 @@ const Checkout = () => {
     });
 
 
-    const [cashState, setCashState] = useState('');
-    const handleCashonDelivery = () => {
-        setCashState('CashOnDelivery');
+    const [cashState, setCashState] = useState(true);
+    const handleDelivery = () => {
+        setCashState(true);
     }
-    const handleCreditCard = () => {
-        setCashState('CreditCard');
+    const handleCashDelivery = () => {
+        setCashState(false);
     }
+    
+
+    
     const { register, handleSubmit, watch, errors } = useForm();
 
 
-
     const onSubmit = data => {
-        const orderData = {
-            cart: cartItem,
-            shipping: {
-                line1: data.address,
-                city: data.city,
-                postalCode: data.postCode,
-                region: data.region
-            },
-            customer: {
-                name: `${data.fname} ${data.lname}`,
-                phone: data.phone,
-                email: data.email,
-            },
-            card: {
-                cardNumber: data.cardNumber,
-                expireMonth: data.expireMonth,
-                expireYear: data.expireYear,
-                cvc: data.cvc
-            },
-            totalPrice: cartState.cartTotal,
-            userId: '5fa54ed97b9d7025a0c7771e',
-        };
 
-        dispatch(createOrder(orderData));
+        if(cashState){
+            const orderData = {
+                cart: cartItem,
+                shipping: {
+                    line1: data.address,
+                    city: data.city,
+                    postalCode: data.postCode,
+                    region: data.region
+                },
+                customer: {
+                    name: `${data.fname} ${data.lname}`,
+                    phone: data.phone,
+                    email: data.email,
+                },
+             
+                totalPrice: cartState.cartTotal,
+                userId: userId,
+            };
+            dispatch(createOrderCashOnDelivery(orderData))
+            console.log(orderData)
+        }else{
+            const orderData = {
+                cart: cartItem,
+                shipping: {
+                    line1: data.address,
+                    city: data.city,
+                    postalCode: data.postCode,
+                    region: data.region
+                },
+                customer: {
+                    name: `${data.fname} ${data.lname}`,
+                    phone: data.phone,
+                    email: data.email,
+                },
+                card: {
+                    cardNumber: data.cardNumber,
+                    expireMonth: data.expireMonth,
+                    expireYear: data.expireYear,
+                    cvc: data.cvc
+                },
+                totalPrice: cartState.cartTotal,
+                userId: userId,
+            };
+            console.log(orderData)
+            dispatch(createOrder(orderData));
+
+        }
+
     }
 
     return (
@@ -182,48 +211,49 @@ const Checkout = () => {
                                             <h6>Total Weight</h6>
                                             <h6>5.5 kg ( Packaging Box : 1)</h6>
                                         </div>
-                                        <div className="my-3">
-                                            <div>
-                                                <input type="radio" id="cashondelivery" name="cash-delivery" ref={register} defaultValue="CashOnDelivery" onClick={handleCashonDelivery} />
-                                                <label for="cashondelivery">&nbsp;Cash on Delivery</label>
-                                            </div>
-                                            {
-                                                cashState == 'CashOnDelivery' ? (<div className="cashondelivery text-center">
-                                                    <p className="p-3">Pay with cash upon delivery.</p>
-                                                </div>) : ''
-                                            }
-
-                                        </div>
                                         <div>
                                             <div>
-                                                <input type="radio" id="creditCard" onClick={handleCreditCard} name="gendar" />
-                                                <label for="creditCard">&nbsp;Credit Card</label>
-                                            </div>
-                                            {
-                                                cashState == 'CreditCard' ? (<div className="creditCard">
-                                                    <p>Pay With Creadit Card</p>
-                                                    <div class="form-group">
-                                                        <label htmlFor="exampleInputEmail1">Card Number<span>*</span> </label>
-                                                        <input type="number" class="form-control" ref={register({ required: true })} name='cardNumber' id="exampleInputEmail1" placeholder="1234 1234 1234 1234" aria-describedby="emailHelp" />
-                                                    </div>
-                                                    <div className="row">
-                                                        <div class="col-md-6 form-group">
-                                                            <label for="exampleInputPassword1">Expired Date<span>*</span> </label>
-
-                                                            <input type="number" class="form-control" name='expireMonth' ref={register({ required: true })} placeholder="Expire Month" id="exampleInputPassword1" />
-
-                                                            <input type="number" class="form-control" name='expireYear' ref={register({ required: true })} placeholder="Expire Year" id="exampleInputPassword1" />
-
-                                                        </div>
-                                                        <div class="col-md-6 form-group">
-                                                            <label for="exampleInputPassword1">Card Code(CVC)<span>*</span> </label>
-                                                            <input type="number" class="form-control" name='cvc' ref={register({ required: true })} placeholder="CVC" id="exampleInputPassword1" />
-                                                        </div>
-                                                    </div>
-                                                </div>) : ''
-                                            }
+                                        <input type="radio" id="cashondelivery" name="cash-delivery" checked={cashState}  onClick={handleDelivery} />
+                                        <label for="cashondelivery">&nbsp;Cash on Delivery</label>
                                         </div>
-                                        <button type="submit" className="btn btn-primary w-100 py-3 mt-3" style={{ borderRadius: '10px' }}>Place Order</button>
+                                        <div>
+                                        <input type="radio" id="cash-delivery" name="cash-delivery" onClick={handleCashDelivery} />
+                                        <label for="cashondelivery">&nbsp;Cash  Delivery</label>
+                                        </div>
+                                        </div>
+                                        <div>
+                                            {cashState? (
+                                                <div className="cashondelivery text-center">
+                                                    <p className="p-3">Pay with cash upon delivery.</p>
+                                                    <button type="submit" className="btn btn-primary w-100 py-3 mt-3" style={{ borderRadius: '10px' }}>Place Order</button>
+                                                </div>
+                                            ) : (
+                                                <div className="creditCard">
+                                                <p>Pay With Credit Card</p>
+                                                <div class="form-group">
+                                                    <label htmlFor="exampleInputEmail1">Card Number<span>*</span> </label>
+                                                    <input type="number" class="form-control" ref={register({ required: true })} name='cardNumber' id="exampleInputEmail1" placeholder="1234 1234 1234 1234" aria-describedby="emailHelp" />
+                                                </div>
+                                                <div className="row">
+                                             <div class="col-md-6 form-group">
+                                                        <label for="exampleInputPassword1">Expired Date<span>*</span> </label>
+
+                                                        <input type="number" class="form-control" name='expireMonth' ref={register({ required: true })} placeholder="Expire Month" id="exampleInputPassword1" />
+
+                                                        <input type="number" class="form-control" name='expireYear' ref={register({ required: true })} placeholder="Expire Year" id="exampleInputPassword1" />
+
+                                                    </div>
+                                                    <div class="col-md-6 form-group">
+                                                        <label for="exampleInputPassword1">Card Code(CVC)<span>*</span> </label>
+                                                        <input type="number" class="form-control" name='cvc' ref={register({ required: true })} placeholder="CVC" id="exampleInputPassword1" />
+                                                    </div>
+                                                </div>
+                                                <button type="submit" className="btn btn-primary w-100 py-3 mt-3" style={{ borderRadius: '10px' }}>Place Order</button>
+                                            </div>
+                                            )}
+                                        </div>
+                                        
+          
                                     </div>
                                 </div>
                             </div>
