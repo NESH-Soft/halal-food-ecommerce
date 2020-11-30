@@ -34,6 +34,7 @@ import Footer from './component/Footer/Footer/Footer';
 function App() {
   return (
     <div className="container-fluid">
+         
       <Router>
         <Navbar />
         <Switch>

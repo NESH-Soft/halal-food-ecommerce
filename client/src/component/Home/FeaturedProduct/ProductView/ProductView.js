@@ -25,10 +25,6 @@ const ProductView = (props) => {
         return item._id
     });
 
-
-
-
-
     const product = products.map(pd =>
         <div className="card rounded-0 m-2 py-2 products-card">
             <div className="image-box">

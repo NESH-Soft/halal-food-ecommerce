@@ -8,14 +8,15 @@ import {
   REGISTRATION_VERIFY,
 } from '../type'
 import * as api from '../../api';
-import setAuthToken from '../../utils/setAuthToken'
+import setAuthToken from '../../utils/setAuthToken';
+import Notification from '../../utils/Notification'
 
 // Action creator
 export const signIn = (data) => async(dispatch) => {
   try {
     const  res  = await api.signIn(data);
-    console.log(res.token)
     dispatch({ type: SIGN_IN_SUCCESS, payload: res })
+    Notification("Login success","success")
   } catch (error) {
     console.log(error);
   }
@@ -55,6 +56,7 @@ export const loadUser = () => async(dispatch) => {
 export const logout = () => async(dispatch) => {
   try {
     dispatch({ type: LOGOUT })
+    Notification("Logout success","success")
   } catch (error) {
     console.log(error);
   }

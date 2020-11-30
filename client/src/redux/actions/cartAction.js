@@ -1,4 +1,5 @@
 import * as api from '../../api';
+import Notification from '../../utils/Notification'
 import {
   ADD_TO_CART,
   REMOVE_CART,
@@ -18,6 +19,7 @@ export const addToCart = (data) => async(dispatch) => {
   // dispatch(amountCount())
   try {
     dispatch({ type: ADD_TO_CART, payload: data })
+    Notification("added success","success")
   } catch (error) {
     console.log(error);
   }
@@ -26,6 +28,7 @@ export const removeCart = (id) => async(dispatch) => {
   // dispatch(amountCount())
   try {
     dispatch({ type: REMOVE_CART, payload: id })
+    Notification("Remove item","danger")
   } catch (error) {
     console.log(error);
   }
