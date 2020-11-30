@@ -4,14 +4,15 @@ import {
   GET_WISHLIST,
 } from '../type'
 import * as api from '../../api';
+import Notification from '../../utils/Notification'
 
 // Action creator
 export const addToWishList = (_id) => async(dispatch) => {
  
   try {
     const  wishList  = await api.addToWishList({_id});
-    console.log(wishList)
    dispatch({ type: ADD_TO_WISHLIST, payload: wishList })
+   Notification("added success","success")
   } catch (error) {
     console.log(error);
   }
@@ -30,6 +31,7 @@ export const removeWishList = (id) => async(dispatch) => {
     const  wishlistId = await api.removeWishList(id);
    
     dispatch({ type: REMOVE_WISHLIST, payload: wishlistId })
+    Notification("Remove item","danger")
   } catch (error) {
     console.log(error);
   }

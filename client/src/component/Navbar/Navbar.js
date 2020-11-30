@@ -4,6 +4,8 @@ import { getProductsByCategory } from '../../redux/actions/product'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faUserCog, faCartPlus, faHeart, faPhoneAlt } from '@fortawesome/free-solid-svg-icons'
 import { faFacebookF, faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons"
+import ReactNotification from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css'
 import logo from '../images/logo/logo.png';
 import './Navbar.css'
 import { Link } from "react-router-dom";
@@ -29,6 +31,7 @@ const Navbar = () => {
 
     return (
         <div className="container-fluid back fixed-top" >
+              <ReactNotification />
             <div className="col-md-12 m-auto">
                 <div className="row pt-2">
                     <div className="col-md-9 col-sm-12 col-12">
