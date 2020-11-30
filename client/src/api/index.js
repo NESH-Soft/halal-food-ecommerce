@@ -29,12 +29,20 @@ export const signIn = async (data) => {
 }
 
 
-
+ 
 export const registration = async (data) => {
-  // return {success: true, data: `Please check your email ${data.email} to complete signUp process` }
-  const response = await axios.get(`/api/user/register`, data, config);
+  // return {success: true, msg: `Please check your email ${data.email} to complete signUp process` }
+   const response = await axios.post(`/api/user/register`, data, config);
   return response.data
 }
+
+export const registrationVerify = async (registerToken) => {
+
+  const response = await axios.get(`/api/user/verify/${registerToken}`,config);
+  return response.data
+}
+
+
 
 export const loadUser = async () => {
   const response = await axios.get(`/api/user/me`);

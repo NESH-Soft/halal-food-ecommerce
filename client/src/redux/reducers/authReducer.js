@@ -12,7 +12,7 @@ const initialState = {
   isAuthenticated: false,
   user: {},
   success: false,
-  serverMessage: {}
+  serverMessage: null
 
 };
 const authReducer = (state = initialState, action) => {
@@ -23,7 +23,6 @@ const authReducer = (state = initialState, action) => {
     case SIGN_IN_SUCCESS:
     case REGISTRATION_VERIFY:
       localStorage.setItem('token',action.payload.token)
-      console.log( action.payload.token);
       return {
         ...state,
         isAuthenticated: true,
@@ -40,6 +39,8 @@ const authReducer = (state = initialState, action) => {
         return {
           ...state,
           serverMessage: action.payload.msg,
+          success:action.payload.success
+
         }
 
     case LOGOUT:

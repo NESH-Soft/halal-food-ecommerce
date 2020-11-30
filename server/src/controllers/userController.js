@@ -36,7 +36,7 @@ export const signupUser = asyncHandler(async (req, res) => {
     message,
   });
 
-  res.status(200).json({ success: true, data: `Please check your email ${user.email} to complete signUp process` });
+  res.status(200).json({ success: true, msg: `Please check your email ${user.email} to complete signUp process` });
 });
 
 // Verify user
