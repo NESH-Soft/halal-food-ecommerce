@@ -94,7 +94,9 @@ export const removeWishList = async (id) => {
 
 
 export const createOrderCashOnDelivery = async (order) => {
-  
+  const response = await axios.post('/api/order/cash-on-delivery', order, config);
+  console.log(response.data);
+
   const orderReceived = {}
   return orderReceived
 
