@@ -21,7 +21,7 @@ export const signIn = (data) => async(dispatch) => {
   }
 } 
 
-export const registration = (data) => async(dispatch) => {
+export const registerAction = (data) => async(dispatch) => {
   try {
     const  res  = await api.registration(data);
     dispatch({ type: REGISTRATION_SUCCESS, payload: res })
@@ -30,14 +30,16 @@ export const registration = (data) => async(dispatch) => {
   }
 } 
 
-// export const registrationVerify = (token) => async(dispatch) => {
-//   try {
-//     const  res  = await api.registrationVerify(token);
-//     dispatch({ type: REGISTRATION_VERIFY, payload: res })
-//   } catch (error) {
-//     console.log(error);
-//   }
-// } 
+export const registrationVerify = (token) => async(dispatch) => {
+  try {
+    const  res  = await api.registrationVerify(token);
+    dispatch({ type: REGISTRATION_VERIFY, payload: res })
+  } catch (error) {
+    console.log(error);
+  }
+} 
+
+
 export const loadUser = () => async(dispatch) => {
   if(localStorage.token){
     setAuthToken(localStorage.token);

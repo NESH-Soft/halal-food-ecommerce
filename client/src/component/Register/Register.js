@@ -1,16 +1,28 @@
-import React from 'react';
-import {Link} from "react-router-dom";
+import React,{useEffect} from 'react';
+import {Link,withRouter} from "react-router-dom";
 import { useForm } from "react-hook-form";
-
-const Register = () => {
-    const { register, handleSubmit, errors } = useForm();
+import { useDispatch,useSelector } from 'react-redux';
+import {registerAction} from '../../redux/actions/authAction'
+const Register = (props) => {
+    const dispatch = useDispatch();
+    const success = useSelector((state) => state.authState.success);
+    useEffect(() => {
+       
+        if(success){
+          props.history.push('/info');
+        }
+        // eslint-disable-next-line
+      },[success])
+const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => {
+      console.log(data)
       if(data.password !== data.confirmPassword){
           alert("password doesn't match")
       }else{
-          console.log(data);
+          
+          dispatch(registerAction(data))
       }
-  };
+  }; 
     return (
         <div className="col-md-12">
             <div className="row d-flex justify-content-center" style={{ marginTop: '100px'}}>
@@ -29,6 +41,11 @@ const Register = () => {
                                         <label for="exampleInputEmail1">Email address</label>
                                         <input type="email" class="form-control" name="email" ref={register({ required: true })} id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
                                         {errors.email && <span>This field is required</span>}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPhone1">Phone Number</label>
+                                        <input type="number" class="form-control" name="phone" ref={register({ required: true })} id="exampleInputphone1" aria-describedby="emailHelp" placeholder="Enter phone number" />
+                                        {errors.phone && <span>This field is required</span>}
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Password</label>
@@ -55,4 +72,4 @@ const Register = () => {
     );
 };
 
-export default Register;
+export default withRouter(Register);
