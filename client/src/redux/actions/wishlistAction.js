@@ -12,7 +12,7 @@ export const addToWishList = (_id) => async(dispatch) => {
   try {
     const  wishList  = await api.addToWishList({_id});
    dispatch({ type: ADD_TO_WISHLIST, payload: wishList })
-   Notification("added success","success")
+   Notification("added success","success",100)
   } catch (error) {
     console.log(error);
   }
@@ -31,7 +31,7 @@ export const removeWishList = (id) => async(dispatch) => {
     const  wishlistId = await api.removeWishList(id);
    
     dispatch({ type: REMOVE_WISHLIST, payload: wishlistId })
-    Notification("Remove item","danger")
+    Notification("Remove item","danger",100)
   } catch (error) {
     console.log(error);
   }

@@ -1,5 +1,5 @@
 import { store } from 'react-notifications-component';
-const notification=(m,t)=>{
+const notification=(m,t,d)=>{
   console.log(m,t)
   // console.log(nMsg,nType)
   store.addNotification({
@@ -11,7 +11,7 @@ const notification=(m,t)=>{
     animationIn: ["animate__animated", "animate__fadeIn"],
     animationOut: ["animate__animated", "animate__fadeOut"],
     dismiss: {
-      duration: 200,
+      duration: d,
       onScreen: true
     }
   });
