@@ -9,11 +9,13 @@ import {
   verifyUser,
   getUser,
 } from '../controllers/userController';
+import { handleValidations } from '../middlewares/handleValidation';
+import validators from '../models/validation/index';
 
 const router = express.Router();
 
-router.route('/login').post(signInUser);
-router.route('/register').post(signupUser);
+router.route('/login').post(handleValidations(validators.loginValidation), signInUser);
+router.route('/register').post(handleValidations(validators.registerValidation), signupUser);
 router.route('/me').get(auth.protectUser, getUser);
 
 router.route('/verify/:registerToken').get(verifyUser);
