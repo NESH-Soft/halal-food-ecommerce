@@ -19,7 +19,7 @@ export const addToCart = (data) => async(dispatch) => {
   // dispatch(amountCount())
   try {
     dispatch({ type: ADD_TO_CART, payload: data })
-    Notification("added success","success")
+    Notification("added success","success",100)
   } catch (error) {
     console.log(error);
   }
@@ -28,7 +28,7 @@ export const removeCart = (id) => async(dispatch) => {
   // dispatch(amountCount())
   try {
     dispatch({ type: REMOVE_CART, payload: id })
-    Notification("Remove item","danger")
+    Notification("Remove item","danger",100)
   } catch (error) {
     console.log(error);
   }

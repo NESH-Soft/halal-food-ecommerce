@@ -15,13 +15,9 @@ const Register = (props) => {
       },[success])
 const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => {
-      console.log(data)
-      if(data.password !== data.confirmPassword){
-          alert("password doesn't match")
-      }else{
           
           dispatch(registerAction(data))
-      }
+     
   }; 
     return (
         <div className="col-md-12">
