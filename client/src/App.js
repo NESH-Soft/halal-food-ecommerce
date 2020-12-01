@@ -36,6 +36,7 @@ function App() {
     <div className="container-fluid">
          
       <Router>
+        
         <Navbar />
         <Switch>
           <Route exact path="/about-us" component={AboutUs} />
