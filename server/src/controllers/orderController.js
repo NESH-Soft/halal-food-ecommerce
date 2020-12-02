@@ -5,7 +5,12 @@ import {
   findOrderById,
   addOrderServices,
   deleteOrderServices,
-  updateOrderServices,
+  getOrderServices,
+  changeOrderActionServices,
+  getRecentOrderServices,
+  getTodayOrderServices,
+  getOrderByDayServices,
+  getOrderInfoServices,
 } from '../services/orderService';
 
 import { addOrderService, createUserServices } from '../services/userServices';
@@ -17,7 +22,7 @@ import { BadRequest, NotFound } from '../utils/error';
 export const getOrders = asyncHandler(async (req, res) => {
   const order = await getAllOrderServices();
   if (!order.length) return res.status(200).json({ success: true, msg: 'No order created yet' });
-  return res.status(200).json({ success: true, order, msg: 'all category fetch' });
+  return res.status(200).json({ success: true, order, msg: 'all order fetch' });
 });
 
 export const addOrder = asyncHandler(async (req, res) => {
@@ -113,19 +118,6 @@ export const addOrder = asyncHandler(async (req, res) => {
   });
 });
 
-export const deleteOrder = asyncHandler(async (req, res) => {
-  const deletedOrder = await deleteOrderServices(req.params.id);
-  if (!deletedOrder) throw NotFound('Order not found');
-  return res.status(200).json({ success: true, deletedOrder, msg: 'Order delete successfully' });
-});
-
-export const updateOrder = asyncHandler(async (req, res) => {
-  const newOrder = null; // Creating order logic goes here
-  const updatedOrder = await updateOrderServices(req.params.id, newOrder);
-  if (!updatedOrder) throw NotFound('Order not found');
-  return res.status(200).json({ success: true, updatedOrder, msg: 'Order updated successfully' });
-});
-
 export const addOrderCashOnDelivery = asyncHandler(async (req, res) => {
   const {
     cart,
@@ -173,4 +165,52 @@ export const addOrderCashOnDelivery = asyncHandler(async (req, res) => {
     newOrder,
     msg: 'Order added successfully',
   });
+});
+
+export const deleteOrder = asyncHandler(async (req, res) => {
+  const deletedOrder = await deleteOrderServices(req.params.id);
+  if (!deletedOrder) throw NotFound('Order not found');
+  return res.status(200).json({ success: true, deletedOrder, msg: 'Order delete successfully' });
+});
+
+export const changeOrderAction = asyncHandler(async (req, res) => {
+  const updatedOrder = await changeOrderActionServices(req.params.id, req.body);
+  if (!updatedOrder) throw NotFound('Order not found');
+  return res.status(200).json({ success: true, updatedOrder, msg: 'Order updated successfully' });
+});
+// start working
+export const getOrderByFilter = asyncHandler(async (req, res) => {
+  const orders = await getOrderServices(req.query.status);
+  if (!orders) throw NotFound('Request order not found');
+  return res.status(200).json({ success: true, orders, msg: 'Order fetch' });
+});
+// export const getOrderDelivery = asyncHandler(async (req, res) => {
+//   const orders = await getOrdersDeliveryServices();
+//   if (!orders) throw NotFound('Delivery order not found');
+//   return res.status(200).json({ success: true, orders, msg: 'Delivery Order fetch' });
+// });
+// export const getOrderCancel = asyncHandler(async (req, res) => {
+//   const orders = await getOrdersCancelServices();
+//   if (!orders) throw NotFound('Cancel Order not found');
+//   return res.status(200).json({ success: true, orders, msg: 'Cancel Order fetch' });
+// });
+export const getRecentOrder = asyncHandler(async (req, res) => {
+  const recentOrder = await getRecentOrderServices();
+  if (!recentOrder) throw NotFound('No recent order yet');
+  return res.status(200).json({ success: true, recentOrder, msg: 'Recent order fetch' });
+});
+export const getOrderToday = asyncHandler(async (req, res) => {
+  const todayOrder = await getTodayOrderServices();
+  if (!todayOrder) throw NotFound('No order found today');
+  return res.status(200).json({ success: true, todayOrder, msg: 'Today order fetch' });
+});
+export const getOrderDay = asyncHandler(async (req, res) => {
+  const orderByDay = await getOrderByDayServices(req.query.day);
+  if (!orderByDay) throw NotFound('No order found');
+  return res.status(200).json({ success: true, orderByDay, msg: 'fetch order by day' });
+});
+export const getOrderInfo = asyncHandler(async (req, res) => {
+  const orderInfo = await getOrderInfoServices();
+  if (!orderInfo) throw NotFound('No order info found');
+  return res.status(200).json({ success: true, orderInfo, msg: 'Order info fetch' });
 });
