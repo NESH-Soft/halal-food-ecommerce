@@ -181,7 +181,7 @@ export const changeOrderAction = asyncHandler(async (req, res) => {
 // start working
 export const getOrderByFilter = asyncHandler(async (req, res) => {
   const orders = await getOrderServices(req.query.status);
-  if (!orders) throw NotFound('Request order not found');
+  if (!orders) throw NotFound(`${req.query.status} order not found`);
   return res.status(200).json({ success: true, orders, msg: 'Order fetch' });
 });
 // export const getOrderDelivery = asyncHandler(async (req, res) => {
