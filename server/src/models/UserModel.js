@@ -7,12 +7,26 @@ const userSchema = mongoose.Schema({
   email: {
     type: String,
   },
+  phone: {
+    type: Number,
+  },
   password: {
     type: String,
   },
   resetPasswordToken: String,
   resetPasswordExpires: Date,
+  wishList: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'product',
+    },
+  ],
+  order: [{
+    type: mongoose.Schema.ObjectId,
+    ref: 'order',
+  }],
 },
+
 {
   timestamps: true,
 });

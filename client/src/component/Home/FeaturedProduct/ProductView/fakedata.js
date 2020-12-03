@@ -16,7 +16,7 @@ const fakedata = [
     {
         "id": 2,
         "category": "food",
-        "name": "Orange is very tasty",
+        "name": "Orange per 1kg",
         "image": "https://preview.colorlib.com/theme/ogani/img/categories/cat-1.jpg",
         "price" : 150,
         "stock": 10,

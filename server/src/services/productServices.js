@@ -3,12 +3,17 @@ import models from '../models/index';
 const { Product } = models;
 
 export const findProductById = async (id) => {
-  const product = await Product.findById(id).select('cloudinaryId');
+  const product = await Product.findById(id);
   return product;
 };
 
 export const getProductsServices = async () => {
   const products = await Product.find();
+  return products;
+};
+
+export const getProductsByCategoryServices = async (category) => {
+  const products = await Product.find({ category });
   return products;
 };
 
@@ -30,5 +35,14 @@ export const updateProductServices = async (id, data) => {
 
 export const deleteProductServices = async (id) => {
   const product = Product.findByIdAndRemove(id);
+  return product;
+};
+
+export const searchProductServices = async (term) => {
+  const product = Product.find(
+    {
+      $text: { $search: term },
+    },
+  );
   return product;
 };

@@ -19,7 +19,7 @@ export const createUserServices = async (user) => {
 };
 
 export const getUserServices = async (id) => {
-  const user = User.findById(id).select('-password -resetPasswordExpires -resetPasswordToken');
+  const user = await User.findById(id).select('-password -resetPasswordExpires -resetPasswordToken').populate({ path: 'order', model: 'order' });
   return user;
 };
 
@@ -27,6 +27,16 @@ export const UpdateUserServices = async (id, user) => {
   // eslint-disable-next-line
   const updateUser = User.findByIdAndUpdate( id, user, { new: true });
   return updateUser;
+};
+
+export const addOrderService = async (id, orderId) => {
+  // eslint-disable-next-line
+  const newOrder = await User.findByIdAndUpdate(
+    { _id: id },
+    { $push: { order: orderId } },
+    { new: true },
+  );
+  return newOrder;
 };
 
 export const deleteUserServices = async (id) => {

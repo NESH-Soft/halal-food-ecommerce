@@ -1,12 +1,28 @@
-import React from 'react';
-import { Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import React,{useEffect} from 'react'
+import { withRouter,Link } from "react-router-dom"
+import { useForm } from "react-hook-form"
+import { useDispatch, useSelector } from 'react-redux'
+import {signIn} from '../../redux/actions/authAction'
+import './Login.css'
 
-const Login = () => {
+const Login = (props) => {
+    const dispatch = useDispatch();
+    const isAuthenticated = useSelector((state) => state.authState.isAuthenticated);
+    useEffect(() => {
+       
+        if(isAuthenticated){
+          props.history.push('/my-account');
+        }
+        // eslint-disable-next-line
+      },[isAuthenticated])
+
+  
     const { register, handleSubmit, watch, errors } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+    dispatch(signIn(data))
+    }
     return (
-        <div style={{ marginTop: '100px' }}>
+        <div className="login">
             <div className="row d-flex justify-content-center align-items-center">
                 <div className="col-md-3">
                     <div class="card mb-4 shadow-lg p-3 bg-white" style={{ width: '100%' }}>
@@ -42,4 +58,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default withRouter(Login);

@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { faCartPlus,faMinus } from '@fortawesome/free-solid-svg-icons'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { useDispatch, useSelector } from 'react-redux';
+import { getSpecialProducts } from '../../../redux/actions/product';
+import { addToCart, removeCart } from '../../../redux/actions/cartAction'
 const responsive = {
     superLargeDesktop: {
         // the naming can be any, depends on you.
@@ -19,86 +22,67 @@ const responsive = {
     },
     mobile: {
         breakpoint: { max: 464, min: 0 },
-        items: 1
+        items: 2
     }
 };
 
 const ShopCarousel = () => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getSpecialProducts());
+        //eslint-disable-next-line
+    }, []);
+
+    const data = useSelector((state) => state.productState.specialProducts);
+    const specialProducts = data || []
+    const cartItem = useSelector((state) => state.cartState.cart)
+    // include all productId from cart state
+    const cartItemArray = cartItem.map(function (product) {
+        return product._id
+    });
+
     return (
         <Carousel responsive={responsive}>
-            <div class="card mx-2">
-                <img class="card-img-top" style={{ height: '120px' }} src="https://img.freepik.com/free-photo/transparent-turquoise-drop-pure-water-feather-blurred-blue-background-macro-copyspace_97669-421.jpg?size=626&ext=jpg" alt="" />
-                <div class="card-body">
-                    <h5 class="card-title">this is name</h5>
-                    <div className="d-flex justify-content-between">
-                        <p className="text-muted"><del>$<span>350</span> </del> </p>
-                        <h4>$<span>300</span> </h4>
 
+            {
+                specialProducts.map((pd, index) => (
+                    <div class="card mx-2 pt-2">
+                        <img class="card-img-top" style={{ height: '120px' }} src={pd.image} alt="" />
+                        <div class="card-body">
+                            <p class="card-title">{pd.name}</p>
+                            <div className="d-flex justify-content-between">
+                                <p className="text-muted"><del>$<span>{pd.price}</span> </del> </p>
+                                <h6>$<span>{pd.specialPrice}</span> </h6>
+                            </div>
+                            <div className="text-center">
+                                {
+                                    cartItemArray.includes(pd._id) ? (
+                                        <button
+                                            disabled={
+                                                pd.stock <= 0
+                                            }
+                                            className="btn btn-sm btn-Addtocart btn-danger btn-padding "
+                                            onClick={() => dispatch(removeCart(pd._id))}
+                                        >
+                                            <FontAwesomeIcon icon={faMinus} /> Remove from cart
+                                        </button>
+                                    ) : (
+                                            <button
+                                                disabled={
+                                                    pd.stock <= 0
+                                                }
+                                                className="btn btn-sm btn-Addtocart btn-color btn-padding"
+                                                onClick={() => dispatch(addToCart(pd))}
+                                            >
+                                                <FontAwesomeIcon icon={faCartPlus} /> Add to cart
+                                            </button>
+                                        )
+                                }
+                            </div>
+                        </div>
                     </div>
-                    <a href="#" class="btn btn-primary w-100">Add to cart</a>
-                </div>
-            </div>
-            <div class="card mx-2">
-                <img class="card-img-top" style={{ height: '120px' }} src="https://www.publicdomainpictures.net/pictures/320000/nahled/background-image.png" alt="" />
-                <div class="card-body">
-                    <h5 class="card-title">this is name</h5>
-                    <div className="d-flex justify-content-between">
-                        <p className="text-muted"><del>$<span>350</span> </del> </p>
-                        <h4>$<span>300</span> </h4>
-
-                    </div>
-                    <a href="#" class="btn btn-primary w-100">Add to cart</a>
-                </div>
-            </div>
-            <div class="card mx-2">
-                <img class="card-img-top" style={{ height: '120px' }} src="https://image.freepik.com/free-photo/many-oranges-from-valencia-spain_137916-1.jpg" alt="" />
-                <div class="card-body">
-                    <h5 class="card-title">this is name</h5>
-                    <div className="d-flex justify-content-between">
-                        <p className="text-muted"><del>$<span>350</span> </del> </p>
-                        <h4>$<span>300</span> </h4>
-
-                    </div>
-                    <a href="#" class="btn btn-primary w-100">Add to cart</a>
-                </div>
-            </div>
-            <div class="card mx-2">
-                <img class="card-img-top" style={{ height: '120px' }} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwklrVMO7ZdPKB0dGZ0BgDJhXeEXIMPgwf8g&usqp=CAU" alt="" />
-                <div class="card-body">
-                    <h5 class="card-title">this is name</h5>
-                    <div className="d-flex justify-content-between">
-                        <p className="text-muted"><del>$<span>350</span> </del> </p>
-                        <h4>$<span>300</span> </h4>
-
-                    </div>
-                    <a href="#" class="btn btn-primary w-100">Add to cart</a>
-                </div>
-            </div>
-            <div class="card mx-2">
-                <img class="card-img-top" style={{ height: '120px' }} src="https://cloudfront-ap-southeast-2.images.arcpublishing.com/nzme/3LFPZJSOFEYWLSLPBCH72CI2GY.jpg" alt="" />
-                <div class="card-body">
-                    <h5 class="card-title">this is name</h5>
-                    <div className="d-flex justify-content-between">
-                        <p className="text-muted"><del>$<span>350</span> </del> </p>
-                        <h4>$<span>300</span> </h4>
-                    </div>
-                    <a href="#" class="btn btn-primary w-100">Add to cart</a>
-                </div>
-            </div>
-            <div class="card mx-2">
-                <img class="card-img-top" style={{ height: '120px' }} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSs4Mzi4VthlNuUgP5QbgfJyoGIPTz3Z_BylA&usqp=CAU" alt="" />
-                <div class="card-body">
-                    <h5 class="card-title">this is name</h5>
-
-                    <div className="d-flex justify-content-between">
-                        <p className="text-muted"><del>$<span>350</span> </del> </p>
-                        <h4>$<span>300</span> </h4>
-
-                    </div>
-                    <a href="#" class="btn btn-primary w-100">Add to cart</a>
-                </div>
-            </div>
-
+                ))
+            }
         </Carousel>
     );
 };

@@ -2,23 +2,23 @@ import React, { useEffect, useState } from 'react';
 import Footer from '../Footer/Footer/Footer';
 import Navbar from '../Navbar/Navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMinus, faPlus, faTrashAlt, faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faMinus, faPlus, faTrashAlt, } from '@fortawesome/free-solid-svg-icons'
 import './Cart.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeCart, cartItemIncrement, cartItemDecrement } from '../../redux/actions/cartAction'
+import { removeCart, cartItemIncrement, cartItemDecrement, amountCount } from '../../redux/actions/cartAction'
 import { Link } from 'react-router-dom';
 
 
 
 const Cart = () => {
-    const cart = useSelector((state) => state.cartState.cart);
-    //   console.log(cart)
-    //     const [cartState,setCartState] = useState(cart)
-    //     useEffect(()=>{
-    //         setCartState(cart)
-    //     },[cart])
-
     const dispatch = useDispatch();
+
+    // useEffect(()=>{
+    //     dispatch(amountCount());
+    //     // eslint-disable-next-line
+    //   },[])
+    const cartState = useSelector((state) => state.cartState);
+    const cart = cartState.cart;
     const productPriceArray = cart.map(function (product) {
         return product.price * product.quantity;
     });
@@ -28,12 +28,9 @@ const Cart = () => {
     }, 0);
 
     return (
-        <div className="col-md-12">
-            <Navbar />
+        <div>
             <div className="row">
-                <div className="col-md-3">
-
-                </div>
+                <div className="col-md-3"></div>
                 <div className="col-md-9" >
                     <div style={{ marginTop: '195px' }}>
                         <div className="mt-5">
@@ -43,8 +40,13 @@ const Cart = () => {
 
                         <div className="row my-5">
                             <div className="col-md-8">
-                                <h4>Cart( <span>{cart.length}</span> items )</h4>
-                                <hr />
+                                <div style={{ borderBottom: '3px solid #76a333' }}>
+                                    <h4>Cart ( <span>
+                                        {
+                                            cart.length > 1 ? (`${cart.length} Items`) : (`${cart.length} Item`)
+                                        }
+                                    </span> )</h4>
+                                </div>
                                 <div className="mt-5">
                                     {
                                         cart.length === 0 ? <div>
@@ -59,17 +61,21 @@ const Cart = () => {
                                                         <h5>{pd.name}</h5>
 
                                                     </div>
+
                                                     <div className="col-lg-2 col-md-2 col-sm-6 col-6 text-left">
                                                         <div className="btn-group btn-group-toggle float-right">
-                                                            <button className="btn btn-danger  rounded-0" onClick={() => dispatch(cartItemDecrement(pd._id))}><FontAwesomeIcon icon={faMinus} /></button>
+                                                            {pd.quantity > 1 ? (<button className="btn btn-danger  rounded-0" onClick={() => dispatch(cartItemDecrement(pd._id))}><FontAwesomeIcon icon={faMinus} /></button>) : (<button className="btn btn-danger  rounded-0" disable><FontAwesomeIcon icon={faMinus} /></button>)}
                                                             <button className="btn rounded-0 "><span>{pd.quantity}</span></button>
-                                                            <button className="btn btn-primary  rounded-0" onClick={() => dispatch(cartItemIncrement(pd._id))}><FontAwesomeIcon icon={faPlus} /></button>
+                                                            {console.log(pd.stock)}
+                                                            {/* <button className="btn btn-primary  rounded-0" onClick={() => dispatch(cartItemIncrement(pd._id))}><FontAwesomeIcon icon={faPlus} /></button> */}
+                                                            {pd.quantity < pd.stock ? (<button className="btn btn-primary  rounded-0" onClick={() => dispatch(cartItemIncrement(pd._id))}><FontAwesomeIcon icon={faPlus} /></button>) : (<button className="btn btn-primary  rounded-0" disable><FontAwesomeIcon icon={faPlus} /></button>)}
+
                                                         </div>
                                                     </div>
                                                     <div className="col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-between">
                                                         <div className="">
                                                             <span onClick={() => dispatch(removeCart(pd._id))}><FontAwesomeIcon className="text-danger ml-3" icon={faTrashAlt} /></span>
-                                                            <FontAwesomeIcon className="text-danger ml-3" icon={faHeart} />
+                                                            {/* <FontAwesomeIcon className="text-danger ml-3" icon={faHeart} /> */}
                                                         </div>
                                                         <div>
                                                             <h6>Per {pd.unit} : ¥{pd.price} x {pd.quantity}</h6>
@@ -86,28 +92,32 @@ const Cart = () => {
                                 </div>
                             </div>
                             <div className="col-md-4">
-                                <h4>The Total Amount of </h4>
-                                <hr />
+                                <div style={{ borderBottom: '3px solid #76a333' }}>
+                                    <h4>The Total Amount of </h4>
+                                </div>
+
                                 <div className="mt-4 d-flex justify-content-between">
                                     <p>Total Price</p>
                                     <p>¥{totalPrice}</p>
                                 </div>
-                                <div className="d-flex justify-content-between">
+                                {/* <div className="d-flex justify-content-between">
                                     <p>Shipping Amount</p>
-                                    <p>¥0.00</p>
+                                <p>¥{cartState.cartShipping}</p>
                                 </div>
                                 <div className="d-flex justify-content-between">
                                     <p>Vat Amount</p>
-                                    <p>¥0.00</p>
+                                    <p>¥{cartState.cartTax}</p>
                                 </div>
                                 <hr />
                                 <div className="d-flex justify-content-between">
                                     <p>The total Amount of <br /> ( included VAT)</p>
-                                    <p>¥{totalPrice}</p>
+                                    <p>¥{cartState.cartSubTotal}</p>
+                                </div> */}
+                                <div style={{ marginTop: "100px" }}>
+                                    <Link to="/checkout">
+                                        <button className="btn btn-primary w-100">Go to Checkout</button>
+                                    </Link>
                                 </div>
-                                <Link to="/checkout">
-                                    <button className="btn btn-primary w-100">Go to Checkout</button>
-                                </Link>
                             </div>
                         </div>
                         <div>
@@ -123,7 +133,6 @@ const Cart = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
         </div>
     );
 };

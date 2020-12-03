@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 import './HeaderCarousel.css';
 import vagetables from '../../../images/headerSlider/vagetables.png'
 
@@ -14,9 +15,12 @@ const HeaderCarousel = () => {
                         <p>
                             Free Pickup and Delivery Available
                         </p>
+                        <Link to="/shop">
                         <button className="btn btn-Shopnow px-5 rounded-0" >
                             Shop now
                         </button>
+                        </Link>
+                      
                     </div>
                     <div className="col-md-7">
                         <img src={vagetables} width="100%" height="90%" alt=""/>

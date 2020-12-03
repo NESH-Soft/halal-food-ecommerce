@@ -4,6 +4,13 @@ const categorySchema = mongoose.Schema({
   name: {
     type: String,
   },
+  subCategory: [
+    {
+      name: {
+        type: String,
+      },
+    },
+  ],
 },
 {
   timestamps: true,

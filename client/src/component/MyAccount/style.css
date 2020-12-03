@@ -1,0 +1,12 @@
+.account-box{
+    border: 1px solid lightgrey;
+    padding: 30px 20px;
+    text-align: center;
+}
+.service-icon{
+    width: 100px;
+    margin: auto;
+    background-color: #76a333;
+    border-radius: 50%;
+    padding: 20px 0px;
+}

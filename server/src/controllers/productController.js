@@ -6,6 +6,8 @@ import {
   updateProductServices,
   deleteProductServices,
   findProductById,
+  getProductsByCategoryServices,
+  searchProductServices,
 } from '../services/productServices';
 import asyncHandler from '../utils/async';
 import { NotFound } from '../utils/error';
@@ -16,6 +18,14 @@ export const getProducts = asyncHandler(async (req, res) => {
   if (!products.length) return res.status(200).json({ success: true, msg: 'No product created yet' });
 
   return res.status(200).json({ success: true, products, msg: 'All products fetched' });
+});
+
+export const getProductsByCategory = asyncHandler(async (req, res) => {
+  const products = await getProductsByCategoryServices(req.params.category);
+
+  if (!products.length) return res.status(200).json({ success: true, msg: 'No product found in this category' });
+
+  return res.status(200).json({ success: true, products, msg: 'All specific categories products fetched' });
 });
 
 export const addProduct = asyncHandler(async (req, res) => {
@@ -52,7 +62,7 @@ export const updateProduct = asyncHandler(async (req, res) => {
 
 export const deleteProduct = asyncHandler(async (req, res) => {
   const productImage = await findProductById(req.params.id);
-  if (!productImage) {
+  if (!productImage.cloudinaryId) {
     throw new NotFound(`Product not found by the is:${req.params.id}`);
   }
 
@@ -68,4 +78,9 @@ export const deleteProduct = asyncHandler(async (req, res) => {
 
   const deletedProduct = await deleteProductServices(req.params.id);
   return res.status(200).json({ success: true, deletedProduct, msg: 'Product deleted successfully' });
+});
+
+export const searchProduct = asyncHandler(async (req, res) => {
+  const products = await searchProductServices(req.query.term);
+  return res.status(200).json({ success: true, products, msg: 'Product fetch' });
 });

@@ -8,6 +8,7 @@ import {
   deleteUserServices,
   changePasswordServices,
   findUserByEmail,
+  getUserServices,
 } from '../services/userServices';
 import asyncHandler from '../utils/async';
 import { BadRequest, NotFound } from '../utils/error';
@@ -35,7 +36,7 @@ export const signupUser = asyncHandler(async (req, res) => {
     message,
   });
 
-  res.status(200).json({ success: true, data: `Please check your email ${user.email} to complete signUp process` });
+  res.status(200).json({ success: true, msg: `Please check your email ${user.email} to complete signUp process` });
 });
 
 // Verify user
@@ -88,4 +89,10 @@ export const changePassword = asyncHandler(async (req, res) => {
   req.body.newPassword = hash;
   await changePasswordServices(req.user.id, req.body);
   return res.status(200).json({ success: true, msg: 'Password successfully changed, please log back in to take effect' });
+});
+
+// get user
+export const getUser = asyncHandler(async (req, res) => {
+  const user = await getUserServices(req.user.id);
+  res.status(200).json({ success: true, user });
 });

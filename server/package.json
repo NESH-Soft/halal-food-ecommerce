@@ -22,12 +22,15 @@
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "jest": "^26.6.2",
+    "joi": "^17.3.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.11",
     "multer": "^1.4.2",
     "nodemailer": "^6.4.14",
+    "stripe": "^8.124.0",
     "superagent": "^6.1.0",
-    "supertest": "^6.0.0"
+    "supertest": "^6.0.0",
+    "uuid": "^8.3.1"
   },
   "devDependencies": {
     "eslint": "^7.12.1",
