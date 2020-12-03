@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import TreeMenu from 'react-simple-tree-menu';
+// import default minimal styling or your own styling
+import '../../../node_modules/react-simple-tree-menu/dist/main.css';
+
+
 import { useSelector, useDispatch } from 'react-redux';
 import { getCategory } from '../../redux/actions/categoryAction';
 import { getProductsByCategory } from '../../redux/actions/product'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faSortAmountDown, faCheckCircle } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faSortAmountDown,  } from '@fortawesome/free-solid-svg-icons'
 import './Category.css';
-import { Link } from 'react-router-dom';
-const Category = () => {
+import {withRouter, Link } from 'react-router-dom';
+const Category = (props) => {
     const [categoryColor, setCategoryColor] = useState('');
     const dispatch = useDispatch()
     useEffect(() => {
@@ -17,6 +22,53 @@ const Category = () => {
     const category = useSelector((state) => state.categoryState.category);
 
     const [categoryClass, setCategoryClass] = useState('categoryShow');
+    const treeData = [
+         {
+            "name":"fresh food",
+            "sub": [{
+                "name":"a",
+            },
+            {
+                "name":"b"
+            },
+             ]
+         },
+         {
+            "name":"fresh food2",
+            "sub": [{
+                "name":"ab",
+            },
+            {
+                "name":"b"
+            },
+             ]
+         },
+         {
+            "name":"fresh food3",
+            "sub": [{
+                "name":"ac",
+            },
+            {
+                "name":"bd"
+            },
+             ]
+         },
+    
+      ];
+      const calCulData =treeData.map(item=>(
+        {
+            key: item.name,
+            label: item.name,
+            nodes: 
+                item.sub.map(i=>({
+                    key: i.name,
+                    label: i.name,
+                }
+                ))
+            ,
+           
+          }
+      ))
     //category dropdown system
     const hangleCategory = () => {
         if (categoryClass === 'categoryShow') {
@@ -39,15 +91,29 @@ const Category = () => {
                     </div>
                 </div>
             </div>
-            <ul className={`${categoryClass}`}>
-                {
-                    category && category.map((c) => (
-                        <li className="px-2" onClick={() => dispatch(getProductsByCategory(c.name))}><Link to="/shop"> <span className="pr-2"><FontAwesomeIcon icon={faCheckCircle} /></span> <spam>{c.name}</spam></Link></li>
-                    ))
-                }
-            </ul>
+            <div className={`${categoryClass}`}>
+            <TreeMenu
+  cacheSearch
+  data={calCulData}
+  debounceTime={125}
+  disableKeyboard={false}
+  hasNodes={true}
+//   hasSearch={false}
+  onClickItem={(i) => {
+      console.log(i.label);
+      dispatch(getProductsByCategory(i.label))
+      props.history.push('/shop')
+      
+  }}
+//   onClickItem={function noRefCheck(){}}
+  resetOpenNodesOnDataUpdate={false}
+/>
+
+
+            </div>
+        
         </div>
     );
 };
 
-export default Category;
+export default withRouter(Category);
