@@ -22,7 +22,7 @@ const responsive = {
     },
     mobile: {
         breakpoint: { max: 464, min: 0 },
-        items: 1
+        items: 2
     }
 };
 
@@ -61,7 +61,7 @@ const ShopCarousel = () => {
                                             disabled={
                                                 pd.stock <= 0
                                             }
-                                            className="btn btn-sm btn-Addtocart btn-danger px-3 "
+                                            className="btn btn-sm btn-Addtocart btn-danger btn-padding "
                                             onClick={() => dispatch(removeCart(pd._id))}
                                         >
                                             <FontAwesomeIcon icon={faMinus} /> Remove from cart
@@ -71,7 +71,7 @@ const ShopCarousel = () => {
                                                 disabled={
                                                     pd.stock <= 0
                                                 }
-                                                className="btn btn-sm btn-Addtocart btn-color px-3"
+                                                className="btn btn-sm btn-Addtocart btn-color btn-padding"
                                                 onClick={() => dispatch(addToCart(pd))}
                                             >
                                                 <FontAwesomeIcon icon={faCartPlus} /> Add to cart

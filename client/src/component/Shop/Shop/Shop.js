@@ -1,11 +1,12 @@
 import React from 'react';
 import AllProducts from '../AllProducts/AllProducts';
 import ShopCarousel from '../ShopCarousel/ShopCarousel';
+import './Shop.css'
 
 const Shop = () => {
     return (
         <div >
-            <div className="row mb-5" style={{ marginTop: '200px' }}>
+            <div className="row mb-5 shopPage">
                 <div className="col-md-3"></div>
                 <div className="col-md-9">
                     <div style={{ borderBottom: '3px solid #76a333' }} className="mb-3">

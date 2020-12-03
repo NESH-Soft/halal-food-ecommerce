@@ -13,10 +13,11 @@
     overflow: hidden;
     padding-top: 10px;
 }
-/* .card-img-top{
-    width: 100%;
-    height: 100%;
-} */
+@media only screen and (max-width: 5000px) and (min-width: 701px)  {
+    .btn-padding{
+        padding: 2px 45px;
+    }
+}
 .home-products-img{
     transition-duration: 1s;
     margin: 0 auto;

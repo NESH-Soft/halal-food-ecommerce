@@ -1,8 +1,10 @@
-import React,{useEffect} from 'react';
-import { withRouter,Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from 'react-redux';
+import React,{useEffect} from 'react'
+import { withRouter,Link } from "react-router-dom"
+import { useForm } from "react-hook-form"
+import { useDispatch, useSelector } from 'react-redux'
 import {signIn} from '../../redux/actions/authAction'
+import './Login.css'
+
 const Login = (props) => {
     const dispatch = useDispatch();
     const isAuthenticated = useSelector((state) => state.authState.isAuthenticated);
@@ -20,7 +22,7 @@ const Login = (props) => {
     dispatch(signIn(data))
     }
     return (
-        <div style={{ marginTop: '100px' }}>
+        <div className="login">
             <div className="row d-flex justify-content-center align-items-center">
                 <div className="col-md-3">
                     <div class="card mb-4 shadow-lg p-3 bg-white" style={{ width: '100%' }}>
