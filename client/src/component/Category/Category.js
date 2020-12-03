@@ -8,9 +8,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getCategory } from '../../redux/actions/categoryAction';
 import { getProductsByCategory } from '../../redux/actions/product'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faSortAmountDown,  } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faSortAmountDown, } from '@fortawesome/free-solid-svg-icons'
 import './Category.css';
-import {withRouter, Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 const Category = (props) => {
     const [categoryColor, setCategoryColor] = useState('');
     const dispatch = useDispatch()
@@ -20,55 +20,55 @@ const Category = (props) => {
     }, [])
 
     const category = useSelector((state) => state.categoryState.category);
-
+    const data = category || [];
     const [categoryClass, setCategoryClass] = useState('categoryShow');
-    const treeData = [
-         {
-            "name":"fresh food",
-            "sub": [{
-                "name":"a",
-            },
-            {
-                "name":"b"
-            },
-             ]
-         },
-         {
-            "name":"fresh food2",
-            "sub": [{
-                "name":"ab",
-            },
-            {
-                "name":"b"
-            },
-             ]
-         },
-         {
-            "name":"fresh food3",
-            "sub": [{
-                "name":"ac",
-            },
-            {
-                "name":"bd"
-            },
-             ]
-         },
-    
-      ];
-      const calCulData =treeData.map(item=>(
+    // const treeData = [
+    //     {
+    //         "name": "fresh food",
+    //         "sub": [{
+    //             "name": "a",
+    //         },
+    //         {
+    //             "name": "b"
+    //         },
+    //         ]
+    //     },
+    //     {
+    //         "name": "fresh food2",
+    //         "sub": [{
+    //             "name": "ab",
+    //         },
+    //         {
+    //             "name": "b"
+    //         },
+    //         ]
+    //     },
+    //     {
+    //         "name": "fresh food3",
+    //         "sub": [{
+    //             "name": "ac",
+    //         },
+    //         {
+    //             "name": "bd"
+    //         },
+    //         ]
+    //     },
+
+    // ];
+    const calCulData = data.map(item => (
         {
             key: item.name,
             label: item.name,
-            nodes: 
-                item.sub.map(i=>({
+            nodes:
+                item.subCategory ? item.subCategory.map(i => ({
                     key: i.name,
                     label: i.name,
                 }
-                ))
+                )) : []
             ,
-           
-          }
-      ))
+
+        }
+    ))
     //category dropdown system
     const hangleCategory = () => {
         if (categoryClass === 'categoryShow') {
@@ -92,26 +92,23 @@ const Category = (props) => {
                 </div>
             </div>
             <div className={`${categoryClass}`}>
-            <TreeMenu
-  cacheSearch
-  data={calCulData}
-  debounceTime={125}
-  disableKeyboard={false}
-  hasNodes={true}
-//   hasSearch={false}
-  onClickItem={(i) => {
-      console.log(i.label);
-      dispatch(getProductsByCategory(i.label))
-      props.history.push('/shop')
-      
-  }}
-//   onClickItem={function noRefCheck(){}}
-  resetOpenNodesOnDataUpdate={false}
-/>
+                <TreeMenu
+                    cacheSearch
+                    data={calCulData}
+                    debounceTime={125}
+                    disableKeyboard={false}
+                    hasNodes={true}
+                    //   hasSearch={false}
+                    onClickItem={(i) => {
+                        console.log(i.label);
+                        dispatch(getProductsByCategory(i.label))
+                        props.history.push('/shop')
 
-
+                    }}
+                    //   onClickItem={function noRefCheck(){}}
+                    resetOpenNodesOnDataUpdate={false}
+                />
             </div>
-        
         </div>
     );
 };

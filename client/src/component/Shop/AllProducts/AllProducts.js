@@ -8,6 +8,7 @@ import { faHeart, faCartPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 import { addToCart, removeCart } from '../../../redux/actions/cartAction';
 import { getProduct } from '../../../redux/actions/product';
 import { addToWishList, removeWishList } from '../../../redux/actions/wishlistAction';
+import emptyImg from '../../images/empty/empty.png';
 
 const AllProducts = () => {
     const dispatch = useDispatch();
@@ -63,7 +64,7 @@ const AllProducts = () => {
                                     pd.stock <= 0
                                 }
 
-                                className="btn btn-sm btn-Addtocart btn-danger px-4"
+                                className="btn btn-sm btn-Addtocart btn-danger btn-padding"
                                 onClick={() => dispatch(removeCart(pd._id))}
                             >
                                 <FontAwesomeIcon icon={faMinus} /> Remove from cart
@@ -75,7 +76,7 @@ const AllProducts = () => {
                                         pd.stock <= 0
                                     }
 
-                                    className="btn btn-sm btn-Addtocart btn-color px-5"
+                                    className="btn btn-sm btn-Addtocart btn-color btn-padding"
 
                                     onClick={() => dispatch(addToCart(pd))}
                                 >
@@ -89,8 +90,16 @@ const AllProducts = () => {
 
     var queries = [
         {
-            columns: 3,
-            query: 'min-width: 800px'
+            columns: 2,
+            query: 'min-width: 300px'
+        },
+        {
+            columns: 2,
+            query: 'min-width: 350px'
+        },
+        {
+            columns: 2,
+            query: 'min-width: 464px'
         },
         {
             columns: 4,
@@ -99,11 +108,21 @@ const AllProducts = () => {
         {
             columns: 5,
             query: 'min-width: 1500px'
+        },
+        {
+            columns: 10,
+            query: 'min-width: 3000px'
         }
     ];
     return (
         <div>
-            <Columns queries={queries}>{product}</Columns>
+            {
+                data.length ?  <Columns queries={queries}>{product}</Columns> : <div className="col-md-5 m-auto text-center">
+                    <img src={emptyImg} alt="empty" width="100%" />
+                    <p>Opps! Products not available</p>
+                </div>
+            }
+           
         </div>
     );
 };

@@ -9,6 +9,7 @@ import { addToCart, removeCart } from '../../../redux/actions/cartAction';
 import { addToWishList, removeWishList } from '../../../redux/actions/wishlistAction';
 import { clearSearchState } from '../../../redux/actions/product'
 import './SearchProduct.css'
+import emptyImg from '../../images/empty/empty.png';
 
 const SearchProduct = () => {
     const dispatch = useDispatch();
@@ -121,11 +122,16 @@ const SearchProduct = () => {
                     <div style={{ borderBottom: '3px solid #76a333' }} className="my-4">
                         <h2>Your Search Products</h2>
                     </div>
-                    <div>
+                    {/* <div>
                         <button onClick={() => dispatch(clearSearchState())}>X</button>
-                    </div>
+                    </div> */}
+                    {
+                        products.length ? <Columns queries={queries}>{product}</Columns> : <div className="col-md-5 m-auto text-center">
+                            <img src={emptyImg} alt="empty" width="100%" />
+                            <p>Opps! Products not available</p>
+                        </div>
+                    }
 
-                    <Columns queries={queries}>{product}</Columns>
                 </div>
             </div>
         </div>
