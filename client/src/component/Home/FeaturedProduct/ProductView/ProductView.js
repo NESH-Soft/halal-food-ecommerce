@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import Columns from 'react-columns';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart ,faCartPlus,faMinus } from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faCartPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux';
 import './ProductView.css';
 import { addToCart, removeCart } from '../../../../redux/actions/cartAction';
@@ -33,20 +33,23 @@ const ProductView = (props) => {
             <div className="box-button">
                 <div className="px-2" style={{ borderTop: '1px solid lightgray' }}>
                     <p>{pd.name}</p>
-                    <div className="d-flex justify-content-between">
-                        <h6 style={{ backgroundColor: '#7FFF00', width: '40%', padding: '0px 10px', borderRadius: "10px" }} >¥{pd.specialPrice}</h6>
-                        {
-                            isAuthenticated ? (
-                                wishListItemArray.includes(pd._id) ? (
-                                    <span style={{ cursor: "pointer" }} onClick={() => dispatch(removeWishList(pd._id))}><FontAwesomeIcon className="text-danger" icon={faHeart} /></span>
+                    <div className="row d-flex justify-content-between mx-0">
+                        <div>
+                            <h6 style={{ backgroundColor: '#7FFF00', padding: '0px 10px', borderRadius: "10px" }} >¥{pd.specialPrice}</h6>
+                        </div>
+                        <div>
+                            {
+                                isAuthenticated ? (
+                                    wishListItemArray.includes(pd._id) ? (
+                                        <span style={{ cursor: "pointer" }} onClick={() => dispatch(removeWishList(pd._id))}><FontAwesomeIcon className="text-danger" icon={faHeart} /></span>
+                                    ) : (
+                                            <span style={{ cursor: "pointer" }} onClick={() => dispatch(addToWishList(pd._id))}><FontAwesomeIcon className="text-secondary" icon={faHeart} /></span>
+                                        )
                                 ) : (
-                                        <span style={{ cursor: "pointer" }} onClick={() => dispatch(addToWishList(pd._id))}><FontAwesomeIcon className="text-secondary" icon={faHeart} /></span>
+                                        <Link to="/login"  ><FontAwesomeIcon className="text-secondary" icon={faHeart} /></Link>
                                     )
-                            ) : (
-                                    <Link to="/login"  ><FontAwesomeIcon className="text-secondary" icon={faHeart} /></Link>
-                                )
-                        }
-
+                            }
+                        </div>
                     </div>
                     <span><del className="text-secondary">¥{pd.price}</del></span>
                 </div>
@@ -60,7 +63,7 @@ const ProductView = (props) => {
                                     pd.stock <= 0
                                 }
 
-                                className="btn btn-sm btn-Addtocart btn-danger px-4"
+                                className="btn btn-sm btn-Addtocart btn-danger btn-padding"
                                 onClick={() => dispatch(removeCart(pd._id))}
                             >
                                 <FontAwesomeIcon icon={faMinus} /> Remove from cart
@@ -72,7 +75,7 @@ const ProductView = (props) => {
                                         pd.stock <= 0
                                     }
 
-                                    className="btn btn-sm btn-Addtocart btn-color px-5"
+                                    className="btn btn-sm btn-Addtocart btn-color btn-padding"
 
                                     onClick={() => dispatch(addToCart(pd))}
                                 >

@@ -21,3 +21,21 @@ export const deleteCategoryServices = async (id) => {
   const deletedCategory = Category.findByIdAndRemove(id);
   return deletedCategory;
 };
+export const addSubCategoryServices = async (id, subCtgry) => {
+  // eslint-disable-next-line
+    const newSubCategory = await Category.findByIdAndUpdate(
+    { _id: id },
+    { $push: { subCategory: subCtgry } },
+    { new: true },
+  );
+  return newSubCategory;
+};
+export const deleteSubCategoryServices = async (id, subCtgry) => {
+  // eslint-disable-next-line
+    const deleteSubCategory = await Category.findByIdAndUpdate(
+    { _id: id },
+    { $pull: { subCategory: subCtgry } },
+    { new: true },
+  );
+  return deleteSubCategory;
+};

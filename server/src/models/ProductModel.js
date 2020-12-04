@@ -4,6 +4,9 @@ const productSchema = mongoose.Schema({
   category: {
     type: String,
   },
+  subCategory: {
+    type: String,
+  },
   name: {
     type: String,
   },
@@ -14,6 +17,9 @@ const productSchema = mongoose.Schema({
   specialPrice: {
     type: Number,
     default: 0,
+  },
+  productType: {
+    type: String,
   },
   stock: {
     type: Number,

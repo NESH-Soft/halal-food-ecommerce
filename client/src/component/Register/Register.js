@@ -2,6 +2,7 @@ import React,{useEffect} from 'react';
 import {Link,withRouter} from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch,useSelector } from 'react-redux';
+import './Register.css'
 import {registerAction} from '../../redux/actions/authAction'
 const Register = (props) => {
     const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const { register, handleSubmit, errors } = useForm();
      
   }; 
     return (
-        <div className="col-md-12">
+        <div className="register">
             <div className="row d-flex justify-content-center" style={{ marginTop: '100px'}}>
                 <div className="col-md-4">
                     <div class="card mb-4 shadow-lg p-3 bg-white" style={{ width: '100%' }}>

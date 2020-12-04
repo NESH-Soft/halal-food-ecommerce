@@ -35,18 +35,18 @@ const Navbar = () => {
             <div className="col-md-12 m-auto">
                 <div className="row pt-2">
                     <div className="col-md-9 col-sm-12 col-12">
-                        <p><FontAwesomeIcon icon={faEnvelope} /> halalfood@gmail.com</p>
+                        <p><FontAwesomeIcon className="national-color" icon={faEnvelope} /> halalfood@gmail.com</p>
                     </div>
                     <div className="col-md-3 col-sm-12 col-12">
                         <div className="row float-right">
                             <div>
-                                <Link to="" className="text-decoration-none text-dark mx-2"><FontAwesomeIcon icon={faFacebookF} /></Link>
-                                <Link to="" className="text-decoration-none text-dark mx-2"><FontAwesomeIcon icon={faLinkedin} /></Link>
-                                <Link to="" className="text-decoration-none text-dark mx-2"><FontAwesomeIcon icon={faTwitter} /></Link>
+                                <Link to="" className="text-decoration-none national-color mx-2"><FontAwesomeIcon icon={faFacebookF} /></Link>
+                                <Link to="" className="text-decoration-none national-color mx-2"><FontAwesomeIcon icon={faLinkedin} /></Link>
+                                <Link to="" className="text-decoration-none national-color mx-2"><FontAwesomeIcon icon={faTwitter} /></Link>
                             </div>
                             <div style={{ borderLeft: '1px solid gray' }}></div>
                             <div>
-                                {isAuthenticated ? (<span style={{ cursor: "pointer" }} className="text-decoration-none text-dark mx-4" onClick={() => dispatch(logout())}> <FontAwesomeIcon icon={faUserCog} />Logout</span>) : (<Link to="/login" className="text-decoration-none text-dark mx-4"> <FontAwesomeIcon icon={faUserCog} /> Login</Link>)}
+                                {isAuthenticated ? (<span style={{ cursor: "pointer" }} className="text-decoration-none mx-4" onClick={() => dispatch(logout())}> <FontAwesomeIcon className="national-color" icon={faUserCog} /> <span className="text-dark">Logout</span> </span>) : (<Link to="/login" className="text-decoration-none mx-4"> <FontAwesomeIcon className="national-color" icon={faUserCog} /> <span className="text-dark">Login</span></Link>)}
 
                             </div>
                         </div>
@@ -104,7 +104,7 @@ const Navbar = () => {
                                 )}
                         </li>
                         <li className="nav-item ml-3">
-                            <Link to="/shoppingCart" className="text-decoration-none text-dark mr-2"> <FontAwesomeIcon icon={faCartPlus} style={{ fontSize: '22px' }} /> {cartItem.length ? (<span className="cartCountStyle">{cartItem.length}</span>) : null}</Link>
+                            <Link to="/shoppingCart" className="text-decoration-none text-dark mr-2"> <FontAwesomeIcon className="national-color" icon={faCartPlus} style={{ fontSize: '22px' }} /> {cartItem.length ? (<span className="cartCountStyle">{cartItem.length}</span>) : null}</Link>
                         </li>
                     </ul>
                 </div>
