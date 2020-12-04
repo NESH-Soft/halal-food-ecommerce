@@ -15,6 +15,27 @@ import { logout, loadUser } from '../../redux/actions/authAction';
 import {getWishList} from '../../redux/actions/wishlistAction'
 const Navbar = () => {
 
+    const [scrolled,setScrolled]=React.useState(false);
+    console.log(scrolled)
+    const handleScroll=() => {
+        const offset=window.scrollY;
+        if(offset > 200 ){
+          setScrolled(true);
+        }
+        else{
+          setScrolled(false);
+        }
+      }
+    
+      useEffect(() => {
+        window.addEventListener('scroll',handleScroll)
+      })
+
+      let navbarClasses=['navtop'];
+      if(scrolled){
+          console.log(navbarClasses)
+        navbarClasses.push('scrolled');
+      }
 
     const dispatch = useDispatch()
     useEffect(()=>{
@@ -30,8 +51,11 @@ const Navbar = () => {
     
 
     return (
-        <div className="container-fluid back fixed-top" >
-              <ReactNotification />
+        <div className={`navtop `} >
+<h1 onClick={()=>alert('hello')}>
+    hellooooo
+</h1>
+              {/* <ReactNotification />
             <div className="col-md-12 m-auto">
                 <div className="row pt-2">
                     <div className="col-md-9 col-sm-12 col-12">
@@ -131,7 +155,7 @@ const Navbar = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };

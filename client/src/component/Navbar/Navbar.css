@@ -1,4 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Patua+One&display=swap');
+
+.navtop{
+    width: 100%;
+    position: fixed;
+    min-height: 6vh;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:red;
+    transition: all .7s ease-in;
+}
+.scrolled{
+    position: fixed !important;
+    top: 0  !important;
+    left: 0  !important;
+  }
+
+
 nav .nav-item .nav-font{
     font-family: 'Patua One', cursive;
 }
@@ -17,6 +36,8 @@ nav .nav-item .other-link:hover{
 .national-color{
     color: #76a333
 }
+
+
 
 
   .wishListCountStyle{
