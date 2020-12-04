@@ -21,7 +21,8 @@ export const getProducts = asyncHandler(async (req, res) => {
 });
 
 export const getProductsByCategory = asyncHandler(async (req, res) => {
-  const products = await getProductsByCategoryServices(req.params.category);
+  console.log(req.query)
+  const products = await getProductsByCategoryServices(req.query);
 
   if (!products.length) return res.status(200).json({ success: true, msg: 'No product found in this category' });
 
@@ -83,4 +84,11 @@ export const deleteProduct = asyncHandler(async (req, res) => {
 export const searchProduct = asyncHandler(async (req, res) => {
   const products = await searchProductServices(req.query.term);
   return res.status(200).json({ success: true, products, msg: 'Product fetch' });
+});
+
+export const specialProduct = asyncHandler(async (req, res) => {
+  // console.log(req.query)
+  // const data = { productType: 'special' };
+  const products = await getProductsByCategoryServices(req.query);
+  return res.status(200).json({ success: true, products, msg: 'Special product fetch' });
 });
