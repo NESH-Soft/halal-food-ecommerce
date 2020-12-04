@@ -68,8 +68,8 @@ const Category = (props) => {
                     hasNodes={true}
                     //   hasSearch={false}
                     onClickItem={(i) => {
-                        console.log(i.label);
-                        dispatch(getProductsByCategory(i.label))
+                        // console.log(i);
+                        dispatch(getProductsByCategory(i))
                         props.history.push('/shop')
 
                     }}

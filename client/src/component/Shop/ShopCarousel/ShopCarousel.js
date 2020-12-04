@@ -61,7 +61,7 @@ const ShopCarousel = () => {
                                             disabled={
                                                 pd.stock <= 0
                                             }
-                                            className="btn btn-sm btn-Addtocart btn-danger btn-padding "
+                                            className="btn btn-sm btn-Addtocart btn-danger px-4 "
                                             onClick={() => dispatch(removeCart(pd._id))}
                                         >
                                             <FontAwesomeIcon icon={faMinus} /> Remove item
@@ -71,10 +71,10 @@ const ShopCarousel = () => {
                                                 disabled={
                                                     pd.stock <= 0
                                                 }
-                                                className="btn btn-sm btn-Addtocart btn-color btn-padding"
+                                                className="btn btn-sm btn-Addtocart btn-color px-4"
                                                 onClick={() => dispatch(addToCart(pd))}
                                             >
-                                                <FontAwesomeIcon icon={faCartPlus} /> Add item
+                                                <FontAwesomeIcon icon={faCartPlus}/> Add item
                                             </button>
                                         )
                                 }
