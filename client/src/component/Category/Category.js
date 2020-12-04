@@ -22,39 +22,7 @@ const Category = (props) => {
     const category = useSelector((state) => state.categoryState.category);
     const data = category || [];
     const [categoryClass, setCategoryClass] = useState('categoryShow');
-    // const treeData = [
-    //     {
-    //         "name": "fresh food",
-    //         "sub": [{
-    //             "name": "a",
-    //         },
-    //         {
-    //             "name": "b"
-    //         },
-    //         ]
-    //     },
-    //     {
-    //         "name": "fresh food2",
-    //         "sub": [{
-    //             "name": "ab",
-    //         },
-    //         {
-    //             "name": "b"
-    //         },
-    //         ]
-    //     },
-    //     {
-    //         "name": "fresh food3",
-    //         "sub": [{
-    //             "name": "ac",
-    //         },
-    //         {
-    //             "name": "bd"
-    //         },
-    //         ]
-    //     },
-
-    // ];
+    
     const calCulData = data.map(item => (
         {
             key: item.name,
