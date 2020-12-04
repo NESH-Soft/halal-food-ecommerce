@@ -207,7 +207,7 @@ const Checkout = () => {
                                             <h6>¥ <span>{cartState.cartSubTotal}</span></h6>
                                         </div>
                                         <hr />
-                                        <div className="d-flex justify-content-between text-primary" style={{ borderBottom: '3px solid #397bff' }}>
+                                        <div className="d-flex justify-content-between" style={{ borderBottom: '3px solid #76a333',color: '#76a333' }}>
                                             <h6>Total Weight</h6>
                                             <h6>5.5 kg ( Packaging Box : 1)</h6>
                                         </div>
@@ -225,7 +225,7 @@ const Checkout = () => {
                                             {cashState? (
                                                 <div className="cashondelivery text-center">
                                                     <p className="p-3">Pay with cash upon delivery.</p>
-                                                    <button type="submit" className="btn btn-primary w-100 py-3 mt-3" style={{ borderRadius: '10px' }}>Place Order</button>
+                                                    <button type="submit" className="btn w-100" style={{ borderRadius: '10px',backgroundColor:'#76a333' ,color: '#fff' }}>Place Order</button>
                                                 </div>
                                             ) : (
                                                 <div className="creditCard">
@@ -248,7 +248,7 @@ const Checkout = () => {
                                                         <input type="number" class="form-control" name='cvc' ref={register({ required: true })} placeholder="CVC" id="exampleInputPassword1" />
                                                     </div>
                                                 </div>
-                                                <button type="submit" className="btn btn-primary w-100 py-3 mt-3" style={{ borderRadius: '10px' }}>Place Order</button>
+                                                <button type="submit" className="btn  w-100" style={{ borderRadius: '10px',backgroundColor:'#76a333' ,color: '#fff' }}>Place Order</button>
                                             </div>
                                             )}
                                         </div>

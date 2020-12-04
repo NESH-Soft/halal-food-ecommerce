@@ -17,6 +17,9 @@
     .btn-padding{
         padding: 2px 45px;
     }
+    .btn-removeCart-padding{
+        padding: 2px 25px;
+    }
 }
 .home-products-img{
     transition-duration: 1s;
