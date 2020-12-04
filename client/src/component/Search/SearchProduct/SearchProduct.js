@@ -66,7 +66,7 @@ const SearchProduct = () => {
                                 className="btn btn-sm btn-Addtocart btn-danger px-4"
                                 onClick={() => dispatch(removeCart(pd._id))}
                             >
-                                <FontAwesomeIcon icon={faMinus} /> Remove from cart
+                                <FontAwesomeIcon icon={faMinus} /> Remove item
                             </button>
                         ) : (
                                 <button
@@ -79,7 +79,7 @@ const SearchProduct = () => {
 
                                     onClick={() => dispatch(addToCart(pd))}
                                 >
-                                    <FontAwesomeIcon icon={faCartPlus} /> Add to cart
+                                    <FontAwesomeIcon icon={faCartPlus} /> Add item
                                 </button>
                             )
                     }

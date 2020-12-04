@@ -49,7 +49,6 @@ function App() {
           <Route exact path="/checkout" component={Checkout} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
-         
           <PrivetRoute exact path="/my-account" component={MyAccount} />
           <PrivetRoute exact path="/your-orders" component={YourOrder} />
           <PrivetRoute exact path="/your-details" component={YourDetails} />

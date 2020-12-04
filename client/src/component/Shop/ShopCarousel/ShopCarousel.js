@@ -64,7 +64,7 @@ const ShopCarousel = () => {
                                             className="btn btn-sm btn-Addtocart btn-danger btn-padding "
                                             onClick={() => dispatch(removeCart(pd._id))}
                                         >
-                                            <FontAwesomeIcon icon={faMinus} /> Remove from cart
+                                            <FontAwesomeIcon icon={faMinus} /> Remove item
                                         </button>
                                     ) : (
                                             <button
@@ -74,7 +74,7 @@ const ShopCarousel = () => {
                                                 className="btn btn-sm btn-Addtocart btn-color btn-padding"
                                                 onClick={() => dispatch(addToCart(pd))}
                                             >
-                                                <FontAwesomeIcon icon={faCartPlus} /> Add to cart
+                                                <FontAwesomeIcon icon={faCartPlus} /> Add item
                                             </button>
                                         )
                                 }

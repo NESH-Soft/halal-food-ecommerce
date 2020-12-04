@@ -95,27 +95,19 @@ const Cart = () => {
                                 <div style={{ borderBottom: '3px solid #76a333' }}>
                                     <h4>The Total Amount of </h4>
                                 </div>
-
+                                <div className="mt-4 d-flex justify-content-between">
+                                    <p>Sub Total Price</p>
+                                    <p>¥{totalPrice}</p>
+                                </div>
+                                <hr/>
                                 <div className="mt-4 d-flex justify-content-between">
                                     <p>Total Price</p>
                                     <p>¥{totalPrice}</p>
                                 </div>
-                                {/* <div className="d-flex justify-content-between">
-                                    <p>Shipping Amount</p>
-                                <p>¥{cartState.cartShipping}</p>
-                                </div>
-                                <div className="d-flex justify-content-between">
-                                    <p>Vat Amount</p>
-                                    <p>¥{cartState.cartTax}</p>
-                                </div>
                                 <hr />
-                                <div className="d-flex justify-content-between">
-                                    <p>The total Amount of <br /> ( included VAT)</p>
-                                    <p>¥{cartState.cartSubTotal}</p>
-                                </div> */}
-                                <div style={{ marginTop: "100px" }}>
+                                <div>
                                     <Link to="/checkout">
-                                        <button className="btn btn-primary w-100">Go to Checkout</button>
+                                        <button className="btn w-100" style={{ backgroundColor: '#76a333',color:'#fff' }}>Go to Checkout</button>
                                     </Link>
                                 </div>
                             </div>
