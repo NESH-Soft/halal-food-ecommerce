@@ -60,3 +60,13 @@ export const changePasswordServices = async (id, newPassword) => {
 // export const resetPasswordUserServices = async (data) => {
 
 // };
+
+export const getUsersServices = async () => {
+  const users = await User.find().select('name email phone createdAt');
+  return users;
+};
+
+export const getUsersInfoServices = async () => {
+  const userInfo = await User.find().count();
+  return userInfo;
+};
