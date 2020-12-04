@@ -12,8 +12,8 @@ export const getProductsServices = async () => {
   return products;
 };
 
-export const getProductsByCategoryServices = async (category) => {
-  const products = await Product.find({ category });
+export const getProductsByCategoryServices = async (data) => {
+  const products = await Product.find(data);
   return products;
 };
 
