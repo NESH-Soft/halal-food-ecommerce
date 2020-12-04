@@ -59,14 +59,13 @@ export const getCategory = async () => {
 
 
 export const getProductsByCategory = async (data) => {
+const {hasNodes,label} = data
+const type= hasNodes? 'category' : 'subCategory'
+const response = await axios.get(`/api/product/filter?${type}=${label}`);
+return response.data.products;
 
-const checkCategoryType = data.includes('&')
-if(checkCategoryType){
-  const response = await axios.get(`/api/product/filter?category=${data}`);
-  return response.data.products;
-}
-  const response = await axios.get(`/api/product/filter?subCategory=${data}`);
-  return response.data.products;
+
+
 }
 
 
@@ -129,7 +128,6 @@ export const getSpecialProducts = async () => {
   const response = await axios.get(`/api/product/special-product?productType=special`);
   return response.data.products;
  
-
 }
 
 

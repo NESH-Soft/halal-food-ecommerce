@@ -9,15 +9,16 @@ import {
   deleteProduct,
   getProductsByCategory,
   searchProduct,
+  specialProduct,
 } from '../controllers/productController';
 
 const router = express.Router();
 router.route('/search').get(searchProduct);
+router.route('/special-product').get(specialProduct);
+router.route('/filter').get(getProductsByCategory);
 router.route('/').get(getProducts).post(auth.protect, auth.authorize('admin'), multerUpload.single('image'), addProduct);
 
-router.route('/:id').get(getProduct).delete(auth.protect, auth.authorize('admin'), deleteProduct).put(auth.protect, auth.authorize('admin'), updateProduct);
-
-router.route('/filter/:category').get(getProductsByCategory);
+router.route('/:id').get(getProduct).delete(auth.protect, auth.authorize('admin'), deleteProduct).put(updateProduct);
 
 const configure = (app) => {
   app.use('/api/product', router);
