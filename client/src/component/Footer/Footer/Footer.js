@@ -1,16 +1,16 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons"
-
 import FooterForm from './FooterForm';
 import { Link } from 'react-router-dom';
+import logo from '../../images/logo/logo.png';
 
 const Footer = () => {
     return (
         <div className="row p-5" style={{ backgroundColor: '#F3F6FA'}}>
             <div className="col-md-4">
                 <div className="">
-                    <img src="https://preview.colorlib.com/theme/ogani/img/logo.png" alt="" />
+                    <img src={logo} width="200px" alt="" />
                 </div>
                 <br />
                 <p>Address: 60-49 Road 11378 New York</p>

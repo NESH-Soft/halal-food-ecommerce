@@ -12,26 +12,26 @@ import { Link } from "react-router-dom";
 import Category from '../Category/Category';
 import Search from '../Search/Search/Search';
 import { logout, loadUser } from '../../redux/actions/authAction';
-import {getWishList} from '../../redux/actions/wishlistAction'
+import { getWishList } from '../../redux/actions/wishlistAction'
 const Navbar = () => {
 
 
     const dispatch = useDispatch()
-    useEffect(()=>{
-        if(localStorage.token){
+    useEffect(() => {
+        if (localStorage.token) {
             dispatch(loadUser())
         }
         dispatch(getWishList());
-// eslint-disable-next-line
-    },[])
+        // eslint-disable-next-line
+    }, [])
     const isAuthenticated = useSelector((state) => state.authState.isAuthenticated);
     const cartItem = useSelector((state) => state.cartState.cart);
     const wishList = useSelector((state) => state.wishListState.wishList);
-    
+
 
     return (
         <div className="container-fluid back fixed-top" >
-              <ReactNotification />
+            <ReactNotification />
             <div className="col-md-12 m-auto">
                 <div className="row pt-2">
                     <div className="col-md-9 col-sm-12 col-12">
@@ -73,9 +73,6 @@ const Navbar = () => {
                                                 </li>
                                                 <li className="nav-item ml-4">
                                                     <Link to="/shop" className="nav-link other-link nav-font" onClick={() => dispatch(getProductsByCategory())}>SHOP</Link>
-                                                </li>
-                                                <li className="nav-item ml-4">
-                                                    <Link to="" className="nav-link other-link nav-font">BLOGS</Link>
                                                 </li>
                                                 <li className="nav-item ml-4">
                                                     <Link to="/my-account" className="nav-link other-link nav-font">MY ACCOUNT</Link>

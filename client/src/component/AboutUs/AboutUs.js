@@ -7,8 +7,8 @@ const AboutUs = () => {
             <div className="row">
                 <div className="col-md-3"></div>
                 <div className="col-md-8">
-                    <div className="my-4" style={{ borderBottom: '3px solid #76a333' }}>
-                        <h2>About Us</h2>
+                    <div className="mb-4" style={{ borderBottom: '3px solid #76a333' }}>
+                        <h3>About Us</h3>
                     </div>
                     <div className="row">
                         <div className="col-md-6">

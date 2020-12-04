@@ -6,6 +6,8 @@ import "react-multi-carousel/lib/styles.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { getSpecialProducts } from '../../../redux/actions/product';
 import { addToCart, removeCart } from '../../../redux/actions/cartAction'
+import './ShopCarousel.css'
+
 const responsive = {
     superLargeDesktop: {
         // the naming can be any, depends on you.
@@ -61,7 +63,7 @@ const ShopCarousel = () => {
                                             disabled={
                                                 pd.stock <= 0
                                             }
-                                            className="btn btn-sm btn-Addtocart btn-danger px-4 "
+                                            className="btn btn-sm btn-Addtocart btn-danger remove-Btn-big"
                                             onClick={() => dispatch(removeCart(pd._id))}
                                         >
                                             <FontAwesomeIcon icon={faMinus} /> Remove item
@@ -71,7 +73,7 @@ const ShopCarousel = () => {
                                                 disabled={
                                                     pd.stock <= 0
                                                 }
-                                                className="btn btn-sm btn-Addtocart btn-color px-4"
+                                                className="btn btn-sm btn-Addtocart btn-color addCarouselBtn"
                                                 onClick={() => dispatch(addToCart(pd))}
                                             >
                                                 <FontAwesomeIcon icon={faCartPlus}/> Add item

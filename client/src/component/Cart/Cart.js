@@ -12,11 +12,6 @@ import { Link } from 'react-router-dom';
 
 const Cart = () => {
     const dispatch = useDispatch();
-
-    // useEffect(()=>{
-    //     dispatch(amountCount());
-    //     // eslint-disable-next-line
-    //   },[])
     const cartState = useSelector((state) => state.cartState);
     const cart = cartState.cart;
     const productPriceArray = cart.map(function (product) {
@@ -37,8 +32,7 @@ const Cart = () => {
                             <p>Home/Shopping cart</p>
                         </div>
                         <hr />
-
-                        <div className="row my-5">
+                        <div className="row my-4">
                             <div className="col-md-8">
                                 <div style={{ borderBottom: '3px solid #76a333' }}>
                                     <h4>Cart ( <span>
