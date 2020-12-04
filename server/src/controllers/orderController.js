@@ -214,3 +214,10 @@ export const getOrderInfo = asyncHandler(async (req, res) => {
   if (!orderInfo) throw NotFound('No order info found');
   return res.status(200).json({ success: true, orderInfo, msg: 'Order info fetch' });
 });
+
+export const offlineSale = asyncHandler(async (req, res) => {
+  
+  const newUser = await createUserServices(req.body.customer);
+  // offline sales logic goes here
+  return res.status(200).json({ success: true, updatedOrder, msg: 'Order updated successfully' });
+});
