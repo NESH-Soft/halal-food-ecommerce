@@ -10,14 +10,14 @@ const Contact = () => {
         <div>
             <div className="row py-5 contact">
                 <div className="col-md-3"></div>
-                <div className="col-md-9 my-3">
-                    <div className="col-md-11" style={{ borderBottom: '3px solid #76a333' }}>
-                        <h2>Contact Us</h2>
+                <div className="col-md-8">
+                    <div style={{ borderBottom: '3px solid #76a333' }}>
+                        <h3>Contact Us</h3>
                     </div>
                     <div className="row mt-5">
                         <div className="col-md-6">
                             <div class="contact-form-right text-justify">
-                                <h4>GET IN TOUCH</h4>
+                                <h5>GET IN TOUCH</h5>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed odio justo, ultrices ac nisl sed, lobortis porta elit. Fusce in metus ac ex venenatis ultricies at cursus mauris.</p>
                                 <form id="contactForm">
                                     <div class="row">
@@ -54,8 +54,8 @@ const Contact = () => {
                                 </form>
                             </div>
                         </div>
-                        <div className="col-md-5 text-justify">
-                            <h4>CONTACT INFO</h4>
+                        <div className="col-md-6 text-justify">
+                            <h5>CONTACT INFO</h5>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna diam, maximus ut ullamcorper quis, placerat id eros. Duis semper justo sed condimentum rutrum. Nunc tristique purus turpis. Maecenas vulputate. </p>
                             <ul style={{ listStyle: 'none' }}>
                                 <li>

@@ -9,7 +9,7 @@ import {
   LOGOUT,
 } from '../type'
 const initialState = {
-  isAuthenticated: true,
+  isAuthenticated: false,
   user: {},
   success: false,
   serverMessage: null
