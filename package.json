@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cd server && cd src && node -r esm server.js",
-    "client": "cd client && npm start",
+    "start": "cd server && npm start",
+    "client": "npm start --prefix client",
     "server": "cd server && nodemon -r esm server.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false cd client && npm install && npm run build"
   },
