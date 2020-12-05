@@ -7,7 +7,9 @@
     "test": "test"
   },
   "scripts": {
-    "start": "nodemon -r esm ./src/server.js",
+    "start": "node -r esm server/src/server.js",
+    "server": "nodemon -r esm server/src/server.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
     "test": "jest --runInBand --force-exit"
   },
   "author": "NESH-Soft",
@@ -21,7 +23,6 @@
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
-    "jest": "^26.6.2",
     "joi": "^17.3.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.11",
