@@ -1,10 +1,10 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import path from 'path'
 import configureAllRoutes from './routes/index';
 import { handleError } from './middlewares/index';
 // import user from './routes/userRoutes';
-
-dotenv.config({ path: './config/config.env' });
+dotenv.config();
 
 const app = express();
 app.use(express.json());
