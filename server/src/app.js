@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path';
 import dotenv from 'dotenv';
 import configureAllRoutes from './routes/index';
 import { handleError } from './middlewares/index';
