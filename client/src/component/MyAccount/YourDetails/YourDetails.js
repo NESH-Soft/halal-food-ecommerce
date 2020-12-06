@@ -12,7 +12,7 @@ const YourDetails = () => {
                 <div className="col-md-3"></div>
                 <div className="col-md-9">
                     <div className="col-md-11 my-4" style={{ borderBottom: '3px solid #76a333' }}>
-                        <h2>Your Details</h2>
+                        <h4>Your Details</h4>
                     </div>
                     <div className="row">
                         <div className="col-md-4">

@@ -8,7 +8,7 @@ const MyAccount = () => {
     return (
         <div className="mb-5">
             <div className="my-4" style={{ borderBottom: '3px solid #76a333' }}>
-                <h2>My Account</h2>
+                <h4>My Account</h4>
             </div>
             <div className="row pb-5">
 

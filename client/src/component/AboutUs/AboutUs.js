@@ -1,5 +1,4 @@
 import React from 'react';
-import './AboutUs.css'
 
 const AboutUs = () => {
     return (
@@ -8,7 +7,7 @@ const AboutUs = () => {
                 <div className="col-md-3"></div>
                 <div className="col-md-8">
                     <div className="mb-4" style={{ borderBottom: '3px solid #76a333' }}>
-                        <h3>About Us</h3>
+                        <h4>About Us</h4>
                     </div>
                     <div className="row">
                         <div className="col-md-6">
@@ -16,7 +15,7 @@ const AboutUs = () => {
                         </div>
                         <div className="col-md-6 text-justify">
                             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi odio odit officia, omnis eveniet libero! Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit vero ut id doloribus totam! Necessitatibus tempora cum atque fugiat illum in dolore quibusdam possimus rem, deleniti qui accusamus veniam, optio placeat dolorem facilis quam incidunt magnam, voluptatum vero voluptates. Eum?</p>
-                            <button className="btn btn-primary">Read more</button>
+                            
                         </div>
                     </div>
                     <div className="row my-5">

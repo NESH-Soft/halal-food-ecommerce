@@ -25,8 +25,11 @@ const ProductView = (props) => {
         return item._id
     });
 
-    const product = products.map(pd =>
-        <div className="card rounded-0 m-2 py-2 products-card">
+
+    const product = products.map( (pd) => {
+      if(pd.productType === "regular"){
+          return (
+            <div className="card rounded-0 m-2 py-2 products-card">
             <div className="image-box">
                 <Link to="/productDetails">  <img className="card-img-top home-products-img" onClick={() => dispatch(getProduct(pd._id))} src={pd.image} alt={pd.name} /></Link>
             </div>
@@ -87,7 +90,11 @@ const ProductView = (props) => {
                 </div>
 
             </div>
-        </div>);
+        </div>
+          )
+      }
+    }
+       );
     var queries = [
         {
             columns: 2,

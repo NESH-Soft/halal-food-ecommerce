@@ -3,7 +3,6 @@ import { withRouter, Link } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from 'react-redux'
 import { signIn } from '../../redux/actions/authAction'
-import './Login.css'
 
 const Login = (props) => {
     const dispatch = useDispatch();
@@ -27,7 +26,7 @@ const Login = (props) => {
                 <div className="col-md-3"></div>
                 <div className="col-md-7 mb-5">
                     <div style={{ borderBottom: '3px solid #76a333' }}>
-                        <h3 class="card-title">Login Your Account</h3>
+                        <h4 class="card-title">Login Your Account</h4>
                     </div>
                     <div className="col-md-6 m-auto">
                         <div className="mt-5">

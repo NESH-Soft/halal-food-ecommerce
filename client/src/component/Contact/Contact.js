@@ -2,23 +2,23 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faPhoneAlt, faLocationArrow } from '@fortawesome/free-solid-svg-icons'
 import { useForm } from "react-hook-form";
-import './Contact.css'
+
 
 const Contact = () => {
     const { register, handleSubmit, watch, errors } = useForm();
     const onSubmit = data => console.log(data);
     return (
         <div>
-            <div className="row py-5 contact">
+            <div className="row contact">
                 <div className="col-md-3"></div>
                 <div className="col-md-8">
                     <div style={{ borderBottom: '3px solid #76a333' }}>
-                        <h3>Contact Us</h3>
+                        <h4>Contact Us</h4>
                     </div>
                     <div className="row mt-4">
                         <div className="col-md-6">
                             <div class="contact-form-right text-justify">
-                                <h5>GET IN TOUCH</h5>
+                                <h6>GET IN TOUCH</h6>
                                 <form id="contactForm" onSubmit={handleSubmit(onSubmit)}>
                                     <div class="row mt-4">
                                         <div class="col-md-12">
@@ -53,7 +53,7 @@ const Contact = () => {
                             </div>
                         </div>
                         <div className="col-md-6 text-justify">
-                            <h5>CONTACT INFO</h5>
+                            <h6>CONTACT INFO</h6>
                             <div className="mt-3">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna diam, maximus ut ullamcorper quis, placerat id eros. Duis semper justo sed condimentum rutrum. Nunc tristique purus turpis. Maecenas vulputate. </p>
                                 <ul style={{ listStyle: 'none' }}>

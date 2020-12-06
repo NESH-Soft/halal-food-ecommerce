@@ -3,7 +3,7 @@ import MyAccount from './MyAccount'
 const index = () => {
     return (
         <div className="col-md-12">
-            <div className="row py-5 contact">
+            <div className="row  contact">
                 <div className="col-md-3">
 
                 </div>

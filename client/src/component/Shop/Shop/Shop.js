@@ -1,7 +1,7 @@
 import React from 'react';
 import AllProducts from '../AllProducts/AllProducts';
 import ShopCarousel from '../ShopCarousel/ShopCarousel';
-import './Shop.css'
+
 
 const Shop = () => {
     return (

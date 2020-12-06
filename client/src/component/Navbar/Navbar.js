@@ -30,7 +30,7 @@ const Navbar = () => {
 
 
     return (
-        <div className="container-fluid back fixed-top" >
+        <div className="container-fluid back" >
             <ReactNotification />
             <div className="col-md-12 m-auto">
                 <div className="row pt-2">

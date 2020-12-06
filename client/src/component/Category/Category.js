@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import TreeMenu from 'react-simple-tree-menu';
 // import default minimal styling or your own styling
-import '../../../node_modules/react-simple-tree-menu/dist/main.css';
-
+import 'react-simple-tree-menu/dist/main.css';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { getCategory } from '../../redux/actions/categoryAction';
