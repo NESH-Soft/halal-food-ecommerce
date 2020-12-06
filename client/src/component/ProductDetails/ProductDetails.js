@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMinus, faPlus, faHeart } from '@fortawesome/free-solid-svg-icons'
@@ -11,9 +11,25 @@ import {
 } from "react-router-dom";
 import RiviewRatting from './RiviewRatting';
 import UserComment from './UserComment/UserComment';
+import Details from './Details';
+import Review from './Review';
 
 const ProductDetails = () => {
     const product = useSelector((state) => state.productState.product);
+    const [isDetails, setIsDetails] = useState(1);
+    const [reviewColor, setreviewColor] = useState('');
+    const [DetailsColor, setDetailsColor] = useState('');
+    const handleProduct = (isDetails) => {
+        setIsDetails(isDetails);
+        if (isDetails == 1) {
+            setDetailsColor('2px solid #fcb800')
+            setreviewColor('')
+        } else {
+            setreviewColor('2px solid #fcb800')
+            setDetailsColor('')
+        }
+    }
+
     return (
         <div className="container-fluid" style={{ marginTop: '195px' }}>
             <div className="row">
@@ -63,17 +79,22 @@ const ProductDetails = () => {
                         <hr />
                         <div className="col-md-12">
                             <div className="text-center">
-                                <Link className="text-link" to="/details">Details</Link>
-                                <Link className="text-link" to="/review">Reviews</Link>
+                                <Link className="text-link" onClick={() => handleProduct(1)} style={{ borderBottom: DetailsColor }}>Details</Link>
+                                <Link className="text-link" onClick={() => handleProduct(0)} style={{ borderBottom: reviewColor }}>Reviews</Link>
                             </div>
                         </div>
-                        <hr />
-                        <div>
-                            <UserComment />
-                        </div>
+                    </div>
+                    {
+                        isDetails === 1 ? <Details /> : <Review />
+                    }
+                    <hr />
+                    <div>
+                        <UserComment />
                     </div>
                 </div>
+
             </div>
+
         </div>
     );
 };
