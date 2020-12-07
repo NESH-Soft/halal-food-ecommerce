@@ -1,4 +1,5 @@
 import React from 'react';
+import ScrollToTop from 'react-scroll-up';
 import {
   BrowserRouter as Router,
   Switch,
@@ -26,10 +27,11 @@ import YourOrder from './component/MyAccount/YourOrder/YourOrder';
 import LoginSecurity from './component/LoginSecurity/LoginSecurity';
 import YourDetails from './component/MyAccount/YourDetails/YourDetails';
 import YourOrderItem from './component/MyAccount/YourOrder/YourOrderItem'
-
 import Footer from './component/Footer/Footer/Footer';
 import Category from './component/Category/Category';
 import Search from './component/Search/Search/Search';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -68,7 +70,9 @@ function App() {
             </Switch>
           </div>
         </div>
-
+        <ScrollToTop showUnder={160}>
+          <span> <button className="btn national-background text-light"><FontAwesomeIcon icon={faArrowUp} /></button> </span>
+        </ScrollToTop>
         <Footer />
       </Router>
     </div>
