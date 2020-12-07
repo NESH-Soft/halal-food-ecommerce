@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartPlus,faMinus } from '@fortawesome/free-solid-svg-icons'
 import Carousel from "react-multi-carousel";
@@ -48,10 +48,10 @@ const ShopCarousel = () => {
 
             {
                 specialProducts.map((pd, index) => (
-                    <div class="card mx-2 pt-2">
-                        <img class="card-img-top" style={{ height: '120px' }} src={pd.image} alt="" />
-                        <div class="card-body">
-                            <p class="card-title">{pd.name}</p>
+                    <div className="card mx-2 pt-2" key={pd._id}>
+                        <img className="card-img-top" style={{ height: '120px' }} src={pd.image} alt="" />
+                        <div className="card-body">
+                            <p className="card-title">{pd.name}</p>
                             <div className="d-flex justify-content-between">
                                 <p className="text-muted"><del>$<span>{pd.price}</span> </del> </p>
                                 <h6>$<span>{pd.specialPrice}</span> </h6>

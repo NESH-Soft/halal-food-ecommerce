@@ -15,7 +15,7 @@ const Footer = () => {
                 <br />
                 <p>Address: 60-49 Road 11378 New York</p>
                 <p>Phone: +65 11.188.888</p>
-                <p>hasib2130@gmail.com</p>
+                <p></p>
             </div>
 
             <div className="col-md-4">
