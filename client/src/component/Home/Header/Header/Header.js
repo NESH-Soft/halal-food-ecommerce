@@ -1,16 +1,14 @@
 import React from 'react';
+import Category from '../../../Category/Category';
+import Search from '../../../Search/Search/Search';
 import HeaderCarousel from '../HeaderCarousel/HeaderCarousel';
 import './Header.css';
 const Header = () => {
     return (
         <div>
             <section className="position-relative">
-                <div className="row header">
-                    <div className="col-md-3">
-                    </div>
-                    <div className="col-md-9">
-                        <HeaderCarousel />
-                    </div>
+                <div className="header">
+                    <HeaderCarousel />
                 </div>
             </section>
         </div>

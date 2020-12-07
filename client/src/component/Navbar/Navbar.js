@@ -9,8 +9,6 @@ import 'react-notifications-component/dist/theme.css'
 import logo from '../images/logo/logo.png';
 import './Navbar.css'
 import { Link } from "react-router-dom";
-import Category from '../Category/Category';
-import Search from '../Search/Search/Search';
 import { logout, loadUser } from '../../redux/actions/authAction';
 import { getWishList } from '../../redux/actions/wishlistAction'
 const Navbar = () => {
@@ -30,9 +28,9 @@ const Navbar = () => {
 
 
     return (
-        <div className="container-fluid back" >
+        <div className="back">
             <ReactNotification />
-            <div className="col-md-12 m-auto">
+            <div className="col-md-12">
                 <div className="row pt-2">
                     <div className="col-md-9 col-sm-12 col-12">
                         <p><FontAwesomeIcon className="national-color" icon={faEnvelope} /> halalfood@gmail.com</p>
@@ -59,7 +57,7 @@ const Navbar = () => {
                         <div className="col-md-12">
                             <div className="row">
                                 <div className="col-md-3" style={{ paddingLeft: '0px' }}>
-                                    <Link to="/" className="navbar-brand" href="#"><img src={logo} width="200px" height="50px" alt="" /></Link>
+                                    <Link to="/"><img src={logo} width="150px" height="40px" alt="" /></Link>
                                     <button className="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                         <span className="navbar-toggler-icon"></span>
                                     </button>
@@ -104,29 +102,6 @@ const Navbar = () => {
                             <Link to="/shoppingCart" className="text-decoration-none text-dark mr-2"> <FontAwesomeIcon className="national-color" icon={faCartPlus} style={{ fontSize: '22px' }} /> {cartItem.length ? (<span className="cartCountStyle">{cartItem.length}</span>) : null}</Link>
                         </li>
                     </ul>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-md-3">
-                    <Category />
-                </div>
-                <div className="col-md-9" >
-                    <div className="row">
-                        <div className="col-md-9">
-                            <Search />
-                        </div>
-                        <div className="col-md-3">
-                            <div className="row">
-                                <div className="d-flex align-items-center" style={{ backgroundColor: '#f5f5f5', borderRadius: '50%', padding: '0px 15px', height: '48px' }}>
-                                    <FontAwesomeIcon icon={faPhoneAlt} style={{ color: '#76a333', fontSize: '20px' }} />
-                                </div>
-                                <div className="pl-3">
-                                    <p>+65 11.188.888</p>
-                                    <p style={{ marginTop: '-20px' }}>support 24/7 time</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

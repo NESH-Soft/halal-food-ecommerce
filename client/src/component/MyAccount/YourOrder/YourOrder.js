@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
-import './YourOrder.css'
 import emptyImg from '../../images/empty/empty.png';
 
 const YourOrder = () => {
@@ -11,11 +10,10 @@ const YourOrder = () => {
 
     return (
         <div >
-            <div className="row your-order mb-5">
-                <div className="col-md-3"></div>
-                <div className="col-md-9 mb-5">
-                    <div className="my-4" style={{ borderBottom: '3px solid #76a333' }}>
-                        <h2>Your Orders</h2>
+            <div className="your-order mb-5">
+                <div className="mb-5">
+                    <div className="mb-4" style={{ borderBottom: '3px solid #76a333' }}>
+                        <h4>Your Orders</h4>
                     </div>
                     {
                         order.length ?
@@ -54,7 +52,6 @@ const YourOrder = () => {
                                 <p>Opps! you have not order created yet</p>
                             </div>
                     }
-
                 </div>
             </div>
         </div>

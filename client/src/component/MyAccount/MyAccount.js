@@ -7,11 +7,10 @@ import { faGift, faLock, faLocationArrow } from '@fortawesome/free-solid-svg-ico
 const MyAccount = () => {
     return (
         <div className="mb-5">
-            <div className="my-4" style={{ borderBottom: '3px solid #76a333' }}>
+            <div className="mb-4" style={{ borderBottom: '3px solid #76a333' }}>
                 <h4>My Account</h4>
             </div>
             <div className="row pb-5">
-
                 <div className="col-lg-4 col-md-12">
                     <Link to="/your-orders">
                         <div className="account-box">
