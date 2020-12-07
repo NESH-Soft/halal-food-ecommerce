@@ -26,8 +26,9 @@ export const changeOrderActionServices = async (id, data) => {
   const updatedOrder = Order.findByIdAndUpdate(id, data, { new: true });
   return updatedOrder;
 };
-export const getOrderServices = async (status) => {
-  const order = await Order.find({ status });
+export const getOrderServices = async () => {
+  const order = await Order.find()
+    .populate({ path: 'user', model: 'user', select: 'name email' });
   return order;
 };
 export const getRecentOrderServices = async () => {
