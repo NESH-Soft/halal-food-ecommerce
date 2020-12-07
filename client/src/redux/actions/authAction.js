@@ -16,6 +16,7 @@ export const signIn = (data) => async(dispatch) => {
   try {
     const  res  = await api.signIn(data);
     dispatch({ type: SIGN_IN_SUCCESS, payload: res })
+    loadUser()
     Notification("Login success","success",1000)
   } catch (error) {
     Notification(error.response.data.msg,"warning",1500)

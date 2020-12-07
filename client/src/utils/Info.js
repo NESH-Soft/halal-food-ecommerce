@@ -12,7 +12,7 @@ const Info = (props) => {
       
             <div className="row d-flex justify-content-center align-items-center" style={{height:"400px"}}>
         
-           {serverMessage ? (  <div class="alert alert-success" role="alert">{serverMessage}  </div>) : null}
+           {serverMessage ? (  <div className="alert alert-success" role="alert">{serverMessage}  </div>) : null}
       
             </div>
 

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import TreeMenu from 'react-simple-tree-menu';
 // import default minimal styling or your own styling
-import '../../../node_modules/react-simple-tree-menu/dist/main.css';
-
+import 'react-simple-tree-menu/dist/main.css';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { getCategory } from '../../redux/actions/categoryAction';
@@ -10,9 +9,8 @@ import { getProductsByCategory } from '../../redux/actions/product'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faSortAmountDown, } from '@fortawesome/free-solid-svg-icons'
 import './Category.css';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 const Category = (props) => {
-    const [categoryColor, setCategoryColor] = useState('');
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getCategory())

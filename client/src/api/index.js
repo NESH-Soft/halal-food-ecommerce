@@ -1,9 +1,9 @@
 import axios from 'axios'
-import allProducts from '../fakedata/detailsProduct'
-import users from '../fakedata/fakeUser'
-import fakecategory from '../fakedata/fakecategory'
-import fakeWishlist from '../fakedata/fakeWishList';
-import fakespecialproduct from '../fakedata/fakespecialProducts';
+// import allProducts from '../fakedata/detailsProduct'
+// import users from '../fakedata/fakeUser'
+// import fakecategory from '../fakedata/fakecategory'
+// import fakeWishlist from '../fakedata/fakeWishList';
+// import fakespecialproduct from '../fakedata/fakespecialProducts';
 
 const config={ header:{ 'Content-Type':'application/json' }}
 

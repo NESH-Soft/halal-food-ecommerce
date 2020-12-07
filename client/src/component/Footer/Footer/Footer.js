@@ -15,7 +15,7 @@ const Footer = () => {
                 <br />
                 <p>Address: 60-49 Road 11378 New York</p>
                 <p>Phone: +65 11.188.888</p>
-                <p>hasib2130@gmail.com</p>
+                <p></p>
             </div>
 
             <div className="col-md-4">
@@ -24,8 +24,6 @@ const Footer = () => {
                 <div className="row">
                     <div className="col-md-6">
                         <p><Link to="/about-us" className="text-decoration-none text-dark mx-2">About Us</Link></p>
-                        <p><Link to="" className="text-decoration-none text-dark mx-2">About Our Shop</Link></p>
-                        <p><Link to="" className="text-decoration-none text-dark mx-2">Secure Shopping</Link></p>
                         <p><Link to="" className="text-decoration-none text-dark mx-2">Delivery infomation</Link></p>
                         <p><Link to="" className="text-decoration-none text-dark mx-2">Privacy Policy</Link></p>
                         <p><Link to="" className="text-decoration-none text-dark mx-2">Our Sitemap</Link></p>
@@ -34,7 +32,7 @@ const Footer = () => {
                         <p><Link to="" className="text-decoration-none text-dark mx-2">Who We Are</Link></p>
                         <p><Link to="" className="text-decoration-none text-dark mx-2">Our Services</Link></p>
                         <p><Link to="" className="text-decoration-none text-dark mx-2">Projects</Link></p>
-                        <p><Link to="" className="text-decoration-none text-dark mx-2">Contact</Link></p>
+                        <p><Link to="/contact" className="text-decoration-none text-dark mx-2">Contact</Link></p>
                         <p><Link to="" className="text-decoration-none text-dark mx-2">Innovation</Link></p>
                         <p><Link to="" className="text-decoration-none text-dark mx-2">Testimonials</Link></p>
                     </div>
