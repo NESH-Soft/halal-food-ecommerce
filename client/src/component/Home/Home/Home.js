@@ -1,6 +1,5 @@
 import React from 'react';
 import FeaturedProduct from '../FeaturedProduct/FeaturedProduct/FeaturedProduct';
-import Header from '../Header/Header/Header';
 import ShopCarousel from '../../Shop/ShopCarousel/ShopCarousel';
 import HeaderCarousel from '../Header/HeaderCarousel/HeaderCarousel';
 

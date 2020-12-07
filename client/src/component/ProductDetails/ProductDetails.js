@@ -14,7 +14,7 @@ const ProductDetails = () => {
     const [DetailsColor, setDetailsColor] = useState('');
     const handleProduct = (isDetails) => {
         setIsDetails(isDetails);
-        if (isDetails == 1) {
+        if (isDetails === 1) {
             setDetailsColor('2px solid #fcb800')
             setreviewColor('')
         } else {
@@ -27,7 +27,7 @@ const ProductDetails = () => {
         <>
             <div className="productDetails">
                 <div style={{ borderBottom: '3px solid #76a333' }}>
-                    <h4 class="card-title">{product.name}</h4>
+                    <h4 className="card-title">{product.name}</h4>
                 </div>
                 <div className="row">
                     <div className="col-md-5">

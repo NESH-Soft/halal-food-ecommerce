@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import Footer from '../Footer/Footer/Footer';
-import Navbar from '../Navbar/Navbar';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMinus, faPlus, faTrashAlt, } from '@fortawesome/free-solid-svg-icons'
 import './Cart.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeCart, cartItemIncrement, cartItemDecrement, amountCount } from '../../redux/actions/cartAction'
+import { removeCart, cartItemIncrement, cartItemDecrement } from '../../redux/actions/cartAction'
 import { Link } from 'react-router-dom';
 
 

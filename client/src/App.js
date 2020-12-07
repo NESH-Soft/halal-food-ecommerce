@@ -1,10 +1,5 @@
 import React from 'react';
 import ScrollToTop from 'react-scroll-up';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
 import Navbar from './component/Navbar/Navbar';
 import Info from './utils/Info'
 import Contact from './component/Contact/Contact';
@@ -32,8 +27,11 @@ import Category from './component/Category/Category';
 import Search from './component/Search/Search/Search';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
-
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
 function App() {
   return (

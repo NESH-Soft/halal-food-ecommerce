@@ -1,4 +1,4 @@
-import * as api from '../../api';
+// import * as api from '../../api';
 import Notification from '../../utils/Notification'
 import {
   ADD_TO_CART,

@@ -18,8 +18,8 @@ const YourOrder = () => {
                     </div>
                     {
                         order.length ?
-                            <table class="table">
-                                <thead class="thead-light">
+                            <table className="table">
+                                <thead className="thead-light">
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Date</th>
@@ -40,13 +40,13 @@ const YourOrder = () => {
                                                 <th scope="col">{item.paymentId ? 'completed' : 'uncompleted'}</th>
                                                 <th scope="col">{item.totalPrice}</th>
                                                 {
-                                                    item.status == 'pending' &&  <th scope="col"> <button class="btn" style={{backgroundColor: colors[0]}}>{item.status}</button> </th>
+                                                    item.status === 'pending' &&  <th scope="col"> <button className="btn" style={{backgroundColor: colors[0]}}>{item.status}</button> </th>
                                                 }
                                                 {
-                                                    item.status == 'complete' &&  <th scope="col"> <button class="btn" style={{backgroundColor: colors[1]}}>{item.status}</button> </th>
+                                                    item.status === 'complete' &&  <th scope="col"> <button className="btn" style={{backgroundColor: colors[1]}}>{item.status}</button> </th>
                                                 }
                                                 {
-                                                    item.status == 'processing' &&  <th scope="col"> <button class="btn" style={{backgroundColor: colors[2]}}>{item.status}</button> </th>
+                                                    item.status === 'processing' &&  <th scope="col"> <button className="btn" style={{backgroundColor: colors[2]}}>{item.status}</button> </th>
                                                 }
                                                 
                                                 <th scope="col"> <Link to={`/your-orders-items/${item._id}`} className="btn btn-sm national-background text-light">click</Link></th>

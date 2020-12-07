@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getSearchProduct } from '../../../redux/actions/product'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

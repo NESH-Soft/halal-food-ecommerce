@@ -15,8 +15,8 @@ const YourOrder = (props) => {
                     <div className="mb-4" style={{ borderBottom: '3px solid #76a333' }}>
                         <h4>Your Orders Item</h4>
                     </div>
-                    <table class="table">
-                        <thead class="thead-light">
+                    <table className="table">
+                        <thead className="thead-light">
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Product Name</th>

@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 
 
 const Contact = () => {
-    const { register, handleSubmit, watch, errors } = useForm();
+    const { register, handleSubmit, errors } = useForm();
     const onSubmit = data => console.log(data);
     return (
         <div className="contact mb-5">
@@ -14,35 +14,35 @@ const Contact = () => {
             </div>
             <div className="row mt-4">
                 <div className="col-md-6">
-                    <div class="contact-form-right text-justify">
+                    <div className="contact-form-right text-justify">
                         <h6>GET IN TOUCH</h6>
                         <form id="contactForm" onSubmit={handleSubmit(onSubmit)}>
-                            <div class="row mt-4">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="name" name="name" ref={register({ required: true })} placeholder="Your Name" required data-error="Please enter your name" />
+                            <div className="row mt-4">
+                                <div className="col-md-12">
+                                    <div className="form-group">
+                                        <input type="text" className="form-control" id="name" name="name" ref={register({ required: true })} placeholder="Your Name" required data-error="Please enter your name" />
                                         {errors.name && <span>This field is required</span>}
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <input type="text" name="email" ref={register({ required: true })} placeholder="Your Email" class="form-control" required data-error="Please enter your email" />
+                                <div className="col-md-12">
+                                    <div className="form-group">
+                                        <input type="text" name="email" ref={register({ required: true })} placeholder="Your Email" className="form-control" required data-error="Please enter your email" />
                                         {errors.email && <span>This field is required</span>}
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <input type="text" name="subject" ref={register({ required: true })} class="form-control" placeholder="Subject" required data-error="Please enter your Subject" />
+                                <div className="col-md-12">
+                                    <div className="form-group">
+                                        <input type="text" name="subject" ref={register({ required: true })} className="form-control" placeholder="Subject" required data-error="Please enter your Subject" />
                                         {errors.subject && <span>This field is required</span>}
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <textarea class="form-control" name="message" ref={register({ required: true })} id="message" placeholder="Your Message" rows="4" data-error="Write your message" required></textarea>
+                                <div className="col-md-12">
+                                    <div className="form-group">
+                                        <textarea className="form-control" name="message" ref={register({ required: true })} id="message" placeholder="Your Message" rows="4" data-error="Write your message" required></textarea>
                                         {errors.message && <span>This field is required</span>}
                                     </div>
-                                    <div class="submit-button">
-                                        <button class="btn" id="submit" style={{ backgroundColor: '#76a333', color: '#fff' }} type="submit">Send Message</button>
+                                    <div className="submit-button">
+                                        <button className="btn" id="submit" style={{ backgroundColor: '#76a333', color: '#fff' }} type="submit">Send Message</button>
                                     </div>
                                 </div>
                             </div>

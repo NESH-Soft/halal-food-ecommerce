@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProduct } from '../../../redux/actions/product';
 import { addToCart, removeCart } from '../../../redux/actions/cartAction';
 import { addToWishList, removeWishList } from '../../../redux/actions/wishlistAction';
-import { clearSearchState } from '../../../redux/actions/product'
 import './SearchProduct.css'
 import emptyImg from '../../images/empty/empty.png';
 

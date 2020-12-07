@@ -40,7 +40,7 @@ const Checkout = () => {
 
 
 
-    const { register, handleSubmit, watch, errors } = useForm();
+    const { register, handleSubmit, errors } = useForm();
 
 
     const onSubmit = data => {
@@ -154,7 +154,7 @@ const Checkout = () => {
                                     </div>
                                     <div className="form-group">
                                         <label for="exampleInputEmail1">Region / State<span className="text-danger">*</span></label>
-                                        <select name="region" ref={register({ required: true })} class="form-control" id="exampleFormControlSelect1">
+                                        <select name="region" ref={register({ required: true })} className="form-control" id="exampleFormControlSelect1">
                                             <option>--please select--</option>
                                             <option value="11">11</option>
                                             <option value="12">12</option>
@@ -226,22 +226,22 @@ const Checkout = () => {
                                         ) : (
                                                 <div className="creditCard">
                                                     <p>Pay With Credit Card</p>
-                                                    <div class="form-group">
+                                                    <div className="form-group">
                                                         <label htmlFor="exampleInputEmail1">Card Number<span>*</span> </label>
-                                                        <input type="number" class="form-control" ref={register({ required: true })} name='cardNumber' id="exampleInputEmail1" placeholder="1234 1234 1234 1234" aria-describedby="emailHelp" />
+                                                        <input type="number" className="form-control" ref={register({ required: true })} name='cardNumber' id="exampleInputEmail1" placeholder="1234 1234 1234 1234" aria-describedby="emailHelp" />
                                                     </div>
                                                     <div className="row">
-                                                        <div class="col-md-6 form-group">
+                                                        <div className="col-md-6 form-group">
                                                             <label for="exampleInputPassword1">Expired Date<span>*</span> </label>
 
-                                                            <input type="number" class="form-control" name='expireMonth' ref={register({ required: true })} placeholder="Expire Month" id="exampleInputPassword1" />
+                                                            <input type="number" className="form-control" name='expireMonth' ref={register({ required: true })} placeholder="Expire Month" id="exampleInputPassword1" />
 
-                                                            <input type="number" class="form-control" name='expireYear' ref={register({ required: true })} placeholder="Expire Year" id="exampleInputPassword1" />
+                                                            <input type="number" className="form-control" name='expireYear' ref={register({ required: true })} placeholder="Expire Year" id="exampleInputPassword1" />
 
                                                         </div>
-                                                        <div class="col-md-6 form-group">
+                                                        <div className="col-md-6 form-group">
                                                             <label for="exampleInputPassword1">Card Code(CVC)<span>*</span> </label>
-                                                            <input type="number" class="form-control" name='cvc' ref={register({ required: true })} placeholder="CVC" id="exampleInputPassword1" />
+                                                            <input type="number" className="form-control" name='cvc' ref={register({ required: true })} placeholder="CVC" id="exampleInputPassword1" />
                                                         </div>
                                                     </div>
                                                     <button type="submit" className="btn  w-100" style={{ borderRadius: '10px', backgroundColor: '#76a333', color: '#fff' }}>Place Order</button>

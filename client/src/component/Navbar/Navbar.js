@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getProductsByCategory } from '../../redux/actions/product'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope, faUserCog, faCartPlus, faHeart, faPhoneAlt } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faUserCog, faCartPlus, faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faFacebookF, faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons"
 import ReactNotification from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css'
