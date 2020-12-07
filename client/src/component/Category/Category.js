@@ -9,9 +9,8 @@ import { getProductsByCategory } from '../../redux/actions/product'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faSortAmountDown, } from '@fortawesome/free-solid-svg-icons'
 import './Category.css';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 const Category = (props) => {
-    const [categoryColor, setCategoryColor] = useState('');
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getCategory())

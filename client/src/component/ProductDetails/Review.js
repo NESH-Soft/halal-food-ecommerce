@@ -4,7 +4,7 @@ import Ratting from './Ratting';
 import { useForm } from "react-hook-form";
 
 const Review = () => {
-    const { register, handleSubmit, watch, errors } = useForm();
+    const { register, handleSubmit, errors } = useForm();
     const onSubmit = data => console.log(data) ;
 
     return (

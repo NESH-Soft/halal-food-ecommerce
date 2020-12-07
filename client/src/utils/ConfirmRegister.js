@@ -18,7 +18,7 @@ const ConfirmRegister = (props) => {
     return (
         <div style={{ marginTop: '100px' }}>
     <div className="row d-flex justify-content-center align-items-center" style={{height:"400px"}}>
-      <button type="button" class="btn btn-primary"  onClick={()=>dispatch(registrationVerify(token))}>Conform verification</button>
+      <button type="button" className="btn btn-primary"  onClick={()=>dispatch(registrationVerify(token))}>Conform verification</button>
 </div>
         </div>
     );

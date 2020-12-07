@@ -26,75 +26,75 @@ const ProductView = (props) => {
     });
 
 
-    const product = products.map( (pd) => {
-      if(pd.productType === "regular"){
-          return (
-            <div className="card rounded-0 m-2 py-2 products-card">
-            <div className="image-box">
-                <Link to="/productDetails">  <img className="card-img-top home-products-img" onClick={() => dispatch(getProduct(pd._id))} src={pd.image} alt={pd.name} /></Link>
-            </div>
-            <div className="box-button">
-                <div className="px-2" style={{ borderTop: '1px solid lightgray' }}>
-                    <p>{pd.name}</p>
-                    <div className="row d-flex justify-content-between mx-0">
-                        <div>
-                            <h6 style={{ backgroundColor: '#7FFF00', padding: '0px 10px', borderRadius: "10px" }} >¥{pd.specialPrice}</h6>
+    const product = products.map((pd) => {
+        if (pd.productType === "regular") {
+            return (
+                <div className="card rounded-0 m-2 py-2 products-card" key={pd._id}>
+                    <div className="image-box">
+                        <Link to="/productDetails">  <img className="card-img-top home-products-img" onClick={() => dispatch(getProduct(pd._id))} src={pd.image} alt={pd.name} /></Link>
+                    </div>
+                    <div className="box-button">
+                        <div className="px-2" style={{ borderTop: '1px solid lightgray' }}>
+                            <p>{pd.name}</p>
+                            <div className="row d-flex justify-content-between mx-0">
+                                <div>
+                                    <h6 style={{ backgroundColor: '#7FFF00', padding: '0px 10px', borderRadius: "10px" }} >¥{pd.specialPrice}</h6>
+                                </div>
+                                <div>
+                                    {
+                                        isAuthenticated ? (
+                                            wishListItemArray.includes(pd._id) ? (
+                                                <span style={{ cursor: "pointer" }} onClick={() => dispatch(removeWishList(pd._id))}><FontAwesomeIcon className="text-danger" icon={faHeart} /></span>
+                                            ) : (
+                                                    <span style={{ cursor: "pointer" }} onClick={() => dispatch(addToWishList(pd._id))}><FontAwesomeIcon className="text-secondary" icon={faHeart} /></span>
+                                                )
+                                        ) : (
+                                                <Link to="/login"  ><FontAwesomeIcon className="text-secondary" icon={faHeart} /></Link>
+                                            )
+                                    }
+                                </div>
+                            </div>
+                            <span><del className="text-secondary">¥{pd.price}</del></span>
                         </div>
-                        <div>
+                        <div className="text-center">
                             {
-                                isAuthenticated ? (
-                                    wishListItemArray.includes(pd._id) ? (
-                                        <span style={{ cursor: "pointer" }} onClick={() => dispatch(removeWishList(pd._id))}><FontAwesomeIcon className="text-danger" icon={faHeart} /></span>
-                                    ) : (
-                                            <span style={{ cursor: "pointer" }} onClick={() => dispatch(addToWishList(pd._id))}><FontAwesomeIcon className="text-secondary" icon={faHeart} /></span>
-                                        )
+
+                                cartItemArray.includes(pd._id) ? (
+                                    <button
+
+                                        disabled={
+                                            pd.stock <= 0
+                                        }
+
+                                        className="btn btn-sm btn-Addtocart btn-danger btn-padding"
+                                        onClick={() => dispatch(removeCart(pd._id))}
+                                    >
+                                        <FontAwesomeIcon icon={faMinus} /> Remove item
+                                    </button>
                                 ) : (
-                                        <Link to="/login"  ><FontAwesomeIcon className="text-secondary" icon={faHeart} /></Link>
+                                        <button
+
+                                            disabled={
+                                                pd.stock <= 0
+                                            }
+
+                                            className="btn btn-sm btn-Addtocart btn-color btn-padding"
+
+                                            onClick={() => dispatch(addToCart(pd))}
+                                        >
+                                            <FontAwesomeIcon icon={faCartPlus} /> Add item
+                                        </button>
                                     )
+
                             }
                         </div>
+
                     </div>
-                    <span><del className="text-secondary">¥{pd.price}</del></span>
                 </div>
-                <div className="text-center">
-                    {
-
-                        cartItemArray.includes(pd._id) ? (
-                            <button
-
-                                disabled={
-                                    pd.stock <= 0
-                                }
-
-                                className="btn btn-sm btn-Addtocart btn-danger btn-padding"
-                                onClick={() => dispatch(removeCart(pd._id))}
-                            >
-                                <FontAwesomeIcon icon={faMinus} /> Remove item
-                            </button>
-                        ) : (
-                                <button
-
-                                    disabled={
-                                        pd.stock <= 0
-                                    }
-
-                                    className="btn btn-sm btn-Addtocart btn-color btn-padding"
-
-                                    onClick={() => dispatch(addToCart(pd))}
-                                >
-                                    <FontAwesomeIcon icon={faCartPlus} /> Add item
-                                </button>
-                            )
-
-                    }
-                </div>
-
-            </div>
-        </div>
-          )
-      }
+            )
+        }
     }
-       );
+    );
     var queries = [
         {
             columns: 2,

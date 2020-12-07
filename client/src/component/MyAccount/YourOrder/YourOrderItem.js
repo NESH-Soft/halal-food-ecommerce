@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import './YourOrder.css'
 
 const YourOrder = (props) => {
 
@@ -11,14 +10,13 @@ const YourOrder = (props) => {
     const cart = data[0].cart || []
     return (
         <div>
-            <div className="row your-order mb-5">
-                <div className="col-md-3"></div>
-                <div className="col-md-9 mb-5">
-                    <div className="my-4" style={{ borderBottom: '3px solid #76a333' }}>
-                        <h2>Your Orders Item</h2>
+            <div className="your-order mb-5">
+                <div className="mb-5">
+                    <div className="mb-4" style={{ borderBottom: '3px solid #76a333' }}>
+                        <h4>Your Orders Item</h4>
                     </div>
-                    <table class="table">
-                        <thead class="thead-light">
+                    <table className="table">
+                        <thead className="thead-light">
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Product Name</th>

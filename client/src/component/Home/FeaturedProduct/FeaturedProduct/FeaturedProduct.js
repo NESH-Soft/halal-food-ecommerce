@@ -16,7 +16,7 @@ const FeaturedProduct = () => {
   const products = useSelector((state) => state.productState.products);
 
     return (
-        <div className="col-md-12 m-auto featuredProduct">
+        <div className="featuredProduct">
             <div className="text-center mt-5 feturedText">
                 <h3>Trending Product</h3>
                 <hr style={{ borderBottom: '4px solid #7fad39', width: '10%' }} />
