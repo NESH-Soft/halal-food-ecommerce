@@ -29,7 +29,7 @@ export const UpdateUserServices = async (id, user) => {
   return updateUser;
 };
 
-export const addOrderService = async (id, orderId) => {
+export const addOrderToUserService = async (id, orderId) => {
   // eslint-disable-next-line
   const newOrder = await User.findByIdAndUpdate(
     { _id: id },
