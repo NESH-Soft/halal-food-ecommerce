@@ -211,7 +211,7 @@ export const getOrderDay = asyncHandler(async (req, res) => {
 export const getOrderInfo = asyncHandler(async (req, res) => {
   const orderInfo = await getOrderInfoServices();
   if (!orderInfo) throw NotFound('No order info found');
-  return res.status(200).json({ success: true, orderInfo, msg: 'Order info fetch' });
+  return res.status(200).json({ success: true, orderInfo: orderInfo[0], msg: 'Order info fetch' });
 });
 
 export const offlineSale = asyncHandler(async (req, res) => {

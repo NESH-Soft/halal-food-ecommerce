@@ -68,6 +68,13 @@ export const getOrderByDayServices = async (query) => {
 };
 export const getOrderInfoServices = async () => {
   const totalSaleInfo = await Order.aggregate([
+    {
+      $match: {
+        status: {
+          $in: ['offlineSale', 'delivered'],
+        },
+      },
+    },
     { $unwind: '$cart' },
     {
       $group: {
