@@ -2,6 +2,7 @@ import cloudinary from 'cloudinary';
 import {
   getProductsServices,
   getProductServices,
+  getProductInfoService,
   addProductServices,
   updateProductServices,
   deleteProductServices,
@@ -91,4 +92,9 @@ export const specialProduct = asyncHandler(async (req, res) => {
   // const data = { productType: 'special' };
   const products = await getProductsByCategoryServices(req.query);
   return res.status(200).json({ success: true, products, msg: 'Special product fetch' });
+});
+
+export const getProductInfo = asyncHandler(async (req, res) => {
+  const productInfo = await getProductInfoService();
+  return res.status(200).json({ success: true, productInfo, msg: 'Product info fetched' });
 });
