@@ -10,10 +10,8 @@ import {
 const router = express.Router();
 
 router.route('/').get(getCategory).post(addCategory);
-
+router.route('/subcategory-delete/:id').put(deleteSubCategory);
 router.route('/:id').delete(deleteCategory).put(addSubCategory);
-router.route('subcategory-delete/:id').put(deleteSubCategory);
-
 const configure = (app) => {
   app.use('/api/category', router);
 };

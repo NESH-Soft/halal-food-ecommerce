@@ -13,6 +13,7 @@ export const getCategoryServices = async () => {
 };
 
 export const addCategoryServices = async (category) => {
+  console.log(category,'ser')
   const newCategory = await Category.create(category);
   return newCategory;
 };
@@ -22,6 +23,7 @@ export const deleteCategoryServices = async (id) => {
   return deletedCategory;
 };
 export const addSubCategoryServices = async (id, subCtgry) => {
+  console.log(id,subCtgry)
   // eslint-disable-next-line
     const newSubCategory = await Category.findByIdAndUpdate(
     { _id: id },

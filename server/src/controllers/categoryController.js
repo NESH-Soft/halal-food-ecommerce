@@ -15,6 +15,7 @@ export const getCategory = asyncHandler(async (req, res) => {
 });
 
 export const addCategory = asyncHandler(async (req, res) => {
+  console.log(req.body)
   const newCategory = await addCategoryServices(req.body);
   return res.status(201).json({ success: true, newCategory, msg: 'category added successfully' });
 });

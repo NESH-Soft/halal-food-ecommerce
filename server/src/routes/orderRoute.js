@@ -21,7 +21,7 @@ router.route('/recent').get(getRecentOrder);
 router.route('/today').get(getOrderToday);
 router.route('/day').get(getOrderDay);
 router.route('/order-info').get(getOrderInfo);
-router.route('/offline-sale').get(offlineSale);
+router.route('/offline-sale').post(offlineSale);
 router.route('/').get(getOrders).post(addOrder);
 router.route('/:id').delete(deleteOrder);
 
