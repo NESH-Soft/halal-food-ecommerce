@@ -96,5 +96,5 @@ export const specialProduct = asyncHandler(async (req, res) => {
 
 export const getProductInfo = asyncHandler(async (req, res) => {
   const productInfo = await getProductInfoService();
-  return res.status(200).json({ success: true, productInfo, msg: 'Product info fetched' });
+  return res.status(200).json({ success: true, productInfo: productInfo[0], msg: 'Product info fetched' });
 });
