@@ -33,12 +33,10 @@ export const addSubCategoryServices = async (id, subCtgry) => {
   );
   return newSubCategory;
 };
-export const deleteSubCategoryServices = async (id, subCatId) => {
-  const { ObjectId } = mongoose.Types;
-  // eslint-disable-next-line
-    const deleteSubCategory = await Category.findByIdAndUpdate(
-    { _id: id },
-    { $pull: { _id: ObjectId(subCatId) } },
+export const deleteSubCategoryServices = async (catId, subCatId) => {
+  const deleteSubCategory = await Category.findByIdAndUpdate(
+    { _id: catId },
+    { $pull: { subCategory: { _id: subCatId } } },
     { new: true },
   );
   return deleteSubCategory;
