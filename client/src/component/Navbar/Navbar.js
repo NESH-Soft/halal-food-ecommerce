@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getProductsByCategory } from '../../redux/actions/product'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faUserCog, faCartPlus, faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faFacebookF, faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons"
@@ -10,25 +9,24 @@ import logo from '../images/logo/logo.png';
 import './Navbar.css'
 import { Link } from "react-router-dom";
 import { logout, loadUser } from '../../redux/actions/authAction';
-import { getWishList } from '../../redux/actions/wishlistAction'
+import { getProducts } from '../../redux/actions/product';
+import { getWishList } from '../../redux/actions/wishlistAction';
 const Navbar = () => {
-
-
+    const isAuthenticated = useSelector((state) => state.authState.isAuthenticated);
+    const cartItem = useSelector((state) => state.cartState.cart);
+    const wishList = useSelector((state) => state.wishListState.wishList);
     const dispatch = useDispatch()
     useEffect(() => {
         if (localStorage.token) {
             dispatch(loadUser())
+            dispatch(getWishList())
         }
-        dispatch(getWishList());
         // eslint-disable-next-line
     }, [])
-    const isAuthenticated = useSelector((state) => state.authState.isAuthenticated);
-    const cartItem = useSelector((state) => state.cartState.cart);
-    const wishList = useSelector((state) => state.wishListState.wishList);
-
+  
 
     return (
-        <div className="back">
+        <div className="col-md-12 back">
             <ReactNotification />
             <div className="col-md-12">
                 <div className="row pt-2">
@@ -45,7 +43,6 @@ const Navbar = () => {
                             <div style={{ borderLeft: '1px solid gray' }}></div>
                             <div>
                                 {isAuthenticated ? (<span style={{ cursor: "pointer" }} className="text-decoration-none mx-4" onClick={() => dispatch(logout())}> <FontAwesomeIcon className="national-color" icon={faUserCog} /> <span className="text-dark">Logout</span> </span>) : (<Link to="/login" className="text-decoration-none mx-4"> <FontAwesomeIcon className="national-color" icon={faUserCog} /> <span className="text-dark">Login</span></Link>)}
-
                             </div>
                         </div>
                     </div>
@@ -70,7 +67,7 @@ const Navbar = () => {
                                                     <Link to="" className="nav-link nav-top nav-font">HOME</Link>
                                                 </li>
                                                 <li className="nav-item ml-4">
-                                                    <Link to="/shop" className="nav-link other-link nav-font" onClick={() => dispatch(getProductsByCategory())}>SHOP</Link>
+                                                    <Link to="/shop" className="nav-link other-link nav-font" onClick={() => dispatch(getProducts())}>SHOP</Link>
                                                 </li>
                                                 <li className="nav-item ml-4">
                                                     <Link to="/my-account" className="nav-link other-link nav-font">MY ACCOUNT</Link>

@@ -51,16 +51,19 @@ export const getOrderByDayServices = async (query) => {
     {
       $match: {
         createdAt: { $gte: new Date(day) },
+        status: {
+          $in: ['offlineSale', 'delivered'],
+        },
       },
     },
     { $unwind: '$cart' },
     {
       $group: {
-        _id: "tr4543543",
+        _id: 'order_info_by_day',
         totalSaleAmount: { $sum: '$totalPrice' },
         totalSoldProduct: { $sum: '$cart.quantity' },
         totalSoldInvoice: { $sum: 1 },
-        totalProductCost: { $sum: { $multiply: ['$cart.price', '$cart.quantity'] } },
+        totalProductCost: { $sum: { $multiply: ['$cart.specialPrice', '$cart.quantity'] } },
       },
     },
   ]);
@@ -68,6 +71,13 @@ export const getOrderByDayServices = async (query) => {
 };
 export const getOrderInfoServices = async () => {
   const totalSaleInfo = await Order.aggregate([
+    {
+      $match: {
+        status: {
+          $in: ['offlineSale', 'delivered'],
+        },
+      },
+    },
     { $unwind: '$cart' },
     {
       $group: {
@@ -75,7 +85,7 @@ export const getOrderInfoServices = async () => {
         totalSaleAmount: { $sum: '$totalPrice' },
         totalOrder: { $sum: 1 },
         totalSoldProductQuantity: { $sum: '$cart.quantity' },
-        totalProductCost: { $sum: { $multiply: ['$cart.price', '$cart.quantity'] } },
+        totalProductCost: { $sum: { $multiply: ['$cart.specialPrice', '$cart.quantity'] } },
       },
     },
   ]);

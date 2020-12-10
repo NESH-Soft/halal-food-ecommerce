@@ -27,7 +27,7 @@ const ProductView = (props) => {
 
 
     const product = products.map((pd) => {
-        if (pd.productType === "regular") {
+       
             return (
                 <div className="card rounded-0 m-2 py-2 products-card" key={pd._id}>
                     <div className="image-box">
@@ -92,8 +92,9 @@ const ProductView = (props) => {
                     </div>
                 </div>
             )
-        }
+      
     }
+
     );
     var queries = [
         {

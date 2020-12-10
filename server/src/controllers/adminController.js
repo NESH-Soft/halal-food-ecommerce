@@ -3,6 +3,7 @@ import bcrypt from 'bcryptjs';
 import sendTokenResponse from '../utils/sendTokenResponse';
 import sendEmail from '../utils/sendEmail';
 import {
+  getAdminServices,
   createAdminServices,
   UpdateAdminServices,
   deleteAdminServices,
@@ -88,4 +89,13 @@ export const changePassword = asyncHandler(async (req, res) => {
   req.body.newPassword = hash;
   await changePasswordServices(req.admin.id, req.body);
   return res.status(200).json({ success: true, msg: 'Password successfully changed, please log back in to take effect' });
+});
+
+// get user
+export const getAdmin = asyncHandler(async (req, res) => {
+  const admin = await getAdminServices(req.admin.id);
+  if (!admin) {
+    throw new NotFound('User not found');
+  }
+  res.status(200).json({ success: true, admin, msg: 'Admin fetched' });
 });

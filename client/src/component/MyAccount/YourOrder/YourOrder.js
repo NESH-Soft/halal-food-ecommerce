@@ -35,7 +35,7 @@ const YourOrder = () => {
                                         order && order.map((item, index) => (
                                             <tr>
                                                 <th scope="col">{index + 1}</th>
-                                                <th scope="col">{item.createdAt}</th>
+                                                <th scope="col">{new Date(item.createdAt).toLocaleDateString()}</th>
                                                 <th scope="col">{item.shipping && `${item.shipping.line1} ${item.shipping.city} - ${item.shipping.postalCode}`}</th>
                                                 <th scope="col">{item.paymentId ? 'completed' : 'uncompleted'}</th>
                                                 <th scope="col">{item.totalPrice}</th>
@@ -43,10 +43,10 @@ const YourOrder = () => {
                                                     item.status === 'pending' &&  <th scope="col"> <button className="btn" style={{backgroundColor: colors[0]}}>{item.status}</button> </th>
                                                 }
                                                 {
-                                                    item.status === 'complete' &&  <th scope="col"> <button className="btn" style={{backgroundColor: colors[1]}}>{item.status}</button> </th>
+                                                    item.status === 'delivered' &&  <th scope="col"> <button className="btn" style={{backgroundColor: colors[1]}}>{item.status}</button> </th>
                                                 }
                                                 {
-                                                    item.status === 'processing' &&  <th scope="col"> <button className="btn" style={{backgroundColor: colors[2]}}>{item.status}</button> </th>
+                                                    item.status === 'offlineSale' &&  <th scope="col"> <button className="btn" style={{backgroundColor: colors[2]}}>{item.status}</button> </th>
                                                 }
                                                 
                                                 <th scope="col"> <Link to={`/your-orders-items/${item._id}`} className="btn btn-sm national-background text-light">click</Link></th>

@@ -46,3 +46,18 @@ export const searchProductServices = async (term) => {
   );
   return product;
 };
+
+export const getProductInfoService = async () => {
+  const productInfo = await Product.aggregate([
+    {
+      $group: {
+        _id: 'total_product_info',
+        totalProductCost: { $sum: { $multiply: ['$specialPrice', '$stock'] } },
+        totalProduct: { $sum: '$stock' },
+        totalProductType: { $sum: 1 },
+      },
+    },
+  ]);
+
+  return productInfo;
+};

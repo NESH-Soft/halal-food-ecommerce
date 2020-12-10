@@ -1,18 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
+import {withRouter} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
-import { amountCount } from '../../redux/actions/cartAction'
-import { createOrder, createOrderCashOnDelivery } from '../../redux/actions/orderAction'
+import { amountCount, ClearCart } from '../../redux/actions/cartAction'
+import { createOrder, createOrderCashOnDelivery } from '../../redux/actions/orderAction';
+import { loadUser } from '../../redux/actions/authAction';
 
 import './Checkout.css';
 
-const Checkout = () => {
+const Checkout = (props) => {
     const dispatch = useDispatch()
+    const success = useSelector((state) => state.orderState.success);
 
     useEffect(() => {
         dispatch(amountCount());
+        if (success) {
+            dispatch(loadUser())
+            dispatch(ClearCart())
+            props.history.push('/');
+
+        }
         // eslint-disable-next-line
-    }, []);
+    }, [success]);
+
+
+
     const cartState = useSelector((state) => state.cartState);
     const authState = useSelector((state) => state.authState);
     const userId = authState.isAuthenticated ? authState.user._id : null
@@ -20,7 +32,6 @@ const Checkout = () => {
         return {
             _id: pd._id,
             name: pd.name,
-            price: pd.price,
             quantity: pd.quantity,
             image: pd.image,
             specialPrice: pd.specialPrice,
@@ -88,7 +99,7 @@ const Checkout = () => {
                 totalPrice: cartState.cartTotal,
                 userId: userId,
             };
-            console.log(orderData)
+            
             dispatch(createOrder(orderData));
 
         }
@@ -185,7 +196,7 @@ const Checkout = () => {
                                             <div className="d-flex justify-content-between">
                                                 <p>{item.name} </p>
                                                 <p><span>X</span> <span>{item.quantity}</span></p>
-                                                <p>¥ <span>{item.price * item.quantity}</span> </p>
+                                                <p>¥ <span>{item.specialPrice * item.quantity}</span> </p>
                                             </div>
                                         ))
                                     }
@@ -257,4 +268,4 @@ const Checkout = () => {
     );
 };
 
-export default Checkout;
+export default withRouter(Checkout);
