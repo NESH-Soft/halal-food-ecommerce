@@ -41,7 +41,7 @@ const cartReducer = (state = initialState, action) => {
             name: c.name,
             unit: c.unit,
             stock: c.stock,
-            price: c.price,
+            specialPrice: c.specialPrice,
             image: c.image,
             quantity: c._id === action.payload ? c.quantity +1 : c.quantity
           }
@@ -56,7 +56,7 @@ const cartReducer = (state = initialState, action) => {
           name: c.name,
           unit: c.unit,
           stock: c.stock,
-          price: c.price,
+          specialPrice: c.specialPrice,
           image: c.image,
           quantity: c._id === action.payload ? c.quantity - 1 : c.quantity
         }
@@ -64,7 +64,7 @@ const cartReducer = (state = initialState, action) => {
     }
     case AMOUNT_COUNT :
       const productPriceArray = state.cart.map(function (product) {
-        return product.price * product.quantity;
+        return product.specialPrice * product.quantity;
     });
 
     const totalPrice = productPriceArray.reduce(function (accumulator, currentValue) {

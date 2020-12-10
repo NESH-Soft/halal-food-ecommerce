@@ -9,7 +9,7 @@ import {
 } from '../type'
 import * as api from '../../api';
 import setAuthToken from '../../utils/setAuthToken';
-import Notification from '../../utils/Notification'
+import Notification from '../../utils/Notification';
  
 // Action creator
 export const signIn = (data) => async(dispatch) => {

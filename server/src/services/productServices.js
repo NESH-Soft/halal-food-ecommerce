@@ -52,7 +52,7 @@ export const getProductInfoService = async () => {
     {
       $group: {
         _id: 'total_product_info',
-        totalProductCost: { $sum: { $multiply: ['$price', '$stock'] } },
+        totalProductCost: { $sum: { $multiply: ['$specialPrice', '$stock'] } },
         totalProduct: { $sum: '$stock' },
         totalProductType: { $sum: 1 },
       },

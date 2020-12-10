@@ -34,7 +34,7 @@ const WishList = () => {
                             <tr>
                                 <th scope="col" style={{ width: '20%' }}>Images</th>
                                 <th scope="col" style={{ width: '20%' }}>Product Name</th>
-                                <th scope="col" style={{ width: '20%' }}>Unit Price</th>
+                                <th scope="col" style={{ width: '20%' }}>Price</th>
                                 <th scope="col" style={{ width: '20%' }}>Stock</th>
                                 <th scope="col" style={{ width: '30%' }}>Action</th>
                             </tr>
