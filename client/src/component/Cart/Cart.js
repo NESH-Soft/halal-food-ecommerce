@@ -13,7 +13,7 @@ const Cart = () => {
     const cartState = useSelector((state) => state.cartState);
     const cart = cartState.cart;
     const productPriceArray = cart.map(function (product) {
-        return product.price * product.quantity;
+        return product.specialPrice * product.quantity;
     });
 
     const totalPrice = productPriceArray.reduce(function (accumulator, currentValue) {
@@ -62,10 +62,10 @@ const Cart = () => {
                                                 {/* <FontAwesomeIcon className="text-danger ml-3" icon={faHeart} /> */}
                                             </div>
                                             <div>
-                                                <h6>Per {pd.unit} : ¥{pd.price} x {pd.quantity}</h6>
+                                                <h6>Per {pd.unit} : ¥{pd.specialPrice} x {pd.quantity}</h6>
                                             </div>
                                             <div className="">
-                                                <h6> = Total price : ¥{pd.price * pd.quantity}</h6>
+                                                <h6> = Total price : ¥{pd.specialPrice * pd.quantity}</h6>
                                             </div>
                                         </div>
                                     </div>

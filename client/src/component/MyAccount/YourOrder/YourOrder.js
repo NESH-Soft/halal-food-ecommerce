@@ -8,7 +8,10 @@ const YourOrder = () => {
     const user = useSelector((state) => state.authState.user);
     const order = user.order || []
     const colors = ['#ffb234','#07be34','#99ff33']
-
+const  parseISOString=(s)=>{
+    var b = s.split(/\D+/);
+    return new Date(Date.UTC(b[0], --b[1], b[2], b[3], b[4], b[5], b[6]));
+  }
     return (
         <div >
             <div className="your-order mb-5">
@@ -35,7 +38,7 @@ const YourOrder = () => {
                                         order && order.map((item, index) => (
                                             <tr>
                                                 <th scope="col">{index + 1}</th>
-                                                <th scope="col">{item.createdAt}</th>
+                                                <th scope="col">{new Date(item.createdAt).toLocaleDateString()}</th>
                                                 <th scope="col">{item.shipping && `${item.shipping.line1} ${item.shipping.city} - ${item.shipping.postalCode}`}</th>
                                                 <th scope="col">{item.paymentId ? 'completed' : 'uncompleted'}</th>
                                                 <th scope="col">{item.totalPrice}</th>
@@ -43,10 +46,10 @@ const YourOrder = () => {
                                                     item.status === 'pending' &&  <th scope="col"> <button className="btn" style={{backgroundColor: colors[0]}}>{item.status}</button> </th>
                                                 }
                                                 {
-                                                    item.status === 'complete' &&  <th scope="col"> <button className="btn" style={{backgroundColor: colors[1]}}>{item.status}</button> </th>
+                                                    item.status === 'delivered' &&  <th scope="col"> <button className="btn" style={{backgroundColor: colors[1]}}>{item.status}</button> </th>
                                                 }
                                                 {
-                                                    item.status === 'processing' &&  <th scope="col"> <button className="btn" style={{backgroundColor: colors[2]}}>{item.status}</button> </th>
+                                                    item.status === 'offlineSale' &&  <th scope="col"> <button className="btn" style={{backgroundColor: colors[2]}}>{item.status}</button> </th>
                                                 }
                                                 
                                                 <th scope="col"> <Link to={`/your-orders-items/${item._id}`} className="btn btn-sm national-background text-light">click</Link></th>
