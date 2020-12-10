@@ -16,7 +16,7 @@ import {
 
 const router = express.Router();
 router.route('/cash-on-delivery').post(addOrderCashOnDelivery);
-router.route('/orders').get(getOrderByFilter);
+router.route('/orders').get(auth.protect, getOrderByFilter);
 router.route('/change-order-status/:id').put(auth.protect, changeOrderAction);
 router.route('/recent').get(auth.protect, getRecentOrder);
 router.route('/today').get(auth.protect, getOrderToday);

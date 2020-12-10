@@ -51,12 +51,15 @@ export const getOrderByDayServices = async (query) => {
     {
       $match: {
         createdAt: { $gte: new Date(day) },
+        status: {
+          $in: ['offlineSale', 'delivered'],
+        },
       },
     },
     { $unwind: '$cart' },
     {
       $group: {
-        _id: "tr4543543",
+        _id: 'order_info_by_day',
         totalSaleAmount: { $sum: '$totalPrice' },
         totalSoldProduct: { $sum: '$cart.quantity' },
         totalSoldInvoice: { $sum: 1 },
