@@ -60,7 +60,7 @@ export const getOrderByDayServices = async (query) => {
         totalSaleAmount: { $sum: '$totalPrice' },
         totalSoldProduct: { $sum: '$cart.quantity' },
         totalSoldInvoice: { $sum: 1 },
-        totalProductCost: { $sum: { $multiply: ['$cart.price', '$cart.quantity'] } },
+        totalProductCost: { $sum: { $multiply: ['$cart.specialPrice', '$cart.quantity'] } },
       },
     },
   ]);
@@ -82,7 +82,7 @@ export const getOrderInfoServices = async () => {
         totalSaleAmount: { $sum: '$totalPrice' },
         totalOrder: { $sum: 1 },
         totalSoldProductQuantity: { $sum: '$cart.quantity' },
-        totalProductCost: { $sum: { $multiply: ['$cart.price', '$cart.quantity'] } },
+        totalProductCost: { $sum: { $multiply: ['$cart.specialPrice', '$cart.quantity'] } },
       },
     },
   ]);
