@@ -35,43 +35,45 @@ import {
 
 function App() {
   return (
-    <div className="container-fluid">
+    <div>
       <Router>
         <Navbar />
-        <div className="row">
-          <div className="col-md-3">
-            <Category />
-          </div>
-          <div className="col-md-9">
-            <Search />
-            <Switch>
-              <Route exact path="/about-us" component={AboutUs} />
-              <PrivetRoute exact path="/login-security" component={LoginSecurity} />
-              <Route exact path="/wish-list" component={WishList} />
-              <Route exact path="/searchProducts" component={SearchProduct} />
-              <Route exact path="/contact" component={Contact} />
-              <Route exact path="/shoppingCart" component={Cart} />
-              <Route exact path="/shop" component={Shop} />
-              <Route exact path="/checkout" component={Checkout} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/register" component={Register} />
-              <PrivetRoute exact path="/my-account" component={MyAccount} />
-              <PrivetRoute exact path="/your-orders" component={YourOrder} />
-              <PrivetRoute exact path="/your-details" component={YourDetails} />
-              <PrivetRoute exact path="/your-orders-items/:id" component={YourOrderItem} />
-              <Route exact path="/productDetails" component={ProductDetails} />
-              <Route exact path="/details" component={Details} />
-              <Route exact path="/review" component={Review} />
-              <Route exact path="/info" component={Info} />
-              <Route exact path="/verify/:token" component={ConfirmRegister} />
-              <Route exact path="/" component={Home} />
-            </Switch>
+        <div className="container-fluid">
+          <div className="row mt-3">
+            <div className="col-md-3">
+              <Category />
+            </div>
+            <div className="col-md-9">
+              <Search />
+              <Switch>
+                <Route exact path="/about-us" component={AboutUs} />
+                <PrivetRoute exact path="/login-security" component={LoginSecurity} />
+                <Route exact path="/wish-list" component={WishList} />
+                <Route exact path="/searchProducts" component={SearchProduct} />
+                <Route exact path="/contact" component={Contact} />
+                <Route exact path="/shoppingCart" component={Cart} />
+                <Route exact path="/shop" component={Shop} />
+                <Route exact path="/checkout" component={Checkout} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/register" component={Register} />
+                <PrivetRoute exact path="/my-account" component={MyAccount} />
+                <PrivetRoute exact path="/your-orders" component={YourOrder} />
+                <PrivetRoute exact path="/your-details" component={YourDetails} />
+                <PrivetRoute exact path="/your-orders-items/:id" component={YourOrderItem} />
+                <Route exact path="/productDetails" component={ProductDetails} />
+                <Route exact path="/details" component={Details} />
+                <Route exact path="/review" component={Review} />
+                <Route exact path="/info" component={Info} />
+                <Route exact path="/verify/:token" component={ConfirmRegister} />
+                <Route exact path="/" component={Home} />
+              </Switch>
+            </div>
           </div>
         </div>
+        <Footer />
         <ScrollToTop showUnder={160}>
           <span> <button className="btn national-background text-light"><FontAwesomeIcon icon={faChevronUp} /></button> </span>
         </ScrollToTop>
-        <Footer />
       </Router>
     </div>
   );

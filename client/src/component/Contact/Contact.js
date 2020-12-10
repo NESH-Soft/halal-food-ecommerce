@@ -52,7 +52,7 @@ const Contact = () => {
                 <div className="col-md-6 text-justify">
                     <h6>CONTACT INFO</h6>
                     <div className="mt-3">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna diam, maximus ut ullamcorper quis, placerat id eros. Duis semper justo sed condimentum rutrum. Nunc tristique purus turpis. Maecenas vulputate. </p>
+                        <p>consectetur adipiscing elit. Praesent urna diam, maximus ut ullamcorper quis, placerat id eros. Duis semper justo sed condimentum rutrum. Nunc tristique purus turpis. Maecenas vulputate. </p>
                         <ul style={{ listStyle: 'none' }}>
                             <li>
                                 <p><FontAwesomeIcon icon={faLocationArrow} style={{ color: '#76a333' }} /> <span className="ml-3">Address: Michael I. Days 9000 Preston Street Wichita, KS 87213</span> </p>

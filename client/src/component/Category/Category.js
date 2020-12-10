@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import TreeMenu from 'react-simple-tree-menu';
-// import default minimal styling or your own styling
-import 'react-simple-tree-menu/dist/main.css';
-
 import { useSelector, useDispatch } from 'react-redux';
 import { getCategory } from '../../redux/actions/categoryAction';
 import { getProductsByCategory } from '../../redux/actions/product'
@@ -20,7 +17,7 @@ const Category = (props) => {
     const category = useSelector((state) => state.categoryState.category);
     const data = category || [];
     const [categoryClass, setCategoryClass] = useState('categoryShow');
-    
+
     const calCulData = data.map(item => (
         {
             key: item.name,
@@ -32,7 +29,6 @@ const Category = (props) => {
                 }
                 )) : []
             ,
-
         }
     ))
     //category dropdown system
@@ -69,9 +65,7 @@ const Category = (props) => {
                         // console.log(i);
                         dispatch(getProductsByCategory(i))
                         props.history.push('/shop')
-
                     }}
-                    //   onClickItem={function noRefCheck(){}}
                     resetOpenNodesOnDataUpdate={false}
                 />
             </div>
