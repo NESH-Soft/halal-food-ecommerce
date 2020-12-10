@@ -13,7 +13,6 @@ import { logout, loadUser } from '../../redux/actions/authAction';
 import { getWishList } from '../../redux/actions/wishlistAction'
 const Navbar = () => {
 
-
     const dispatch = useDispatch()
     useEffect(() => {
         if (localStorage.token) {
@@ -25,7 +24,6 @@ const Navbar = () => {
     const isAuthenticated = useSelector((state) => state.authState.isAuthenticated);
     const cartItem = useSelector((state) => state.cartState.cart);
     const wishList = useSelector((state) => state.wishListState.wishList);
-
 
     return (
         <div className="back">
@@ -45,7 +43,6 @@ const Navbar = () => {
                             <div style={{ borderLeft: '1px solid gray' }}></div>
                             <div>
                                 {isAuthenticated ? (<span style={{ cursor: "pointer" }} className="text-decoration-none mx-4" onClick={() => dispatch(logout())}> <FontAwesomeIcon className="national-color" icon={faUserCog} /> <span className="text-dark">Logout</span> </span>) : (<Link to="/login" className="text-decoration-none mx-4"> <FontAwesomeIcon className="national-color" icon={faUserCog} /> <span className="text-dark">Login</span></Link>)}
-
                             </div>
                         </div>
                     </div>

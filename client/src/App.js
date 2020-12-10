@@ -38,7 +38,7 @@ function App() {
     <div className="container-fluid">
       <Router>
         <Navbar />
-        <div className="row">
+        <div className="row mt-3">
           <div className="col-md-3">
             <Category />
           </div>
