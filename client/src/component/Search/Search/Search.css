@@ -73,8 +73,13 @@
 }
 
 
-@media only screen and (max-width: 700px) and (min-width: 100px)  {
+@media only screen and (max-width: 700px) and (min-width: 0px)  {
     .domain-search{
         position: relative;
+        margin-top: 10px;
+    }
+    .text-position{
+        margin: auto;
+        padding-top: 10px;
     }
 }

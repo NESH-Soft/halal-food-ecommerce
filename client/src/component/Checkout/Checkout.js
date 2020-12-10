@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import {withRouter} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
-import { amountCount } from '../../redux/actions/cartAction'
+import { amountCount, ClearCart } from '../../redux/actions/cartAction'
 import { createOrder, createOrderCashOnDelivery } from '../../redux/actions/orderAction';
 import { loadUser } from '../../redux/actions/authAction';
 
@@ -16,7 +16,9 @@ const Checkout = (props) => {
         dispatch(amountCount());
         if (success) {
             dispatch(loadUser())
+            dispatch(ClearCart())
             props.history.push('/');
+
         }
         // eslint-disable-next-line
     }, [success]);

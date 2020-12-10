@@ -35,6 +35,8 @@ export const GET_SINGLE_ORDERER = 'GET_SINGLE_ORDERER';
 
 export const AMOUNT_COUNT = 'AMOUNT_COUNT';
 
+export const CLEAR_CART_ACTION = 'CLEAR_CART_ACTION';
+
 
 
 
