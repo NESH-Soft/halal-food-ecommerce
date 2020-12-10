@@ -65,3 +65,15 @@ export const logout = () => async(dispatch) => {
     console.log(error);
   }
 } 
+
+
+export const sendMail = (data) => async(dispatch) => {
+  try {
+    const  res  = await api.sendMail(data);
+    // dispatch({ type: REGISTRATION_SUCCESS, payload: res })
+    Notification("Your mail send success","success",1000)
+  } catch (error) {
+    Notification(error.response.data.msg,"warning",1500)
+  }
+} 
+
