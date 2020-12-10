@@ -2,11 +2,15 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faPhoneAlt, faLocationArrow } from '@fortawesome/free-solid-svg-icons'
 import { useForm } from "react-hook-form";
-
+import { useDispatch } from 'react-redux'
+import { sendMail } from '../../redux/actions/authAction';
 
 const Contact = () => {
+    const dispatch = useDispatch();
     const { register, handleSubmit, errors } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        dispatch(sendMail(data))
+    }
     return (
         <div className="contact mb-5">
             <div style={{ borderBottom: '3px solid #76a333' }}>
