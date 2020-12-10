@@ -32,11 +32,11 @@ export const addSubCategoryServices = async (id, subCtgry) => {
   );
   return newSubCategory;
 };
-export const deleteSubCategoryServices = async (id, subCtgry) => {
+export const deleteSubCategoryServices = async (id, subCatId) => {
   // eslint-disable-next-line
     const deleteSubCategory = await Category.findByIdAndUpdate(
     { _id: id },
-    { $pull: { subCategory: subCtgry } },
+    { $pull: { _id: subCatId } },
     { new: true },
   );
   return deleteSubCategory;
