@@ -26,7 +26,7 @@ const Navbar = () => {
     const wishList = useSelector((state) => state.wishListState.wishList);
 
     return (
-        <div className="back">
+        <div className="col-md-12 back">
             <ReactNotification />
             <div className="col-md-12">
                 <div className="row pt-2">

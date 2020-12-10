@@ -5,7 +5,8 @@ import {
   REMOVE_CART,
   CART_ITEM_DECREMENT,
   CART_ITEM_INCREMENT,
-  AMOUNT_COUNT
+  AMOUNT_COUNT,
+  CLEAR_CART_ACTION
 } from '../type'
 // import {changeAddToCartOption,changeShopAddToCartOption} from './product'
 
@@ -55,6 +56,13 @@ export const cartItemDecrement = (id) => async(dispatch) => {
 export const amountCount = () => async(dispatch) => {
   try {
     dispatch({ type: AMOUNT_COUNT})
+  } catch (error) {
+    console.log(error);
+  }
+} 
+export const ClearCart = () => async(dispatch) => {
+  try {
+    dispatch({ type: CLEAR_CART_ACTION})
   } catch (error) {
     console.log(error);
   }
