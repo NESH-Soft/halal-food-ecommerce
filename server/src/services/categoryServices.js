@@ -1,3 +1,4 @@
+import mongoose from 'mongoose'
 import models from '../models/index';
 
 const { Category } = models;
@@ -33,10 +34,11 @@ export const addSubCategoryServices = async (id, subCtgry) => {
   return newSubCategory;
 };
 export const deleteSubCategoryServices = async (id, subCatId) => {
+  const { ObjectId } = mongoose.Types;
   // eslint-disable-next-line
     const deleteSubCategory = await Category.findByIdAndUpdate(
     { _id: id },
-    { $pull: { _id: subCatId } },
+    { $pull: { _id: ObjectId(subCatId) } },
     { new: true },
   );
   return deleteSubCategory;
