@@ -138,7 +138,7 @@ export const searchProducts = async (term) => {
 }
 
 export const sendMail = async (data) => {
-  const response = await axios.get('/api/user/contact-us',data,config);
+  const response = await axios.post('/api/user/contact-us',data,config);
   return response.data
 }
 
