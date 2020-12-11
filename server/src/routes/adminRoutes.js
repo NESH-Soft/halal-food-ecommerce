@@ -7,6 +7,8 @@ import {
   deleteAdmin,
   changePassword,
   verifyAdmin,
+  forgotPassword,
+  resetPassword,
   getAdmin,
 } from '../controllers/adminController';
 
@@ -20,6 +22,9 @@ router.route('/verify/:registerToken').get(verifyAdmin);
 router.route('/:id').put(auth.protect, updateAdmin).delete(auth.protect, deleteAdmin);
 
 router.route('/change-password').put(auth.protect, changePassword);
+
+router.route('/forgot').post(forgotPassword);
+router.route('/reset/:token').post(resetPassword);
 
 const configure = (app) => {
   app.use('/api/admin', router);
