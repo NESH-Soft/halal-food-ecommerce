@@ -40,7 +40,7 @@ const YourDetails = () => {
                                 <input type="number" name="phone" ref={register({ required: true })} className="form-control" placeholder="Enter Phone" />
                                 {errors.phone && <span>This field is required</span>}
                             </div>
-                            <button type="submit" ref={register({ required: true })} className="btn btn-primary px-5 float-right">Save</button>
+                            <button type="submit" className="btn btn-primary px-5 float-right">Save</button>
                         </form>
                     </div>
                 </div>

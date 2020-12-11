@@ -29,7 +29,7 @@ const AllProducts = () => {
     });
 
     const product = data.map(pd =>
-        <div className="card m-2 p-2 products-card">
+        <div className="card m-2 p-2 products-card" key={pd._id}>
             <div className="image-box">
                 <Link to="/productDetails">  <img className="card-img-top" onClick={() => dispatch(getProduct(pd._id))} src={pd.image} alt={pd.name} /></Link>
             </div>

@@ -32,6 +32,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import LatestProduct from './component/LatestProduct/LatestProduct';
 
 function App() {
   return (
@@ -42,6 +43,9 @@ function App() {
           <div className="row mt-3">
             <div className="col-md-3">
               <Category />
+              <div className="latestProductHidePhone">
+                <LatestProduct />
+              </div>
             </div>
             <div className="col-md-9">
               <Search />

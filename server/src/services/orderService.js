@@ -28,7 +28,8 @@ export const changeOrderActionServices = async (id, data) => {
 };
 export const getOrderServices = async () => {
   const order = await Order.find()
-    .populate({ path: 'user', model: 'user', select: 'name email' });
+    .populate({ path: 'user', model: 'user', select: 'name email' })
+    .sort({ createdAt: -1 });
   return order;
 };
 export const getRecentOrderServices = async () => {

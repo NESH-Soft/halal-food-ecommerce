@@ -52,3 +52,20 @@ export const changePasswordServices = async (id, newPassword) => {
 // export const resetPasswordAdminServices = async (data) => {
 
 // };
+
+export const resetPasswordService = async (token, hash) => {
+  const user = await Admin.findOneAndUpdate(
+    {
+      resetPasswordToken: token,
+      resetPasswordExpires: { $gt: Date.now() },
+    },
+    {
+      password: hash,
+      resetToken: undefined,
+      expireToken: undefined,
+    },
+    { new: true },
+  );
+
+  return user;
+};

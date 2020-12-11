@@ -28,27 +28,27 @@ const Register = (props) => {
                 <div className="my-4 p-3 bg-white" style={{ width: '100%' }}>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-group">
-                            <label for="exampleInputName">Name</label>
+                            <label htmlFor="exampleInputName">Name</label>
                             <input type="text" className="form-control" name="name" ref={register({ required: true })} id="exampleInputName" aria-describedby="emailHelp" placeholder="Enter name" />
                             {errors.name && <span>This field is required</span>}
                         </div>
                         <div className="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
+                            <label htmlFor="exampleInputEmail1">Email address</label>
                             <input type="email" className="form-control" name="email" ref={register({ required: true })} id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
                             {errors.email && <span>This field is required</span>}
                         </div>
                         <div className="form-group">
-                            <label for="exampleInputPhone1">Phone Number</label>
+                            <label htmlFor="exampleInputPhone1">Phone Number</label>
                             <input type="number" className="form-control" name="phone" ref={register({ required: true })} id="exampleInputphone1" aria-describedby="emailHelp" placeholder="Enter phone number" />
                             {errors.phone && <span>This field is required</span>}
                         </div>
                         <div className="form-group">
-                            <label for="exampleInputPassword1">Password</label>
+                            <label htmlFor="exampleInputPassword1">Password</label>
                             <input type="password" className="form-control" name="password" ref={register({ required: true })} id="exampleInputPassword1" placeholder="Password" />
                             {errors.password && <span>This field is required</span>}
                         </div>
                         <div className="form-group">
-                            <label for="exampleIConfirmnputPassword">Confirm password</label>
+                            <label htmlFor="exampleIConfirmnputPassword">Confirm password</label>
                             <input type="password" name="confirmPassword" ref={register({ required: true })} className="form-control" id="exampleIConfirmnputPassword" placeholder="Password" />
                             {errors.confirmPassword && <span>This field is required</span>}
                         </div>

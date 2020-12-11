@@ -6,8 +6,8 @@ import logo from '../../images/logo/logo.png';
 
 const Footer = () => {
     return (
-        <div className="container-fluid">
-            <div className="row p-4" style={{ backgroundColor: '#F3F6FA' }}>
+        <div className="container-fluid" style={{ backgroundColor: '#F3F6FA' }}>
+            <div className="row p-4">
                 <div className="col-md-4">
                     <div className="">
                         <img src={logo} width="200px" alt="" />
@@ -38,19 +38,13 @@ const Footer = () => {
                 </div>
 
                 <div className="col-md-4">
-                    <h5>Join Our Newsletter Now</h5>
-                    <br />
-                    <p>Get E-mail updates about our latest shop and special offers.</p>
-                    <div className="row col-md-6">
-                        <div className=" col-md-4 footer-icon">
-                            <Link to="" href="" className="text-decoration-none "><FontAwesomeIcon icon={faFacebookF} style={{ color: '#76a333', fontSize: '20px' }} /></Link>
-                        </div>
-                        <div className="col-md-4 ">
-                            <Link to="" href="" className="text-decoration-none text-dark"><FontAwesomeIcon icon={faLinkedin} /></Link>
-                        </div>
-                        <div className="col-md-4 ">
-                            <Link to="" href="" className="text-decoration-none text-dark"><FontAwesomeIcon icon={faTwitter} /></Link>
-                        </div>
+                    <div className="mb-5">
+                        <h5>Join Our Social media platform</h5>
+                    </div>
+                    <div>
+                        <Link to="" className="text-decoration-none mr-4"><FontAwesomeIcon icon={faFacebookF} style={{ color: '#76a333', fontSize: '20px' }} /></Link>
+                        <Link to="" className="text-decoration-none mr-4"><FontAwesomeIcon icon={faLinkedin} style={{ color: '#76a333', fontSize: '20px' }} /></Link>
+                        <Link to="" className="text-decoration-none mr-4"><FontAwesomeIcon icon={faTwitter} style={{ color: '#76a333', fontSize: '20px' }} /></Link>
                     </div>
 
                 </div>

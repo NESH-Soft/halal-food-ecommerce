@@ -27,8 +27,18 @@
 }
 .categoryShow{
     display: block;
-    position: absolute;
+    background-color:#e2e2e2;
     width : 100%;
+}
+@media only screen and (max-width: 464px) and (min-width: 0px)  {
+  .categoryShow{
+    display: none;
+}
+.categoryHide{
+  display: block;
+  background-color:#e2e2e2;
+}
+
 }
 
 /* tree components  */
@@ -76,65 +86,3 @@
   /*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3NyYy9zYXNzL21haW4uc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLHFCQUFxQixFQUFBO0VBQ3JCO0lBQ0UsV0FOWTtJQU9aLFlBUFk7SUFRWixrQkFBa0I7SUFDbEIsaUJBVFksRUFBQTs7QUFhaEI7RUFDRSxxQkFBcUI7RUFDckIsZUFBZTtFQUNmLDBCQUEwQjtFQUMxQixnQkFBZ0I7RUFDaEIsV0FBVyxFQUFBOztBQUdiO0VBQ0UscUJBQXFCO0VBQ3JCLGVBQWU7RUFDZixXQUFXO0VBQ1gsZ0JBQWdCO0VBQ2hCLDZCQUE2QjtFQUM3QixnQkFBZ0I7RUFDaEIsY0FBYztFQUNkLGtCQUFrQixFQUFBO0VBRWxCO0lBQ0UsWUFBWTtJQUNaLG1CQUFtQjtJQUNuQixtQkFBbUIsRUFBQTtFQUdyQjtJQUNFLDBCQUEwQjtJQUMxQixZQUFZLEVBQUE7O0FBSWhCO0VBQ0Usb0JBQW9CO0VBQ3BCLFlBQVk7RUFDWixXQUFXLEVBQUEiLCJmaWxlIjoibWFpbi5jc3MifQ== */
 
 
-@media only screen and (max-width: 700px) and (min-width: 100px)  {
-    .categoryShow{
-        display: none;
-    }
-    .categoryHide{
-        display: block;
-        position: relative;
-        padding-bottom: 20px;
-    }
-}
-@media only screen and (max-width: 900px) and (min-width: 701px)  {
-    .categoryShow{
-        display: block;
-        position: absolute;
-        background-color:#e2e2e2;
-        width :85%;
-        padding-left: 0px;
-    }
-    .categoryHide{
-        display: none;
-        
-    }
-}
-@media only screen and (max-width: 1300px) and (min-width: 901px)  {
-    .categoryShow{
-        display: block;
-        position: absolute;
-        background-color:#e2e2e2;
-        width :90%;
-        padding-left: 0px;
-    }
-    .categoryHide{
-        display: none;
-        
-    }
-}
-@media only screen and (max-width: 1700px) and (min-width: 1301px)  {
-    .categoryShow{
-        display: block;
-        position: absolute;
-        background-color:#e2e2e2;
-        width :91%;
-        padding-left: 0px;
-    }
-    .categoryHide{
-        display: none;
-        
-    }
-}
-@media only screen and (max-width: 2500px) and (min-width: 1701px)  {
-    .categoryShow{
-        display: block;
-        position: absolute;
-        background-color:#e2e2e2;
-        width :94%;
-        padding-left: 0px;
-    }
-    .categoryHide{
-        display: none;
-        
-    }
-}
