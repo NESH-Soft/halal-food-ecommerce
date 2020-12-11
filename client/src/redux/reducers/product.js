@@ -26,7 +26,7 @@ const productReducer = (state = initialState, action) => {
         ...state,
         products: action.payload.filter(product=>product.productType === 'regular'),
         productFilterByCategory: action.payload.filter(product=>product.productType === 'regular'),
-        latestProducts: action.payload.filter(product=>product.productType === 'special')
+        latestProducts: action.payload.filter(product=>product.productType === 'latest')
       }
       case GET_SPECIAL_PRODUCT:
         return {
