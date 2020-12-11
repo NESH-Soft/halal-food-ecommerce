@@ -30,7 +30,7 @@ router.route('/verify/:registerToken').get(verifyUser);
 router.route('/:id').put(updateUser).delete(deleteUser);
 
 router.route('/forgot').post(forgotPassword);
-router.route('/reset/:token').post(resetPassword);
+router.route('/reset/:token').post(handleValidations(validators.forgetPasswordValidation), resetPassword);
 
 const configure = (app) => {
   app.use('/api/user', router);

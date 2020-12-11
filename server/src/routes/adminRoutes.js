@@ -1,5 +1,6 @@
 import express from 'express';
 import auth from '../middlewares/auth';
+import { handleValidations } from '../middlewares/handleValidation';
 import {
   signupAdmin,
   signInAdmin,
@@ -11,6 +12,7 @@ import {
   resetPassword,
   getAdmin,
 } from '../controllers/adminController';
+import validators from '../models/validation';
 
 const router = express.Router();
 
@@ -24,7 +26,7 @@ router.route('/:id').put(auth.protect, updateAdmin).delete(auth.protect, deleteA
 router.route('/change-password').put(auth.protect, changePassword);
 
 router.route('/forgot').post(forgotPassword);
-router.route('/reset/:token').post(resetPassword);
+router.route('/reset/:token').post(handleValidations(validators.forgetPasswordValidation), resetPassword);
 
 const configure = (app) => {
   app.use('/api/admin', router);
