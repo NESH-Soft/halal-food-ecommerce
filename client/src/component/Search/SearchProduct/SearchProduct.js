@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProduct } from '../../../redux/actions/product';
 import { addToCart, removeCart } from '../../../redux/actions/cartAction';
 import { addToWishList, removeWishList } from '../../../redux/actions/wishlistAction';
-import './SearchProduct.css'
 import emptyImg from '../../images/empty/empty.png';
 
 const SearchProduct = () => {
@@ -114,12 +113,10 @@ const SearchProduct = () => {
     ];
 
     return (
-        <div>
-            <div className="row searchProduct">
-                <div className="col-md-3"></div>
-                <div className="col-md-9 mb-5">
-                    <div style={{ borderBottom: '3px solid #76a333' }} className="my-4">
-                        <h2>Your Search Products</h2>
+            <div className="searchProduct mb-5">
+        
+                    <div style={{ borderBottom: '3px solid #76a333' }}>
+                        <h4>Your Search Products</h4>
                     </div>
                     {/* <div>
                         <button onClick={() => dispatch(clearSearchState())}>X</button>
@@ -131,9 +128,8 @@ const SearchProduct = () => {
                         </div>
                     }
 
-                </div>
+               
             </div>
-        </div>
     );
 };
 

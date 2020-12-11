@@ -87,9 +87,6 @@ export const searchProduct = asyncHandler(async (req, res) => {
 });
 
 export const specialProduct = asyncHandler(async (req, res) => {
-  console.log(req.query)
-  // console.log(req.query)
-  // const data = { productType: 'special' };
   const products = await getProductsByCategoryServices(req.query);
   return res.status(200).json({ success: true, products, msg: 'Special product fetch' });
 });
