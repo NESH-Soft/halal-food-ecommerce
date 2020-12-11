@@ -62,7 +62,7 @@ export const changePasswordServices = async (id, newPassword) => {
 // };
 
 export const getUsersServices = async () => {
-  const users = await User.find().select('name email phone createdAt');
+  const users = await User.find().select('name email phone createdAt').sort({ createdAt: -1 });
   return users;
 };
 
