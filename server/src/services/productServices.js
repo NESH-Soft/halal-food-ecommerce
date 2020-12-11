@@ -8,7 +8,7 @@ export const findProductById = async (id) => {
 };
 
 export const getProductsServices = async () => {
-  const products = await Product.find();
+  const products = await Product.find().sort({ createdAt: -1 });
   return products;
 };
 
