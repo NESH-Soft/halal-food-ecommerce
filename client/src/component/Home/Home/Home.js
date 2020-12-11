@@ -6,7 +6,7 @@ import HeaderCarousel from '../Header/HeaderCarousel/HeaderCarousel';
 
 const Home = () => {
     return (
-        <>
+        <div >
             <HeaderCarousel />
             <FeaturedProduct />
             <div className="my-5">
@@ -14,7 +14,7 @@ const Home = () => {
                 <hr className="my-4" />
                 <ShopCarousel />
             </div>
-        </>
+        </div>
     );
 };
 

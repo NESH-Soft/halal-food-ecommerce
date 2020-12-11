@@ -122,49 +122,49 @@ const Checkout = (props) => {
                                 <div className="checkout-form">
                                     <div className="row">
                                         <div className="col-md-6 form-group">
-                                            <label for="exampleInputEmail1">First Name <span className="text-danger">*</span></label>
+                                            <label htmlFor="exampleInputEmail1">First Name <span className="text-danger">*</span></label>
                                             <input name="fname" ref={register({ required: true })} type="text" className="form-control " />
                                             {errors.fname && <span>This field is required</span>}
                                         </div>
                                         <div className="col-md-6 form-group">
-                                            <label for="exampleInputEmail1">Last Name <span className="text-danger">*</span></label>
+                                            <label htmlFor="exampleInputEmail1">Last Name <span className="text-danger">*</span></label>
                                             <input name="lname" ref={register({ required: true })} type="text" className="form-control " />
                                             {errors.lname && <span>This field is required</span>}
                                         </div>
                                     </div>
                                     <div className="form-group">
-                                        <label for="exampleInputEmail1">Email <span className="text-danger">*</span></label>
+                                        <label htmlFor="exampleInputEmail1">Email <span className="text-danger">*</span></label>
                                         <input name="email" ref={register({ required: true })} type="email" className="form-control " />
                                         {errors.email && <span>This field is required</span>}
                                     </div>
                                     <div className="form-group">
-                                        <label for="exampleInputEmail1">Phone <span className="text-danger">*</span></label>
+                                        <label htmlFor="exampleInputEmail1">Phone <span className="text-danger">*</span></label>
                                         <input name="phone" ref={register({ required: true })} type="number" className="form-control " />
                                         {errors.phone && <span>This field is required</span>}
                                     </div>
                                     <div className="form-group">
-                                        <label for="exampleInputEmail1">Country <span className="text-danger">*</span></label>
+                                        <label htmlFor="exampleInputEmail1">Country <span className="text-danger">*</span></label>
                                         <h5>Japan</h5>
                                     </div>
                                     <div className="row">
                                         <div className="col-md-6 form-group">
-                                            <label for="exampleInputEmail1">Postcode / ZIP<span className="text-danger">*</span></label>
+                                            <label htmlFor="exampleInputEmail1">Postcode / ZIP<span className="text-danger">*</span></label>
                                             <input name="postCode" ref={register({ required: true })} type="number" className="form-control " />
                                             {errors.postCode && <span>This field is required</span>}
                                         </div>
                                         <div className="col-md-6 form-group">
-                                            <label for="exampleInputEmail1">City<span className="text-danger">*</span></label>
+                                            <label htmlFor="exampleInputEmail1">City<span className="text-danger">*</span></label>
                                             <input name="city" ref={register({ required: true })} type="text" className="form-control " />
                                             {errors.city && <span>This field is required</span>}
                                         </div>
                                     </div>
                                     <div className="form-group">
-                                        <label for="exampleInputEmail1">Address<span className="text-danger">*</span></label>
+                                        <label htmlFor="exampleInputEmail1">Address<span className="text-danger">*</span></label>
                                         <input name="address" ref={register({ required: true })} type="text" className="form-control " />
                                         {errors.address && <span>This field is required</span>}
                                     </div>
                                     <div className="form-group">
-                                        <label for="exampleInputEmail1">Region / State<span className="text-danger">*</span></label>
+                                        <label htmlFor="exampleInputEmail1">Region / State<span className="text-danger">*</span></label>
                                         <select name="region" ref={register({ required: true })} className="form-control" id="exampleFormControlSelect1">
                                             <option>--please select--</option>
                                             <option value="11">11</option>
@@ -221,11 +221,11 @@ const Checkout = (props) => {
                                     <div>
                                         <div>
                                             <input type="radio" id="cashondelivery" name="cash-delivery" checked={cashState} onClick={handleDelivery} />
-                                            <label for="cashondelivery">&nbsp;Cash on Delivery</label>
+                                            <label htmlFor="cashondelivery">&nbsp;Cash on Delivery</label>
                                         </div>
                                         <div>
                                             <input type="radio" id="cash-delivery" name="cash-delivery" onClick={handleCashDelivery} />
-                                            <label for="cashondelivery">&nbsp;Cash  Delivery</label>
+                                            <label htmlFor="cashondelivery">&nbsp;Cash  Delivery</label>
                                         </div>
                                     </div>
                                     <div>
@@ -238,12 +238,12 @@ const Checkout = (props) => {
                                                 <div className="creditCard">
                                                     <p>Pay With Credit Card</p>
                                                     <div className="form-group">
-                                                        <label htmlFor="exampleInputEmail1">Card Number<span>*</span> </label>
+                                                        <label htmlhtmlFor="exampleInputEmail1">Card Number<span>*</span> </label>
                                                         <input type="number" className="form-control" ref={register({ required: true })} name='cardNumber' id="exampleInputEmail1" placeholder="1234 1234 1234 1234" aria-describedby="emailHelp" />
                                                     </div>
                                                     <div className="row">
                                                         <div className="col-md-6 form-group">
-                                                            <label for="exampleInputPassword1">Expired Date<span>*</span> </label>
+                                                            <label htmlFor="exampleInputPassword1">Expired Date<span>*</span> </label>
 
                                                             <input type="number" className="form-control" name='expireMonth' ref={register({ required: true })} placeholder="Expire Month" id="exampleInputPassword1" />
 
@@ -251,7 +251,7 @@ const Checkout = (props) => {
 
                                                         </div>
                                                         <div className="col-md-6 form-group">
-                                                            <label for="exampleInputPassword1">Card Code(CVC)<span>*</span> </label>
+                                                            <label htmlFor="exampleInputPassword1">Card Code(CVC)<span>*</span> </label>
                                                             <input type="number" className="form-control" name='cvc' ref={register({ required: true })} placeholder="CVC" id="exampleInputPassword1" />
                                                         </div>
                                                     </div>

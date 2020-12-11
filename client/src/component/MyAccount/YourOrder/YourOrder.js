@@ -21,7 +21,7 @@ const YourOrder = () => {
                             <table className="table">
                                 <thead className="thead-light">
                                     <tr>
-                                        <th scope="col">#</th>
+                                        <th scope="col">SL.</th>
                                         <th scope="col">Date</th>
                                         <th scope="col">Address</th>
                                         <th scope="col">Payment</th>
@@ -33,7 +33,7 @@ const YourOrder = () => {
                                 <tbody>
                                     {
                                         order && order.map((item, index) => (
-                                            <tr>
+                                            <tr key={index}>
                                                 <th scope="col">{index + 1}</th>
                                                 <th scope="col">{new Date(item.createdAt).toLocaleDateString()}</th>
                                                 <th scope="col">{item.shipping && `${item.shipping.line1} ${item.shipping.city} - ${item.shipping.postalCode}`}</th>
@@ -49,7 +49,7 @@ const YourOrder = () => {
                                                     item.status === 'offlineSale' &&  <th scope="col"> <button className="btn" style={{backgroundColor: colors[2]}}>{item.status}</button> </th>
                                                 }
                                                 
-                                                <th scope="col"> <Link to={`/your-orders-items/${item._id}`} className="btn btn-sm national-background text-light">click</Link></th>
+                                                <th scope="col"> <Link to={`/your-orders-items/${item._id}`} className="btn btn-sm national-background text-light">view</Link></th>
 
                                             </tr>
                                         ))

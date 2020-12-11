@@ -30,6 +30,16 @@
     background-color:#e2e2e2;
     width : 100%;
 }
+@media only screen and (max-width: 464px) and (min-width: 0px)  {
+  .categoryShow{
+    display: none;
+}
+.categoryHide{
+  display: block;
+  background-color:#e2e2e2;
+}
+
+}
 
 /* tree components  */
 .rstm-toggle-icon {
