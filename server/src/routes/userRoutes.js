@@ -10,6 +10,8 @@ import {
   getUser,
   getUsers,
   contactUs,
+  forgotPassword,
+  resetPassword,
   getInfo,
 } from '../controllers/userController';
 import { handleValidations } from '../middlewares/handleValidation';
@@ -26,6 +28,9 @@ router.route('/info').get(getInfo);
 router.route('/contact-us').post(contactUs);
 router.route('/verify/:registerToken').get(verifyUser);
 router.route('/:id').put(updateUser).delete(deleteUser);
+
+router.route('/forgot').post(forgotPassword);
+router.route('/reset/:token').post(resetPassword);
 
 const configure = (app) => {
   app.use('/api/user', router);
