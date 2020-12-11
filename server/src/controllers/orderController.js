@@ -206,7 +206,7 @@ export const getOrderToday = asyncHandler(async (req, res) => {
 export const getOrderDay = asyncHandler(async (req, res) => {
   const orderByDay = await getOrderByDayServices(req.query.day);
   if (!orderByDay) throw NotFound('No order found');
-  return res.status(200).json({ success: true, orderByDay, msg: 'fetch order by day' });
+  return res.status(200).json({ success: true, orderByDay: orderByDay[0], msg: 'fetch order by day' });
 });
 export const getOrderInfo = asyncHandler(async (req, res) => {
   const orderInfo = await getOrderInfoServices();

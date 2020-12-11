@@ -9,7 +9,7 @@ const AboutUs = () => {
                 </div>
                 <div className="row">
                     <div className="col-md-6">
-                        <img className="card-img-top" src="https://img.freepik.com/free-photo/man-looking-happy-astonished-surprised-smiling-realizing-amazing-incredible-good-news_1194-69800.jpg?size=626&ext=jpg" alt="Card image cap" />
+                        <img className="card-img-top" src="https://img.freepik.com/free-photo/man-looking-happy-astonished-surprised-smiling-realizing-amazing-incredible-good-news_1194-69800.jpg?size=626&ext=jpg" alt="Card cap" />
                     </div>
                     <div className="col-md-6 text-justify">
                         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi odio odit officia, omnis eveniet libero! Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit vero ut id doloribus totam! Necessitatibus tempora cum atque fugiat illum in dolore quibusdam possimus rem, deleniti qui accusamus veniam, optio placeat dolorem facilis quam incidunt magnam, voluptatum vero voluptates. Eum?</p>

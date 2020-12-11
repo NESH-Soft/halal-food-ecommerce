@@ -30,7 +30,8 @@ export const addSubCategory = asyncHandler(async (req, res) => {
   return res.status(201).json({ success: true, newCategory, msg: 'Subcategory added successfully' });
 });
 export const deleteSubCategory = asyncHandler(async (req, res) => {
-  const deletedSubCategory = await deleteSubCategoryServices(req.params.id, req.body);
+  
+  const deletedSubCategory = await deleteSubCategoryServices(req.params.catId, req.params.subCatId);
   if (!deletedSubCategory) throw NotFound('Category not found');
   return res.status(200).json({ success: true, deletedSubCategory, msg: 'Sub category delete successfully' });
 });

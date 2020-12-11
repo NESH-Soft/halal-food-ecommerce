@@ -37,6 +37,8 @@ export const AMOUNT_COUNT = 'AMOUNT_COUNT';
 
 export const CLEAR_CART_ACTION = 'CLEAR_CART_ACTION';
 
+export const SEND_MAIL = 'SEND_MAIL';
+
 
 
 

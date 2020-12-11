@@ -1,3 +1,4 @@
+import mongoose from 'mongoose'
 import models from '../models/index';
 
 const { Category } = models;
@@ -22,21 +23,19 @@ export const deleteCategoryServices = async (id) => {
   const deletedCategory = Category.findByIdAndRemove(id);
   return deletedCategory;
 };
-export const addSubCategoryServices = async (id, subCtgry) => {
-  console.log(id,subCtgry)
+export const addSubCategoryServices = async (id, subCat) => {
   // eslint-disable-next-line
     const newSubCategory = await Category.findByIdAndUpdate(
     { _id: id },
-    { $push: { subCategory: subCtgry } },
+    { $push: { subCategory: subCat } },
     { new: true },
   );
   return newSubCategory;
 };
-export const deleteSubCategoryServices = async (id, subCtgry) => {
-  // eslint-disable-next-line
-    const deleteSubCategory = await Category.findByIdAndUpdate(
-    { _id: id },
-    { $pull: { subCategory: subCtgry } },
+export const deleteSubCategoryServices = async (catId, subCatId) => {
+  const deleteSubCategory = await Category.findByIdAndUpdate(
+    { _id: catId },
+    { $pull: { subCategory: { _id: subCatId } } },
     { new: true },
   );
   return deleteSubCategory;

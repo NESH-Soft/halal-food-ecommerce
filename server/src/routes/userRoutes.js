@@ -9,6 +9,7 @@ import {
   verifyUser,
   getUser,
   getUsers,
+  contactUs,
   getInfo,
 } from '../controllers/userController';
 import { handleValidations } from '../middlewares/handleValidation';
@@ -22,6 +23,7 @@ router.route('/me').get(auth.protectUser, getUser);
 router.route('/change-password').put(changePassword);
 router.route('/all-user').get(getUsers);
 router.route('/info').get(getInfo);
+router.route('/contact-us').post(contactUs);
 router.route('/verify/:registerToken').get(verifyUser);
 router.route('/:id').put(updateUser).delete(deleteUser);
 

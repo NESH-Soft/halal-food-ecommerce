@@ -31,9 +31,7 @@ const Footer = () => {
                         <div className="col-md-6">
                             <p><Link to="" className="text-decoration-none text-dark mx-2">Who We Are</Link></p>
                             <p><Link to="" className="text-decoration-none text-dark mx-2">Our Services</Link></p>
-                            <p><Link to="" className="text-decoration-none text-dark mx-2">Projects</Link></p>
                             <p><Link to="/contact" className="text-decoration-none text-dark mx-2">Contact</Link></p>
-                            <p><Link to="" className="text-decoration-none text-dark mx-2">Innovation</Link></p>
                             <p><Link to="" className="text-decoration-none text-dark mx-2">Testimonials</Link></p>
                         </div>
                     </div>
@@ -72,4 +70,4 @@ const Footer = () => {
     );
 };
 
-export default Footer;
+export default Footer;  

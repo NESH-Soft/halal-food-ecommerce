@@ -109,10 +109,33 @@ export const getUsers = asyncHandler(async (req, res) => {
   }
   res.status(200).json({ success: true, users, msg: 'all user fetch' });
 });
+
 export const getInfo = asyncHandler(async (req, res) => {
   const userInfo = await getUsersInfoServices();
   if (!userInfo) {
     throw new NotFound('User info not found');
   }
   res.status(200).json({ success: true, userInfo, msg: 'user Info fetch' });
+});
+
+// Contact Us mail sending
+export const contactUs = asyncHandler(async (req, res) => {
+  // Create reset URL
+  const {
+    email,
+    fullName,
+    subject,
+  } = req.body;
+
+  let { message } = req.body;
+
+  message = `Hello my name is ${fullName}. \n${email}. \n\n ${message}`;
+
+  await sendEmail({
+    email: process.env.CONTACT_US_EMAIL,
+    subject,
+    message,
+  });
+
+  res.status(200).json({ success: true, msg: 'Your message sent successfully' });
 });
