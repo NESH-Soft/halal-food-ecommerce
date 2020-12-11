@@ -6,8 +6,8 @@ import logo from '../../images/logo/logo.png';
 
 const Footer = () => {
     return (
-        <div className="container-fluid">
-            <div className="row p-4" style={{ backgroundColor: '#F3F6FA' }}>
+        <div className="container-fluid" style={{ backgroundColor: '#F3F6FA' }}>
+            <div className="row p-4">
                 <div className="col-md-4">
                     <div className="">
                         <img src={logo} width="200px" alt="" />
@@ -48,10 +48,10 @@ const Footer = () => {
                             <Link to="" href="" className="text-decoration-none "><FontAwesomeIcon icon={faFacebookF} style={{ color: '#76a333', fontSize: '20px' }} /></Link>
                         </div>
                         <div className="col-md-4 ">
-                            <Link to="" href="" className="text-decoration-none text-dark"><FontAwesomeIcon icon={faLinkedin} /></Link>
+                            <Link to="" href="" className="text-decoration-none text-dark"><FontAwesomeIcon icon={faLinkedin} style={{ color: '#76a333', fontSize: '20px' }} /></Link>
                         </div>
                         <div className="col-md-4 ">
-                            <Link to="" href="" className="text-decoration-none text-dark"><FontAwesomeIcon icon={faTwitter} /></Link>
+                            <Link to="" href="" className="text-decoration-none text-dark"><FontAwesomeIcon icon={faTwitter} style={{ color: '#76a333', fontSize: '20px' }} /></Link>
                         </div>
                     </div>
 

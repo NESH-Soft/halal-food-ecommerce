@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faPhoneAlt, faLocationArrow } from '@fortawesome/free-solid-svg-icons'
 import { useForm } from "react-hook-form";
 
-
 const Contact = () => {
     const { register, handleSubmit, errors } = useForm();
     const onSubmit = data => console.log(data);
