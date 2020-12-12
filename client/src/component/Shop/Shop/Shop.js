@@ -1,6 +1,6 @@
 import React from 'react';
 import AllProducts from '../AllProducts/AllProducts';
-import ShopCarousel from '../ShopCarousel/ShopCarousel';
+import ShopCarousel from '../ShopCarousel/ShopCarousel'
 
 
 const Shop = () => {

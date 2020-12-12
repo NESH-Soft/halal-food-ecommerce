@@ -225,7 +225,7 @@ const Checkout = (props) => {
                                         </div>
                                         <div>
                                             <input type="radio" id="cash-delivery" name="cash-delivery" onClick={handleCashDelivery} />
-                                            <label htmlFor="cashondelivery">&nbsp;Cash  Delivery</label>
+                                            <label htmlFor="cashondelivery">&nbsp; Pay with Card</label>
                                         </div>
                                     </div>
                                     <div>
@@ -236,7 +236,6 @@ const Checkout = (props) => {
                                             </div>
                                         ) : (
                                                 <div className="creditCard">
-                                                    <p>Pay With Credit Card</p>
                                                     <div className="form-group">
                                                         <label htmlhtmlFor="exampleInputEmail1">Card Number<span>*</span> </label>
                                                         <input type="number" className="form-control" ref={register({ required: true })} name='cardNumber' id="exampleInputEmail1" placeholder="1234 1234 1234 1234" aria-describedby="emailHelp" />
