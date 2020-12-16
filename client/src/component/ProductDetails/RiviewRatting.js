@@ -1,9 +1,9 @@
 import React from 'react';
 import './ProductDetails.css';
 const RiviewRatting = (props) => {
-const data = props.rating || []
+    const data = props.rating || []
     const ratingArray = data.map(function (rat) {
-        return rat.rating 
+        return rat.rating
     });
 
     const totalRating = ratingArray.reduce(function (accumulator, currentValue) {
@@ -12,18 +12,18 @@ const data = props.rating || []
 
 
 
-    const calculatePresentence=(ratingNumber)=>{
+    const calculatePresentence = (ratingNumber) => {
         const findRatingNumber = ratingArray.filter(rating => rating === ratingNumber)
         const countRatingNumber = findRatingNumber.reduce(function (accumulator, currentValue) {
-            return accumulator + currentValue;;
+            return accumulator + currentValue;
         }, 0);
 
         return (totalRating / 100) * countRatingNumber;
-    
+
     }
 
 
-    
+
 
     return (
         <div>
@@ -51,7 +51,7 @@ const data = props.rating || []
                                     <div className="col-xs-8 col-md-9">
                                         <div className="progress progress-striped">
                                             <div className="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
-                                                aria-valuemin="0" aria-valuemax="100" style={{ width: `${calculatePresentence(5)}%`}}>
+                                                aria-valuemin="0" aria-valuemax="100" style={{ width: `${calculatePresentence(5)}%` }}>
                                                 <span className="sr-only">{calculatePresentence(5)}%</span>
                                             </div>
                                         </div>
@@ -61,8 +61,8 @@ const data = props.rating || []
                                     </div>
                                     <div className="col-xs-8 col-md-9">
                                         <div className="progress">
-                                        <div className="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
-                                                aria-valuemin="0" aria-valuemax="100" style={{ width: `${calculatePresentence(4)}%`}}>
+                                            <div className="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
+                                                aria-valuemin="0" aria-valuemax="100" style={{ width: `${calculatePresentence(4)}%` }}>
                                                 <span className="sr-only">{calculatePresentence(4)}%</span>
                                             </div>
                                         </div>
@@ -72,8 +72,8 @@ const data = props.rating || []
                                     </div>
                                     <div className="col-xs-8 col-md-9">
                                         <div className="progress">
-                                        <div className="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
-                                                aria-valuemin="0" aria-valuemax="100" style={{ width: `${calculatePresentence(3)}%`}}>
+                                            <div className="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
+                                                aria-valuemin="0" aria-valuemax="100" style={{ width: `${calculatePresentence(3)}%` }}>
                                                 <span className="sr-only">{calculatePresentence(3)}%</span>
                                             </div>
                                         </div>
@@ -83,8 +83,8 @@ const data = props.rating || []
                                     </div>
                                     <div className="col-xs-8 col-md-9">
                                         <div className="progress">
-                                        <div className="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
-                                                aria-valuemin="0" aria-valuemax="100" style={{ width: `${calculatePresentence(2)}%`}}>
+                                            <div className="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
+                                                aria-valuemin="0" aria-valuemax="100" style={{ width: `${calculatePresentence(2)}%` }}>
                                                 <span className="sr-only">{calculatePresentence(2)}%</span>
                                             </div>
                                         </div>
@@ -94,8 +94,8 @@ const data = props.rating || []
                                     </div>
                                     <div className="col-xs-8 col-md-9">
                                         <div className="progress">
-                                        <div className="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
-                                                aria-valuemin="0" aria-valuemax="100" style={{ width: `${calculatePresentence(1)}%`}}>
+                                            <div className="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
+                                                aria-valuemin="0" aria-valuemax="100" style={{ width: `${calculatePresentence(1)}%` }}>
                                                 <span className="sr-only">{calculatePresentence(1)}%</span>
                                             </div>
                                         </div>

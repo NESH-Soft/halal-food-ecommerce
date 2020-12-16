@@ -1,11 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ProductDetails.css';
-import Ratting from './Ratting';
 import { useForm } from "react-hook-form";
+import ReactStars from "react-rating-stars-component";
+import { useDispatch } from 'react-redux'
+import { addReview } from '../../redux/actions/product';
+
 
 const Review = () => {
+    const dispatch = useDispatch()
     const { register, handleSubmit, errors } = useForm();
-    const onSubmit = data => console.log(data) ;
+    const [rating, setRatting] = useState();
+    const onSubmit = data => {
+        if (rating) {
+            const review = {
+                ...data,
+                rating
+            }
+            console.log(review)
+            // dispatch(addReview(review))
+        }else{
+            alert("please give ratting")
+        }
+    };
+    const ratingChanged = (newRating) => {
+        setRatting(newRating);
+    };
 
     return (
         <>
@@ -13,19 +32,28 @@ const Review = () => {
                 <h3 className="text-center">Send Your Opinions</h3>
                 <div className="row">
                     <div className="col-md-3 mt-5 d-flex justify-content-center">
-                        <Ratting />
+                        <div>
+                            <p className="pl-2">Give your Ratting : </p>
+                            <ReactStars
+                                count={5}
+                                onChange={ratingChanged}
+                                size={35}
+                                activeColor="#ffd700"
+                                required
+                            />
+                        </div>
                     </div>
                     <div className="col-md-9">
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="row mt-5">
                                 <div className="col-md-6">
                                     <div className="form-group">
-                                        <input type="text" name="name" ref={register({ required: true })} className="form-control rounded-0" placeholder="Name *"  />
-                                        {errors.name && <span>This field is required</span>}
+                                        <input type="text" name="customerName" ref={register({ required: true })} className="form-control rounded-0" placeholder="Name *" />
+                                        {errors.customerName && <span>This field is required</span>}
                                     </div>
                                     <div className="form-group">
-                                        <input type="text" name="summery" ref={register({ required: true })} className="form-control rounded-0" placeholder="Summery*"  />
-                                        {errors.summery && <span>This field is required</span>}
+                                        <input type="text" name="email" ref={register({ required: true })} className="form-control rounded-0" placeholder="Summery*" />
+                                        {errors.email && <span>This field is required</span>}
                                     </div>
                                     <div className="form-group">
                                         <button type="submit" className="btn btn-primary px-5 rounded-0" >Send Message</button>
@@ -33,8 +61,8 @@ const Review = () => {
                                 </div>
                                 <div className="col-md-6">
                                     <div className="form-group">
-                                        <textarea name="txtMsg" ref={register({ required: true })} className="form-control rounded-0" rows="5" placeholder="Review *"></textarea>
-                                        {errors.txtMsg && <span>This field is required</span>}
+                                        <textarea name="review" ref={register({ required: true })} className="form-control rounded-0" rows="5" placeholder="Review *"></textarea>
+                                        {errors.review && <span>This field is required</span>}
                                     </div>
                                 </div>
                             </div>
