@@ -143,6 +143,11 @@ export const sendMail = async (data) => {
 }
 
 
+export const addReview = async (data) => {
+  const response = await axios.post('/api/product/post-review',data,config);
+  return response.data
+}
+
 
 
 

@@ -5,6 +5,7 @@ import {
   GET_PRODUCTS_BY_CATEGORY,
   SEARCH_PRODUCT,
   CLEAR_SEARCH_STATE,
+  ADD_REVIEW
 
 } from '../type'
 const initialState = {
@@ -54,7 +55,11 @@ const productReducer = (state = initialState, action) => {
             ...state,
             productFilterByCategory: action.payload
           }
-
+        case ADD_REVIEW:
+            return {
+              ...state,
+              product: action.payload.newReview
+            }
     default:
       return state;
   }
