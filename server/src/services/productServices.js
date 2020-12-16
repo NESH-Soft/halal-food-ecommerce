@@ -61,3 +61,27 @@ export const getProductInfoService = async () => {
 
   return productInfo;
 };
+
+export const postReviewServices = async (id, data) => {
+  // eslint-disable-next-line
+    const newReview = await Product.findByIdAndUpdate(
+    { _id: id },
+    { $push: { review: data } },
+    { new: true },
+  );
+  return newReview;
+};
+
+export const removeReviewServices = async (productId, reviewId) => {
+  const removedReview = await Product.findByIdAndUpdate(
+    { _id: productId },
+    { $pull: { review: { _id: reviewId } } },
+    { new: true },
+  );
+  return removedReview;
+};
+
+export const getAllReviewServices = async () => {
+  const allReview = await Product.find().select('review').sort({ createdAt: -1 });
+  return allReview;
+};
