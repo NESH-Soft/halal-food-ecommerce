@@ -61,11 +61,11 @@ const ProductDetails = () => {
                 </div>
             </div>
             {
-                isDetails === 1 ? <Details /> : <Review />
+                isDetails === 1 ? <Details /> : <Review productId={product._id} />
             }
             <hr />
             <div>
-                <UserComment />
+                <UserComment review={product.review} />
             </div>
         </>
     );

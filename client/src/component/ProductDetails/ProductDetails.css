@@ -20,6 +20,9 @@
     background-color: #fff;
     color: black;
 }
+.percentageColor{
+    color: #181717
+}
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@500&display=swap');
 .productDetails .text-link{
     text-decoration: none;

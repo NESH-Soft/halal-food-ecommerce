@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
 import { addReview } from '../../redux/actions/product';
 
 
-const Review = () => {
+const Review = ({productId}) => {
     const dispatch = useDispatch()
     const { register, handleSubmit, errors } = useForm();
     const [rating, setRatting] = useState();
@@ -14,10 +14,10 @@ const Review = () => {
         if (rating) {
             const review = {
                 ...data,
-                rating
+                rating,
             }
-            console.log(review)
-            // dispatch(addReview(review))
+            
+        dispatch(addReview(productId,review))
         }else{
             alert("please give ratting")
         }
@@ -52,7 +52,7 @@ const Review = () => {
                                         {errors.customerName && <span>This field is required</span>}
                                     </div>
                                     <div className="form-group">
-                                        <input type="text" name="email" ref={register({ required: true })} className="form-control rounded-0" placeholder="Summery*" />
+                                        <input type="text" name="email" ref={register({ required: true })} className="form-control rounded-0" placeholder="Email *" />
                                         {errors.email && <span>This field is required</span>}
                                     </div>
                                     <div className="form-group">

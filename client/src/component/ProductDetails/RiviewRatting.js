@@ -10,21 +10,12 @@ const RiviewRatting = (props) => {
         return accumulator + currentValue;;
     }, 0);
 
-
-
     const calculatePresentence = (ratingNumber) => {
         const findRatingNumber = ratingArray.filter(rating => rating === ratingNumber)
-        const countRatingNumber = findRatingNumber.reduce(function (accumulator, currentValue) {
-            return accumulator + currentValue;
-        }, 0);
-
-        return (totalRating / 100) * countRatingNumber;
+        const length = findRatingNumber.length
+        return ((100*ratingNumber*length)/ totalRating).toFixed(2)
 
     }
-
-
-
-
     return (
         <div>
             <div className="row">
@@ -52,7 +43,7 @@ const RiviewRatting = (props) => {
                                         <div className="progress progress-striped">
                                             <div className="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
                                                 aria-valuemin="0" aria-valuemax="100" style={{ width: `${calculatePresentence(5)}%` }}>
-                                                <span className="sr-only">{calculatePresentence(5)}%</span>
+                                                <span className="sr-only text-dark">{calculatePresentence(5)}%</span>
                                             </div>
                                         </div>
                                     </div>
@@ -63,7 +54,7 @@ const RiviewRatting = (props) => {
                                         <div className="progress">
                                             <div className="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
                                                 aria-valuemin="0" aria-valuemax="100" style={{ width: `${calculatePresentence(4)}%` }}>
-                                                <span className="sr-only">{calculatePresentence(4)}%</span>
+                                                <span className="sr-only text-dark">{calculatePresentence(4)}%</span>
                                             </div>
                                         </div>
                                     </div>
@@ -74,7 +65,7 @@ const RiviewRatting = (props) => {
                                         <div className="progress">
                                             <div className="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
                                                 aria-valuemin="0" aria-valuemax="100" style={{ width: `${calculatePresentence(3)}%` }}>
-                                                <span className="sr-only">{calculatePresentence(3)}%</span>
+                                                <span className="sr-only text-dark">{calculatePresentence(3)}%</span>
                                             </div>
                                         </div>
                                     </div>
@@ -85,7 +76,7 @@ const RiviewRatting = (props) => {
                                         <div className="progress">
                                             <div className="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
                                                 aria-valuemin="0" aria-valuemax="100" style={{ width: `${calculatePresentence(2)}%` }}>
-                                                <span className="sr-only">{calculatePresentence(2)}%</span>
+                                                <span className="sr-only text-dark">{calculatePresentence(2)}%</span>
                                             </div>
                                         </div>
                                     </div>
@@ -96,7 +87,7 @@ const RiviewRatting = (props) => {
                                         <div className="progress">
                                             <div className="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
                                                 aria-valuemin="0" aria-valuemax="100" style={{ width: `${calculatePresentence(1)}%` }}>
-                                                <span className="sr-only">{calculatePresentence(1)}%</span>
+                                                <span className="sr-only text-dark">{calculatePresentence(1)}%</span>
                                             </div>
                                         </div>
                                     </div>
