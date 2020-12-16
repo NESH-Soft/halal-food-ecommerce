@@ -2,7 +2,6 @@ import { v4 } from 'uuid';
 import stripes from 'stripe';
 import {
   getAllOrderServices,
-  findOrderById,
   addOrderServices,
   deleteOrderServices,
   getOrderServices,
@@ -13,7 +12,7 @@ import {
   getOrderInfoServices,
 } from '../services/orderService';
 
-import { addOrderService, createUserServices } from '../services/userServices';
+import { addOrderToUserService, createUserServices, findUserByEmail } from '../services/userServices';
 import { findProductById } from '../services/productServices';
 
 import asyncHandler from '../utils/async';
@@ -89,7 +88,7 @@ export const addOrder = asyncHandler(async (req, res) => {
       cart,
       totalPrice,
     });
-    const orderAddedToUser = await addOrderService(userId, newOrder._id);
+    const orderAddedToUser = await addOrderToUserService(userId, newOrder._id);
     if (!orderAddedToUser) {
       throw new BadRequest('Something went wrong!!');
     }
@@ -141,7 +140,7 @@ export const addOrderCashOnDelivery = asyncHandler(async (req, res) => {
       cart,
       totalPrice,
     });
-    const orderAddedToUser = await addOrderService(userId, newOrder._id);
+    const orderAddedToUser = await addOrderToUserService(userId, newOrder._id);
     if (!orderAddedToUser) {
       throw new BadRequest('Something went wrong!!');
     }
@@ -180,8 +179,8 @@ export const changeOrderAction = asyncHandler(async (req, res) => {
 });
 // start working
 export const getOrderByFilter = asyncHandler(async (req, res) => {
-  const orders = await getOrderServices(req.query.status);
-  if (!orders) throw NotFound(`${req.query.status} order not found`);
+  const orders = await getOrderServices();
+  if (!orders) throw NotFound('order not found');
   return res.status(200).json({ success: true, orders, msg: 'Order fetch' });
 });
 // export const getOrderDelivery = asyncHandler(async (req, res) => {
@@ -207,10 +206,67 @@ export const getOrderToday = asyncHandler(async (req, res) => {
 export const getOrderDay = asyncHandler(async (req, res) => {
   const orderByDay = await getOrderByDayServices(req.query.day);
   if (!orderByDay) throw NotFound('No order found');
-  return res.status(200).json({ success: true, orderByDay, msg: 'fetch order by day' });
+  return res.status(200).json({ success: true, orderByDay: orderByDay[0], msg: 'fetch order by day' });
 });
 export const getOrderInfo = asyncHandler(async (req, res) => {
   const orderInfo = await getOrderInfoServices();
   if (!orderInfo) throw NotFound('No order info found');
-  return res.status(200).json({ success: true, orderInfo, msg: 'Order info fetch' });
+  return res.status(200).json({ success: true, orderInfo: orderInfo[0], msg: 'Order info fetch' });
+});
+
+export const offlineSale = asyncHandler(async (req, res) => {
+  const {
+    cart,
+    email,
+    name,
+    paymentId,
+    phone,
+    status,
+    totalPrice,
+  } = req.body;
+
+  const user = await findUserByEmail(email);
+
+  await Promise.all(cart.map(async (product) => {
+    const result = await findProductById(product._id);
+    // const updatedStock = result.stock - product.quantity;
+    result.stock -= product.quantity;
+    await result.save();
+  }));
+
+  if (user) {
+    const newOrder = await addOrderServices({
+      paymentId,
+      user: user._id,
+      cart,
+      status,
+      totalPrice,
+    });
+    const orderAddedToUser = await addOrderToUserService(user._id, newOrder._id);
+    if (!orderAddedToUser) {
+      throw new BadRequest('Something went wrong!!');
+    }
+
+    return res.status(201).json({
+      success: true,
+      newOrder,
+      msg: 'Offline sale successful',
+    });
+  }
+
+  const newUser = await createUserServices({ name, email, phone });
+
+  const newOrder = await addOrderServices({
+    paymentId,
+    user: newUser._id,
+    cart,
+    totalPrice,
+    status,
+  });
+
+  return res.status(201).json({
+    success: true,
+    newOrder,
+    msg: 'Offline sale successful',
+  });
 });

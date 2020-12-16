@@ -40,13 +40,22 @@ const productSchema = mongoose.Schema({
   cloudinaryId: {
     type: String,
   },
-  rating: {
-    type: Number,
-    default: 0,
-  },
-  review: {
-    type: String,
-  },
+  review: [
+    {
+      customerName: {
+        type: String,
+      },
+      email: {
+        type: String,
+      },
+      rating: {
+        type: Number,
+      },
+      review: {
+        type: String,
+      },
+    },
+  ],
 },
 {
   timestamps: true,

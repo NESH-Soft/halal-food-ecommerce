@@ -3,13 +3,11 @@ import {
   REGISTRATION_SUCCESS,
   LOAD_USER,
   LOGOUT,
-  SIGN_IN_FAIL,
-  REGISTRATION_FAIL,
   REGISTRATION_VERIFY,
 } from '../type'
 import * as api from '../../api';
 import setAuthToken from '../../utils/setAuthToken';
-import Notification from '../../utils/Notification'
+import Notification from '../../utils/Notification';
  
 // Action creator
 export const signIn = (data) => async(dispatch) => {
@@ -65,3 +63,15 @@ export const logout = () => async(dispatch) => {
     console.log(error);
   }
 } 
+
+
+export const sendMail = (data) => async(dispatch) => {
+  try {
+      await api.sendMail(data);
+    // dispatch({ type: REGISTRATION_SUCCESS, payload: res })
+    Notification("Your mail send success","success",1000)
+  } catch (error) {
+    Notification(error.response.data.msg,"warning",1500)
+  }
+} 
+

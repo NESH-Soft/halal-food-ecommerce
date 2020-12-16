@@ -31,7 +31,7 @@ const Search = () => {
                     </form>
                 </div>
                 <div className="col-md-3">
-                    <div className="row">
+                    <div className="row text-position">
                         <div className="d-flex align-items-center" style={{ backgroundColor: '#f5f5f5', borderRadius: '50%', padding: '0px 15px', height: '48px' }}>
                             <FontAwesomeIcon icon={faPhoneAlt} style={{ color: '#76a333', fontSize: '20px' }} />
                         </div>

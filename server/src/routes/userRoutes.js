@@ -9,6 +9,9 @@ import {
   verifyUser,
   getUser,
   getUsers,
+  contactUs,
+  forgotPassword,
+  resetPassword,
   getInfo,
 } from '../controllers/userController';
 import { handleValidations } from '../middlewares/handleValidation';
@@ -20,10 +23,14 @@ router.route('/login').post(handleValidations(validators.loginValidation), signI
 router.route('/register').post(handleValidations(validators.registerValidation), signupUser);
 router.route('/me').get(auth.protectUser, getUser);
 router.route('/change-password').put(changePassword);
-router.route('/all-user').get(getUsers);
+router.route('/all-user').get(auth.protect, getUsers);
 router.route('/info').get(getInfo);
+router.route('/contact-us').post(contactUs);
 router.route('/verify/:registerToken').get(verifyUser);
 router.route('/:id').put(updateUser).delete(deleteUser);
+
+router.route('/forgot').post(forgotPassword);
+router.route('/reset/:token').post(handleValidations(validators.forgetPasswordValidation), resetPassword);
 
 const configure = (app) => {
   app.use('/api/user', router);

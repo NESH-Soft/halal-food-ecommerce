@@ -36,9 +36,9 @@ const YourOrder = (props) => {
                                         <th scope="col">{item.name}</th>
                                         <th scope="col"><img style={{ height: "40px", width: "40px" }} src={item.image} alt={item.name} /></th>
                                         <th scope="col">{item.category}</th>
-                                        <th scope="col">{item.price}</th>
+                                        <th scope="col">{item.specialPrice}</th>
                                         <th scope="col">{item.quantity}</th>
-                                        <th scope="col">{item.price * item.quantity}</th>
+                                        <th scope="col">{item.specialPrice * item.quantity}</th>
                                     </tr>
                                 ))
                             }

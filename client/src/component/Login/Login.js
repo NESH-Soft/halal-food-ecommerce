@@ -30,12 +30,12 @@ const Login = (props) => {
                     <div className="mt-5">
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
+                                <label htmlFor="exampleInputEmail1">Email address</label>
                                 <input type="email" name="email" ref={register({ required: true })} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
                                 {errors.email && <span>This field is required</span>}
                             </div>
                             <div className="form-group">
-                                <label for="exampleInputPassword1">Password</label>
+                                <label htmlFor="exampleInputPassword1">Password</label>
                                 <input type="password" name="password" ref={register({ required: true })} className="form-control" id="exampleInputPassword1" placeholder="Password" />
                                 {errors.password && <span>This field is required</span>}
                             </div>

@@ -1,10 +1,7 @@
-import { loadUser } from '../actions/authAction';
 import {
   SIGN_IN_SUCCESS,
   REGISTRATION_SUCCESS,
   LOAD_USER,
-  SIGN_IN_FAIL,
-  REGISTRATION_FAIL,
   REGISTRATION_VERIFY,
   LOGOUT,
 } from '../type'

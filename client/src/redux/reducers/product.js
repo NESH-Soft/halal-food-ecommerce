@@ -11,6 +11,7 @@ const initialState = {
   products: [],
   product: {},
   specialProducts: [],
+  LatestProducts:[],
   searchProducts: [],
   productFilterByCategory:[],
   success: false,
@@ -23,7 +24,9 @@ const productReducer = (state = initialState, action) => {
     case GET_PRODUCTS:
       return {
         ...state,
-        products: action.payload
+        products: action.payload.filter(product=>product.productType === 'regular'),
+        productFilterByCategory: action.payload.filter(product=>product.productType === 'regular'),
+        latestProducts: action.payload.filter(product=>product.productType === 'latest')
       }
       case GET_SPECIAL_PRODUCT:
         return {

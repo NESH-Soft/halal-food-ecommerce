@@ -1,6 +1,7 @@
 import express from 'express';
 import path from 'path';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import configureAllRoutes from './routes/index';
 import { handleError } from './middlewares/index';
 // import user from './routes/userRoutes';
@@ -9,6 +10,7 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 configureAllRoutes(app);
 
 if (process.env.NODE_ENV === 'PRODUCTION') {

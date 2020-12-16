@@ -8,7 +8,7 @@ export const findProductById = async (id) => {
 };
 
 export const getProductsServices = async () => {
-  const products = await Product.find();
+  const products = await Product.find().sort({ createdAt: -1 });
   return products;
 };
 
@@ -45,4 +45,43 @@ export const searchProductServices = async (term) => {
     },
   );
   return product;
+};
+
+export const getProductInfoService = async () => {
+  const productInfo = await Product.aggregate([
+    {
+      $group: {
+        _id: 'total_product_info',
+        totalProductCost: { $sum: { $multiply: ['$specialPrice', '$stock'] } },
+        totalProduct: { $sum: '$stock' },
+        totalProductType: { $sum: 1 },
+      },
+    },
+  ]);
+
+  return productInfo;
+};
+
+export const postReviewServices = async (id, data) => {
+  // eslint-disable-next-line
+    const newReview = await Product.findByIdAndUpdate(
+    { _id: id },
+    { $push: { review: data } },
+    { new: true },
+  );
+  return newReview;
+};
+
+export const removeReviewServices = async (productId, reviewId) => {
+  const removedReview = await Product.findByIdAndUpdate(
+    { _id: productId },
+    { $pull: { review: { _id: reviewId } } },
+    { new: true },
+  );
+  return removedReview;
+};
+
+export const getAllReviewServices = async () => {
+  const allReview = await Product.find().select('review').sort({ createdAt: -1 });
+  return allReview;
 };
