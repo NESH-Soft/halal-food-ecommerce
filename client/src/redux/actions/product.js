@@ -4,7 +4,8 @@ import {
   GET_PRODUCTS_BY_CATEGORY,
   GET_SPECIAL_PRODUCT,
   SEARCH_PRODUCT,
-  CLEAR_SEARCH_STATE
+  CLEAR_SEARCH_STATE,
+  ADD_REVIEW
 } from '../type'
 import * as api from '../../api';
 
@@ -68,6 +69,15 @@ export const getProductsByCategory = (category) => async(dispatch) => {
   }
 }
 
+export const addReview = (data) => async(dispatch) => {
+  try {
+    const  products = await api.addReview(data);
+   
+    dispatch({ type: GET_PRODUCTS_BY_CATEGORY, payload: products })
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 
 

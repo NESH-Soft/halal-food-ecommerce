@@ -1,6 +1,27 @@
 import React from 'react';
 import './ProductDetails.css';
-const RiviewRatting = () => {
+const RiviewRatting = (props) => {
+const data = props.review || []
+    const ratingArray = data.map(function (rat) {
+        return rat.rating 
+    });
+
+    const totalRating = ratingArray.reduce(function (accumulator, currentValue) {
+        return accumulator + currentValue;;
+    }, 0);
+
+
+    const rating1 = ratingArray.filter(rating => rating === 1)
+
+    const rating2 = ratingArray.filter(rating => rating === 2)
+
+    const rating3 = ratingArray.filter(rating => rating === 3)
+
+    const rating4 = ratingArray.filter(rating => rating === 4)
+    const rating5 = ratingArray.filter(rating => rating === 5)
+
+    
+    console.log(rating1,rating2,rating3,rating4,rating5)
     return (
         <div>
             <div className="row">
@@ -16,7 +37,7 @@ const RiviewRatting = () => {
                                     </span><span className="glyphicon glyphicon-star-empty"></span>
                                 </div>
                                 <div>
-                                    <span className="glyphicon glyphicon-user"></span>1,050,008 total
+                                    <span className="glyphicon glyphicon-user"></span>{totalRating} total
                                 </div>
                             </div>
                             <div className="col-md-9">

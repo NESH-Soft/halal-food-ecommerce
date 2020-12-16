@@ -44,7 +44,7 @@ const ProductDetails = () => {
                         </div>
                         <hr />
                         <div className="mt-4">
-                            <RiviewRatting />
+                            <RiviewRatting rating={product.review}/>
                         </div>
                         <hr />
                         <div>
