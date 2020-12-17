@@ -28,6 +28,10 @@ export const registrationVerify = async (registerToken) => {
   const response = await axios.get(`/api/user/verify/${registerToken}`,config);
   return response.data
 }
+export const changePassword = async (data) => {
+  const response = await axios.put('/api/user/change-password', data, config);
+ return response.data
+}
 
 export const loadUser = async () => {
   const response = await axios.get(`/api/user/me`);

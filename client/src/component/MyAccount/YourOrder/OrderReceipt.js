@@ -12,13 +12,15 @@ const OrderReceipt = () => {
     return (
       <div className="container">
     <div className="row">
-        <div className="col-xs-12">
-    		<div className="invoice-title">
-		<h2>Invoice</h2><h3 className="pull-right">Order # {orderReceipt._id}</h3>
+        <div className="col-md-12">
+    		<div className="invoice-title d-flex justify-content-between">
+
+		<h2>Invoice</h2>
+		<h3 className="">Order id:</h3>
     		</div>
     		<hr/>
-    		<div className="row">
-    			<div className="col-xs-6">
+    		<div className="d-flex justify-content-between">
+    			<div>
     				<address>
     				<strong>Billed To:</strong><br/>
     					{orderReceipt.customerName}<br/>
@@ -27,7 +29,7 @@ const OrderReceipt = () => {
 						{orderReceipt.shipping && orderReceipt.shipping.postalCode }
     				</address>
     			</div>
-    			<div className="col-xs-6 text-right">
+    			<div>
     				<address>
         			<strong>Shipped To:</strong><br/>
 						{orderReceipt.customerName}<br/>

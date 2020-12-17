@@ -152,14 +152,13 @@ export const addOrderCashOnDelivery = asyncHandler(async (req, res) => {
   }
 
   const newUser = await createUserServices(customer);
-  const cOrder = await addOrderServices({
+  const newOrder = await addOrderServices({
     shipping,
     user: newUser._id,
     cart,
     paymentId: null,
     totalPrice,
   });
-  const newOrder = { cOrder, customerName: newUser.name, email: newUser.email }
 
   return res.status(201).json({
     success: true,
