@@ -9,7 +9,7 @@ import * as api from '../../api';
 import Notification from '../../utils/Notification';
 // Action creator
 export const createOrderCashOnDelivery = (order) => async(dispatch) => {
-  try {
+  try { 
     const  res  = await api.createOrderCashOnDelivery(order);
     dispatch({ type:CREATE_ORDER_CASH_ON_DELIVERY, payload: res })
     Notification("Create success","success",1000)

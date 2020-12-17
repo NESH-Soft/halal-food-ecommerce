@@ -4,6 +4,7 @@ import {
   GET_WISHLIST,
 } from '../type'
 import * as api from '../../api';
+import setAuthToken from '../../utils/setAuthToken';
 import Notification from '../../utils/Notification'
 
 // Action creator
@@ -19,6 +20,8 @@ export const addToWishList = (_id) => async(dispatch) => {
 } 
 
 export const getWishList = () => async(dispatch) => {
+  if(localStorage.token){
+    setAuthToken(localStorage.token);
   try {
     const  wishlist  = await api.getWishList();
     dispatch({ type: GET_WISHLIST, payload: wishlist })
@@ -26,6 +29,7 @@ export const getWishList = () => async(dispatch) => {
     console.log(error);
   }
 } 
+}
 export const removeWishList = (id) => async(dispatch) => {
   try {
     const  wishlistId = await api.removeWishList(id);

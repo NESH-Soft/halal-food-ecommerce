@@ -19,12 +19,13 @@ import {
      case CREATE_ORDER_CASH_ON_DELIVERY:
        return {
          ...state,
-         order: action.payload,
+         order: action.payload.newOrder,
          success:true
        }
        case CREATE_ORDER:
         return {
-          order: action.payload,
+          ...state,
+          order: action.payload.newOrder,
           success: true
         }
         case GET_ORDERER:

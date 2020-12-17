@@ -18,7 +18,6 @@ export const signIn = async (data) => {
   return response.data;;
 }
 
-
  
 export const registration = async (data) => {
    const response = await axios.post(`/api/user/register`, data, config);
@@ -29,8 +28,6 @@ export const registrationVerify = async (registerToken) => {
   const response = await axios.get(`/api/user/verify/${registerToken}`,config);
   return response.data
 }
-
-
 
 export const loadUser = async () => {
   const response = await axios.get(`/api/user/me`);
@@ -54,9 +51,7 @@ if(parent === ''){
   const type= hasNodes? 'category' : 'subCategory'
    const response = await axios.get(`/api/product/filter?${type}=${label}`);
    return response.data.products;
-
 }
-
 }
 
 
@@ -81,15 +76,13 @@ export const removeWishList = async (id) => {
 
 export const createOrderCashOnDelivery = async (order) => {
   const response = await axios.post('/api/order/cash-on-delivery', order, config);
-  const orderReceived = {}
-  return orderReceived
+  return response.data
 
 }
 
 export const createOrder = async (order) => {
   const response = await axios.post('/api/order', order, config);
-  const orderReceived = {}
-  return orderReceived
+  return response.data
 }
 
 export const cancelOrder = async (order) => {
@@ -101,8 +94,6 @@ export const getOrder = async () => {
   const order = {}
   return order
 }
-
-
 
 export const getSpecialProducts = async () => {
   const response = await axios.get(`/api/product/special-product?productType=special`);
