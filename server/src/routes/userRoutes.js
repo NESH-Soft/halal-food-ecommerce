@@ -22,7 +22,7 @@ const router = express.Router();
 router.route('/login').post(handleValidations(validators.loginValidation), signInUser);
 router.route('/register').post(handleValidations(validators.registerValidation), signupUser);
 router.route('/me').get(auth.protectUser, getUser);
-router.route('/change-password').put(changePassword);
+router.route('/change-password').put(auth.protectUser, handleValidations(validators.changePasswordValidation), changePassword);
 router.route('/all-user').get(auth.protect, getUsers);
 router.route('/info').get(getInfo);
 router.route('/contact-us').post(contactUs);

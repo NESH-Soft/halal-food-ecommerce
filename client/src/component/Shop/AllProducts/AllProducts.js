@@ -1,22 +1,35 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { getProductsByCategory } from '../../../redux/actions/product'
 import { Link } from 'react-router-dom';
 import Columns from 'react-columns';
+import ReactPaginate from "react-paginate";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faCartPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { addToCart, removeCart } from '../../../redux/actions/cartAction';
 import { getProduct } from '../../../redux/actions/product';
 import { addToWishList, removeWishList } from '../../../redux/actions/wishlistAction';
 import emptyImg from '../../images/empty/empty.png';
+import './style.css'
 
 const AllProducts = () => {
     const dispatch = useDispatch();
+    const PER_PAGE = 8;
     const isAuthenticated = useSelector((state) => state.authState.isAuthenticated);
     const products = useSelector((state) => state.productState.productFilterByCategory);
     const cartItem = useSelector((state) => state.cartState.cart);
     const wishList = useSelector((state) => state.wishListState.wishList);
     const data = products || []
+
+    const [currentPage, setCurrentPage] = useState(0);
+    function handlePageClick({ selected: selectedPage }) {
+        setCurrentPage(selectedPage);
+      }
+    
+      const offset = currentPage * PER_PAGE;
+    
+
+    
+      const pageCount = Math.ceil(data.length / PER_PAGE);
 
     // include all productId from cart state
     const cartItemArray = cartItem.map(function (product) {
@@ -28,7 +41,7 @@ const AllProducts = () => {
         return item._id
     });
 
-    const product = data.map(pd =>
+    const product = data.slice(offset, offset + PER_PAGE).map(pd =>
         <div className="card m-2 p-2 products-card" key={pd._id}>
             <div className="image-box">
                 <Link to="/productDetails">  <img className="card-img-top" onClick={() => dispatch(getProduct(pd._id))} src={pd.image} alt={pd.name} /></Link>
@@ -116,12 +129,26 @@ const AllProducts = () => {
     ];
     return (
         <div>
+        
             {
                 data.length ?  <Columns queries={queries}>{product}</Columns> : <div className="col-md-5 m-auto text-center">
                     <img src={emptyImg} alt="empty" width="100%" />
                     <p>Opps! Products not available</p>
                 </div>
             }
+         <div className="m-5">
+        <ReactPaginate
+        previousLabel={"← Previous"}
+        nextLabel={"Next →"}
+        pageCount={pageCount}
+        onPageChange={handlePageClick}
+        containerClassName={"pagination"}
+        previousLinkClassName={"pagination__link"}
+        nextLinkClassName={"pagination__link"}
+        disabledClassName={"pagination__link--disabled"}
+        activeClassName={"pagination__link--active"}
+      />
+      </div>
            
         </div>
     );

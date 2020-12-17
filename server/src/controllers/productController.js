@@ -9,6 +9,9 @@ import {
   findProductById,
   getProductsByCategoryServices,
   searchProductServices,
+  postReviewServices,
+  removeReviewServices,
+  getAllReviewServices,
 } from '../services/productServices';
 import asyncHandler from '../utils/async';
 import { NotFound } from '../utils/error';
@@ -94,4 +97,19 @@ export const specialProduct = asyncHandler(async (req, res) => {
 export const getProductInfo = asyncHandler(async (req, res) => {
   const productInfo = await getProductInfoService();
   return res.status(200).json({ success: true, productInfo: productInfo[0], msg: 'Product info fetched' });
+});
+
+export const postReview = asyncHandler(async (req, res) => {
+  const newReview = await postReviewServices(req.params.id, req.body);
+  return res.status(200).json({ success: true, newReview, msg: 'Review added successfully' });
+});
+
+export const removeReview = asyncHandler(async (req, res) => {
+  const removedReview = await removeReviewServices(req.params.productId, req.params.reviewId);
+  return res.status(200).json({ success: true, removedReview, msg: 'Review remove successfully' });
+});
+
+export const getAllReview = asyncHandler(async (req, res) => {
+  const allReview = await getAllReviewServices();
+  return res.status(200).json({ success: true, allReview, msg: 'Review fetch' });
 });

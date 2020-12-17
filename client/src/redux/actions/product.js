@@ -4,9 +4,11 @@ import {
   GET_PRODUCTS_BY_CATEGORY,
   GET_SPECIAL_PRODUCT,
   SEARCH_PRODUCT,
-  CLEAR_SEARCH_STATE
+  CLEAR_SEARCH_STATE,
+  ADD_REVIEW
 } from '../type'
 import * as api from '../../api';
+import Notification from '../../utils/Notification';
 
 // Action creator
 export const getProducts = () => async(dispatch) => {
@@ -68,6 +70,15 @@ export const getProductsByCategory = (category) => async(dispatch) => {
   }
 }
 
+export const addReview = (productId,data) => async(dispatch) => {
+  try {
+    const  product = await api.addReview(productId,data);
+    dispatch({ type: ADD_REVIEW, payload: product })
+    Notification("added your review","success",1000)
+  } catch (error) {
+    Notification(error.response.data.msg,"danger",1000)
+  }
+}
 
 
 

@@ -1,9 +1,15 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import { changePassword } from '../../redux/actions/authAction';
+import { useDispatch } from 'react-redux';
 
 const LoginSecurity = () => {
+    const dispatch = useDispatch()
     const { register, handleSubmit, errors } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = (data,e) => {
+        dispatch(changePassword(data))
+        e.target.reset()
+    }
 
     return (
         <div>

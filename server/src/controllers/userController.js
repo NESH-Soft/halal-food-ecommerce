@@ -91,7 +91,7 @@ export const changePassword = asyncHandler(async (req, res) => {
 
   const hash = await bcrypt.hash(newPassword, 11);
   req.body.newPassword = hash;
-  await changePasswordServices(req.user.id, req.body);
+  await changePasswordServices(req.user._id, req.body.newPassword);
   return res.status(200).json({ success: true, msg: 'Password successfully changed, please log back in to take effect' });
 });
 

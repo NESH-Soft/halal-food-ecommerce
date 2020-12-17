@@ -9,9 +9,9 @@ import { addToCart, removeCart } from '../../../../redux/actions/cartAction';
 import { getProduct } from '../../../../redux/actions/product';
 import { addToWishList, removeWishList } from '../../../../redux/actions/wishlistAction';
 
-const ProductView = (props) => {
+const ProductView = () => {
     const dispatch = useDispatch()
-    const products = props.products || [];
+    const homePageProduct= useSelector((state) => state.productState.homePageProduct);
     const isAuthenticated = useSelector((state) => state.authState.isAuthenticated);
     const cartItem = useSelector((state) => state.cartState.cart);
     const wishList = useSelector((state) => state.wishListState.wishList);
@@ -26,7 +26,7 @@ const ProductView = (props) => {
         return item._id
     });
 
-    const product = products.map((pd) => {
+    const product =homePageProduct &&  homePageProduct.map((pd) => {
 
         return (
             <div className="card rounded-0 m-2 py-2 products-card" key={pd._id}>

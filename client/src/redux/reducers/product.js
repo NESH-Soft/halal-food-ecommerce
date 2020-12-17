@@ -5,9 +5,11 @@ import {
   GET_PRODUCTS_BY_CATEGORY,
   SEARCH_PRODUCT,
   CLEAR_SEARCH_STATE,
+  ADD_REVIEW
 
 } from '../type'
 const initialState = {
+  homePageProduct:[],
   products: [],
   product: {},
   specialProducts: [],
@@ -24,9 +26,9 @@ const productReducer = (state = initialState, action) => {
     case GET_PRODUCTS:
       return {
         ...state,
-        products: action.payload.filter(product=>product.productType === 'regular'),
+        homePageProduct:  action.payload.filter(product=>product.productType === 'homePageProduct'),
+        latestProducts: action.payload.filter(product=>product.productType === 'latest'),
         productFilterByCategory: action.payload.filter(product=>product.productType === 'regular'),
-        latestProducts: action.payload.filter(product=>product.productType === 'latest')
       }
       case GET_SPECIAL_PRODUCT:
         return {
@@ -54,7 +56,14 @@ const productReducer = (state = initialState, action) => {
             ...state,
             productFilterByCategory: action.payload
           }
+        case ADD_REVIEW:
+          console.log(action.payload)
+            return {
+              ...state,
+              product: action.payload.newReview
+  
 
+            }
     default:
       return state;
   }

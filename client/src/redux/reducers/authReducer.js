@@ -4,6 +4,7 @@ import {
   LOAD_USER,
   REGISTRATION_VERIFY,
   LOGOUT,
+  CHANGE_PASSWORD,
 } from '../type'
 const initialState = {
   isAuthenticated: false,
@@ -32,6 +33,7 @@ const authReducer = (state = initialState, action) => {
         user: action.payload.user,
         isAuthenticated: action.payload.success,
       }
+
       case REGISTRATION_SUCCESS:
         return {
           ...state,
@@ -41,6 +43,7 @@ const authReducer = (state = initialState, action) => {
         }
 
     case LOGOUT:
+    case CHANGE_PASSWORD: 
       localStorage.removeItem('token')
       return{
         isAuthenticated: false,

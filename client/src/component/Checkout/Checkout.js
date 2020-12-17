@@ -17,7 +17,8 @@ const Checkout = (props) => {
         if (success) {
             dispatch(loadUser())
             dispatch(ClearCart())
-            props.history.push('/');
+            setPlaceButton(false)
+            props.history.push('/order-receipt');
 
         }
         // eslint-disable-next-line
@@ -40,8 +41,10 @@ const Checkout = (props) => {
         }
     });
 
-
     const [cashState, setCashState] = useState(true);
+
+    const [placeButton, setPlaceButton] = useState(false);
+
     const handleDelivery = () => {
         setCashState(true);
     }
@@ -75,7 +78,7 @@ const Checkout = (props) => {
                 userId: userId,
             };
             dispatch(createOrderCashOnDelivery(orderData))
-            console.log(orderData)
+            setPlaceButton(true)
         } else {
             const orderData = {
                 cart: cartItem,
@@ -101,6 +104,7 @@ const Checkout = (props) => {
             };
             
             dispatch(createOrder(orderData));
+            setPlaceButton(true)
 
         }
 
@@ -149,7 +153,7 @@ const Checkout = (props) => {
                                     <div className="row">
                                         <div className="col-md-6 form-group">
                                             <label htmlFor="exampleInputEmail1">Postcode / ZIP<span className="text-danger">*</span></label>
-                                            <input name="postCode" ref={register({ required: true })} type="number" className="form-control " />
+                                            <input name="postCode" ref={register({ required: true })} type="text" className="form-control " />
                                             {errors.postCode && <span>This field is required</span>}
                                         </div>
                                         <div className="col-md-6 form-group">
@@ -225,7 +229,7 @@ const Checkout = (props) => {
                                         </div>
                                         <div>
                                             <input type="radio" id="cash-delivery" name="cash-delivery" onClick={handleCashDelivery} />
-                                            <label htmlFor="cashondelivery">&nbsp;Cash  Delivery</label>
+                                            <label htmlFor="cashondelivery">&nbsp;Pay With Credit Card</label>
                                         </div>
                                     </div>
                                     <div>
@@ -255,7 +259,12 @@ const Checkout = (props) => {
                                                             <input type="number" className="form-control" name='cvc' ref={register({ required: true })} placeholder="CVC" id="exampleInputPassword1" />
                                                         </div>
                                                     </div>
-                                                    <button type="submit" className="btn  w-100" style={{ borderRadius: '10px', backgroundColor: '#76a333', color: '#fff' }}>Place Order</button>
+                                                    <button type="submit"
+                                                     className="btn  w-100" 
+                                                     disabled={placeButton}
+                                                     style={{ borderRadius: '10px',
+                                                      backgroundColor: '#76a333',
+                                                       color: '#fff' }}>Place Order</button>
                                                 </div>
                                             )}
                                     </div>
