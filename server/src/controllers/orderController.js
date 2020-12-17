@@ -87,13 +87,15 @@ export const addOrder = asyncHandler(async (req, res) => {
       cart,
       totalPrice,
     });
+    newOrder.customer = customer;
+    newOrder.paymentId = payment._id;
     const orderAddedToUser = await addOrderToUserService(userId, newOrder._id);
     if (!orderAddedToUser) {
       throw new BadRequest('Something went wrong!!');
     }
     return res.status(201).json({
       success: true,
-      newOrder: { newOrder, customer },
+      newOrder,
       msg: 'Order added successfully',
     });
   }
@@ -107,9 +109,12 @@ export const addOrder = asyncHandler(async (req, res) => {
     totalPrice,
   });
 
+  newOrder.customer = customer;
+  newOrder.paymentId = payment._id;
+
   return res.status(201).json({
     success: true,
-    newOrder: { newOrder, customer },
+    newOrder,
     msg: 'Order added successfully',
   });
 });
@@ -137,13 +142,15 @@ export const addOrderCashOnDelivery = asyncHandler(async (req, res) => {
       cart,
       totalPrice,
     });
+    newOrder.customer = customer;
+    newOrder.paymentId = null;
     const orderAddedToUser = await addOrderToUserService(userId, newOrder._id);
     if (!orderAddedToUser) {
       throw new BadRequest('Something went wrong!!');
     }
     return res.status(201).json({
       success: true,
-      newOrder: { newOrder, customer, paymentId: null },
+      newOrder,
       msg: 'Order added successfully',
     });
   }
@@ -158,10 +165,12 @@ export const addOrderCashOnDelivery = asyncHandler(async (req, res) => {
     totalPrice,
   });
 
+  newOrder.customer = customer;
+  newOrder.paymentId = null;
+
   return res.status(201).json({
     success: true,
-    newOrder: { newOrder, customer, paymentId: null },
-    customer,
+    newOrder,
     msg: 'Order added successfully',
   });
 });
