@@ -1,0 +1,18 @@
+.billingCard ,.checkout-order{
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 5px 5px 10px 5px rgb(165, 205, 231);
+}
+.checkout-form .form-control{
+    border-radius: 10px;
+}
+.cashondelivery{
+    background-color:#b4eeee;
+    border-radius: 10px;
+}
+.creditCard{
+    background-color: rgb(186, 232, 238);
+    padding:20px;
+    border-radius: 10px;
+}

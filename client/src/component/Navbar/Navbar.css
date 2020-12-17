@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Patua+One&display=swap');
+nav .nav-item .nav-font{
+    font-family: 'Patua One', cursive;
+}
+nav .active .nav-top{
+    color: #76a333 !important;
+}
+nav .nav-item .other-link{
+    color: black !important;
+}
+nav .nav-item .other-link:hover{
+    color: #76a333  !important;
+}
+.back{
+    background-color: #f5f5f5;
+}
+.national-color{
+    color: #76a333
+}
+.national-background{
+    background-color: #76a333;
+}
+
+
+  .wishListCountStyle{
+    background-color: #ffbb00;
+    color: black;
+    top: -20px;
+    position: relative;
+    right: 1px;
+    padding: 4px 8px;
+    border-radius: 50%;
+    font-size: 11px;
+
+  }
+  .cartCountStyle{
+    background-color: #ffbb00;
+    color: black;
+    top: -20px;
+    position: relative;
+    right: 1px;
+    padding: 4px 8px;
+    border-radius: 50%;
+    font-size: 11px;
+  }

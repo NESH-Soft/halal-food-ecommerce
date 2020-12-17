@@ -1,0 +1,16 @@
+@media only screen and (max-width: 5000px) and (min-width: 1400px)  {
+    .remove-Btn-big{
+        padding: 2px 45px;
+    }
+    .addCarouselBtn{
+        padding: 2px 45px;
+    }
+}
+@media only screen and (max-width: 1399px) and (min-width: 800px)  {
+    .remove-Btn-big{
+        padding: 2px 16px;
+    }
+    .addCarouselBtn{
+        padding: 2px 25px;
+    }
+}

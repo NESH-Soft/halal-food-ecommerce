@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+.headerBanner{
+    background-size: cover;
+    position: relative;
+    background-color: #f5f5f5;
+    height: auto;
+
+}
+@media only screen and (max-width: 700px) and (min-width: 100px)  {
+    .headerBanner{
+        position: relative;
+    }
+}
+
+.headerBanner .banner-text h1{
+    font-family: 'Anton', sans-serif;
+}
+@import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
+.headerBanner .banner-text h4, p{
+    font-family: 'Cairo', sans-serif;
+}
+
+.btn-Shopnow{
+    background: #76a333;
+    color: #fff
+}
+.btn-Shopnow:hover{
+    background-color: #286090;
+    border-color: #204d74;
+    color: #fff;
+
+}
