@@ -15,15 +15,15 @@ const OrderReceipt = () => {
         <div className="col-md-12">
     		<div className="invoice-title d-flex justify-content-between">
 
-		<h2>Invoice</h2>
-		<h3 className="">Order id:</h3>
+		<h6	>Invoice</h6>
+		<h6 className="">Order id:{orderReceipt._id}</h6>
     		</div>
     		<hr/>
     		<div className="d-flex justify-content-between">
     			<div>
     				<address>
-    				<strong>Billed To:</strong><br/>
-    					{orderReceipt.customerName}<br/>
+    				<strong>Billing To:</strong><br/>
+						{orderReceipt.customer && orderReceipt.customer.name}<br/>
 							{orderReceipt.shipping && orderReceipt.shipping.line1 }<br/>
 						{orderReceipt.shipping && orderReceipt.shipping.city }<br/>
 						{orderReceipt.shipping && orderReceipt.shipping.postalCode }
@@ -31,26 +31,26 @@ const OrderReceipt = () => {
     			</div>
     			<div>
     				<address>
-        			<strong>Shipped To:</strong><br/>
-						{orderReceipt.customerName}<br/>
+        			<strong>Shipping To:</strong><br/>
+						{orderReceipt.customer && orderReceipt.customer.name}<br/>
     				{orderReceipt.shipping && orderReceipt.shipping.line1 }<br/>
 						{orderReceipt.shipping && orderReceipt.shipping.city }<br/>
 						{orderReceipt.shipping && orderReceipt.shipping.postalCode }
     				</address>
     			</div>
     		</div>
-    		<div className="row">
-    			<div className="col-xs-6">
+    		<div className="d-flex justify-content-between">
+    			<div>
     				<address>
     					<strong>Payment Method:</strong><br/>
     				     {orderReceipt.paymentId? orderReceipt.paymentId : 'cash on delivery'}<br/>
-	            	{orderReceipt.email}
+	            	{orderReceipt.customer && orderReceipt.customer.email}
     				</address>
     			</div>
-    			<div className="col-xs-6 text-right">
+    			<div >
     				<address>
     					<strong>Order Date:</strong><br/>
-    					{orderReceipt.createdAt} <br/>
+    					{ new Date(orderReceipt.createdAt).toLocaleDateString()} <br/>
     				</address>
     			</div>
     		</div>
