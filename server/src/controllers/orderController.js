@@ -93,9 +93,7 @@ export const addOrder = asyncHandler(async (req, res) => {
     }
     return res.status(201).json({
       success: true,
-      newOrder,
-      customer,
-      paymentId: payment._id,
+      newOrder: { newOrder, customer },
       msg: 'Order added successfully',
     });
   }
@@ -111,9 +109,7 @@ export const addOrder = asyncHandler(async (req, res) => {
 
   return res.status(201).json({
     success: true,
-    newOrder,
-    customer,
-    paymentId: payment._id,
+    newOrder: { newOrder, customer },
     msg: 'Order added successfully',
   });
 });
@@ -147,9 +143,7 @@ export const addOrderCashOnDelivery = asyncHandler(async (req, res) => {
     }
     return res.status(201).json({
       success: true,
-      newOrder,
-      paymentId: null,
-      customer,
+      newOrder: { newOrder, customer, paymentId: null },
       msg: 'Order added successfully',
     });
   }
@@ -166,9 +160,8 @@ export const addOrderCashOnDelivery = asyncHandler(async (req, res) => {
 
   return res.status(201).json({
     success: true,
-    newOrder,
+    newOrder: { newOrder, customer, paymentId: null },
     customer,
-    paymentId: null,
     msg: 'Order added successfully',
   });
 });
