@@ -46,13 +46,13 @@ export const registrationVerify = (token) => async(dispatch) => {
 export const loadUser = () => async(dispatch) => {
   if(localStorage.token){
     setAuthToken(localStorage.token);
-  }
   try {
     const  res  = await api.loadUser();
     dispatch({ type: LOAD_USER, payload: res })
   } catch (error) {
-    Notification("something went wrong","warning",1000)
+    Notification(error.response.data.msg,"danger",1000)
   }
+}
 } 
 
 export const logout = () => async(dispatch) => {

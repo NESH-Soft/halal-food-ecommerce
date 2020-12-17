@@ -56,9 +56,12 @@ const productReducer = (state = initialState, action) => {
             productFilterByCategory: action.payload
           }
         case ADD_REVIEW:
+          console.log(action.payload)
             return {
               ...state,
               product: action.payload.newReview
+  
+
             }
     default:
       return state;
