@@ -142,7 +142,7 @@ export const addOrderCashOnDelivery = asyncHandler(async (req, res) => {
       cart,
       totalPrice,
     });
-    newOrder.customer = customer;
+    newOrder.customer = { ...customer };
     newOrder.paymentId = null;
     const orderAddedToUser = await addOrderToUserService(userId, newOrder._id);
     if (!orderAddedToUser) {
