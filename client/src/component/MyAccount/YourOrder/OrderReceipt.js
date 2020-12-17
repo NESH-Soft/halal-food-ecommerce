@@ -24,6 +24,7 @@ const OrderReceipt = () => {
     				<address>
     				<strong>Billing To:</strong><br/>
 						{orderReceipt.customer && orderReceipt.customer.name}<br/>
+						{orderReceipt.customer && orderReceipt.customer.email}<br/>
 							{orderReceipt.shipping && orderReceipt.shipping.line1 }<br/>
 						{orderReceipt.shipping && orderReceipt.shipping.city }<br/>
 						{orderReceipt.shipping && orderReceipt.shipping.postalCode }
@@ -33,6 +34,7 @@ const OrderReceipt = () => {
     				<address>
         			<strong>Shipping To:</strong><br/>
 						{orderReceipt.customer && orderReceipt.customer.name}<br/>
+						{orderReceipt.customer && orderReceipt.customer.email}<br/>
     				{orderReceipt.shipping && orderReceipt.shipping.line1 }<br/>
 						{orderReceipt.shipping && orderReceipt.shipping.city }<br/>
 						{orderReceipt.shipping && orderReceipt.shipping.postalCode }
@@ -42,9 +44,9 @@ const OrderReceipt = () => {
     		<div className="d-flex justify-content-between">
     			<div>
     				<address>
-    					<strong>Payment Method:</strong><br/>
-    				     {orderReceipt.paymentId? orderReceipt.paymentId : 'cash on delivery'}<br/>
-	            	{orderReceipt.customer && orderReceipt.customer.email}
+    					<strong>Payment:</strong><br/>
+    				     {orderReceipt.paymentId? `paymentId: ${orderReceipt.paymentId}` : 'Cash on delivery'}<br/>
+	            
     				</address>
     			</div>
     			<div >

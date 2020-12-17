@@ -79,7 +79,7 @@ export const addOrder = asyncHandler(async (req, res) => {
   }));
 
   if (userId) {
-    const newOrder = await addOrderServices({
+    let newOrder = await addOrderServices({
       paymentId: payment.id,
       shipping,
       customer,
@@ -87,8 +87,7 @@ export const addOrder = asyncHandler(async (req, res) => {
       cart,
       totalPrice,
     });
-    newOrder.customer = customer;
-    newOrder.paymentId = payment._id;
+    newOrder = { ...newOrder._doc, customer };
     const orderAddedToUser = await addOrderToUserService(userId, newOrder._id);
     if (!orderAddedToUser) {
       throw new BadRequest('Something went wrong!!');
@@ -101,7 +100,7 @@ export const addOrder = asyncHandler(async (req, res) => {
   }
 
   const newUser = await createUserServices(customer);
-  const newOrder = await addOrderServices({
+  let newOrder = await addOrderServices({
     paymentId: payment.id,
     shipping,
     user: newUser._id,
@@ -109,8 +108,7 @@ export const addOrder = asyncHandler(async (req, res) => {
     totalPrice,
   });
 
-  newOrder.customer = customer;
-  newOrder.paymentId = payment._id;
+  newOrder = { ...newOrder._doc, customer };
 
   return res.status(201).json({
     success: true,
@@ -136,14 +134,14 @@ export const addOrderCashOnDelivery = asyncHandler(async (req, res) => {
   }));
 
   if (userId) {
-    const newOrder = await addOrderServices({
+    let newOrder = await addOrderServices({
       shipping,
       user: userId,
       cart,
+      paymentId: null,
       totalPrice,
     });
-    newOrder.customer = { ...customer };
-    newOrder.paymentId = null;
+    newOrder = { ...newOrder._doc, customer };
     const orderAddedToUser = await addOrderToUserService(userId, newOrder._id);
     if (!orderAddedToUser) {
       throw new BadRequest('Something went wrong!!');
@@ -156,18 +154,14 @@ export const addOrderCashOnDelivery = asyncHandler(async (req, res) => {
   }
 
   const newUser = await createUserServices(customer);
-  const newOrder = await addOrderServices({
+  let newOrder = await addOrderServices({
     shipping,
     user: newUser._id,
     cart,
     paymentId: null,
-    customer,
     totalPrice,
   });
-
-  newOrder.customer = customer;
-  newOrder.paymentId = null;
-
+  newOrder = { ...newOrder._doc, customer };
   return res.status(201).json({
     success: true,
     newOrder,
