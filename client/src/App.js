@@ -22,6 +22,7 @@ import YourOrder from './component/MyAccount/YourOrder/YourOrder';
 import LoginSecurity from './component/LoginSecurity/LoginSecurity';
 import YourDetails from './component/MyAccount/YourDetails/YourDetails';
 import YourOrderItem from './component/MyAccount/YourOrder/YourOrderItem'
+import OrderReceipt from './component/MyAccount/YourOrder/OrderReceipt'
 import Footer from './component/Footer/Footer/Footer';
 import Category from './component/Category/Category';
 import Search from './component/Search/Search/Search';
@@ -36,7 +37,7 @@ import LatestProduct from './component/LatestProduct/LatestProduct';
 
 function App() {
   return (
-    <div>
+    <div> 
       <Router>
         <Navbar />
         <div className="container-fluid">
@@ -60,6 +61,7 @@ function App() {
                 <Route exact path="/checkout" component={Checkout} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/register" component={Register} />
+                <Route exact path="/order-receipt" component={OrderReceipt} />
                 <PrivetRoute exact path="/my-account" component={MyAccount} />
                 <PrivetRoute exact path="/your-orders" component={YourOrder} />
                 <PrivetRoute exact path="/your-details" component={YourDetails} />

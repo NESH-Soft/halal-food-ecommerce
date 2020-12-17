@@ -25,7 +25,7 @@ export const getOrders = asyncHandler(async (req, res) => {
 });
 
 export const addOrder = asyncHandler(async (req, res) => {
-  const stripe = stripes('sk_test_51HnPyBFkx0vu20iT33sYaiwBQAtCOFJADWs4x4gPJfST1NmPjkJeoeoPvENf1ISEOdobB124k0OSlYkCfLh8ohPK001Ch5ZyCz');
+  const stripe = stripes(process.env.STRIPE_SECRET_KEY);
   const {
     cart,
     customer,
@@ -34,8 +34,6 @@ export const addOrder = asyncHandler(async (req, res) => {
     totalPrice,
     userId,
   } = req.body;
-
-  const idempontencyKey = v4();
 
   const token = await stripe.tokens.create({
     card: {
@@ -81,13 +79,15 @@ export const addOrder = asyncHandler(async (req, res) => {
   }));
 
   if (userId) {
-    const newOrder = await addOrderServices({
+    let newOrder = await addOrderServices({
       paymentId: payment.id,
       shipping,
+      customer,
       user: userId,
       cart,
       totalPrice,
     });
+    newOrder = { ...newOrder._doc, customer };
     const orderAddedToUser = await addOrderToUserService(userId, newOrder._id);
     if (!orderAddedToUser) {
       throw new BadRequest('Something went wrong!!');
@@ -95,13 +95,12 @@ export const addOrder = asyncHandler(async (req, res) => {
     return res.status(201).json({
       success: true,
       newOrder,
-      payment,
       msg: 'Order added successfully',
     });
   }
 
   const newUser = await createUserServices(customer);
-  const newOrder = await addOrderServices({
+  let newOrder = await addOrderServices({
     paymentId: payment.id,
     shipping,
     user: newUser._id,
@@ -109,10 +108,11 @@ export const addOrder = asyncHandler(async (req, res) => {
     totalPrice,
   });
 
+  newOrder = { ...newOrder._doc, customer };
+
   return res.status(201).json({
     success: true,
     newOrder,
-    payment,
     msg: 'Order added successfully',
   });
 });
@@ -134,12 +134,14 @@ export const addOrderCashOnDelivery = asyncHandler(async (req, res) => {
   }));
 
   if (userId) {
-    const newOrder = await addOrderServices({
+    let newOrder = await addOrderServices({
       shipping,
       user: userId,
       cart,
+      paymentId: null,
       totalPrice,
     });
+    newOrder = { ...newOrder._doc, customer };
     const orderAddedToUser = await addOrderToUserService(userId, newOrder._id);
     if (!orderAddedToUser) {
       throw new BadRequest('Something went wrong!!');
@@ -152,13 +154,14 @@ export const addOrderCashOnDelivery = asyncHandler(async (req, res) => {
   }
 
   const newUser = await createUserServices(customer);
-  const newOrder = await addOrderServices({
+  let newOrder = await addOrderServices({
     shipping,
     user: newUser._id,
     cart,
+    paymentId: null,
     totalPrice,
   });
-
+  newOrder = { ...newOrder._doc, customer };
   return res.status(201).json({
     success: true,
     newOrder,
