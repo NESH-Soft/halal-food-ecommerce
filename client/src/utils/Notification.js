@@ -3,8 +3,8 @@ const notification=(m,t,d)=>{
  
   store.addNotification({
     // title: "Wonderful!",
-    message: m,
-    type: t,
+    message: m || 'something went wrong',
+    type: t || 'info',
     insert: "top",
     container: "top-right",
     animationIn: ["animate__animated", "animate__fadeIn"],
