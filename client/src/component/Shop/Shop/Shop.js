@@ -11,11 +11,6 @@ const Shop = () => {
                     <h3>Shop</h3>
                 </div>
                 <AllProducts />
-                <div className="my-5">
-                    <h3>Especial Products</h3>
-                    <hr className="my-4" />
-                    <ShopCarousel />
-                </div>
             </div>
         </div>
     );

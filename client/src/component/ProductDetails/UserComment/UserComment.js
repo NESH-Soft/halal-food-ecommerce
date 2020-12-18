@@ -12,9 +12,6 @@ const UserComment = ({ review }) => {
                 {data.map(rv => (
 
                     <div>
-                        {/* <p> {rv.customerName}</p>
-                    <p> {rv.rating}</p> 
-                    <p> {rv.review}</p>  */}
                         <div className="d-flex">
                             <div style={{backgroundColor:'lightgray',borderRadius:'50%',padding:'5px 10px',marginRight:'10px'}}>
                                 <FontAwesomeIcon className="text-secondary" icon={faUser} />
