@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Columns from 'react-columns';
@@ -13,7 +13,7 @@ import './style.css'
 
 const AllProducts = () => {
     const dispatch = useDispatch();
-    const PER_PAGE = 8;
+    const PER_PAGE = 12;
     const isAuthenticated = useSelector((state) => state.authState.isAuthenticated);
     const products = useSelector((state) => state.productState.productFilterByCategory);
     const cartItem = useSelector((state) => state.cartState.cart);
@@ -23,13 +23,13 @@ const AllProducts = () => {
     const [currentPage, setCurrentPage] = useState(0);
     function handlePageClick({ selected: selectedPage }) {
         setCurrentPage(selectedPage);
-      }
-    
-      const offset = currentPage * PER_PAGE;
-    
+    }
 
-    
-      const pageCount = Math.ceil(data.length / PER_PAGE);
+    const offset = currentPage * PER_PAGE;
+
+
+
+    const pageCount = Math.ceil(data.length / PER_PAGE);
 
     // include all productId from cart state
     const cartItemArray = cartItem.map(function (product) {
@@ -48,7 +48,7 @@ const AllProducts = () => {
             </div>
             <div className="box-button">
                 <div className="px-2" style={{ borderTop: '1px solid lightgray' }}>
-                    <p>{pd.name}</p>
+                    <h6>{pd.name}</h6>
                     <div className="d-flex justify-content-between">
                         <h6 style={{ backgroundColor: '#7FFF00', width: '40%', padding: '0px 10px', borderRadius: "10px" }} >¥{pd.specialPrice}</h6>
                         {
@@ -129,27 +129,27 @@ const AllProducts = () => {
     ];
     return (
         <div>
-        
+
             {
-                data.length ?  <Columns queries={queries}>{product}</Columns> : <div className="col-md-5 m-auto text-center">
+                data.length ? <Columns queries={queries}>{product}</Columns> : <div className="col-md-5 m-auto text-center">
                     <img src={emptyImg} alt="empty" width="100%" />
                     <p>Opps! Products not available</p>
                 </div>
             }
-         <div className="m-5">
-        <ReactPaginate
-        previousLabel={"← Previous"}
-        nextLabel={"Next →"}
-        pageCount={pageCount}
-        onPageChange={handlePageClick}
-        containerClassName={"pagination"}
-        previousLinkClassName={"pagination__link"}
-        nextLinkClassName={"pagination__link"}
-        disabledClassName={"pagination__link--disabled"}
-        activeClassName={"pagination__link--active"}
-      />
-      </div>
-           
+            <div className="col-md-6 ml-5 pt-5 pl-5">
+                <ReactPaginate
+                    previousLabel={"← Previous"}
+                    nextLabel={"Next →"}
+                    pageCount={pageCount}
+                    onPageChange={handlePageClick}
+                    containerClassName={"pagination"}
+                    previousLinkClassName={"pagination__link"}
+                    nextLinkClassName={"pagination__link"}
+                    disabledClassName={"pagination__link--disabled"}
+                    activeClassName={"pagination__link--active"}
+                />
+            </div>
+
         </div>
     );
 };

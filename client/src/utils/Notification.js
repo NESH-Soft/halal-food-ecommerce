@@ -1,11 +1,10 @@
 import { store } from 'react-notifications-component';
 const notification=(m,t,d)=>{
-  console.log(m,t)
-  // console.log(nMsg,nType)
+ 
   store.addNotification({
     // title: "Wonderful!",
-    message: m,
-    type: t,
+    message: m || 'something went wrong',
+    type: t || 'info',
     insert: "top",
     container: "top-right",
     animationIn: ["animate__animated", "animate__fadeIn"],

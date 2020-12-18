@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartPlus,faMinus } from '@fortawesome/free-solid-svg-icons'
+import { faCartPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,11 +16,11 @@ const responsive = {
     },
     desktop: {
         breakpoint: { max: 3000, min: 1024 },
-        items: 5
+        items: 7
     },
     tablet: {
         breakpoint: { max: 1024, min: 464 },
-        items: 2
+        items: 4
     },
     mobile: {
         breakpoint: { max: 464, min: 0 },
@@ -45,16 +45,15 @@ const ShopCarousel = () => {
 
     return (
         <Carousel responsive={responsive}>
-
             {
                 specialProducts.map((pd, index) => (
                     <div className="card mx-2 pt-2" key={pd._id}>
-                        <img className="card-img-top" style={{ height: '120px' }} src={pd.image} alt="" />
+                        <img className="card-img-top" style={{ height: '140px' }} src={pd.image} alt={pd.name} />
                         <div className="card-body">
-                            <p className="card-title">{pd.name}</p>
+                            <h6 className="card-title">{pd.name}</h6>
                             <div className="d-flex justify-content-between">
-                                <p className="text-muted"><del>$<span>{pd.price}</span> </del> </p>
-                                <h6>$<span>{pd.specialPrice}</span> </h6>
+                                <p className="text-muted"><del>¥<span>{pd.price}</span> </del> </p>
+                                <h6>¥<span>{pd.specialPrice}</span> </h6>
                             </div>
                             <div className="text-center">
                                 {
@@ -76,7 +75,7 @@ const ShopCarousel = () => {
                                                 className="btn btn-sm btn-Addtocart btn-color addCarouselBtn"
                                                 onClick={() => dispatch(addToCart(pd))}
                                             >
-                                                <FontAwesomeIcon icon={faCartPlus}/> Add item
+                                                <FontAwesomeIcon icon={faCartPlus} /> Add item
                                             </button>
                                         )
                                 }

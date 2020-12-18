@@ -20,6 +20,7 @@ export const addToWishList = (_id) => async(dispatch) => {
 } 
 
 export const getWishList = () => async(dispatch) => {
+
   if(localStorage.token){
     setAuthToken(localStorage.token);
   try {
