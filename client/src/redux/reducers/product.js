@@ -29,6 +29,7 @@ const productReducer = (state = initialState, action) => {
         homePageProduct:  action.payload.filter(product=>product.productType === 'homePageProduct'),
         latestProducts: action.payload.filter(product=>product.productType === 'latest'),
         productFilterByCategory: action.payload.filter(product=>product.productType === 'regular'),
+        products: action.payload
       }
       case GET_SPECIAL_PRODUCT:
         return {
@@ -52,9 +53,21 @@ const productReducer = (state = initialState, action) => {
               searchProducts: []
             } 
         case GET_PRODUCTS_BY_CATEGORY:
+        
+        const getFilterProduct = (data)=>{
+            if(data.type === 'category'){
+              const product = state.products.filter(product=>product.category === data.category )
+              return product
+            }
+            if(data.type === 'subCategory'){
+              const product = state.products.filter(product=>product.subCategory === data.subCategory )
+              return product
+            }
+           
+          }
           return {
             ...state,
-            productFilterByCategory: action.payload
+             productFilterByCategory: getFilterProduct(action.payload)
           }
         case ADD_REVIEW:
           console.log(action.payload)
