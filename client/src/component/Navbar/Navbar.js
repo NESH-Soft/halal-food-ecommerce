@@ -17,10 +17,10 @@ const Navbar = () => {
     const wishList = useSelector((state) => state.wishListState.wishList);
     const dispatch = useDispatch()
     useEffect(() => {
-        if (localStorage.token) {
+    
             dispatch(loadUser())
             dispatch(getWishList())
-        }
+    
         // eslint-disable-next-line
     }, [])
   

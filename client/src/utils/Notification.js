@@ -1,7 +1,6 @@
 import { store } from 'react-notifications-component';
 const notification=(m,t,d)=>{
-  console.log(m,t)
-  // console.log(nMsg,nType)
+ 
   store.addNotification({
     // title: "Wonderful!",
     message: m,
