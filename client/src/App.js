@@ -34,10 +34,11 @@ import {
   Route,
 } from "react-router-dom";
 import LatestProduct from './component/LatestProduct/LatestProduct';
+import ShopCarousel from './component/Shop/ShopCarousel/ShopCarousel';
 
 function App() {
   return (
-    <div> 
+    <div>
       <Router>
         <Navbar />
         <div className="container-fluid">
@@ -75,6 +76,11 @@ function App() {
               </Switch>
             </div>
           </div>
+        </div>
+        <div className="col-md-12 mb-5 text-center">
+          <h4>Especial Price Products</h4>
+          <hr className="my-4" />
+          <ShopCarousel />
         </div>
         <Footer />
         <ScrollToTop showUnder={160}>

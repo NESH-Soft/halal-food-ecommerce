@@ -35,7 +35,7 @@ const ProductView = () => {
                 </div>
                 <div className="box-button">
                     <div className="px-2" style={{ borderTop: '1px solid lightgray' }}>
-                        <p>{pd.name}</p>
+                        <h6>{pd.name}</h6>
                         <div className="row d-flex justify-content-between mx-0">
                             <div>
                                 <h6 style={{ backgroundColor: '#7FFF00', padding: '0px 10px', borderRadius: "10px" }} >¥{pd.specialPrice}</h6>
