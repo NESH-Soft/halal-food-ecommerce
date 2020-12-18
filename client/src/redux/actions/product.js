@@ -62,9 +62,15 @@ export const getProduct = (id) => async(dispatch) => {
 
 export const getProductsByCategory = (category) => async(dispatch) => {
   try {
-    const  products = await api.getProductsByCategory(category);
-   
-    dispatch({ type: GET_PRODUCTS_BY_CATEGORY, payload: products })
+    const {hasNodes,label,parent} = category
+    if(parent === ''){
+      const category = {category: label, type: 'category'}
+      return dispatch({ type: GET_PRODUCTS_BY_CATEGORY, payload: category })
+    }else{
+      const category = hasNodes? {category: label, type: 'category'} : {subCategory: label, type: 'subCategory'}
+      return dispatch({ type: GET_PRODUCTS_BY_CATEGORY, payload: category })
+    }
+
   } catch (error) {
     console.log(error);
   }

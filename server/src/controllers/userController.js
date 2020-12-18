@@ -97,7 +97,7 @@ export const changePassword = asyncHandler(async (req, res) => {
 
 // get user
 export const getUser = asyncHandler(async (req, res) => {
-  const user = await getUserServices(req.user.id);
+  const user = await getUserServices(req.user._id);
   if (!user) {
     throw new NotFound('User not found');
   }

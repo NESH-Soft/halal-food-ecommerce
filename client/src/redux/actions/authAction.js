@@ -9,6 +9,7 @@ import {
 import * as api from '../../api';
 import setAuthToken from '../../utils/setAuthToken';
 import Notification from '../../utils/Notification';
+import {getWishList} from '../actions/wishlistAction'
  
 // Action creator
 export const signIn = (data) => async(dispatch) => {
@@ -16,6 +17,7 @@ export const signIn = (data) => async(dispatch) => {
     const  res  = await api.signIn(data);
     dispatch({ type: SIGN_IN_SUCCESS, payload: res })
     dispatch(loadUser())
+    dispatch(getWishList())
     Notification("Login success","success",1000)
   } catch (error) {
     Notification(error.response.data.msg,"warning",1500)
@@ -57,6 +59,7 @@ export const loadUser = () => async(dispatch) => {
   if(localStorage.token){
     setAuthToken(localStorage.token);
   try {
+
     const  res  = await api.loadUser();
     dispatch({ type: LOAD_USER, payload: res })
   } catch (error) {
