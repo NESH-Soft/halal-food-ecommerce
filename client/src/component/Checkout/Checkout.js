@@ -56,9 +56,6 @@ const Checkout = (props) => {
     const handleCashDelivery = () => {
         setCashState(false);
     }
-
-
-
     const { register, handleSubmit, errors, } = useForm();
 
 
@@ -164,7 +161,7 @@ const Checkout = (props) => {
                                               message: "invalid email address"
                                             }
                                           })}
-                                        onChange={handleZipCode} type="text" className="form-control " placeholder="000-0000" />
+                                        onBlur={handleZipCode} type="text" className="form-control " placeholder="000-0000" />
                                         {errors.postCode && <span className="text-danger" >This field is required</span>}
                                     </div>
                                     <div className="col-md-6 form-group">

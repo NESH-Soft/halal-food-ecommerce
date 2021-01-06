@@ -3,9 +3,7 @@ import { useReactToPrint } from 'react-to-print';
 import Invoice from './Invoice';
 
 class ComponentToPrint extends React.Component {
-
     render() {
-
         return (
             <div>
                 <Invoice />
