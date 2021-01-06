@@ -19,7 +19,10 @@ export const createUserServices = async (user) => {
 };
 
 export const getUserServices = async (id) => {
-  const user = await User.findById(id).select('-password -resetPasswordExpires -resetPasswordToken').populate({ path: 'order', model: 'order' });
+  const user = await User.findById(id)
+    .select('-password -resetPasswordExpires -resetPasswordToken')
+    .populate({ path: 'order', model: 'order' })
+    .sort({ createdAt: -1 });
   return user;
 };
 
