@@ -8,6 +8,7 @@ import { loadUser } from '../../redux/actions/authAction';
 
 import './Checkout.css';
 import { stateNameFunc } from './stateNamefunc';
+import { string } from 'joi';
 
 const Checkout = (props) => {
     const dispatch = useDispatch()
@@ -58,7 +59,7 @@ const Checkout = (props) => {
 
 
 
-    const { register, handleSubmit, errors } = useForm();
+    const { register, handleSubmit, errors, } = useForm();
 
 
     const onSubmit = data => {
@@ -130,23 +131,23 @@ const Checkout = (props) => {
                                     <div className="col-md-6 form-group">
                                         <label htmlFor="exampleInputEmail1">First Name <span className="text-danger">*</span></label>
                                         <input name="fname" ref={register({ required: true })} type="text" className="form-control " />
-                                        {errors.fname && <span>This field is required</span>}
+                                        {errors.fname && <span className="text-danger" >This field is required</span>}
                                     </div>
                                     <div className="col-md-6 form-group">
                                         <label htmlFor="exampleInputEmail1">Last Name <span className="text-danger">*</span></label>
                                         <input name="lname" ref={register({ required: true })} type="text" className="form-control " />
-                                        {errors.lname && <span>This field is required</span>}
+                                        {errors.lname && <span className="text-danger" >This field is required</span>}
                                     </div>
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="exampleInputEmail1">Email <span className="text-danger">*</span></label>
                                     <input name="email" ref={register({ required: true })} type="email" className="form-control " />
-                                    {errors.email && <span>This field is required</span>}
+                                    {errors.email && <span className="text-danger" >This field is required</span>}
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="exampleInputEmail1">Phone <span className="text-danger">*</span></label>
                                     <input name="phone" ref={register({ required: true })} type="number" className="form-control " />
-                                    {errors.phone && <span>This field is required</span>}
+                                    {errors.phone && <span className="text-danger" >This field is required</span>}
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="exampleInputEmail1">Country <span className="text-danger">*</span></label>
@@ -155,75 +156,83 @@ const Checkout = (props) => {
                                 <div className="row">
                                     <div className="col-md-6 form-group">
                                         <label htmlFor="exampleInputEmail1">Postcode / ZIP<span className="text-danger">*</span></label>
-                                        <input name="postCode" pattern="^(?(^000(|-0000))|(\d{3}(|-\d{4})))$" ref={register({ required: true })} onChange={handleZipCode} type="text" className="form-control " placeholder="000-0000" />
-                                        {errors.postCode && <span>This field is required</span>}
+                                        <input name="postCode"  
+                                        ref={register({
+                                            required: "Required",
+                                            pattern: {
+                                              value: /(^\d{7}$)|(^\d{3}-\d{4}$)/i,
+                                              message: "invalid email address"
+                                            }
+                                          })}
+                                        onChange={handleZipCode} type="text" className="form-control " placeholder="000-0000" />
+                                        {errors.postCode && <span className="text-danger" >This field is required</span>}
                                     </div>
                                     <div className="col-md-6 form-group">
                                         <label htmlFor="exampleInputEmail1">City<span className="text-danger">*</span></label>
                                         <input name="city" ref={register({ required: true })} type="text" className="form-control " />
-                                        {errors.city && <span>This field is required</span>}
+                                        {errors.city && <span className="text-danger" >This field is required</span>}
                                     </div>
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="exampleInputEmail1">Address<span className="text-danger">*</span></label>
                                     <input name="address" ref={register({ required: true })} type="text" className="form-control " />
-                                    {errors.address && <span>This field is required</span>}
+                                    {errors.address && <span className="text-danger" >This field is required</span>}
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="exampleInputEmail1">Region / State<span className="text-danger">*</span></label>
-                                    <select name="region" ref={register({ required: true })} className="form-control" id="exampleFormControlSelect1">
+                                    <select name="region" ref={register({ pattern: /^[A-Za-z]+$/i })} className="form-control" id="exampleFormControlSelect1">
                                         {
                                             stateName === null ? <option >--select state--</option> : <option value={stateName}>{stateName}</option>
                                         }
-                                        
-                                        <option value="Nagoya">Nagoya</option>
+                                        <option value="Aichi">Aichi</option>
                                         <option value="Akita">Akita</option>
                                         <option value="Aomori">Aomori</option>
                                         <option value="Chiba">Chiba</option>
-                                        <option value="Matsuyama">Matsuyama</option>
+                                        <option value="Ehime">Ehime</option>
                                         <option value="Fukui">Fukui</option>
                                         <option value="Fukuoka">Fukuoka</option>
                                         <option value="Fukushima">Fukushima</option>
-                                        <option value="Maebashi">Maebashi</option>
-                                        <option value="	Hiroshima">Hiroshima</option>
-                                        <option value="Sapporo">Sapporo</option>
-                                        <option value="Kōbe">Kōbe</option>
-                                        <option value="Mito">Mito</option>
-                                        <option value="Kanazawa">Kanazawa</option>
-                                        <option value="Morioka">Morioka</option>
-                                        <option value="Takamatsu">Takamatsu</option>
+                                        <option value="Gifu">Gifu</option>
+                                        <option value="Gunma">Gunma</option>
+                                        <option value="Hiroshima">Hiroshima</option>
+                                        <option value="Hokkaido">Hokkaido</option>
+                                        <option value="Hyogo">Hyogo</option>
+                                        <option value="Ibaraki">Ibaraki</option>
+                                        <option value="Ishikawa">Ishikawa</option>
+                                        <option value="Iwate">Iwate</option>
+                                        <option value="Kagawa">Kagawa</option>
                                         <option value="Kagoshima">Kagoshima</option>
-                                        <option value="Yokohama">Yokohama</option>
-                                        <option value="Kōchi">Kōchi</option>
+                                        <option value="Kanagawa">Kanagawa</option>
+                                        <option value="Kochi">Kochi</option>
                                         <option value="Kumamoto">Kumamoto</option>
                                         <option value="Kyoto">Kyoto</option>
-                                        <option value="Tsu">Tsu</option>
-                                        <option value="Sendai">Sendai</option>
+                                        <option value="Mie">Mie</option>
+                                        <option value="Miyagi">Miyagi</option>
                                         <option value="Miyazaki">Miyazaki</option>
                                         <option value="Nagano">Nagano</option>
                                         <option value="Nagasaki">Nagasaki</option>
                                         <option value="Nara">Nara</option>
                                         <option value="Niigata">Niigata</option>
-                                        <option value="Ōita">Ōita</option>
+                                        <option value="Oita">Oita</option>
                                         <option value="Okayama">Okayama</option>
-                                        <option value="Naha">Naha</option>
-                                        <option value="Ōsaka">Ōsaka</option>
+                                        <option value="Okinawa">Okinawa</option>
+                                        <option value="Osaka">Osaka</option>
                                         <option value="Saga">Saga</option>
                                         <option value="Saitama">Saitama</option>
-                                        <option value="Ōtsu">Ōtsu</option>
-                                        <option value="Matsue">Matsue</option>
+                                        <option value="Shiga">Shiga</option>
+                                        <option value="Shimane">Shimane</option>
                                         <option value="Shizuoka">Shizuoka</option>
-                                        <option value="Utsunomiya">Utsunomiya</option>
+                                        <option value="Tochigi">Tochigi</option>
                                         <option value="Tokushima">Tokushima</option>
-                                        <option value="Shinjuku">Shinjuku</option>
+                                        <option value="Tokyo">Tokyo</option>
                                         <option value="Tottori">Tottori</option>
                                         <option value="Toyama">Toyama</option>
                                         <option value="Wakayama">Wakayama</option>
                                         <option value="Yamagata">Yamagata</option>
                                         <option value="Yamaguchi">Yamaguchi</option>
-                                        <option value="Kōfu">Kōfu</option>
+                                        <option value="Yamanashi">Yamanashi</option>
                                     </select>
-                                    {errors.region && <span>This field is required</span>}
+                                    {errors.region && <span className="text-danger" >This field is required</span>}
                                 </div>
                             </div>
                         </div>
@@ -245,8 +254,8 @@ const Checkout = (props) => {
                                     cartItem && cartItem.map((item, index) => (
                                         <div className="d-flex justify-content-between">
                                             <p>{item.name} </p>
-                                            <p><span>X</span> <span>{item.quantity}</span></p>
-                                            <p>¥ <span>{item.specialPrice * item.quantity}</span> </p>
+                                            <p><span className="text-danger" >X</span> <span className="text-danger" >{item.quantity}</span></p>
+                                            <p>¥ <span className="text-danger" >{item.specialPrice * item.quantity}</span> </p>
                                         </div>
                                     ))
                                 }
@@ -256,12 +265,12 @@ const Checkout = (props) => {
 
                                 <div className="d-flex justify-content-between">
                                     <h6>Subtotal</h6>
-                                    <p>¥ <span>{cartState.cartSubTotal}</span></p>
+                                    <p>¥ <span className="text-danger" >{cartState.cartSubTotal}</span></p>
                                 </div>
                                 <hr className="mt-0" />
                                 <div className="d-flex justify-content-between">
                                     <h6>Total</h6>
-                                    <h6>¥ <span>{cartState.cartSubTotal}</span></h6>
+                                    <h6>¥ <span className="text-danger" >{cartState.cartSubTotal}</span></h6>
                                 </div>
                                 <hr />
                                 <div className="d-flex justify-content-between" style={{ borderBottom: '3px solid #76a333', color: '#76a333' }}>
@@ -288,12 +297,12 @@ const Checkout = (props) => {
                                             <div className="creditCard">
                                                 <p>Pay With Credit Card</p>
                                                 <div className="form-group">
-                                                    <label htmlhtmlFor="exampleInputEmail1">Card Number<span>*</span> </label>
+                                                    <label htmlhtmlFor="exampleInputEmail1">Card Number<span className="text-danger" >*</span> </label>
                                                     <input type="number" className="form-control" ref={register({ required: true })} name='cardNumber' id="exampleInputEmail1" placeholder="1234 1234 1234 1234" aria-describedby="emailHelp" />
                                                 </div>
                                                 <div className="row">
                                                     <div className="col-md-6 form-group">
-                                                        <label htmlFor="exampleInputPassword1">Expired Date<span>*</span> </label>
+                                                        <label htmlFor="exampleInputPassword1">Expired Date<span className="text-danger" >*</span> </label>
 
                                                         <input type="number" className="form-control" name='expireMonth' ref={register({ required: true })} placeholder="Expire Month" id="exampleInputPassword1" />
 
@@ -301,7 +310,7 @@ const Checkout = (props) => {
 
                                                     </div>
                                                     <div className="col-md-6 form-group">
-                                                        <label htmlFor="exampleInputPassword1">Card Code(CVC)<span>*</span> </label>
+                                                        <label htmlFor="exampleInputPassword1">Card Code(CVC)<span className="text-danger" >*</span> </label>
                                                         <input type="number" className="form-control" name='cvc' ref={register({ required: true })} placeholder="CVC" id="exampleInputPassword1" />
                                                     </div>
                                                 </div>
