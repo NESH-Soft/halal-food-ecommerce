@@ -41,6 +41,8 @@ export const CLEAR_CART_ACTION = 'CLEAR_CART_ACTION';
 export const SEND_MAIL = 'SEND_MAIL';
 export const ADD_REVIEW = 'ADD_REVIEW';
 
+export const CLEAR_ORDER = 'CLEAR_ORDER';
+
 
 
 

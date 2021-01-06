@@ -72,18 +72,17 @@ const cartReducer = (state = initialState, action) => {
         return accumulator + currentValue;;
       }, 0);
 
-      const shipping = totalPrice < 8000 ? 1250 : 0 
-      const taxCost = (totalPrice*8)/100
+      const shipping = totalPrice < 8000 ? 1250 : 0
+      const taxCost = (totalPrice * 8) / 100
       return {
         ...state,
         cartSubTotal: totalPrice,
         shippingCost: shipping,
         tax: Math.round(taxCost),
-        cartTotal: Math.round(totalPrice+shipping+taxCost),
+        cartTotal: Math.round(totalPrice + shipping + taxCost),
       }
     case CLEAR_CART_ACTION:
       return {
-        ...state,
         cart: [],
         cartSubTotal: 0,
         tax: 0,
