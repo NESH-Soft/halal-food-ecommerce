@@ -5,7 +5,7 @@ import { faEnvelope, faUserCog, faCartPlus, faHeart } from '@fortawesome/free-so
 import { faFacebookF, faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons"
 import ReactNotification from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css'
-import logo from '../images/logo/logo.png';
+import logo from '../images/logo/logo.svg';
 import './Navbar.css'
 import { Link } from "react-router-dom";
 import { logout, loadUser } from '../../redux/actions/authAction';
@@ -53,13 +53,13 @@ const Navbar = () => {
                     <nav className="navbar navbar-expand-lg  navbar-light ">
                         <div className="col-md-12">
                             <div className="row">
-                                <div className="col-md-3" style={{ paddingLeft: '0px' }}>
-                                    <Link to="/"><img src={logo} width="150px" height="40px" alt="" /></Link>
+                                <div className="col-md-2" style={{ paddingLeft: '0px' }}>
+                                    <Link to="/"><img src={logo} height="70px" alt="" /></Link>
                                     <button className="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                         <span className="navbar-toggler-icon"></span>
                                     </button>
                                 </div>
-                                <div className="col-md-9">
+                                <div className="col-md-10 mt-3">
                                     <div className="row">
                                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                                             <ul className="navbar-nav">
@@ -86,7 +86,7 @@ const Navbar = () => {
                         </div>
                     </nav>
                 </div>
-                <div className="col-md-2">
+                <div className="col-md-2 mt-3">
                     <ul className="row list-unstyled float-right mr-2">
                         <li className="">
                             {isAuthenticated ? (
