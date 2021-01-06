@@ -8,7 +8,6 @@ import { loadUser } from '../../redux/actions/authAction';
 
 import './Checkout.css';
 import { stateNameFunc } from './stateNamefunc';
-import { string } from 'joi';
 
 const Checkout = (props) => {
     const dispatch = useDispatch()
@@ -264,16 +263,26 @@ const Checkout = (props) => {
                                     <h6>Subtotal</h6>
                                     <p>¥ <span className="text-danger" >{cartState.cartSubTotal}</span></p>
                                 </div>
+                                <div className="d-flex justify-content-between">
+                                    <h6>Shipping Cost</h6>
+                            <p>¥ <span className="text-danger" >{
+                               cartState.shippingCost 
+                            }</span></p>
+                                </div>
+                                <div className="d-flex justify-content-between">
+                                    <h6>Tax</h6>
+                                    <p>¥ <span className="text-danger" >{cartState.tax}</span></p>
+                                </div>
                                 <hr className="mt-0" />
                                 <div className="d-flex justify-content-between">
                                     <h6>Total</h6>
-                                    <h6>¥ <span className="text-danger" >{cartState.cartSubTotal}</span></h6>
+                                    <h6>¥ <span className="text-danger" >{cartState.cartTotal}</span></h6>
                                 </div>
                                 <hr />
-                                <div className="d-flex justify-content-between" style={{ borderBottom: '3px solid #76a333', color: '#76a333' }}>
+                                {/* <div className="d-flex justify-content-between" style={{ borderBottom: '3px solid #76a333', color: '#76a333' }}>
                                     <h6>Total Weight</h6>
                                     <h6>5.5 kg ( Packaging Box : 1)</h6>
-                                </div>
+                                </div> */}
                                 <div>
                                     <div>
                                         <input type="radio" id="cashondelivery" name="cash-delivery" checked={cashState} onClick={handleDelivery} />
