@@ -1,9 +1,11 @@
-import React, { useRef } from 'react';
-import { useReactToPrint } from 'react-to-print';
-// import { ComponentToPrint } from './ComponentToPrint';
+
+import React from 'react';
+import { useSelector } from 'react-redux';
+
 import './Invoice.css'
 
 const Invoice = () => {
+	const orderReceipt = useSelector((state) => state.orderState.order);
     return (
         <div>
             <div class="invoice">
@@ -11,28 +13,31 @@ const Invoice = () => {
                     <div class="invoice-from">
                         <small>from</small>
                         <address class="m-t-5 m-b-5">
-                            <strong class="text-inverse">Twitter, Inc.</strong><br />
+                            <strong class="text-inverse">Osakahalalmart</strong><br />
                                     Street Address<br />
-                                    City, Zip Code<br />
-                                    Phone: (123) 456-7890<br />
-                                    Fax: (123) 456-7890
+                                    City: , Zip Code: <br />
+                                    Phone: <br />
+                                    Fax: 
                                 </address>
                     </div>
                     <div class="invoice-to">
-                        <small>to</small>
+                        <small>Shipping to</small>
                         <address class="m-t-5 m-b-5">
-                            <strong class="text-inverse">Company Name</strong><br />
-                                    Street Address<br />
-                                    City, Zip Code<br />
-                                    Phone: (123) 456-7890<br />
-                                    Fax: (123) 456-7890
+		<strong class="text-inverse">{orderReceipt.customer && orderReceipt.customer.name}</strong><br />
+                                    Street Address: {orderReceipt.shipping && orderReceipt.shipping.line1 } <br />
+                                    City: {orderReceipt.shipping && orderReceipt.shipping.city },
+																		 Zip Code: 	{orderReceipt.shipping && orderReceipt.shipping.postalCode }<br />
+																		Email: {orderReceipt.customer && orderReceipt.customer.email} <br/>
+                                    Phone: {orderReceipt.customer && orderReceipt.customer.phone}<br />
+                                  
                                 </address>
                     </div>
+
                     <div class="invoice-date">
-                        <small>Invoice / July period</small>
-                        <div class="date text-inverse m-t-5">August 3,2012</div>
+                        <small>Invoice </small>
+                        <div class="date text-inverse m-t-5">	{ new Date(orderReceipt.createdAt).toLocaleDateString()} </div>
                         <div class="invoice-detail">
-                            #0000123DSS<br />
+                            {orderReceipt._id}<br />
                                 Services Product
                             </div>
                     </div>
@@ -42,37 +47,23 @@ const Invoice = () => {
                         <table class="table table-invoice">
                             <thead>
                                 <tr>
-                                    <th>TASK DESCRIPTION</th>
-                                    <th class="text-center" width="10%">RATE</th>
-                                    <th class="text-center" width="10%">HOURS</th>
-                                    <th class="text-right" width="20%">LINE TOTAL</th>
+                                    <th>Item</th>
+                                    <th class="text-center" width="10%">Price</th>
+                                    <th class="text-center" width="10%">Quantity</th>
+                                    <th class="text-right" width="20%">Total</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <span class="text-inverse">Website design &amp; development</span><br />
-                                    </td>
-                                    <td class="text-center">$50.00</td>
-                                    <td class="text-center">50</td>
-                                    <td class="text-right">$2,500.00</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="text-inverse">Branding</span><br />
-                                    </td>
-                                    <td class="text-center">$50.00</td>
-                                    <td class="text-center">40</td>
-                                    <td class="text-right">$2,000.00</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="text-inverse">Redesign Service</span><br />
-                                    </td>
-                                    <td class="text-center">$50.00</td>
-                                    <td class="text-center">50</td>
-                                    <td class="text-right">$2,500.00</td>
-                                </tr>
+														{
+										orderReceipt.cart && orderReceipt.cart.map(item=>(
+											<tr>
+											<td>{item.name}</td>
+											<td className="text-center">¥{item.specialPrice}</td>
+											<td className="text-center">{item.quantity}</td>
+										<td className="text-right">¥{item.specialPrice*item.quantity}</td>
+										</tr>
+										))
+									}
                             </tbody>
                         </table>
                     </div>
@@ -80,20 +71,27 @@ const Invoice = () => {
                         <div class="invoice-price-left">
                             <div class="invoice-price-row">
                                 <div class="sub-price">
-                                    <small>SUBTOTAL</small>
-                                    <span class="text-inverse">$4,500.00</span>
+                                    <small>Subtotal</small>
+                                    <span class="text-inverse">¥{orderReceipt.subtotalPrice}</span>
+                                </div>
+																<div class="sub-price">
+                                    <i class="fa fa-plus text-muted"></i>
+                                </div>
+                                <div class="sub-price">
+                                    <small>Shipping</small>
+                                    <span class="text-inverse">¥{orderReceipt.shippingCost}</span>
                                 </div>
                                 <div class="sub-price">
                                     <i class="fa fa-plus text-muted"></i>
                                 </div>
                                 <div class="sub-price">
-                                    <small>PAYPAL FEE (5.4%)</small>
-                                    <span class="text-inverse">$108.00</span>
+                                    <small>Tax (8%)</small>
+                                    <span class="text-inverse">¥{orderReceipt.tax}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="invoice-price-right">
-                            <small>TOTAL</small> <span class="f-w-600">$4508.00</span>
+                            <small>Total</small> <span class="f-w-600">¥{orderReceipt.totalPrice}</span>
                         </div>
                     </div>
                 </div>
