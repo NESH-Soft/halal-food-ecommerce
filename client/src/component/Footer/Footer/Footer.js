@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons"
 import { Link } from 'react-router-dom';
-import logo from '../../images/logo/logo.png';
+import logo from '../../images/logo/logo.svg';
 
 const Footer = () => {
     return (
@@ -10,9 +10,10 @@ const Footer = () => {
             <div className="row p-4">
                 <div className="col-md-4">
                     <div className="">
-                        <img src={logo} width="200px" alt="" />
+                        <img src={logo} height="80px" alt="" />
                     </div>
                     <br />
+                    <br/>
                     <p>Address: 60-49 Road 11378 New York</p>
                     <p>Phone: +65 11.188.888</p>
                     <p></p>

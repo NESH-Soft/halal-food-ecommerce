@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
-import {withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { amountCount, ClearCart } from '../../redux/actions/cartAction'
 import { createOrder, createOrderCashOnDelivery } from '../../redux/actions/orderAction';
 import { loadUser } from '../../redux/actions/authAction';
 
 import './Checkout.css';
+import { stateNameFunc } from './stateNamefunc';
 
 const Checkout = (props) => {
     const dispatch = useDispatch()
@@ -24,7 +25,10 @@ const Checkout = (props) => {
         // eslint-disable-next-line
     }, [success]);
 
-
+    const [stateName, setStateName] = useState(null);
+    const handleZipCode = (event) => {
+        setStateName(stateNameFunc(event.target.value))
+    }
 
     const cartState = useSelector((state) => state.cartState);
     const authState = useSelector((state) => state.authState);
@@ -102,177 +106,221 @@ const Checkout = (props) => {
                 totalPrice: cartState.cartTotal,
                 userId: userId,
             };
-            
+
             dispatch(createOrder(orderData));
             setPlaceButton(true)
-
         }
-
     }
 
     return (
         <div className=" checkout mb-5">
-                <div className="mb-4" style={{ borderBottom: ' 3px solid #76a333' }}>
-                    <h4>Checkout</h4>
-                </div>
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="row">
-                        <div className="col-md-7">
-                            <div className="billingCard">
-                                <div>
-                                    <h5>Billing and Shipping</h5>
-                                    <hr className="my-4" />
-                                </div>
-                                <div className="checkout-form">
-                                    <div className="row">
-                                        <div className="col-md-6 form-group">
-                                            <label htmlFor="exampleInputEmail1">First Name <span className="text-danger">*</span></label>
-                                            <input name="fname" ref={register({ required: true })} type="text" className="form-control " />
-                                            {errors.fname && <span>This field is required</span>}
-                                        </div>
-                                        <div className="col-md-6 form-group">
-                                            <label htmlFor="exampleInputEmail1">Last Name <span className="text-danger">*</span></label>
-                                            <input name="lname" ref={register({ required: true })} type="text" className="form-control " />
-                                            {errors.lname && <span>This field is required</span>}
-                                        </div>
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="exampleInputEmail1">Email <span className="text-danger">*</span></label>
-                                        <input name="email" ref={register({ required: true })} type="email" className="form-control " />
-                                        {errors.email && <span>This field is required</span>}
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="exampleInputEmail1">Phone <span className="text-danger">*</span></label>
-                                        <input name="phone" ref={register({ required: true })} type="number" className="form-control " />
-                                        {errors.phone && <span>This field is required</span>}
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="exampleInputEmail1">Country <span className="text-danger">*</span></label>
-                                        <h5>Japan</h5>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col-md-6 form-group">
-                                            <label htmlFor="exampleInputEmail1">Postcode / ZIP<span className="text-danger">*</span></label>
-                                            <input name="postCode" ref={register({ required: true })} type="text" className="form-control " />
-                                            {errors.postCode && <span>This field is required</span>}
-                                        </div>
-                                        <div className="col-md-6 form-group">
-                                            <label htmlFor="exampleInputEmail1">City<span className="text-danger">*</span></label>
-                                            <input name="city" ref={register({ required: true })} type="text" className="form-control " />
-                                            {errors.city && <span>This field is required</span>}
-                                        </div>
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="exampleInputEmail1">Address<span className="text-danger">*</span></label>
-                                        <input name="address" ref={register({ required: true })} type="text" className="form-control " />
-                                        {errors.address && <span>This field is required</span>}
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="exampleInputEmail1">Region / State<span className="text-danger">*</span></label>
-                                        <select name="region" ref={register({ required: true })} className="form-control" id="exampleFormControlSelect1">
-                                            <option>--please select--</option>
-                                            <option value="11">11</option>
-                                            <option value="12">12</option>
-                                            <option value="13">13</option>
-                                            <option value="14">14</option>
-                                            <option value="15">15</option>
-                                        </select>
-                                        {errors.region && <span>This field is required</span>}
-                                    </div>
-                                </div>
+            <div className="mb-4" style={{ borderBottom: ' 3px solid #76a333' }}>
+                <h4>Checkout</h4>
+            </div>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="row">
+                    <div className="col-md-7">
+                        <div className="billingCard">
+                            <div>
+                                <h5>Billing and Shipping</h5>
+                                <hr className="my-4" />
                             </div>
-                        </div>
-                        <div className="col-md-5">
-                            <div className="checkout-order">
-                                <div>
-                                    <h5>Your Order</h5>
-                                    <hr className="my-4" />
+                            <div className="checkout-form">
+                                <div className="row">
+                                    <div className="col-md-6 form-group">
+                                        <label htmlFor="exampleInputEmail1">First Name <span className="text-danger">*</span></label>
+                                        <input name="fname" ref={register({ required: true })} type="text" className="form-control " />
+                                        {errors.fname && <span>This field is required</span>}
+                                    </div>
+                                    <div className="col-md-6 form-group">
+                                        <label htmlFor="exampleInputEmail1">Last Name <span className="text-danger">*</span></label>
+                                        <input name="lname" ref={register({ required: true })} type="text" className="form-control " />
+                                        {errors.lname && <span>This field is required</span>}
+                                    </div>
                                 </div>
-                                <div className="mt-4">
-                                    <div className="d-flex justify-content-between">
-                                        <h5>Product</h5>
-                                        <h5>Subtotal</h5>
+                                <div className="form-group">
+                                    <label htmlFor="exampleInputEmail1">Email <span className="text-danger">*</span></label>
+                                    <input name="email" ref={register({ required: true })} type="email" className="form-control " />
+                                    {errors.email && <span>This field is required</span>}
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="exampleInputEmail1">Phone <span className="text-danger">*</span></label>
+                                    <input name="phone" ref={register({ required: true })} type="number" className="form-control " />
+                                    {errors.phone && <span>This field is required</span>}
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="exampleInputEmail1">Country <span className="text-danger">*</span></label>
+                                    <h5>Japan</h5>
+                                </div>
+                                <div className="row">
+                                    <div className="col-md-6 form-group">
+                                        <label htmlFor="exampleInputEmail1">Postcode / ZIP<span className="text-danger">*</span></label>
+                                        <input name="postCode" pattern="^(?(^000(|-0000))|(\d{3}(|-\d{4})))$" ref={register({ required: true })} onChange={handleZipCode} type="text" className="form-control " placeholder="000-0000" />
+                                        {errors.postCode && <span>This field is required</span>}
                                     </div>
-                                    <hr />
-
-                                    {
-                                        cartItem && cartItem.map((item, index) => (
-                                            <div className="d-flex justify-content-between">
-                                                <p>{item.name} </p>
-                                                <p><span>X</span> <span>{item.quantity}</span></p>
-                                                <p>¥ <span>{item.specialPrice * item.quantity}</span> </p>
-                                            </div>
-                                        ))
-                                    }
-
-                                    <hr className="mt-0 mb-2" />
-
-
-                                    <div className="d-flex justify-content-between">
-                                        <h6>Subtotal</h6>
-                                        <p>¥ <span>{cartState.cartSubTotal}</span></p>
+                                    <div className="col-md-6 form-group">
+                                        <label htmlFor="exampleInputEmail1">City<span className="text-danger">*</span></label>
+                                        <input name="city" ref={register({ required: true })} type="text" className="form-control " />
+                                        {errors.city && <span>This field is required</span>}
                                     </div>
-                                    <hr className="mt-0" />
-                                    <div className="d-flex justify-content-between">
-                                        <h6>Total</h6>
-                                        <h6>¥ <span>{cartState.cartSubTotal}</span></h6>
-                                    </div>
-                                    <hr />
-                                    <div className="d-flex justify-content-between" style={{ borderBottom: '3px solid #76a333', color: '#76a333' }}>
-                                        <h6>Total Weight</h6>
-                                        <h6>5.5 kg ( Packaging Box : 1)</h6>
-                                    </div>
-                                    <div>
-                                        <div>
-                                            <input type="radio" id="cashondelivery" name="cash-delivery" checked={cashState} onClick={handleDelivery} />
-                                            <label htmlFor="cashondelivery">&nbsp;Cash on Delivery</label>
-                                        </div>
-                                        <div>
-                                            <input type="radio" id="cash-delivery" name="cash-delivery" onClick={handleCashDelivery} />
-                                            <label htmlFor="cashondelivery">&nbsp;Pay With Credit Card</label>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        {cashState ? (
-                                            <div className="cashondelivery text-center">
-                                                <p className="p-3">Pay with cash upon delivery.</p>
-                                                <button type="submit" className="btn w-100" style={{ borderRadius: '10px', backgroundColor: '#76a333', color: '#fff' }}>Place Order</button>
-                                            </div>
-                                        ) : (
-                                                <div className="creditCard">
-                                                    <p>Pay With Credit Card</p>
-                                                    <div className="form-group">
-                                                        <label htmlhtmlFor="exampleInputEmail1">Card Number<span>*</span> </label>
-                                                        <input type="number" className="form-control" ref={register({ required: true })} name='cardNumber' id="exampleInputEmail1" placeholder="1234 1234 1234 1234" aria-describedby="emailHelp" />
-                                                    </div>
-                                                    <div className="row">
-                                                        <div className="col-md-6 form-group">
-                                                            <label htmlFor="exampleInputPassword1">Expired Date<span>*</span> </label>
-
-                                                            <input type="number" className="form-control" name='expireMonth' ref={register({ required: true })} placeholder="Expire Month" id="exampleInputPassword1" />
-
-                                                            <input type="number" className="form-control" name='expireYear' ref={register({ required: true })} placeholder="Expire Year" id="exampleInputPassword1" />
-
-                                                        </div>
-                                                        <div className="col-md-6 form-group">
-                                                            <label htmlFor="exampleInputPassword1">Card Code(CVC)<span>*</span> </label>
-                                                            <input type="number" className="form-control" name='cvc' ref={register({ required: true })} placeholder="CVC" id="exampleInputPassword1" />
-                                                        </div>
-                                                    </div>
-                                                    <button type="submit"
-                                                     className="btn  w-100" 
-                                                     disabled={placeButton}
-                                                     style={{ borderRadius: '10px',
-                                                      backgroundColor: '#76a333',
-                                                       color: '#fff' }}>Place Order</button>
-                                                </div>
-                                            )}
-                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="exampleInputEmail1">Address<span className="text-danger">*</span></label>
+                                    <input name="address" ref={register({ required: true })} type="text" className="form-control " />
+                                    {errors.address && <span>This field is required</span>}
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="exampleInputEmail1">Region / State<span className="text-danger">*</span></label>
+                                    <select name="region" ref={register({ required: true })} className="form-control" id="exampleFormControlSelect1">
+                                        {
+                                            stateName === null ? <option >--select state--</option> : <option value={stateName}>{stateName}</option>
+                                        }
+                                        
+                                        <option value="Nagoya">Nagoya</option>
+                                        <option value="Akita">Akita</option>
+                                        <option value="Aomori">Aomori</option>
+                                        <option value="Chiba">Chiba</option>
+                                        <option value="Matsuyama">Matsuyama</option>
+                                        <option value="Fukui">Fukui</option>
+                                        <option value="Fukuoka">Fukuoka</option>
+                                        <option value="Fukushima">Fukushima</option>
+                                        <option value="Maebashi">Maebashi</option>
+                                        <option value="	Hiroshima">Hiroshima</option>
+                                        <option value="Sapporo">Sapporo</option>
+                                        <option value="Kōbe">Kōbe</option>
+                                        <option value="Mito">Mito</option>
+                                        <option value="Kanazawa">Kanazawa</option>
+                                        <option value="Morioka">Morioka</option>
+                                        <option value="Takamatsu">Takamatsu</option>
+                                        <option value="Kagoshima">Kagoshima</option>
+                                        <option value="Yokohama">Yokohama</option>
+                                        <option value="Kōchi">Kōchi</option>
+                                        <option value="Kumamoto">Kumamoto</option>
+                                        <option value="Kyoto">Kyoto</option>
+                                        <option value="Tsu">Tsu</option>
+                                        <option value="Sendai">Sendai</option>
+                                        <option value="Miyazaki">Miyazaki</option>
+                                        <option value="Nagano">Nagano</option>
+                                        <option value="Nagasaki">Nagasaki</option>
+                                        <option value="Nara">Nara</option>
+                                        <option value="Niigata">Niigata</option>
+                                        <option value="Ōita">Ōita</option>
+                                        <option value="Okayama">Okayama</option>
+                                        <option value="Naha">Naha</option>
+                                        <option value="Ōsaka">Ōsaka</option>
+                                        <option value="Saga">Saga</option>
+                                        <option value="Saitama">Saitama</option>
+                                        <option value="Ōtsu">Ōtsu</option>
+                                        <option value="Matsue">Matsue</option>
+                                        <option value="Shizuoka">Shizuoka</option>
+                                        <option value="Utsunomiya">Utsunomiya</option>
+                                        <option value="Tokushima">Tokushima</option>
+                                        <option value="Shinjuku">Shinjuku</option>
+                                        <option value="Tottori">Tottori</option>
+                                        <option value="Toyama">Toyama</option>
+                                        <option value="Wakayama">Wakayama</option>
+                                        <option value="Yamagata">Yamagata</option>
+                                        <option value="Yamaguchi">Yamaguchi</option>
+                                        <option value="Kōfu">Kōfu</option>
+                                    </select>
+                                    {errors.region && <span>This field is required</span>}
                                 </div>
                             </div>
                         </div>
                     </div>
-                </form>
+                    <div className="col-md-5">
+                        <div className="checkout-order">
+                            <div>
+                                <h5>Your Order</h5>
+                                <hr className="my-4" />
+                            </div>
+                            <div className="mt-4">
+                                <div className="d-flex justify-content-between">
+                                    <h5>Product</h5>
+                                    <h5>Subtotal</h5>
+                                </div>
+                                <hr />
+
+                                {
+                                    cartItem && cartItem.map((item, index) => (
+                                        <div className="d-flex justify-content-between">
+                                            <p>{item.name} </p>
+                                            <p><span>X</span> <span>{item.quantity}</span></p>
+                                            <p>¥ <span>{item.specialPrice * item.quantity}</span> </p>
+                                        </div>
+                                    ))
+                                }
+
+                                <hr className="mt-0 mb-2" />
+
+
+                                <div className="d-flex justify-content-between">
+                                    <h6>Subtotal</h6>
+                                    <p>¥ <span>{cartState.cartSubTotal}</span></p>
+                                </div>
+                                <hr className="mt-0" />
+                                <div className="d-flex justify-content-between">
+                                    <h6>Total</h6>
+                                    <h6>¥ <span>{cartState.cartSubTotal}</span></h6>
+                                </div>
+                                <hr />
+                                <div className="d-flex justify-content-between" style={{ borderBottom: '3px solid #76a333', color: '#76a333' }}>
+                                    <h6>Total Weight</h6>
+                                    <h6>5.5 kg ( Packaging Box : 1)</h6>
+                                </div>
+                                <div>
+                                    <div>
+                                        <input type="radio" id="cashondelivery" name="cash-delivery" checked={cashState} onClick={handleDelivery} />
+                                        <label htmlFor="cashondelivery">&nbsp;Cash on Delivery</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="cash-delivery" name="cash-delivery" onClick={handleCashDelivery} />
+                                        <label htmlFor="cashondelivery">&nbsp;Pay With Credit Card</label>
+                                    </div>
+                                </div>
+                                <div>
+                                    {cashState ? (
+                                        <div className="cashondelivery text-center">
+                                            <p className="p-3">Pay with cash upon delivery.</p>
+                                            <button type="submit" className="btn w-100" style={{ borderRadius: '10px', backgroundColor: '#76a333', color: '#fff' }}>Place Order</button>
+                                        </div>
+                                    ) : (
+                                            <div className="creditCard">
+                                                <p>Pay With Credit Card</p>
+                                                <div className="form-group">
+                                                    <label htmlhtmlFor="exampleInputEmail1">Card Number<span>*</span> </label>
+                                                    <input type="number" className="form-control" ref={register({ required: true })} name='cardNumber' id="exampleInputEmail1" placeholder="1234 1234 1234 1234" aria-describedby="emailHelp" />
+                                                </div>
+                                                <div className="row">
+                                                    <div className="col-md-6 form-group">
+                                                        <label htmlFor="exampleInputPassword1">Expired Date<span>*</span> </label>
+
+                                                        <input type="number" className="form-control" name='expireMonth' ref={register({ required: true })} placeholder="Expire Month" id="exampleInputPassword1" />
+
+                                                        <input type="number" className="form-control" name='expireYear' ref={register({ required: true })} placeholder="Expire Year" id="exampleInputPassword1" />
+
+                                                    </div>
+                                                    <div className="col-md-6 form-group">
+                                                        <label htmlFor="exampleInputPassword1">Card Code(CVC)<span>*</span> </label>
+                                                        <input type="number" className="form-control" name='cvc' ref={register({ required: true })} placeholder="CVC" id="exampleInputPassword1" />
+                                                    </div>
+                                                </div>
+                                                <button type="submit"
+                                                    className="btn  w-100"
+                                                    disabled={placeButton}
+                                                    style={{
+                                                        borderRadius: '10px',
+                                                        backgroundColor: '#76a333',
+                                                        color: '#fff'
+                                                    }}>Place Order</button>
+                                            </div>
+                                        )}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     );
 };
