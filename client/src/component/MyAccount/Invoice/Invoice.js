@@ -2,7 +2,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import './orderReceptStyle.css'
+import './Invoice.css'
 
 const Invoice = () => {
 	const orderReceipt = useSelector((state) => state.orderState.order);

@@ -13,6 +13,8 @@ import {
   offlineSale,
   deleteOrder,
 } from '../controllers/orderController';
+import { handleValidations } from '../middlewares/handleValidation';
+import validators from '../models/validation/index';
 
 const router = express.Router();
 router.route('/cash-on-delivery').post(addOrderCashOnDelivery);

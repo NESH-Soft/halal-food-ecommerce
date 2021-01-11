@@ -4,6 +4,7 @@ import {
   GET_ORDERER,
   CANCEL_ORDERER,
   GET_SINGLE_ORDERER,
+  CLEAR_ORDER
  } from '../type';
  const initialState = {
    order: {},
@@ -28,6 +29,11 @@ import {
           order: action.payload.newOrder,
           success: true
         }
+       case CLEAR_ORDER:
+        return {
+          ...state,
+          success: false
+        }
         case GET_ORDERER:
           return {
             ...state,
@@ -39,7 +45,6 @@ import {
             allOrder: state.allOrder.filter(order=>order._id !== action.payload)
           }
         case GET_SINGLE_ORDERER:
-          console.log(action.payload)
           return {
             ...state,
             singleOrder: state.allOrder.filter(order=>order._id === action.payload)

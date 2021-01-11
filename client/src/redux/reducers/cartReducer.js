@@ -9,9 +9,9 @@ import {
 const initialState = {
   cart: [],
   cartSubTotal: 0,
-  cartTax: 0,
+  tax: 0,
   cartTotal: 0,
-  cartShipping: 0
+  shippingCost: 0
 
 };
 const cartReducer = (state = initialState, action) => {
@@ -71,19 +71,23 @@ const cartReducer = (state = initialState, action) => {
       const totalPrice = productPriceArray.reduce(function (accumulator, currentValue) {
         return accumulator + currentValue;;
       }, 0);
+
+      const shipping = totalPrice < 8000 ? 1250 : 0
+      const taxCost = (totalPrice * 8) / 100
       return {
         ...state,
         cartSubTotal: totalPrice,
-        cartTotal: totalPrice
+        shippingCost: shipping,
+        tax: Math.round(taxCost),
+        cartTotal: Math.round(totalPrice + shipping + taxCost),
       }
     case CLEAR_CART_ACTION:
       return {
-        ...state,
         cart: [],
         cartSubTotal: 0,
-        cartTax: 0,
+        tax: 0,
         cartTotal: 0,
-        cartShipping: 0
+        shippingCost: 0
       }
     default:
       return state;
