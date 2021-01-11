@@ -30,6 +30,9 @@ export const addOrder = asyncHandler(async (req, res) => {
     cart,
     customer,
     shipping,
+    shippingCost,
+    subTotal,
+    tax,
     card,
     totalPrice,
     userId,
@@ -82,6 +85,9 @@ export const addOrder = asyncHandler(async (req, res) => {
     let newOrder = await addOrderServices({
       paymentId: payment.id,
       shipping,
+      shippingCost,
+      subTotal,
+      tax,
       customer,
       user: userId,
       cart,
@@ -103,6 +109,9 @@ export const addOrder = asyncHandler(async (req, res) => {
   let newOrder = await addOrderServices({
     paymentId: payment.id,
     shipping,
+    shippingCost,
+    subTotal,
+    tax,
     user: newUser._id,
     cart,
     totalPrice,
@@ -122,6 +131,9 @@ export const addOrderCashOnDelivery = asyncHandler(async (req, res) => {
     cart,
     customer,
     shipping,
+    shippingCost,
+    subTotal,
+    tax,
     totalPrice,
     userId,
   } = req.body;
@@ -136,6 +148,9 @@ export const addOrderCashOnDelivery = asyncHandler(async (req, res) => {
   if (userId) {
     let newOrder = await addOrderServices({
       shipping,
+      shippingCost,
+      subTotal,
+      tax,
       user: userId,
       cart,
       paymentId: null,
@@ -156,6 +171,9 @@ export const addOrderCashOnDelivery = asyncHandler(async (req, res) => {
   const newUser = await createUserServices(customer);
   let newOrder = await addOrderServices({
     shipping,
+    shippingCost,
+    subTotal,
+    tax,
     user: newUser._id,
     cart,
     paymentId: null,

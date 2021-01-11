@@ -8,7 +8,6 @@ import { loadUser } from '../../redux/actions/authAction';
 
 import './Checkout.css';
 import { stateNameFunc } from './stateNamefunc';
-import { string } from 'joi';
 
 const Checkout = (props) => {
     const dispatch = useDispatch()
@@ -250,9 +249,9 @@ const Checkout = (props) => {
                                 {
                                     cartItem && cartItem.map((item, index) => (
                                         <div className="d-flex justify-content-between">
-                                            <p>{item.name} </p>
-                                            <p><span className="text-danger" >X</span> <span className="text-danger" >{item.quantity}</span></p>
-                                            <p>¥ <span className="text-danger" >{item.specialPrice * item.quantity}</span> </p>
+                                            <p className="text-checkout">{index+1} . {item.name} </p>
+                                            <p className="text-checkout"><span  >X</span> <span >{item.quantity}</span></p>
+                                            <p className="text-checkout">¥ <span  >{item.specialPrice * item.quantity}</span> </p>
                                         </div>
                                     ))
                                 }
@@ -262,37 +261,43 @@ const Checkout = (props) => {
 
                                 <div className="d-flex justify-content-between">
                                     <h6>Subtotal</h6>
-                                    <p>¥ <span className="text-danger" >{cartState.cartSubTotal}</span></p>
+                                    <p className="text-checkout">¥ <span  >{cartState.cartSubTotal}</span></p>
+                                </div>
+                                <div className="d-flex justify-content-between">
+                                    <h6>Shipping Cost</h6>
+                            <p className="text-checkout">¥ <span  >{
+                               cartState.shippingCost 
+                            }</span></p>
+                                </div>
+                                <div className="d-flex justify-content-between">
+                                    <h6>Tax</h6>
+                                    <p className="text-checkout">¥ <span >{cartState.tax}</span></p>
                                 </div>
                                 <hr className="mt-0" />
                                 <div className="d-flex justify-content-between">
                                     <h6>Total</h6>
-                                    <h6>¥ <span className="text-danger" >{cartState.cartSubTotal}</span></h6>
+                                    <h6>¥ <span className="text-checkout" >{cartState.cartTotal}</span></h6>
                                 </div>
                                 <hr />
-                                <div className="d-flex justify-content-between" style={{ borderBottom: '3px solid #76a333', color: '#76a333' }}>
-                                    <h6>Total Weight</h6>
-                                    <h6>5.5 kg ( Packaging Box : 1)</h6>
-                                </div>
                                 <div>
                                     <div>
                                         <input type="radio" id="cashondelivery" name="cash-delivery" checked={cashState} onClick={handleDelivery} />
-                                        <label htmlFor="cashondelivery">&nbsp;Cash on Delivery</label>
+                                        <label className="text-checkout" htmlFor="cashondelivery">&nbsp;Cash on Delivery</label>
                                     </div>
                                     <div>
                                         <input type="radio" id="cash-delivery" name="cash-delivery" onClick={handleCashDelivery} />
-                                        <label htmlFor="cashondelivery">&nbsp;Pay With Credit Card</label>
+                                        <label className="text-checkout" htmlFor="cashondelivery">&nbsp;Pay With Credit Card</label>
                                     </div>
                                 </div>
                                 <div>
                                     {cashState ? (
                                         <div className="cashondelivery text-center">
-                                            <p className="p-3">Pay with cash upon delivery.</p>
+                                            <p className="text-checkout p-3">Pay with cash upon delivery.</p>
                                             <button type="submit" className="btn w-100" style={{ borderRadius: '10px', backgroundColor: '#76a333', color: '#fff' }}>Place Order</button>
                                         </div>
                                     ) : (
                                             <div className="creditCard">
-                                                <p>Pay With Credit Card</p>
+                                                <p className="text-checkout">Pay With Credit Card</p>
                                                 <div className="form-group">
                                                     <label htmlhtmlFor="exampleInputEmail1">Card Number<span className="text-danger" >*</span> </label>
                                                     <input type="number" className="form-control" ref={register({ required: true })} name='cardNumber' id="exampleInputEmail1" placeholder="1234 1234 1234 1234" aria-describedby="emailHelp" />

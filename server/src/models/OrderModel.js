@@ -20,6 +20,15 @@ const orderSchema = mongoose.Schema({
     default: 'pending',
     enum: ['pending', 'active', 'delivered', 'canceled', 'offlineSale'],
   },
+  shippingCost: {
+    type: Number,
+  },
+  subTotal: {
+    type: Number,
+  },
+  tax: {
+    type: Number,
+  },
   totalPrice: Number,
 },
 {

@@ -35,8 +35,6 @@ import {
 } from "react-router-dom";
 import LatestProduct from './component/LatestProduct/LatestProduct';
 import ShopCarousel from './component/Shop/ShopCarousel/ShopCarousel';
-import Invoice from './component/MyAccount/Invoice/Invoice';
-import InvoicePrint from './component/MyAccount/Invoice/InvoicePrint';
 
 function App() {
   return (
@@ -74,7 +72,6 @@ function App() {
                 <Route exact path="/review" component={Review} />
                 <Route exact path="/info" component={Info} />
                 <Route exact path="/verify/:token" component={ConfirmRegister} />
-                <Route exact path="/invoice" component={InvoicePrint} />
                 <Route exact path="/" component={Home} />
               </Switch>
             </div>
